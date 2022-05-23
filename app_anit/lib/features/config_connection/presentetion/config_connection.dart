@@ -58,7 +58,7 @@ class _ConfigFormWidgetState extends State<ConfigFormWidget> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const SizedBox(height: 36),
+              const SizedBox(height: 48),
               TextFormField(
                 decoration: const InputDecoration(
                   labelText: 'Сервис (http://192.168.2.37/dostavka/hs/oas)',
