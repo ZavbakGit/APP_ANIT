@@ -10,19 +10,22 @@ class ConfigConnectionPage extends StatelessWidget {
   @override
   Widget build(Object context) {
     return PageWidget(
-      child: Column(
-        children: const [
-          Expanded(
-            flex: 0,
-            child: TitleText(
-              text: 'Настройка',
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: const [
+            Expanded(
+              flex: 0,
+              child: TitleText(
+                text: 'Настройка',
+              ),
             ),
-          ),
-          Expanded(
-            flex: 2,
-            child: ConfigFormWidget(),
-          ),
-        ],
+            Expanded(
+              flex: 2,
+              child: ConfigFormWidget(),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -55,7 +58,7 @@ class _ConfigFormWidgetState extends State<ConfigFormWidget> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const SizedBox(height: 16),
+              const SizedBox(height: 36),
               TextFormField(
                 decoration: const InputDecoration(
                   labelText: 'Сервис (http://192.168.2.37/dostavka/hs/oas)',
@@ -68,11 +71,16 @@ class _ConfigFormWidgetState extends State<ConfigFormWidget> {
                   return null;
                 },
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 24),
               TextFormField(
                 decoration: const InputDecoration(
                   labelText: 'Логин',
                   border: OutlineInputBorder(),
+                  prefixIcon: Align(
+                    widthFactor: 1.0,
+                    heightFactor: 1.0,
+                    child: Icon(Icons.login),
+                  ),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -81,12 +89,17 @@ class _ConfigFormWidgetState extends State<ConfigFormWidget> {
                   return null;
                 },
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 24),
               TextFormField(
                 obscureText: true,
                 decoration: const InputDecoration(
                   labelText: 'Пароль',
                   border: OutlineInputBorder(),
+                  prefixIcon: Align(
+                    widthFactor: 1.0,
+                    heightFactor: 1.0,
+                    child: Icon(Icons.lock),
+                  ),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -95,13 +108,7 @@ class _ConfigFormWidgetState extends State<ConfigFormWidget> {
                   return null;
                 },
               ),
-              const SizedBox(height: 8),
-              PrimaryButton(text: 'Сохранить', onPressed: _submit),
-              PrimaryButton(text: 'Сохранить', onPressed: _submit),
-              PrimaryButton(text: 'Сохранить', onPressed: _submit),
-              PrimaryButton(text: 'Сохранить', onPressed: _submit),
-              PrimaryButton(text: 'Сохранить', onPressed: _submit),
-              PrimaryButton(text: 'Сохранить', onPressed: _submit),
+              const SizedBox(height: 24),
               PrimaryButton(text: 'Сохранить', onPressed: _submit),
             ],
           ),
