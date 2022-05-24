@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../features/config_connection/presentetion/config_connection.dart';
 import '../features/test_connection/presentation/test_connection_page.dart';
 
-class MyRouter {
+class MyGoRouter {
   // // 1
   // final LoginState loginState;
   // MyRouter(this.loginState);
