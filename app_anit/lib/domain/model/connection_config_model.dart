@@ -7,7 +7,11 @@ class ConnectionConfigModel extends Equatable {
   final String login;
   final String password;
 
-  const ConnectionConfigModel(this.baseUrl, this.login, this.password);
+  const ConnectionConfigModel({
+    required this.baseUrl,
+    required this.login,
+    required this.password,
+  });
 
   @override
   List<Object> get props => [baseUrl, login, password];
@@ -22,9 +26,9 @@ class ConnectionConfigModel extends Equatable {
 
   factory ConnectionConfigModel.fromMap(Map<String, dynamic> map) {
     return ConnectionConfigModel(
-      map['baseUrl'] ?? '',
-      map['login'] ?? '',
-      map['password'] ?? '',
+      baseUrl: map['baseUrl'] ?? '',
+      login: map['login'] ?? '',
+      password: map['password'] ?? '',
     );
   }
 
