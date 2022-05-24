@@ -63,15 +63,6 @@ class InitState extends ConfigConnectionState {}
 
 class LoadState extends ConfigConnectionState {}
 
-class ErrorState extends ConfigConnectionState with StateIsCommand {
-  final String message;
-  ErrorState({
-    required this.message,
-  });
-}
-
-class IsSavedState extends ConfigConnectionState with StateIsCommand {}
-
 class FormState extends ConfigConnectionState {
   final String baseUrl;
   final String login;
@@ -83,3 +74,18 @@ class FormState extends ConfigConnectionState {
     required this.password,
   });
 }
+
+///Комманда для показа ошибки
+///
+///
+class ErrorState extends ConfigConnectionState with StateIsCommand {
+  final String message;
+  ErrorState({
+    required this.message,
+  });
+}
+
+/// Информация о том, что все сохранили
+///
+///
+class IsSavedState extends ConfigConnectionState with StateIsCommand {}
