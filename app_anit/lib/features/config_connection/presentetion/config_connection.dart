@@ -61,7 +61,7 @@ class _ConfigFormWidgetState extends State<ConfigFormWidget> {
               const SizedBox(height: 48),
               TextFormField(
                 decoration: const InputDecoration(
-                  labelText: 'Сервис (http://192.168.2.37/dostavka/hs/oas)',
+                  labelText: 'Сервис (http://192.168.2.38/dostavka/hs/oas)',
                   border: OutlineInputBorder(),
                 ),
                 validator: (value) {
