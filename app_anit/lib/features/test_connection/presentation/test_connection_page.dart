@@ -12,6 +12,8 @@ import '../../../core/presentation/message_dialog.dart';
 import '../bloc/test_connection_bloc.dart';
 
 class TestConnectionPage extends StatelessWidget {
+  const TestConnectionPage({Key? key}) : super(key: key);
+
   void _listnerBloc(BuildContext context, TestConnectionBlocState state) {
     if (state is ErrorState) {
       showCustomMessageDialog(
@@ -33,7 +35,7 @@ class TestConnectionPage extends StatelessWidget {
         buildWhen: (context, state) {
           return state is! StateIsCommand;
         },
-        builder: (context, sate) {
+        builder: (context, state) {
           return CustomPageWidget(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
@@ -47,7 +49,7 @@ class TestConnectionPage extends StatelessWidget {
                   ),
                   Expanded(
                     flex: 2,
-                    child: _getBody(sate),
+                    child: BodyWidget(state: state),
                   ),
                 ],
               ),
@@ -121,7 +123,9 @@ class BodyWidget extends StatelessWidget {
                   text: 'Подключиться к базе',
                 )),
                 const SizedBox(height: 36),
-                Center(child: CustomMessageErrorText(text: state.messageError)),
+                Center(
+                    child: CustomMessageErrorText(
+                        text: (state as PendingState).messageError)),
                 const SizedBox(height: 24),
                 CustomPrimaryButton(onPressed: () {}, text: '  Вход  '),
                 const SizedBox(height: 16),
