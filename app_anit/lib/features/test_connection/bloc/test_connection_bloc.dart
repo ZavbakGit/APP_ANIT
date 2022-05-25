@@ -1,14 +1,23 @@
-import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
+import 'dart:async';
+
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter/material.dart';
+
+import '../../../core/bloc/state_bloc_command.dart';
 
 part 'test_connection_event.dart';
 part 'test_connection_state.dart';
 
 class TestConnectionBloc
     extends Bloc<TestConnectionEvent, TestConnectionBlocState> {
-  TestConnectionBloc() : super(TestConnectionInitial()) {
-    on<TestConnectionEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+  TestConnectionBloc() : super(InitState()) {
+    on<StartEvent>(_onStart);
+  }
+
+  FutureOr<void> _onStart(
+    StartEvent event,
+    Emitter<TestConnectionBlocState> emit,
+  ) {
+    emit(PendingState());
   }
 }

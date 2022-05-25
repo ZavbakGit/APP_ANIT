@@ -3,13 +3,27 @@ part of 'test_connection_bloc.dart';
 @immutable
 abstract class TestConnectionBlocState {}
 
-class TestConnectionInitial extends TestConnectionBlocState {}
+class InitState extends TestConnectionBlocState {}
 
-class TestConnectionState extends TestConnectionBlocState {
-  final bool isLoading;
-  final String? message;
-  TestConnectionState({
-    required this.isLoading,
-    this.message,
+class LoadingState extends TestConnectionBlocState {}
+
+class ErrorState extends TestConnectionBlocState with StateIsCommand {
+  final String message;
+  ErrorState({
+    required this.message,
+  });
+}
+
+/// Сохранили данные
+///
+class IsSavedState extends TestConnectionBlocState with StateIsCommand {}
+
+/// Ожидает заполнения и сохранения
+///
+class PendingState extends TestConnectionBlocState {
+  final String? messageError;
+
+  PendingState({
+    this.messageError,
   });
 }
