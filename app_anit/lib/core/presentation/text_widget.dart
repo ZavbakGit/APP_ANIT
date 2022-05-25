@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class MessageErrorText extends StatelessWidget {
+class CustomMessageErrorText extends StatelessWidget {
   final String? text;
 
-  const MessageErrorText({
+  const CustomMessageErrorText({
     Key? key,
     this.text,
   }) : super(key: key);
@@ -17,10 +17,10 @@ class MessageErrorText extends StatelessWidget {
   }
 }
 
-class TitleText extends StatelessWidget {
+class CustomTitleText extends StatelessWidget {
   final String? text;
 
-  const TitleText({
+  const CustomTitleText({
     Key? key,
     this.text,
   }) : super(key: key);
@@ -39,10 +39,10 @@ class TitleText extends StatelessWidget {
   }
 }
 
-class HeadLinText extends StatelessWidget {
+class CustomHeadLinText extends StatelessWidget {
   final String? text;
 
-  const HeadLinText({
+  const CustomHeadLinText({
     Key? key,
     this.text,
   }) : super(key: key);

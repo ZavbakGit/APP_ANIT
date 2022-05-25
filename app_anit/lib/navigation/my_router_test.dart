@@ -5,7 +5,7 @@ import '../features/config_connection/presentetion/config_connection_page.dart';
 import '../features/test_connection/presentation/test_connection_page.dart';
 import '../features/test_features/test_page.dart';
 
-class MyGoRouter {
+class MyGoRouterTest {
   // // 1
   // final LoginState loginState;
   // MyRouter(this.loginState);
@@ -30,21 +30,30 @@ class MyGoRouter {
     },
     routes: <GoRoute>[
       GoRoute(
-        name: 'config_connection',
-        path: '/',
-        pageBuilder: (context, state) => MaterialPage(
-          key: state.pageKey,
-          child: const ConfigConnectionPage(),
-        ),
-      ),
-      GoRoute(
-        name: 'test_connection',
-        path: '/test_connection',
-        pageBuilder: (context, state) => MaterialPage(
-          key: state.pageKey,
-          child: const TestConnectionPage(),
-        ),
-      ),
+          name: 'test_page',
+          path: '/',
+          pageBuilder: (context, state) => MaterialPage(
+                key: state.pageKey,
+                child: const TestPage(),
+              ),
+          routes: [
+            GoRoute(
+              name: 'config_connection',
+              path: 'config_connection',
+              pageBuilder: (context, state) => MaterialPage(
+                key: state.pageKey,
+                child: const ConfigConnectionPage(),
+              ),
+            ),
+            GoRoute(
+              name: 'test_connection',
+              path: 'test_connection',
+              pageBuilder: (context, state) => MaterialPage(
+                key: state.pageKey,
+                child: const TestConnectionPage(),
+              ),
+            ),
+          ]),
     ],
   );
 }

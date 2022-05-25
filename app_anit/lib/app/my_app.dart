@@ -1,3 +1,4 @@
+import 'package:app_anit/navigation/my_router_test.dart';
 import 'package:flutter/material.dart';
 
 import '../navigation/my_router.dart';
@@ -7,7 +8,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final router = MyGoRouter().router;
+    //final router = MyGoRouter().router;
+    final router = MyGoRouterTest().router;
 
     return MaterialApp.router(
       routeInformationParser: router.routeInformationParser,

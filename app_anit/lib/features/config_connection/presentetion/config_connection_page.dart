@@ -12,26 +12,26 @@ import '../bloc/config_connection_bloc.dart';
 class ConfigConnectionPage extends StatelessWidget {
   const ConfigConnectionPage({Key? key}) : super(key: key);
 
-  void _listnerBloc(BuildContext context, ConfigConnectionState state) {}
+  void _listnerBloc(BuildContext context, ConfigConnectionBlocState state) {}
 
   @override
   Widget build(Object context) {
     return BlocProvider(
-      create: (context) => sl<ConfigConnectionCubit>()..getConfig(),
-      child: BlocConsumer<ConfigConnectionCubit, ConfigConnectionState>(
+      create: (context) => sl<ConfigConnectionBloc>()..add(StartEvent()),
+      child: BlocConsumer<ConfigConnectionBloc, ConfigConnectionBlocState>(
         listener: _listnerBloc,
         buildWhen: (context, state) {
           return state is! StateIsCommand;
         },
         builder: (context, sate) {
-          return PageWidget(
+          return CustomPageWidget(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 children: [
                   const Expanded(
                     flex: 0,
-                    child: TitleText(
+                    child: CustomTitleText(
                       text: 'Настройка',
                     ),
                   ),
@@ -49,14 +49,13 @@ class ConfigConnectionPage extends StatelessWidget {
   }
 }
 
-Widget _getBody(ConfigConnectionState state) {
-  if (state.status.isLoading) {
-    return const BaseProgressIndicator();
+Widget _getBody(ConfigConnectionBlocState state) {
+  if (state is LoadingState) {
+    return const CustomBaseProgressIndicator();
+  } else {
+    return const Center(
+        child: CustomMessageErrorText(text: 'Неизвестное состояние!'));
   }
-
-  return const Center(
-    child: MessageErrorText(text: 'Неизвестное состояние!'),
-  );
 }
 
 class ConfigFormWidget extends StatefulWidget {
@@ -137,7 +136,7 @@ class _ConfigFormWidgetState extends State<ConfigFormWidget> {
                 },
               ),
               const SizedBox(height: 24),
-              PrimaryButton(text: 'Сохранить', onPressed: _submit),
+              CustomPrimaryButton(text: 'Сохранить', onPressed: _submit),
             ],
           ),
         ),

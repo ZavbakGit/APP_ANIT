@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class BaseProgressIndicator extends StatelessWidget {
-  const BaseProgressIndicator({Key? key}) : super(key: key);
+class CustomBaseProgressIndicator extends StatelessWidget {
+  const CustomBaseProgressIndicator({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

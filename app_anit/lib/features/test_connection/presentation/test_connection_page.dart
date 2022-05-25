@@ -9,7 +9,7 @@ class TestConnectionPage extends StatelessWidget {
 
   @override
   Widget build(Object context) {
-    return PageWidget(
+    return CustomPageWidget(
         child: _body(TestConnectionState(isLoading: false, message: '')));
   }
 }
@@ -25,18 +25,18 @@ Widget _body(TestConnectionBlocState state) {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Center(
-                  child: TitleText(
+                  child: CustomTitleText(
                 text: 'Проверка соеденения',
               )),
               const SizedBox(
                 height: 24,
               ),
-              Center(child: MessageErrorText(text: state.message)),
+              Center(child: CustomMessageErrorText(text: state.message)),
               const SizedBox(
                 height: 24,
               ),
-              PrimaryButton(onPressed: () {}, text: 'Соеденение'),
-              SecondaryButton(onPressed: () {}, text: 'Настройка'),
+              CustomPrimaryButton(onPressed: () {}, text: 'Соеденение'),
+              CustomSecondaryButton(onPressed: () {}, text: 'Настройка'),
             ],
           ),
         ),
@@ -44,7 +44,7 @@ Widget _body(TestConnectionBlocState state) {
     }
   } else {
     return const Center(
-      child: MessageErrorText(text: 'Неизвестное состояние!'),
+      child: CustomMessageErrorText(text: 'Неизвестное состояние!'),
     );
   }
 }

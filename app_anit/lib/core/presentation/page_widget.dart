@@ -14,10 +14,10 @@ Widget _getDecorationContainer() {
   ));
 }
 
-class PageWidget extends StatelessWidget {
+class CustomPageWidget extends StatelessWidget {
   final Widget child;
 
-  const PageWidget({
+  const CustomPageWidget({
     Key? key,
     required this.child,
   }) : super(key: key);

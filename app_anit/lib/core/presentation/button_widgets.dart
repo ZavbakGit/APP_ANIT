@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class PrimaryButton extends StatelessWidget {
+class CustomPrimaryButton extends StatelessWidget {
   final String text;
   final VoidCallback? onPressed;
 
-  const PrimaryButton({
+  const CustomPrimaryButton({
     Key? key,
     required this.text,
     this.onPressed,
@@ -16,11 +16,11 @@ class PrimaryButton extends StatelessWidget {
   }
 }
 
-class SecondaryButton extends StatelessWidget {
+class CustomSecondaryButton extends StatelessWidget {
   final String text;
   final VoidCallback? onPressed;
 
-  const SecondaryButton({
+  const CustomSecondaryButton({
     Key? key,
     required this.text,
     this.onPressed,

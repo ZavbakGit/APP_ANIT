@@ -14,7 +14,7 @@ Future<void> init() async {
   //! Config connection Features
 
   sl.registerFactory(
-    () => ConfigConnectionCubit(
+    () => ConfigConnectionBloc(
       getConfigUsecase: sl(),
       saveConfigUsecase: sl(),
     ),
