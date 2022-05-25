@@ -19,5 +19,6 @@ class TestConnectionBloc
     Emitter<TestConnectionBlocState> emit,
   ) {
     emit(PendingState());
+    //emit(LoadingState());
   }
 }

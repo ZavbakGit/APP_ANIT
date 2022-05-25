@@ -118,10 +118,6 @@ class BodyWidget extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Center(
-                    child: CustomTitleText(
-                  text: 'Подключиться к базе',
-                )),
                 const SizedBox(height: 36),
                 Center(
                     child: CustomMessageErrorText(
@@ -131,7 +127,7 @@ class BodyWidget extends StatelessWidget {
                 const SizedBox(height: 16),
                 CustomSecondaryButton(
                   onPressed: () {
-                    //context.goNamed('config_connection');ё
+                    context.goNamed('config_connection');
                   },
                   text: 'Настройка',
                 ),
