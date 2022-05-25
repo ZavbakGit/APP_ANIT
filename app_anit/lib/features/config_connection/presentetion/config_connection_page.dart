@@ -52,6 +52,12 @@ class ConfigConnectionPage extends StatelessWidget {
 Widget _getBody(ConfigConnectionBlocState state) {
   if (state is LoadingState) {
     return const CustomBaseProgressIndicator();
+  } else if (state is PendingState) {
+    return ConfigFormWidget(
+      baseUrl: state.baseUrl,
+      login: state.login,
+      password: state.password,
+    );
   } else {
     return const Center(
         child: CustomMessageErrorText(text: 'Неизвестное состояние!'));
@@ -59,7 +65,16 @@ Widget _getBody(ConfigConnectionBlocState state) {
 }
 
 class ConfigFormWidget extends StatefulWidget {
-  const ConfigFormWidget({Key? key}) : super(key: key);
+  final String? baseUrl;
+  final String? login;
+  final String? password;
+
+  const ConfigFormWidget({
+    Key? key,
+    this.baseUrl,
+    this.login,
+    this.password,
+  }) : super(key: key);
 
   @override
   State<ConfigFormWidget> createState() => _ConfigFormWidgetState();
@@ -68,8 +83,16 @@ class ConfigFormWidget extends StatefulWidget {
 class _ConfigFormWidgetState extends State<ConfigFormWidget> {
   final _formKey = GlobalKey<FormState>();
 
+  final baseUrlController = TextEditingController();
+  final loginController = TextEditingController();
+  final passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    baseUrlController.text = widget.baseUrl ?? '';
+    loginController.text = widget.password ?? '';
+    passwordController.text = widget.baseUrl ?? '';
+
     void _submit() {
       if (_formKey.currentState!.validate()) {
         ScaffoldMessenger.of(context).showSnackBar(

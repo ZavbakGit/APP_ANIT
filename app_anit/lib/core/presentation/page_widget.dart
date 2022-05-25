@@ -8,7 +8,7 @@ Widget _getDecorationContainer() {
       end: Alignment.bottomRight,
       colors: [
         Color.fromRGBO(248, 248, 248, 1),
-        Color.fromARGB(255, 94, 230, 155),
+        Color.fromARGB(255, 25, 189, 99),
       ],
     ),
   ));

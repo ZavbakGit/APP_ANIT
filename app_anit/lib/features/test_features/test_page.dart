@@ -21,7 +21,7 @@ class TestPage extends StatelessWidget {
                   context.goNamed('config_connection');
                 },
               ),
-            )
+            ),
           ],
         ),
       ),
