@@ -36,8 +36,6 @@ class ConfigConnectionBloc
       LoadEvent event, Emitter<ConfigConnectionBlocState> emit) async {
     emit(LoadingState());
 
-    await Future.delayed(const Duration(seconds: 2));
-
     (await getConfigUsecase.call(NoParams())).fold(
       (fail) {
         emit(PendingState());
@@ -56,6 +54,8 @@ class ConfigConnectionBloc
     SaveEvent event,
     Emitter<ConfigConnectionBlocState> emit,
   ) async {
+    emit(LoadingState());
+
     final model = ConnectionConfigModel(
         baseUrl: event.baseUrl, login: event.login, password: event.password);
 

@@ -38,21 +38,30 @@ class MyGoRouterTest {
               ),
           routes: [
             GoRoute(
-              name: 'config_connection',
-              path: 'config_connection',
+              name: 'config_connection_test',
+              path: 'config_connection_test',
               pageBuilder: (context, state) => MaterialPage(
                 key: state.pageKey,
                 child: const ConfigConnectionPage(),
               ),
             ),
             GoRoute(
-              name: 'test_connection',
-              path: 'test_connection',
-              pageBuilder: (context, state) => MaterialPage(
-                key: state.pageKey,
-                child: const TestConnectionPage(),
-              ),
-            ),
+                name: 'test_connection',
+                path: 'test_connection',
+                pageBuilder: (context, state) => MaterialPage(
+                      key: state.pageKey,
+                      child: const TestConnectionPage(),
+                    ),
+                routes: [
+                  GoRoute(
+                    name: 'config_connection',
+                    path: 'config_connection',
+                    pageBuilder: (context, state) => MaterialPage(
+                      key: state.pageKey,
+                      child: const ConfigConnectionPage(),
+                    ),
+                  ),
+                ]),
           ]),
     ],
   );

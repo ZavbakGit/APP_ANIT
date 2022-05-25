@@ -4,15 +4,27 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../app/injection_container.dart';
 import '../../../core/bloc/state_bloc_command.dart';
 import '../../../core/presentation/button_widgets.dart';
+import '../../../core/presentation/message_dialog.dart';
 import '../../../core/presentation/page_widget.dart';
 import '../../../core/presentation/progres_widget.dart';
 import '../../../core/presentation/text_widget.dart';
 import '../bloc/config_connection_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class ConfigConnectionPage extends StatelessWidget {
   const ConfigConnectionPage({Key? key}) : super(key: key);
 
-  void _listnerBloc(BuildContext context, ConfigConnectionBlocState state) {}
+  void _listnerBloc(BuildContext context, ConfigConnectionBlocState state) {
+    if (state is ErrorState) {
+      showCustomMessageDialog(
+        context: context,
+        message: state.message,
+        title: 'Ошибка',
+      );
+    } else if (state is IsSavedState) {
+      context.pop();
+    }
+  }
 
   @override
   Widget build(Object context) {
@@ -90,14 +102,16 @@ class _ConfigFormWidgetState extends State<ConfigFormWidget> {
   @override
   Widget build(BuildContext context) {
     baseUrlController.text = widget.baseUrl ?? '';
-    loginController.text = widget.password ?? '';
+    loginController.text = widget.login ?? '';
     passwordController.text = widget.baseUrl ?? '';
 
     void _submit() {
       if (_formKey.currentState!.validate()) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Processing Data')),
-        );
+        BlocProvider.of<ConfigConnectionBloc>(context).add(SaveEvent(
+          baseUrl: baseUrlController.text,
+          login: loginController.text,
+          password: passwordController.text,
+        ));
       }
     }
 
@@ -105,62 +119,68 @@ class _ConfigFormWidgetState extends State<ConfigFormWidget> {
       key: _formKey,
       child: SingleChildScrollView(
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              const SizedBox(height: 48),
-              TextFormField(
-                decoration: const InputDecoration(
-                  labelText: 'Сервис (http://192.168.2.38/dostavka/hs/oas)',
-                  border: OutlineInputBorder(),
-                ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Пожалуйста введите адрес сервиса';
-                  }
-                  return null;
-                },
-              ),
-              const SizedBox(height: 24),
-              TextFormField(
-                decoration: const InputDecoration(
-                  labelText: 'Логин',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Align(
-                    widthFactor: 1.0,
-                    heightFactor: 1.0,
-                    child: Icon(Icons.login),
+          child: Container(
+            constraints: const BoxConstraints(maxWidth: 500),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const SizedBox(height: 48),
+                TextFormField(
+                  controller: baseUrlController,
+                  decoration: const InputDecoration(
+                    labelText: 'Сервис (http://192.168.2.38/dostavka/hs/oas)',
+                    border: OutlineInputBorder(),
                   ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Пожалуйста введите адрес сервиса';
+                    }
+                    return null;
+                  },
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Пожалуйста введите логин';
-                  }
-                  return null;
-                },
-              ),
-              const SizedBox(height: 24),
-              TextFormField(
-                obscureText: true,
-                decoration: const InputDecoration(
-                  labelText: 'Пароль',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Align(
-                    widthFactor: 1.0,
-                    heightFactor: 1.0,
-                    child: Icon(Icons.lock),
+                const SizedBox(height: 24),
+                TextFormField(
+                  controller: loginController,
+                  decoration: const InputDecoration(
+                    labelText: 'Логин',
+                    border: OutlineInputBorder(),
+                    prefixIcon: Align(
+                      widthFactor: 1.0,
+                      heightFactor: 1.0,
+                      child: Icon(Icons.login),
+                    ),
                   ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Пожалуйста введите логин';
+                    }
+                    return null;
+                  },
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Пожалуйста введите пароль';
-                  }
-                  return null;
-                },
-              ),
-              const SizedBox(height: 24),
-              CustomPrimaryButton(text: 'Сохранить', onPressed: _submit),
-            ],
+                const SizedBox(height: 24),
+                TextFormField(
+                  controller: passwordController,
+                  obscureText: true,
+                  decoration: const InputDecoration(
+                    labelText: 'Пароль',
+                    border: OutlineInputBorder(),
+                    prefixIcon: Align(
+                      widthFactor: 1.0,
+                      heightFactor: 1.0,
+                      child: Icon(Icons.lock),
+                    ),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Пожалуйста введите пароль';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 24),
+                CustomPrimaryButton(text: 'Сохранить', onPressed: _submit),
+              ],
+            ),
           ),
         ),
       ),
