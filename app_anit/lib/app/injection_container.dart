@@ -7,12 +7,17 @@ import '../domain/repositories/connection_repository.dart';
 import '../features/config_connection/bloc/config_connection_bloc.dart';
 import '../features/config_connection/usecases/get_config_usecase.dart';
 import '../features/config_connection/usecases/save_config_usecase.dart';
+import '../features/connection/bloc/connection_bloc.dart';
 import '../features/test_connection/bloc/test_connection_bloc.dart';
 
 final sl = GetIt.instance;
 
 Future<void> init() async {
   //! Config connection Features
+
+  sl.registerFactory(
+    () => ConnectionBloc(),
+  );
 
   sl.registerFactory(
     () => TestConnectionBloc(),

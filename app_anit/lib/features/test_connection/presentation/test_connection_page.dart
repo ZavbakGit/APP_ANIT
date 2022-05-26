@@ -82,7 +82,7 @@ Widget _getBody(TestConnectionBlocState state) {
               const SizedBox(height: 16),
               CustomSecondaryButton(
                 onPressed: () {
-                  //context.goNamed('config_connection');ё
+                  //context.goNamed('config_connection');
                 },
                 text: 'Настройка',
               ),
@@ -108,9 +108,7 @@ class BodyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (state is LoadingState) {
-      return const Center(
-        child: CustomBaseProgressIndicator(),
-      );
+      return const CustomBaseProgressIndicator();
     } else if (state is PendingState) {
       return CustomPageWidget(
         child: Center(
@@ -118,6 +116,10 @@ class BodyWidget extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                const Center(
+                    child: CustomTitleText(
+                  text: 'Подключиться к базе',
+                )),
                 const SizedBox(height: 36),
                 Center(
                     child: CustomMessageErrorText(
@@ -127,7 +129,7 @@ class BodyWidget extends StatelessWidget {
                 const SizedBox(height: 16),
                 CustomSecondaryButton(
                   onPressed: () {
-                    context.goNamed('config_connection');
+                    //context.goNamed('config_connection');
                   },
                   text: 'Настройка',
                 ),
@@ -138,8 +140,7 @@ class BodyWidget extends StatelessWidget {
       );
     } else {
       return const Center(
-        child: CustomMessageErrorText(text: 'Неизвестное состояние!'),
-      );
+          child: CustomMessageErrorText(text: 'Неизвестное состояние!'));
     }
   }
 }

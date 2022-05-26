@@ -143,8 +143,8 @@ class _ConfigFormWidgetState extends State<ConfigFormWidget> {
                   controller: loginController,
                   decoration: const InputDecoration(
                     labelText: 'Логин',
-                    border: OutlineInputBorder(),
-                    prefixIcon: Align(
+                    //border: OutlineInputBorder(),
+                    suffixIcon: Align(
                       widthFactor: 1.0,
                       heightFactor: 1.0,
                       child: Icon(Icons.login),
