@@ -16,9 +16,9 @@ class TestConnectionPage extends StatelessWidget {
 
   void _listnerBloc(BuildContext context, TestConnectionBlocState state) {
     if (state is ErrorState) {
-      showCustomMessageDialog(
+      customShowDialog(
         context: context,
-        message: state.message,
+        content: state.message,
         title: 'Ошибка',
       );
     } else if (state is IsSavedState) {

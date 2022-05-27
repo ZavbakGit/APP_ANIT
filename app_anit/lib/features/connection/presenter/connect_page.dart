@@ -4,10 +4,11 @@ import 'package:go_router/go_router.dart';
 
 import '../../../app/injection_container.dart';
 import '../../../core/presentation/button_widgets.dart';
+import '../../../core/presentation/message_dialog.dart';
 import '../../../core/presentation/page_widget.dart';
 import '../../../core/presentation/progres_widget.dart';
 import '../../../core/presentation/text_widget.dart';
-import '../bloc/connection_bloc.dart';
+import '../bloc/connect_bloc.dart';
 
 class ConnectionPage extends StatelessWidget {
   final bool isStart;
@@ -22,7 +23,7 @@ class ConnectionPage extends StatelessWidget {
     return CustomPageWidget(
       child: BlocProvider(
         create: (context) =>
-            sl<ConnectionBloc>()..add(InitEvent(isAutoStart: isStart)),
+            sl<ConnectBloc>()..add(InitEvent(isAutoStart: isStart)),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -37,20 +38,35 @@ class ConnectionPage extends StatelessWidget {
               ),
               Expanded(
                 flex: 1,
-                child: BlocConsumer<ConnectionBloc, ConnectionXState>(
+                child: BlocConsumer<ConnectBloc, ConnectState>(
+                  buildWhen: (previous, current) => !current.isCommand,
                   listener: (context, state) {
-                    if (state.status == ConnectionStatus.success) {
+                    if (state is GoNextPageState) {
                       context.pop();
+                    }
+
+                    if (state is ShowDialogState) {
+                      customShowDialog(
+                        context: context,
+                        content: state.context,
+                        title: state.context,
+                      );
                     }
                   },
                   builder: (context, state) {
-                    switch (state.status) {
-                      case ConnectionStatus.loading:
-                        return const CustomBaseProgressIndicator();
-                      default:
-                        return _ConectionContent(
-                          state: state,
-                        );
+                    if (state is BaseState) {
+                      switch (state.status) {
+                        case ConnectionStatus.loading:
+                          return const CustomBaseProgressIndicator();
+                        default:
+                          return _ConectionContent(
+                            state: state,
+                          );
+                      }
+                    } else {
+                      return const Center(
+                          child: CustomMessageErrorText(
+                              text: 'Неизвестное состояние!'));
                     }
                   },
                 ),
@@ -64,7 +80,7 @@ class ConnectionPage extends StatelessWidget {
 }
 
 class _ConectionContent extends StatelessWidget {
-  final ConnectionXState state;
+  final BaseState state;
 
   const _ConectionContent({
     Key? key,
@@ -91,7 +107,7 @@ class _ConectionContent extends StatelessWidget {
             constraints: const BoxConstraints(minWidth: 84),
             child: CustomPrimaryButton(
               onPressed: () {
-                BlocProvider.of<ConnectionBloc>(context).add(ConnectEvent());
+                BlocProvider.of<ConnectBloc>(context).add(ConnectionEvent());
               },
               text: 'Вход',
             )),

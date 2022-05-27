@@ -1,9 +1,9 @@
-part of 'connection_bloc.dart';
+part of 'connect_bloc.dart';
 
 @immutable
-abstract class ConnectionEvent extends Equatable {}
+abstract class ConnectEvent extends Equatable {}
 
-class InitEvent extends ConnectionEvent {
+class InitEvent extends ConnectEvent {
   final bool isAutoStart;
 
   InitEvent({
@@ -13,7 +13,7 @@ class InitEvent extends ConnectionEvent {
   List<Object?> get props => [isAutoStart];
 }
 
-class ConnectEvent extends ConnectionEvent {
+class ConnectionEvent extends ConnectEvent {
   @override
   List<Object?> get props => [];
 }

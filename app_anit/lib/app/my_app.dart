@@ -29,7 +29,7 @@ Color tintColor(Color color, double factor) => Color.fromRGBO(
     1);
 
 final ThemeData theme = ThemeData(
-  primarySwatch: generateMaterialColor(Color.fromARGB(255, 216, 111, 111)),
+  primarySwatch: generateMaterialColor(const Color.fromARGB(255, 4, 32, 245)),
 );
 
 class Palette {

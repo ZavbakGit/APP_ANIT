@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-Future<void> showCustomMessageDialog({
+Future<void> customShowDialog({
   required BuildContext context,
   String? title,
-  String? message,
+  String? content,
 }) async {
   return showDialog<void>(
     context: context,
@@ -11,7 +11,7 @@ Future<void> showCustomMessageDialog({
     builder: (BuildContext context) {
       return AlertDialog(
         title: Text(title ?? ''),
-        content: Text(message ?? ''),
+        content: Text(content ?? ''),
         actions: <Widget>[
           TextButton(
             child: const Text('Ok'),
