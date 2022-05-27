@@ -1,12 +1,12 @@
-import 'package:app_anit/core/error/failures.dart';
-import 'package:app_anit/domain/repositories/connection_repository.dart';
 import 'package:dartz/dartz.dart';
 
+import '../../../core/error/failures.dart';
 import '../../../core/usecases/usecase.dart';
+import '../../../domain/repositories/connection_repository.dart';
 
-class TestConnectionUseCase implements UseCase<None, NoParams> {
-  final ConnectionRepository repository;
-  TestConnectionUseCase({
+class ConnectionUseCase implements UseCase<None, NoParams> {
+  final ConnectRepository repository;
+  ConnectionUseCase({
     required this.repository,
   });
 

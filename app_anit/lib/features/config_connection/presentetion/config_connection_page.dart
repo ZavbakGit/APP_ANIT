@@ -22,7 +22,7 @@ class ConfigConnectionPage extends StatelessWidget {
         title: 'Ошибка',
       );
     } else if (state is IsSavedState) {
-      context.pop();
+      context.goNamed('connection');
     }
   }
 
@@ -103,7 +103,7 @@ class _ConfigFormWidgetState extends State<ConfigFormWidget> {
   Widget build(BuildContext context) {
     baseUrlController.text = widget.baseUrl ?? '';
     loginController.text = widget.login ?? '';
-    passwordController.text = widget.baseUrl ?? '';
+    passwordController.text = widget.password ?? '';
 
     void _submit() {
       if (_formKey.currentState!.validate()) {

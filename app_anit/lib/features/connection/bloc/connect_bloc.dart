@@ -1,31 +1,45 @@
 import 'dart:async';
 
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:equatable/equatable.dart';
+
+import '../../../core/error/failures.dart';
+import '../../../core/usecases/usecase.dart';
+import '../usecases/connection_use_case.dart';
 
 part 'connect_event.dart';
 part 'connect_state.dart';
 
 class ConnectBloc extends Bloc<ConnectEvent, ConnectState> {
-  ConnectBloc() : super(BaseState.initial()) {
+  final ConnectionUseCase connectionUseCase;
+
+  ConnectBloc({required this.connectionUseCase}) : super(BaseState.initial()) {
     on<InitEvent>(_onInitEvent);
     on<ConnectionEvent>(_onConnectEvent);
   }
 
   FutureOr<void> _onConnectEvent(
-    ConnectEvent event,
+    ConnectionEvent event,
     Emitter<ConnectState> emit,
   ) async {
     emit(BaseState.loading());
     await Future.delayed(const Duration(seconds: 1));
 
-    emit(ShowDialogState(title: 'Сообщение', context: 'Oooooo'));
-    await Future.delayed(const Duration(seconds: 2));
-    emit(ShowDialogState(title: 'Сообщение', context: 'Oooooo'));
-    await Future.delayed(const Duration(seconds: 2));
-
-    emit(BaseState.success());
+    (await connectionUseCase.call(NoParams())).fold(
+      (fail) {
+        if (fail is CacheFailure) {
+          emit(CacheFailureState());
+        } else if (fail is ServerFailure) {
+          emit(BaseState.failure(fail.description));
+        } else {
+          emit(BaseState.failure('Ошибка'));
+        }
+      },
+      (config) {
+        emit(SuccessConnectState());
+      },
+    );
   }
 
   FutureOr<void> _onInitEvent(
@@ -33,10 +47,7 @@ class ConnectBloc extends Bloc<ConnectEvent, ConnectState> {
     Emitter<ConnectState> emit,
   ) async {
     if (event.isAutoStart) {
-      emit(BaseState.loading());
-      await Future.delayed(const Duration(seconds: 2));
-      //emit(const ConnectionXState.failure('Ошибка 1'));
-      emit(BaseState.success());
+      add(ConnectionEvent());
     }
   }
 }

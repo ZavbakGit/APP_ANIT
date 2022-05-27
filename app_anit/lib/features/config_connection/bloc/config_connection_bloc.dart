@@ -38,7 +38,8 @@ class ConfigConnectionBloc
 
     (await getConfigUsecase.call(NoParams())).fold(
       (fail) {
-        emit(PendingState());
+        emit(
+            PendingState(baseUrl: 'http://172.31.255.150/copy_erp/hs/oas_api'));
       },
       (config) {
         emit(PendingState(

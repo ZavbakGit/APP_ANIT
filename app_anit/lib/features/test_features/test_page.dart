@@ -24,13 +24,6 @@ class TestPage extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             CustomPrimaryButton(
-              text: 'Проверка соеденения',
-              onPressed: () {
-                context.goNamed('test_connection');
-              },
-            ),
-            const SizedBox(height: 16),
-            CustomPrimaryButton(
               text: 'Cоеденение',
               onPressed: () {
                 context.goNamed('connection');

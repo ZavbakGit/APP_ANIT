@@ -41,8 +41,11 @@ class ConnectionPage extends StatelessWidget {
                 child: BlocConsumer<ConnectBloc, ConnectState>(
                   buildWhen: (previous, current) => !current.isCommand,
                   listener: (context, state) {
-                    if (state is GoNextPageState) {
-                      context.pop();
+                    if (state is SuccessConnectState) {
+                      context.goNamed('main');
+                    }
+                    if (state is CacheFailureState) {
+                      context.goNamed('config_connection_test');
                     }
 
                     if (state is ShowDialogState) {

@@ -18,8 +18,14 @@ class ShowDialogState extends ConnectState {
   });
 }
 
-class GoNextPageState extends ConnectState {
-  GoNextPageState({
+class SuccessConnectState extends ConnectState {
+  SuccessConnectState({
+    super.isCommand = true,
+  });
+}
+
+class CacheFailureState extends ConnectState {
+  CacheFailureState({
     super.isCommand = true,
   });
 }

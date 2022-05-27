@@ -3,7 +3,7 @@ import 'package:dartz/dartz.dart';
 import '../../core/error/failures.dart';
 import '../model/connection_config_model.dart';
 
-abstract class ConnectionRepository {
+abstract class ConnectRepository {
   /// Получаем сохраненные данные о подключении
   ///
   Future<Either<Failure, ConnectionConfigModel>> getConnectionConfig();

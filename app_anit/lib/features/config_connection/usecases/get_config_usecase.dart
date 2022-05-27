@@ -6,7 +6,7 @@ import '../../../domain/model/connection_config_model.dart';
 import '../../../domain/repositories/connection_repository.dart';
 
 class GetConfigUsecase implements UseCase<ConnectionConfigModel, NoParams> {
-  final ConnectionRepository repository;
+  final ConnectRepository repository;
 
   GetConfigUsecase({
     required this.repository,

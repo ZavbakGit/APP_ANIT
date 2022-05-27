@@ -7,7 +7,7 @@ import '../../../domain/repositories/connection_repository.dart';
 
 /// Принемает [ConnectionConfigModel] Возвращает [None]
 class SaveConfigUsecase implements UseCase<None, ConnectionConfigModel> {
-  final ConnectionRepository repository;
+  final ConnectRepository repository;
 
   SaveConfigUsecase({
     required this.repository,

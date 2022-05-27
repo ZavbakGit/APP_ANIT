@@ -1,4 +1,4 @@
-import 'package:app_anit/data/repositories/connection_repository_impl.dart';
+import 'package:app_anit/data/repositories/connect_repository_impl.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -8,7 +8,7 @@ import '../features/config_connection/bloc/config_connection_bloc.dart';
 import '../features/config_connection/usecases/get_config_usecase.dart';
 import '../features/config_connection/usecases/save_config_usecase.dart';
 import '../features/connection/bloc/connect_bloc.dart';
-import '../features/test_connection/bloc/test_connection_bloc.dart';
+import '../features/connection/usecases/connection_use_case.dart';
 
 final sl = GetIt.instance;
 
@@ -16,11 +16,11 @@ Future<void> init() async {
   //! Config connection Features
 
   sl.registerFactory(
-    () => ConnectBloc(),
+    () => ConnectBloc(connectionUseCase: sl()),
   );
 
   sl.registerFactory(
-    () => TestConnectionBloc(),
+    () => ConnectionUseCase(repository: sl()),
   );
 
   sl.registerFactory(
@@ -34,8 +34,8 @@ Future<void> init() async {
   sl.registerFactory(() => SaveConfigUsecase(repository: sl()));
 
   //! Repository
-  sl.registerLazySingleton<ConnectionRepository>(
-    () => ConnectionRepositoryImpl(localDatasourse: sl()),
+  sl.registerLazySingleton<ConnectRepository>(
+    () => ConnectRepositoryImpl(localDatasourse: sl()),
   );
 
   //! Data sources
