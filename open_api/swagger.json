@@ -30,6 +30,36 @@
           }
         }
       }
+    },
+    "/catalogs/{type}/{guid}": {
+      "get": {
+        "description": "Просто возвращает 200. Используется в отладочных и проверочных целях.",
+        "operationId": "getCatalogElemByGuid",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "type",
+            "description": "Тип справочника",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "guid",
+            "description": "Тип справочника",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Время на сервере",
+            "schema": {
+              "$ref": "#/definitions/RefToCatalog"
+            }
+          }
+        }
+      }
     }
   },
   "security": [
@@ -50,10 +80,37 @@
         "data_time": {
           "type": "string",
           "format": "date-time"
+        },
+        "current_user": {
+          "description": "Текущий пользователь",
+          "$ref": "#/definitions/RefToCatalog"
         }
       },
-      "xml": {
-        "name": "DataTimeServer"
+      "required": [
+        "data_time",
+        "current_user"
+      ]
+    },
+    "RefToCatalog": {
+      "description": "Ссылка на справочник",
+      "type": "object",
+      "properties": {
+        "guid": {
+          "type": "string",
+          "description": "Уникальный идентификатор"
+        },
+        "type": {
+          "type": "string",
+          "description": "Тип справочника"
+        },
+        "code": {
+          "type": "string",
+          "description": "Код справочника"
+        },
+        "name": {
+          "type": "string",
+          "description": "Наименование справочника"
+        }
       }
     }
   },

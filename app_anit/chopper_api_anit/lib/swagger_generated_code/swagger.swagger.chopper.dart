@@ -17,9 +17,17 @@ class _$Swagger extends Swagger {
   final definitionType = Swagger;
 
   @override
-  Future<Response<dynamic>> _pingGet() {
+  Future<Response<ResponsePingServer>> _pingGet() {
     final $url = '/ping';
     final $request = Request('GET', $url, client.baseUrl);
-    return client.send<dynamic, dynamic>($request);
+    return client.send<ResponsePingServer, ResponsePingServer>($request);
+  }
+
+  @override
+  Future<Response<RefToCatalog>> _catalogsTypeGuidGet(
+      {required String? type, required String? guid}) {
+    final $url = '/catalogs/${type}/${guid}';
+    final $request = Request('GET', $url, client.baseUrl);
+    return client.send<RefToCatalog, RefToCatalog>($request);
   }
 }

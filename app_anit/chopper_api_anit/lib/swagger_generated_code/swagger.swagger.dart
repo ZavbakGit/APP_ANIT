@@ -37,31 +37,54 @@ abstract class Swagger extends ChopperService {
   }
 
   ///Проверяет, жив ли сервер
-  Future<chopper.Response> pingGet() {
+  Future<chopper.Response<ResponsePingServer>> pingGet() {
+    generatedMapping.putIfAbsent(
+        ResponsePingServer, () => ResponsePingServer.fromJsonFactory);
+
     return _pingGet();
   }
 
   ///Проверяет, жив ли сервер
   @Get(path: '/ping')
-  Future<chopper.Response> _pingGet();
+  Future<chopper.Response<ResponsePingServer>> _pingGet();
+
+  ///
+  ///@param type Тип справочника
+  ///@param guid Тип справочника
+  Future<chopper.Response<RefToCatalog>> catalogsTypeGuidGet(
+      {required String? type, required String? guid}) {
+    generatedMapping.putIfAbsent(
+        RefToCatalog, () => RefToCatalog.fromJsonFactory);
+
+    return _catalogsTypeGuidGet(type: type, guid: guid);
+  }
+
+  ///
+  ///@param type Тип справочника
+  ///@param guid Тип справочника
+  @Get(path: '/catalogs/{type}/{guid}')
+  Future<chopper.Response<RefToCatalog>> _catalogsTypeGuidGet(
+      {@Path('type') required String? type,
+      @Path('guid') required String? guid});
 }
 
 @JsonSerializable(explicitToJson: true)
-class Error {
-  Error({
-    this.code,
-    this.description,
+class ResponsePingServer {
+  ResponsePingServer({
+    required this.dataTime,
+    required this.currentUser,
   });
 
-  factory Error.fromJson(Map<String, dynamic> json) => _$ErrorFromJson(json);
+  factory ResponsePingServer.fromJson(Map<String, dynamic> json) =>
+      _$ResponsePingServerFromJson(json);
 
-  @JsonKey(name: 'code', includeIfNull: false)
-  final int? code;
-  @JsonKey(name: 'description', includeIfNull: false, defaultValue: '')
-  final String? description;
-  static const fromJsonFactory = _$ErrorFromJson;
-  static const toJsonFactory = _$ErrorToJson;
-  Map<String, dynamic> toJson() => _$ErrorToJson(this);
+  @JsonKey(name: 'data_time', includeIfNull: false)
+  final DateTime dataTime;
+  @JsonKey(name: 'current_user', includeIfNull: false)
+  final RefToCatalog currentUser;
+  static const fromJsonFactory = _$ResponsePingServerFromJson;
+  static const toJsonFactory = _$ResponsePingServerToJson;
+  Map<String, dynamic> toJson() => _$ResponsePingServerToJson(this);
 
   @override
   String toString() => jsonEncode(this);
@@ -69,47 +92,53 @@ class Error {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is Error &&
-            (identical(other.code, code) ||
-                const DeepCollectionEquality().equals(other.code, code)) &&
-            (identical(other.description, description) ||
+        (other is ResponsePingServer &&
+            (identical(other.dataTime, dataTime) ||
                 const DeepCollectionEquality()
-                    .equals(other.description, description)));
+                    .equals(other.dataTime, dataTime)) &&
+            (identical(other.currentUser, currentUser) ||
+                const DeepCollectionEquality()
+                    .equals(other.currentUser, currentUser)));
   }
 
   @override
   int get hashCode =>
-      const DeepCollectionEquality().hash(code) ^
-      const DeepCollectionEquality().hash(description) ^
+      const DeepCollectionEquality().hash(dataTime) ^
+      const DeepCollectionEquality().hash(currentUser) ^
       runtimeType.hashCode;
 }
 
-extension $ErrorExtension on Error {
-  Error copyWith({int? code, String? description}) {
-    return Error(
-        code: code ?? this.code, description: description ?? this.description);
+extension $ResponsePingServerExtension on ResponsePingServer {
+  ResponsePingServer copyWith({DateTime? dataTime, RefToCatalog? currentUser}) {
+    return ResponsePingServer(
+        dataTime: dataTime ?? this.dataTime,
+        currentUser: currentUser ?? this.currentUser);
   }
 }
 
 @JsonSerializable(explicitToJson: true)
-class User {
-  User({
+class RefToCatalog {
+  RefToCatalog({
     this.guid,
+    this.type,
     this.code,
     this.name,
   });
 
-  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+  factory RefToCatalog.fromJson(Map<String, dynamic> json) =>
+      _$RefToCatalogFromJson(json);
 
   @JsonKey(name: 'guid', includeIfNull: false, defaultValue: '')
   final String? guid;
+  @JsonKey(name: 'type', includeIfNull: false, defaultValue: '')
+  final String? type;
   @JsonKey(name: 'code', includeIfNull: false, defaultValue: '')
   final String? code;
   @JsonKey(name: 'name', includeIfNull: false, defaultValue: '')
   final String? name;
-  static const fromJsonFactory = _$UserFromJson;
-  static const toJsonFactory = _$UserToJson;
-  Map<String, dynamic> toJson() => _$UserToJson(this);
+  static const fromJsonFactory = _$RefToCatalogFromJson;
+  static const toJsonFactory = _$RefToCatalogToJson;
+  Map<String, dynamic> toJson() => _$RefToCatalogToJson(this);
 
   @override
   String toString() => jsonEncode(this);
@@ -117,9 +146,11 @@ class User {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is User &&
+        (other is RefToCatalog &&
             (identical(other.guid, guid) ||
                 const DeepCollectionEquality().equals(other.guid, guid)) &&
+            (identical(other.type, type) ||
+                const DeepCollectionEquality().equals(other.type, type)) &&
             (identical(other.code, code) ||
                 const DeepCollectionEquality().equals(other.code, code)) &&
             (identical(other.name, name) ||
@@ -129,263 +160,20 @@ class User {
   @override
   int get hashCode =>
       const DeepCollectionEquality().hash(guid) ^
+      const DeepCollectionEquality().hash(type) ^
       const DeepCollectionEquality().hash(code) ^
       const DeepCollectionEquality().hash(name) ^
       runtimeType.hashCode;
 }
 
-extension $UserExtension on User {
-  User copyWith({String? guid, String? code, String? name}) {
-    return User(
+extension $RefToCatalogExtension on RefToCatalog {
+  RefToCatalog copyWith(
+      {String? guid, String? type, String? code, String? name}) {
+    return RefToCatalog(
         guid: guid ?? this.guid,
+        type: type ?? this.type,
         code: code ?? this.code,
         name: name ?? this.name);
-  }
-}
-
-@JsonSerializable(explicitToJson: true)
-class Employee {
-  Employee({
-    this.guid,
-    this.code,
-    this.name,
-  });
-
-  factory Employee.fromJson(Map<String, dynamic> json) =>
-      _$EmployeeFromJson(json);
-
-  @JsonKey(name: 'guid', includeIfNull: false, defaultValue: '')
-  final String? guid;
-  @JsonKey(name: 'code', includeIfNull: false, defaultValue: '')
-  final String? code;
-  @JsonKey(name: 'name', includeIfNull: false, defaultValue: '')
-  final String? name;
-  static const fromJsonFactory = _$EmployeeFromJson;
-  static const toJsonFactory = _$EmployeeToJson;
-  Map<String, dynamic> toJson() => _$EmployeeToJson(this);
-
-  @override
-  String toString() => jsonEncode(this);
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is Employee &&
-            (identical(other.guid, guid) ||
-                const DeepCollectionEquality().equals(other.guid, guid)) &&
-            (identical(other.code, code) ||
-                const DeepCollectionEquality().equals(other.code, code)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)));
-  }
-
-  @override
-  int get hashCode =>
-      const DeepCollectionEquality().hash(guid) ^
-      const DeepCollectionEquality().hash(code) ^
-      const DeepCollectionEquality().hash(name) ^
-      runtimeType.hashCode;
-}
-
-extension $EmployeeExtension on Employee {
-  Employee copyWith({String? guid, String? code, String? name}) {
-    return Employee(
-        guid: guid ?? this.guid,
-        code: code ?? this.code,
-        name: name ?? this.name);
-  }
-}
-
-@JsonSerializable(explicitToJson: true)
-class Order {
-  Order({
-    this.guid,
-    this.version,
-    this.$number,
-    this.date,
-    this.address,
-    this.assemblyStartTime,
-    this.assemblyEndTime,
-    this.items,
-  });
-
-  factory Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);
-
-  @JsonKey(name: 'guid', includeIfNull: false, defaultValue: '')
-  final String? guid;
-  @JsonKey(name: 'version', includeIfNull: false, defaultValue: '')
-  final String? version;
-  @JsonKey(name: 'number', includeIfNull: false, defaultValue: '')
-  final String? $number;
-  @JsonKey(name: 'date', includeIfNull: false, defaultValue: '')
-  final String? date;
-  @JsonKey(name: 'address', includeIfNull: false, defaultValue: '')
-  final String? address;
-  @JsonKey(name: 'assembly_start_time', includeIfNull: false)
-  final DateTime? assemblyStartTime;
-  @JsonKey(name: 'assembly_end_time', includeIfNull: false)
-  final DateTime? assemblyEndTime;
-  @JsonKey(name: 'items', includeIfNull: false, defaultValue: <OrderItem>[])
-  final List<OrderItem>? items;
-  static const fromJsonFactory = _$OrderFromJson;
-  static const toJsonFactory = _$OrderToJson;
-  Map<String, dynamic> toJson() => _$OrderToJson(this);
-
-  @override
-  String toString() => jsonEncode(this);
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is Order &&
-            (identical(other.guid, guid) ||
-                const DeepCollectionEquality().equals(other.guid, guid)) &&
-            (identical(other.version, version) ||
-                const DeepCollectionEquality()
-                    .equals(other.version, version)) &&
-            (identical(other.$number, $number) ||
-                const DeepCollectionEquality()
-                    .equals(other.$number, $number)) &&
-            (identical(other.date, date) ||
-                const DeepCollectionEquality().equals(other.date, date)) &&
-            (identical(other.address, address) ||
-                const DeepCollectionEquality()
-                    .equals(other.address, address)) &&
-            (identical(other.assemblyStartTime, assemblyStartTime) ||
-                const DeepCollectionEquality()
-                    .equals(other.assemblyStartTime, assemblyStartTime)) &&
-            (identical(other.assemblyEndTime, assemblyEndTime) ||
-                const DeepCollectionEquality()
-                    .equals(other.assemblyEndTime, assemblyEndTime)) &&
-            (identical(other.items, items) ||
-                const DeepCollectionEquality().equals(other.items, items)));
-  }
-
-  @override
-  int get hashCode =>
-      const DeepCollectionEquality().hash(guid) ^
-      const DeepCollectionEquality().hash(version) ^
-      const DeepCollectionEquality().hash($number) ^
-      const DeepCollectionEquality().hash(date) ^
-      const DeepCollectionEquality().hash(address) ^
-      const DeepCollectionEquality().hash(assemblyStartTime) ^
-      const DeepCollectionEquality().hash(assemblyEndTime) ^
-      const DeepCollectionEquality().hash(items) ^
-      runtimeType.hashCode;
-}
-
-extension $OrderExtension on Order {
-  Order copyWith(
-      {String? guid,
-      String? version,
-      String? $number,
-      String? date,
-      String? address,
-      DateTime? assemblyStartTime,
-      DateTime? assemblyEndTime,
-      List<OrderItem>? items}) {
-    return Order(
-        guid: guid ?? this.guid,
-        version: version ?? this.version,
-        $number: $number ?? this.$number,
-        date: date ?? this.date,
-        address: address ?? this.address,
-        assemblyStartTime: assemblyStartTime ?? this.assemblyStartTime,
-        assemblyEndTime: assemblyEndTime ?? this.assemblyEndTime,
-        items: items ?? this.items);
-  }
-}
-
-@JsonSerializable(explicitToJson: true)
-class OrderItem {
-  OrderItem({
-    this.title,
-    this.quantity,
-    this.specifics,
-  });
-
-  factory OrderItem.fromJson(Map<String, dynamic> json) =>
-      _$OrderItemFromJson(json);
-
-  @JsonKey(name: 'title', includeIfNull: false, defaultValue: '')
-  final String? title;
-  @JsonKey(name: 'quantity', includeIfNull: false, defaultValue: '')
-  final String? quantity;
-  @JsonKey(name: 'specifics', includeIfNull: false, defaultValue: <Specific>[])
-  final List<Specific>? specifics;
-  static const fromJsonFactory = _$OrderItemFromJson;
-  static const toJsonFactory = _$OrderItemToJson;
-  Map<String, dynamic> toJson() => _$OrderItemToJson(this);
-
-  @override
-  String toString() => jsonEncode(this);
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is OrderItem &&
-            (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)) &&
-            (identical(other.quantity, quantity) ||
-                const DeepCollectionEquality()
-                    .equals(other.quantity, quantity)) &&
-            (identical(other.specifics, specifics) ||
-                const DeepCollectionEquality()
-                    .equals(other.specifics, specifics)));
-  }
-
-  @override
-  int get hashCode =>
-      const DeepCollectionEquality().hash(title) ^
-      const DeepCollectionEquality().hash(quantity) ^
-      const DeepCollectionEquality().hash(specifics) ^
-      runtimeType.hashCode;
-}
-
-extension $OrderItemExtension on OrderItem {
-  OrderItem copyWith(
-      {String? title, String? quantity, List<Specific>? specifics}) {
-    return OrderItem(
-        title: title ?? this.title,
-        quantity: quantity ?? this.quantity,
-        specifics: specifics ?? this.specifics);
-  }
-}
-
-@JsonSerializable(explicitToJson: true)
-class Specific {
-  Specific({
-    this.title,
-  });
-
-  factory Specific.fromJson(Map<String, dynamic> json) =>
-      _$SpecificFromJson(json);
-
-  @JsonKey(name: 'title', includeIfNull: false, defaultValue: '')
-  final String? title;
-  static const fromJsonFactory = _$SpecificFromJson;
-  static const toJsonFactory = _$SpecificToJson;
-  Map<String, dynamic> toJson() => _$SpecificToJson(this);
-
-  @override
-  String toString() => jsonEncode(this);
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is Specific &&
-            (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)));
-  }
-
-  @override
-  int get hashCode =>
-      const DeepCollectionEquality().hash(title) ^ runtimeType.hashCode;
-}
-
-extension $SpecificExtension on Specific {
-  Specific copyWith({String? title}) {
-    return Specific(title: title ?? this.title);
   }
 }
 
