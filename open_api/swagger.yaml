@@ -28,121 +28,25 @@ paths:
       operationId: getPing
       responses:
         '200':
-          description: Просто 200. Просто OK. 
-
+          description: 'Время на сервере'
+          schema:
+            $ref: '#/definitions/ResponsePingServer'
 security:
   - basicAuth: []
 
 securityDefinitions:
   basicAuth:
     type: basic
-
 definitions:
-  Error:
-    description: Ошибка
-    type: object
+  ResponsePingServer:
+    description: 'Дата и время на сервере'
+    type: "object"
     properties:
-      code:
-        type: integer
-        description: Код ошибки
-        example: 3
-      description:
-        type: string
-        description: Описание ошибки
-        example: 'Пользователь не найден'
-        
-  User:
-    description: Пользователь 1C
-    type: object
-    properties:
-      guid:
-        description: GUID элемента
-        type: string
-        example: 'b0d4ce5d-2757-4699-948c-cfa72ba94f86'
-      code:
-        type: string
-        description: Код элемента
-        example: 'Администратор'
-      name:
-        type: string
-        description: Наименование элемента
-        example: 'Администратор'
-        
-  Employee:
-    description: Сотрудник
-    type: object
-    properties:
-      guid:
-        description: GUID элемента
-        type: string
-        example: 'b0d4ce5d-2757-4699-948c-cfa72ba94f86'
-      code:
-        type: string
-        description: Код элемента
-        example: '000000007'
-      name:
-        type: string
-        description: Наименование элемента
-        example: 'Петров И.'
-        
-  Order:
-    description:  Заказ клиента
-    type: object
-    properties:
-      guid:
-        type: string
-        description: GUID документа
-        example: 'b0d4ce5d-2757-4699-948c-cfa72ba94f86'
-      version:
-        type: string
-        description: Версия данных
-      number:
-        type: string
-        description: Номер документа
-        example: '543'
-      date:
-        type: string
-        description: Дата документа
-        example: '2021-12-27T13:55:23'
-      address:
-        type: string
-        description: Адрес доставки
-        example: 'ул. Волочаевская, д. 107, оф. 1'
-      assembly_start_time:
-        type: string
-        description: Время начала сборки
-        example: '2021-12-27T13:55:23'
-        format: date-time
-      assembly_end_time:
-        type: string
-        description: Время окончания сборки, если заказ уже собран
-        example: '2021-12-27T14:24:17'
-        format: date-time
-      items:
-        type: array
-        description: Строки заказа
-        items:
-          $ref: '#/definitions/OrderItem'
-  OrderItem:
-    description:  Строка заказа
-    type: object
-    properties:
-      title:
-        type: string
-        description: Наименование позиции  
-      quantity:
-        type: string
-        description: Количество
-      specifics:
-        type: array
-        description: Специфики
-        items:
-          $ref: '#/definitions/Specific'
-  Specific:
-    description:  Специфика
-    type: object
-    properties:
-      title:
-        type: string
-        description: Наименование специфики
-        example: 'Подать холодным'
+      data_time:
+        type: "string"
+        format: "date-time"
+    xml:
+      name: "DataTimeServer"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
