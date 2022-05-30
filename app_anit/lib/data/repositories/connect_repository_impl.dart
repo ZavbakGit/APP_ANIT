@@ -40,14 +40,15 @@ class ConnectRepositoryImpl extends ConnectRepository {
   Future<Either<Failure, None>> testConnection(
     ConnectionConfigModel data,
   ) async {
-    final client = ApiClient(
-      baseUrl: data.baseUrl,
-      login: data.login,
-      password: data.password,
-    );
-
     try {
-      final response = await client.api.pingGet();
+      final client = ApiClient(
+        baseUrl: data.baseUrl,
+        login: data.login,
+        password: data.password,
+      );
+
+      //throw Exception();
+      var response = await client.api.pingGet();
 
       if (response.statusCode == 200) {
         return const Right(None());
