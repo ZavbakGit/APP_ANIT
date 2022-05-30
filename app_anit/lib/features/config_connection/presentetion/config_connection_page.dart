@@ -135,6 +135,10 @@ class _ConfigFormWidgetState extends State<ConfigFormWidget> {
                     if (value == null || value.isEmpty) {
                       return 'Пожалуйста введите адрес сервиса';
                     }
+
+                    if (!Uri.parse(value).isAbsolute) {
+                      return 'Не является адресом';
+                    }
                     return null;
                   },
                 ),

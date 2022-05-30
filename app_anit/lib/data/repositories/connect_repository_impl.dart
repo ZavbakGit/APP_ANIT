@@ -47,8 +47,13 @@ class ConnectRepositoryImpl extends ConnectRepository {
         password: data.password,
       );
 
-      //throw Exception();
-      var response = await client.api.pingGet();
+      final swager = client.api;
+
+      try {
+        await swager.pingGet();
+      } catch (e) {}
+
+      final response = await swager.pingGet();
 
       if (response.statusCode == 200) {
         return const Right(None());
