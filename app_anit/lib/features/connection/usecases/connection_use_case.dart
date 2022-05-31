@@ -12,10 +12,11 @@ class ConnectionUseCase implements UseCase<None, NoParams> {
 
   @override
   Future<Either<Failure, None>> call(NoParams params) async {
-    return (await (await repository.getConnectionConfig())
-            .traverseFuture((model) {
-      return repository.testConnection(model);
-    }))
+    return (await (await repository.getConnectionConfig()).traverseFuture(
+      (model) {
+        return repository.testConnection(model);
+      },
+    ))
         .flatMap(id);
   }
 }

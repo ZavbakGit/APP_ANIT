@@ -13,7 +13,7 @@ class ServerFailure extends Failure {
   //: description = 'Ошибка сервера. Код: $code';
 
   ServerFailure.description(String description)
-      : description = 'Ошибка при обращении к серверу: $description}';
+      : description = 'Ошибка при обращении к серверу: $description';
 
   ServerFailure.exeption(Exception e)
       : description = getDescriptionByExeption(e);

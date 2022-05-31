@@ -8,14 +8,14 @@ part of 'swagger.swagger.dart';
 
 ResponsePingServer _$ResponsePingServerFromJson(Map<String, dynamic> json) =>
     ResponsePingServer(
-      dataTime: DateTime.parse(json['data_time'] as String),
+      dateTime: DateTime.parse(json['date_time'] as String),
       currentUser:
           RefToCatalog.fromJson(json['current_user'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$ResponsePingServerToJson(ResponsePingServer instance) =>
     <String, dynamic>{
-      'data_time': instance.dataTime.toIso8601String(),
+      'date_time': instance.dateTime.toIso8601String(),
       'current_user': instance.currentUser.toJson(),
     };
 

@@ -71,15 +71,15 @@ abstract class Swagger extends ChopperService {
 @JsonSerializable(explicitToJson: true)
 class ResponsePingServer {
   ResponsePingServer({
-    required this.dataTime,
+    required this.dateTime,
     required this.currentUser,
   });
 
   factory ResponsePingServer.fromJson(Map<String, dynamic> json) =>
       _$ResponsePingServerFromJson(json);
 
-  @JsonKey(name: 'data_time', includeIfNull: false)
-  final DateTime dataTime;
+  @JsonKey(name: 'date_time', includeIfNull: false)
+  final DateTime dateTime;
   @JsonKey(name: 'current_user', includeIfNull: false)
   final RefToCatalog currentUser;
   static const fromJsonFactory = _$ResponsePingServerFromJson;
@@ -93,9 +93,9 @@ class ResponsePingServer {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is ResponsePingServer &&
-            (identical(other.dataTime, dataTime) ||
+            (identical(other.dateTime, dateTime) ||
                 const DeepCollectionEquality()
-                    .equals(other.dataTime, dataTime)) &&
+                    .equals(other.dateTime, dateTime)) &&
             (identical(other.currentUser, currentUser) ||
                 const DeepCollectionEquality()
                     .equals(other.currentUser, currentUser)));
@@ -103,15 +103,15 @@ class ResponsePingServer {
 
   @override
   int get hashCode =>
-      const DeepCollectionEquality().hash(dataTime) ^
+      const DeepCollectionEquality().hash(dateTime) ^
       const DeepCollectionEquality().hash(currentUser) ^
       runtimeType.hashCode;
 }
 
 extension $ResponsePingServerExtension on ResponsePingServer {
-  ResponsePingServer copyWith({DateTime? dataTime, RefToCatalog? currentUser}) {
+  ResponsePingServer copyWith({DateTime? dateTime, RefToCatalog? currentUser}) {
     return ResponsePingServer(
-        dataTime: dataTime ?? this.dataTime,
+        dateTime: dateTime ?? this.dateTime,
         currentUser: currentUser ?? this.currentUser);
   }
 }

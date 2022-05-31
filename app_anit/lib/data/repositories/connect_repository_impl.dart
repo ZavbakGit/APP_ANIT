@@ -49,10 +49,6 @@ class ConnectRepositoryImpl extends ConnectRepository {
 
       final swager = client.api;
 
-      try {
-        await swager.pingGet();
-      } catch (e) {}
-
       final response = await swager.pingGet();
 
       if (response.statusCode == 200) {
@@ -61,7 +57,11 @@ class ConnectRepositoryImpl extends ConnectRepository {
         return Left(ServerFailure.statusCode(response.statusCode));
       }
     } catch (e) {
-      return Left(ServerFailure.exeption(e as Exception));
+      if (e is Exception) {
+        return Left(ServerFailure.exeption(e));
+      } else {
+        return Left(ServerFailure.description('Неизвестная'));
+      }
     }
   }
 }
