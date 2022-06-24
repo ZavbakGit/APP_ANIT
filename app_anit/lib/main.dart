@@ -1,8 +1,11 @@
 import 'package:app_anit/navigation/router_notifire.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'app/injection_container.dart' as di;
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await di.init();
   runApp(const ProviderScope(child: AnitApp()));
 }
 

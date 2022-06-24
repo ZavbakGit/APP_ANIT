@@ -1,3 +1,4 @@
+import 'package:app_anit/pages/connected_config_river/connected_config_state.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -19,6 +20,7 @@ class ConnectedConfigPage extends ConsumerWidget {
         children: [
           const Center(child: Text('Config')),
           Text(user),
+          BodyConnectedConfig(),
           ElevatedButton(
             onPressed: () {
               context.go("/");
@@ -43,6 +45,22 @@ class ConnectedConfigPage extends ConsumerWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class BodyConnectedConfig extends ConsumerWidget {
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final viewModel = ref.watch(connectedConfigStateProvider);
+    //ref.read(connectedConfigStateProvider.notifier).loadConfig();
+
+    if (viewModel.isLoading) {
+      return const Center(child: CircularProgressIndicator());
+    }
+
+    return Center(
+      child: Text(viewModel.toString()),
     );
   }
 }

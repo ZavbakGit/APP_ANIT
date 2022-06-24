@@ -3,7 +3,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../domain/models/app_model.dart';
-import '../pages/connected_config/connected_config_page.dart';
+
+import '../pages/connected_config_river/connected_config_page.dart';
+import '../pages/login/login_page.dart';
 import '../pages/tasks/tasks_page.dart';
 
 /// Caches and Exposes a [GoRouter]
@@ -33,10 +35,10 @@ class RouterNotifier extends ChangeNotifier {
   String? _redirectLogic(GoRouterState stateRouter) {
     final appModel = _ref.read(appStateProvider);
 
-    final stateIsConfig = stateRouter.location == '/connected_config';
+    final stateIsConfig = stateRouter.location == '/autologin';
 
     if (!appModel.existCurentUser) {
-      return stateIsConfig ? null : "/connected_config";
+      return stateIsConfig ? null : "/autologin";
     }
 
     // There's no need for a redirect at this point.
@@ -50,9 +52,14 @@ class RouterNotifier extends ChangeNotifier {
           builder: (context, _) => const TasksPage(),
         ),
         GoRoute(
-          name: "connected_config",
-          path: "/connected_config",
-          builder: (context, _) => const ConnectedConfigPage(),
+          name: "login",
+          path: "/login",
+          builder: (context, _) => const LoginPage(),
+        ),
+        GoRoute(
+          name: "autologin",
+          path: "/autologin",
+          builder: (context, _) => const LoginPage(autoLogin: true),
         ),
       ];
 }
