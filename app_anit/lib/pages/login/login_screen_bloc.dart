@@ -5,9 +5,9 @@ import 'package:flutter/foundation.dart';
 import '../../domain/models/app_model.dart';
 
 class LoginScreenCubit extends Cubit<LoginScreenState> {
-  final AppState appState;
+  final AppModel appModel;
 
-  LoginScreenCubit({required this.appState}) : super(InitialState());
+  LoginScreenCubit({required this.appModel}) : super(InitialState());
 
   void load() async {
     emit(LoadingState());
@@ -22,7 +22,7 @@ class LoginScreenCubit extends Cubit<LoginScreenState> {
   void autoLogin() async {
     emit(LoadingState());
     await Future.delayed(const Duration(seconds: 1));
-    appState.curentUser = CatalogModel(kind: '', code: 'code', name: 'Alex');
+    appModel.curentUser = CatalogModel(kind: '', code: 'code', name: 'Alex');
     emit(LoadedState(
       baseUrl: 'jkhgjhg',
       login: 'kjhgkjh',
@@ -34,7 +34,7 @@ class LoginScreenCubit extends Cubit<LoginScreenState> {
   void login() async {
     emit(LoadingState());
     await Future.delayed(const Duration(seconds: 1));
-    appState.curentUser = CatalogModel(kind: '', code: 'code', name: 'Alex');
+    appModel.curentUser = CatalogModel(kind: '', code: 'code', name: 'Alex');
     emit(LoadedState(
       baseUrl: 'jkhgjhg',
       login: 'kjhgkjh',

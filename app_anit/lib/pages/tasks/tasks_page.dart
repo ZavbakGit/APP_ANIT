@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../app/injection_container.dart';
 import '../../domain/models/app_model.dart';
 
 class TasksPage extends ConsumerWidget {
@@ -9,7 +10,7 @@ class TasksPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final app = ref.watch(appStateProvider);
+    final app = sl<AppModel>();
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -23,7 +24,7 @@ class TasksPage extends ConsumerWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              ref.read(appStateProvider.notifier).curentUser = null;
+              app.curentUser = null;
             },
             child: const Text('Выйти'),
           )

@@ -20,12 +20,10 @@ class LoginPage extends ConsumerWidget {
     return BlocProvider(
       create: (context) {
         if (autoLogin) {
-          return LoginScreenCubit(appState: ref.read(appStateProvider.notifier))
-            ..autoLogin();
+          return LoginScreenCubit(appModel: sl())..autoLogin();
         }
 
-        return LoginScreenCubit(appState: ref.read(appStateProvider.notifier))
-          ..load();
+        return LoginScreenCubit(appModel: sl())..load();
       },
       child: const Scaffold(
         body: LoginBody(),
