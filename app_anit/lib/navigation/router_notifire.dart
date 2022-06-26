@@ -31,21 +31,20 @@ class RouterNotifier extends ChangeNotifier {
     appModel.addListener(() {
       notifyListeners();
     });
-    // _ref.listen<AppData>(
-    //   appStateProvider, // In our case, we're interested in the log in / log out events.
-    //   (_, __) {
-    //     notifyListeners();
-    //   }, // Obviously more logic can be added here
-    // );
   }
 
   String? _redirectLogic(GoRouterState stateRouter) {
     //final appModel = _ref.read(appStateProvider);
 
-    final stateIsConfig = stateRouter.location == '/autologin';
+    final stateIsAutologin = stateRouter.location == '/autologin';
+    final stateIsLogin = stateRouter.location == '/login';
 
     if (!appModel.existCurentUser) {
-      return stateIsConfig ? null : "/autologin";
+      if (appModel.autoLogin) {
+        return stateIsAutologin ? null : "/autologin";
+      } else {
+        return stateIsLogin ? null : "/login";
+      }
     }
 
     // There's no need for a redirect at this point.

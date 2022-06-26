@@ -22,6 +22,9 @@ class TasksPage extends ConsumerWidget {
             },
             child: const Text('Настройки'),
           ),
+          SizedBox(
+            height: 8,
+          ),
           ElevatedButton(
             onPressed: () {
               app.curentUser = null;

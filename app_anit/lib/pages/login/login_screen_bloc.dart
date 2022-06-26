@@ -1,4 +1,5 @@
 import 'package:app_anit/domain/models/catalog_model.dart';
+import 'package:app_anit/domain/repositories/repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 
@@ -6,8 +7,12 @@ import '../../domain/models/app_model.dart';
 
 class LoginScreenCubit extends Cubit<LoginScreenState> {
   final AppModel appModel;
+  final Repository repository;
 
-  LoginScreenCubit({required this.appModel}) : super(InitialState());
+  LoginScreenCubit({
+    required this.appModel,
+    required this.repository,
+  }) : super(InitialState());
 
   void load() async {
     emit(LoadingState());
