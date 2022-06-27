@@ -22,7 +22,7 @@ class TasksPage extends ConsumerWidget {
             },
             child: const Text('Настройки'),
           ),
-          SizedBox(
+          const SizedBox(
             height: 8,
           ),
           ElevatedButton(

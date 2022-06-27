@@ -9,7 +9,7 @@ class LoginScreenCubit extends Cubit<PageState> {
 
   LoginScreenCubit({
     required this.appModel,
-  }) : super(PageState());
+  }) : super(const PageState());
 
   PageState _getPageStateApp() {
     return PageState(
