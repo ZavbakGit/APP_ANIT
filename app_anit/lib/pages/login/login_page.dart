@@ -114,13 +114,6 @@ class LoginFormState extends State<LoginFormWidget> {
     loginController.text = widget.login ?? '';
     passwordController.text = widget.password ?? '';
 
-    List<Widget>? getLoading() => widget.isLoading
-        ? [
-            const Center(child: CircularProgressIndicator()),
-            const SizedBox(height: 16),
-          ]
-        : null;
-
     return Form(
       key: _formKey,
       child: SingleChildScrollView(

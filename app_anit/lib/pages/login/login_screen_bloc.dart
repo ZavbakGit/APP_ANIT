@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../domain/models/app_model.dart';
 import '../../domain/models/conected_config_model.dart';
+import 'package:dartz/dartz.dart';
 
 class LoginScreenCubit extends Cubit<PageState> {
   final AppModel appModel;
@@ -25,15 +26,16 @@ class LoginScreenCubit extends Cubit<PageState> {
 
     either.fold(
       (fail) {
-        emit(PageState());
+        emit(const PageState());
       },
       (none) {
         emit(_getPageStateApp());
         if (appModel.autoLogin) {
           login(
-              baseUrl: appModel.connectionConfig?.baseUrl ?? '',
-              login: appModel.connectionConfig?.login ?? '',
-              password: appModel.connectionConfig?.password ?? '');
+            baseUrl: appModel.connectionConfig?.baseUrl ?? 'http://',
+            login: appModel.connectionConfig?.login ?? '',
+            password: appModel.connectionConfig?.password ?? '',
+          );
         }
       },
     );
@@ -58,12 +60,19 @@ class LoginScreenCubit extends Cubit<PageState> {
 
     emit(pageStateCurent.copyWith(isLoading: true));
 
-    (await (await appModel.saveConnectionConfig(connectionConfig))
-        .traverseFuture(
-      (model) {
-        return appModel.login(connectionConfig);
+    final either =
+        (await (await appModel.saveConnectionConfig(connectionConfig))
+                .traverseFuture((model) => appModel.login(connectionConfig)))
+            .flatMap(id);
+
+    either.fold(
+      (fail) {
+        emit(pageStateCurent.copyWith(error: 'Что пошло не так'));
       },
-    ));
+      (none) {
+        emit(_getPageStateApp().copyWith(isGoHome: true));
+      },
+    );
   }
 }
 
@@ -76,7 +85,7 @@ class PageState {
   final String error;
   final bool isGoHome;
 
-  PageState({
+  const PageState({
     this.isLoading = false,
     this.baseUrl = '',
     this.login = '',

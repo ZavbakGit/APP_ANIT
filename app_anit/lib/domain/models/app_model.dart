@@ -28,18 +28,11 @@ class AppModel extends ChangeNotifier {
   });
   final _appData = AppData(autoLogin: true);
 
-  bool get existConfig => _appData.connectedConfig != null;
   bool get existCurentUser => _appData.curentUser != null;
   bool get autoLogin => _appData.autoLogin;
 
-  Future<Either<Failure, CatalogModel>> login(
-      ConnectedConfigModel model) async {
-    return (await repository.login(model)).map((right) {
-      _appData.curentUser = right;
-      notifyListeners();
-      return right;
-    });
-  }
+  ConnectedConfigModel? get connectionConfig => _appData.connectedConfig;
+  CatalogModel? get curentUser => _appData.curentUser;
 
   Future<Either<Failure, None>> saveConnectionConfig(
     ConnectedConfigModel? model,
@@ -62,8 +55,14 @@ class AppModel extends ChangeNotifier {
     });
   }
 
-  ConnectedConfigModel? get connectionConfig => _appData.connectedConfig;
-  CatalogModel? get curentUser => _appData.curentUser;
+  Future<Either<Failure, CatalogModel>> login(
+      ConnectedConfigModel model) async {
+    return (await repository.login(model)).map((right) {
+      _appData.curentUser = right;
+      notifyListeners();
+      return right;
+    });
+  }
 
   void logout() {
     _appData.curentUser = null;

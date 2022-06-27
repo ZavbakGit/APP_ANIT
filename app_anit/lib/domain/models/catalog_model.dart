@@ -10,4 +10,7 @@ class CatalogModel {
     required this.name,
     this.parent,
   });
+
+  @override
+  String toString() => 'CatalogModel(kind: $kind, code: $code, name: $name)';
 }

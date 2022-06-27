@@ -15,7 +15,7 @@ class TasksPage extends ConsumerWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Center(child: Text('Tasks')),
+          Center(child: Text('Tasks ${app.curentUser.toString()}')),
           ElevatedButton(
             onPressed: () {
               context.go("/login");

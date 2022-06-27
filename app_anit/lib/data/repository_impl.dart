@@ -28,8 +28,9 @@ class RepositoryImpl extends Repository {
   Future<Either<Failure, None>> saveConnectionData(
       ConnectedConfigModel data) async {
     try {
+      await Future.delayed(const Duration(seconds: 1)); //ToDO Убрать
       await localDatasourse.saveConnectingDataModel(data);
-
+      //return Left(CacheFailure());
       return const Right(None());
     } on CacheException {
       return Left(CacheFailure());
@@ -51,6 +52,10 @@ class RepositoryImpl extends Repository {
       ConnectedConfigModel model) async {
     await Future.delayed(const Duration(seconds: 1)); //ToDO Убрать
     return Right(CatalogModel(
-        code: '520', kind: 'Пользователь', name: 'Гладких Александр'));
+      code: '520',
+      kind: 'Пользователь',
+      name: 'Гладких Александр',
+    ));
+    //return Left(CacheFailure());
   }
 }
