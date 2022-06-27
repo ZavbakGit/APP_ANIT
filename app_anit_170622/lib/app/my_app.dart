@@ -2,8 +2,6 @@ import 'package:app_anit/navigation/my_router_test.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
-import '../navigation/my_router.dart';
-
 MaterialColor generateMaterialColor(Color color) {
   return MaterialColor(color.value, {
     50: tintColor(color, 0.5),
