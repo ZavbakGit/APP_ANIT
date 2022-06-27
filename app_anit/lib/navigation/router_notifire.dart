@@ -4,7 +4,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../app/injection_container.dart';
 import '../domain/models/app_model.dart';
-import '../pages/connected_config_river/connected_config_page.dart';
 import '../pages/login/login_page.dart';
 import '../pages/tasks/tasks_page.dart';
 

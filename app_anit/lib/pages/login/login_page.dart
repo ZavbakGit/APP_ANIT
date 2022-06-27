@@ -5,8 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../domain/models/app_model.dart';
-
 class LoginPage extends ConsumerWidget {
   final bool autoLogin;
 
@@ -38,38 +36,31 @@ class LoginBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<LoginScreenCubit, LoginScreenState>(
+    return BlocConsumer<LoginScreenCubit, PageState>(
       listener: (context, state) {
-        if (state is LoadedState) {
-          if (state.isGoHome) {
-            context.go('/');
-          }
+        if (state.isGoHome) {
+          context.go('/');
         }
       },
       buildWhen: (previous, current) {
-        if (current is LoadedState) {
-          return !current.isGoHome;
-        }
-        return true;
+        return !current.isGoHome;
       },
       builder: (context, state) {
-        if (state is LoadingState) {
-          return const Center(
-            child: CircularProgressIndicator(),
+        if (state.isLoading) {
+          return const Center(child: CircularProgressIndicator());
+        } else {
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Center(child: Text(state.toString())),
+              ElevatedButton(
+                  onPressed: () {
+                    BlocProvider.of<LoginScreenCubit>(context).login();
+                  },
+                  child: const Text('Login')),
+            ],
           );
         }
-
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Center(child: Text(state.toString())),
-            ElevatedButton(
-                onPressed: () {
-                  BlocProvider.of<LoginScreenCubit>(context).login();
-                },
-                child: Text('Login')),
-          ],
-        );
       },
     );
   }
