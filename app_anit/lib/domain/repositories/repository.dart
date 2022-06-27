@@ -1,7 +1,8 @@
+import 'package:app_anit/domain/models/catalog_model.dart';
+
 import '../../core/failures.dart';
 import 'package:dartz/dartz.dart';
 
-import '../../data/repository_impl.dart';
 import '../models/conected_config_model.dart';
 
 abstract class Repository {
@@ -15,5 +16,7 @@ abstract class Repository {
 
   /// Удаляем данные
   ///
-  Future<Either<Failure, None>> removeConnectionData();
+  Future<Either<Failure, None>> removeConnectionConfig();
+
+  Future<Either<Failure, CatalogModel>> login(ConnectedConfigModel model);
 }

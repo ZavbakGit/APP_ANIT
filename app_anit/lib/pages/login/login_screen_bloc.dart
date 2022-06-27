@@ -1,50 +1,68 @@
-import 'package:app_anit/domain/models/catalog_model.dart';
-import 'package:app_anit/domain/repositories/repository.dart';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../domain/models/app_model.dart';
+import '../../domain/models/conected_config_model.dart';
 
 class LoginScreenCubit extends Cubit<PageState> {
   final AppModel appModel;
-  final Repository repository;
 
   LoginScreenCubit({
     required this.appModel,
-    required this.repository,
   }) : super(PageState());
 
-  void load() async {
-    emit(PageState(isLoading: true));
-    await Future.delayed(const Duration(seconds: 1));
-    emit(PageState(
-      baseUrl: 'http://212.19.2.67',
-      login: 'Гладких А.В.',
-      password: 'hgfg@jhj',
-    ));
+  PageState _getPageStateApp() {
+    return PageState(
+      baseUrl: appModel.connectionConfig?.baseUrl ?? '',
+      login: appModel.connectionConfig?.login ?? '',
+      password: appModel.connectionConfig?.password ?? '',
+    );
   }
 
-  void autoLogin() async {
-    emit(PageState(isLoading: true));
+  void getConnectionConfig() async {
+    emit(_getPageStateApp().copyWith(isLoading: true));
     await Future.delayed(const Duration(seconds: 1));
-    appModel.curentUser = CatalogModel(kind: '', code: 'code', name: 'Alex');
-    emit(PageState(
-      baseUrl: 'http://212.19.2.67',
-      login: 'Гладких А.В.',
-      password: 'hgfg@jhj',
-      isGoHome: true,
-    ));
+    final either = await appModel.getConnectionConfig();
+
+    either.fold(
+      (fail) {
+        emit(PageState());
+      },
+      (none) {
+        emit(_getPageStateApp());
+        if (appModel.autoLogin) {
+          login(
+              baseUrl: appModel.connectionConfig?.baseUrl ?? '',
+              login: appModel.connectionConfig?.login ?? '',
+              password: appModel.connectionConfig?.password ?? '');
+        }
+      },
+    );
   }
 
-  void login() async {
-    emit(PageState(isLoading: true));
-    await Future.delayed(const Duration(seconds: 1));
-    appModel.curentUser = CatalogModel(kind: '', code: 'code', name: 'Alex');
-    emit(PageState(
-      baseUrl: 'http://212.19.2.67',
-      login: 'Гладких А.В.',
-      password: 'hgfg@jhj',
-      isGoHome: true,
+  void login({
+    required String baseUrl,
+    required String login,
+    required String password,
+  }) async {
+    final pageStateCurent = PageState(
+      baseUrl: baseUrl,
+      login: login,
+      password: password,
+    );
+
+    final connectionConfig = ConnectedConfigModel(
+      baseUrl: baseUrl,
+      login: login,
+      password: password,
+    );
+
+    emit(pageStateCurent.copyWith(isLoading: true));
+
+    (await (await appModel.saveConnectionConfig(connectionConfig))
+        .traverseFuture(
+      (model) {
+        return appModel.login(connectionConfig);
+      },
     ));
   }
 }

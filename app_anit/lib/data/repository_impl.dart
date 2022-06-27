@@ -1,4 +1,5 @@
 import 'package:app_anit/core/failures.dart';
+import 'package:app_anit/domain/models/catalog_model.dart';
 import 'package:dartz/dartz.dart';
 
 import '../core/exeption.dart';
@@ -36,13 +37,20 @@ class RepositoryImpl extends Repository {
   }
 
   @override
-  Future<Either<Failure, None>> removeConnectionData() async {
+  Future<Either<Failure, None>> removeConnectionConfig() async {
     try {
-      await localDatasourse.removeConnectionData();
-
+      await localDatasourse.removeConnectionConfig();
       return const Right(None());
     } on CacheException {
       return Left(CacheFailure());
     }
+  }
+
+  @override
+  Future<Either<Failure, CatalogModel>> login(
+      ConnectedConfigModel model) async {
+    await Future.delayed(const Duration(seconds: 1)); //ToDO Убрать
+    return Right(CatalogModel(
+        code: '520', kind: 'Пользователь', name: 'Гладких Александр'));
   }
 }

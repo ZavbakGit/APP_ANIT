@@ -35,24 +35,18 @@ class RouterNotifier extends ChangeNotifier {
   String? _redirectLogic(GoRouterState stateRouter) {
     //final appModel = _ref.read(appStateProvider);
 
-    final stateIsAutologin = stateRouter.location == '/autologin';
-    final stateIsLogin = stateRouter.location == '/login';
+    final locationIsLogin = stateRouter.location == '/login';
 
     if (!appModel.existCurentUser) {
-      if (appModel.autoLogin) {
-        return stateIsAutologin ? null : "/autologin";
-      } else {
-        return stateIsLogin ? null : "/login";
-      }
+      return locationIsLogin ? null : "/login";
     }
 
-    // There's no need for a redirect at this point.
     return null;
   }
 
   List<GoRoute> get _routes => [
         GoRoute(
-          name: "tasks",
+          name: "home",
           path: "/",
           builder: (context, _) => const TasksPage(),
         ),
@@ -60,11 +54,6 @@ class RouterNotifier extends ChangeNotifier {
           name: "login",
           path: "/login",
           builder: (context, _) => const LoginPage(),
-        ),
-        GoRoute(
-          name: "autologin",
-          path: "/autologin",
-          builder: (context, _) => const LoginPage(autoLogin: true),
         ),
       ];
 }

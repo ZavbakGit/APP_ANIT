@@ -30,7 +30,7 @@ class LocalDatasourse {
     );
   }
 
-  removeConnectionData() {
+  removeConnectionConfig() {
     return sharedPreferences.remove(cachedLoaginDataModel);
   }
 }

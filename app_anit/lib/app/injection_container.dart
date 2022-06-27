@@ -5,12 +5,11 @@ import '../data/datasourses/local_datasourse.dart';
 import '../data/repository_impl.dart';
 import '../domain/models/app_model.dart';
 import '../domain/repositories/repository.dart';
-import '../pages/login/login_screen_bloc.dart';
 
 final sl = GetIt.instance;
 
 Future<void> init() async {
-  sl.registerLazySingleton<AppModel>(() => AppModel());
+  sl.registerLazySingleton<AppModel>(() => AppModel(repository: sl()));
 
   //! Repository
   sl.registerLazySingleton<Repository>(

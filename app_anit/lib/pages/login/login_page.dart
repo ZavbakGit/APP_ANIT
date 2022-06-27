@@ -5,6 +5,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../core/presentation/button_widgets.dart';
+import '../../core/presentation/divider_widget.dart';
+import '../../core/presentation/page_widget.dart';
+import '../../core/presentation/progres_widget.dart';
+import '../../core/presentation/text_form_field.dart';
+import '../../core/presentation/text_widget.dart';
+
 class LoginPage extends ConsumerWidget {
   final bool autoLogin;
 
@@ -17,12 +24,7 @@ class LoginPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return BlocProvider(
       create: (context) {
-        if (autoLogin) {
-          return LoginScreenCubit(appModel: sl(), repository: sl())
-            ..autoLogin();
-        }
-
-        return LoginScreenCubit(appModel: sl(), repository: sl())..load();
+        return LoginScreenCubit(appModel: sl())..getConnectionConfig();
       },
       child: const Scaffold(
         body: LoginBody(),
@@ -46,22 +48,143 @@ class LoginBody extends StatelessWidget {
         return !current.isGoHome;
       },
       builder: (context, state) {
-        if (state.isLoading) {
-          return const Center(child: CircularProgressIndicator());
-        } else {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Center(child: Text(state.toString())),
-              ElevatedButton(
-                  onPressed: () {
-                    BlocProvider.of<LoginScreenCubit>(context).login();
-                  },
-                  child: const Text('Login')),
-            ],
-          );
-        }
+        return CustomPageWidget(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: LoginFormWidget(
+              isLoading: state.isLoading,
+              baseUrl: state.baseUrl,
+              login: state.login,
+              password: state.password,
+              errorMessage: state.error,
+              submit: (baseUrl, login, password) {
+                BlocProvider.of<LoginScreenCubit>(context)
+                    .login(baseUrl: baseUrl, login: login, password: password);
+              },
+            ),
+          ),
+        );
       },
+    );
+  }
+}
+
+class LoginFormWidget extends StatefulWidget {
+  final String? baseUrl;
+  final String? login;
+  final String? password;
+  final bool isLoading;
+  final String? errorMessage;
+  final void Function(String baseUrl, String login, String password) submit;
+
+  const LoginFormWidget({
+    Key? key,
+    this.baseUrl,
+    this.login,
+    this.password,
+    required this.isLoading,
+    this.errorMessage,
+    required this.submit,
+  }) : super(key: key);
+
+  @override
+  State<LoginFormWidget> createState() => LoginFormState();
+}
+
+class LoginFormState extends State<LoginFormWidget> {
+  final _formKey = GlobalKey<FormState>();
+
+  final baseUrlController = TextEditingController();
+  final loginController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  void _submit() {
+    if (_formKey.currentState!.validate()) {
+      widget.submit(
+        baseUrlController.text,
+        loginController.text,
+        passwordController.text,
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    baseUrlController.text = widget.baseUrl ?? '';
+    loginController.text = widget.login ?? '';
+    passwordController.text = widget.password ?? '';
+
+    List<Widget>? getLoading() => widget.isLoading
+        ? [
+            const Center(child: CircularProgressIndicator()),
+            const SizedBox(height: 16),
+          ]
+        : null;
+
+    return Form(
+      key: _formKey,
+      child: SingleChildScrollView(
+        child: Center(
+          child: Container(
+            constraints: const BoxConstraints(maxWidth: 500),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const CustomHeadLinText(text: 'Войти'),
+                const CustomDividerHeader(),
+                CustomTextFormWidget(
+                  enabled: !widget.isLoading,
+                  controller: baseUrlController,
+                  labelText: 'Сервис (http://192.168.2.38/dostavka/hs/oas)',
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Не заполнено';
+                    }
+
+                    // if (!Uri.parse(value).isAbsolute) {
+                    //   return 'Не является адресом';
+                    // }
+                    return null;
+                  },
+                ),
+                const CustomDividerField(),
+                CustomTextFormWidget(
+                  enabled: !widget.isLoading,
+                  controller: loginController,
+                  labelText: 'Логин',
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Не заполнено';
+                    }
+                    return null;
+                  },
+                ),
+                const CustomDividerField(),
+                CustomTextFormWidget(
+                  enabled: !widget.isLoading,
+                  controller: passwordController,
+                  labelText: 'Пароль',
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Не заполнено';
+                    }
+                    return null;
+                  },
+                  obscureText: true,
+                ),
+                const CustomDividerField(),
+                CustomPrimaryButton(
+                    onPressed: widget.isLoading ? null : _submit,
+                    text: 'Login'),
+                const CustomDividerField(),
+                if (widget.isLoading) const CustomBaseProgressIndicator(),
+                if (widget.errorMessage != null)
+                  CustomMessageErrorText(text: widget.errorMessage),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

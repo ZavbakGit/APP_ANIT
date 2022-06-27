@@ -1,7 +1,10 @@
 import 'package:app_anit/domain/models/catalog_model.dart';
 import 'package:app_anit/domain/models/conected_config_model.dart';
+import 'package:app_anit/domain/repositories/repository.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../core/failures.dart';
 
 class AppData {
   CatalogModel? curentUser;
@@ -19,24 +22,52 @@ class AppData {
 }
 
 class AppModel extends ChangeNotifier {
+  final Repository repository;
+  AppModel({
+    required this.repository,
+  });
   final _appData = AppData(autoLogin: true);
 
   bool get existConfig => _appData.connectedConfig != null;
   bool get existCurentUser => _appData.curentUser != null;
   bool get autoLogin => _appData.autoLogin;
 
-  ConnectedConfigModel? get connectionConfig => _appData.connectedConfig;
-  set connectionConfig(ConnectedConfigModel? value) {
-    _appData.connectedConfig = value;
-    notifyListeners();
+  Future<Either<Failure, CatalogModel>> login(
+      ConnectedConfigModel model) async {
+    return (await repository.login(model)).map((right) {
+      _appData.curentUser = right;
+      notifyListeners();
+      return right;
+    });
   }
 
+  Future<Either<Failure, None>> saveConnectionConfig(
+    ConnectedConfigModel? model,
+  ) async {
+    final either = (model == null)
+        ? await repository.removeConnectionConfig()
+        : await repository.saveConnectionData(model);
+    return either.map((right) {
+      _appData.connectedConfig = model;
+      notifyListeners();
+      return right;
+    });
+  }
+
+  Future<Either<Failure, ConnectedConfigModel>> getConnectionConfig() async {
+    return (await repository.getConnectionConfig()).map((right) {
+      _appData.connectedConfig = right;
+      notifyListeners();
+      return right;
+    });
+  }
+
+  ConnectedConfigModel? get connectionConfig => _appData.connectedConfig;
   CatalogModel? get curentUser => _appData.curentUser;
-  set curentUser(CatalogModel? value) {
-    if (value == null) {
-      _appData.autoLogin = false;
-    }
-    _appData.curentUser = value;
+
+  void logout() {
+    _appData.curentUser = null;
+    _appData.autoLogin = false;
     notifyListeners();
   }
 }

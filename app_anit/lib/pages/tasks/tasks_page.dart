@@ -27,7 +27,7 @@ class TasksPage extends ConsumerWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              app.curentUser = null;
+              app.logout();
             },
             child: const Text('Выйти'),
           )
