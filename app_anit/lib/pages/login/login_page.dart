@@ -141,9 +141,9 @@ class LoginFormState extends State<LoginFormWidget> {
                       return 'Не заполнено';
                     }
 
-                    // if (!Uri.parse(value).isAbsolute) {
-                    //   return 'Не является адресом';
-                    // }
+                    if (!Uri.parse(value).isAbsolute) {
+                      return 'Не является адресом';
+                    }
                     return null;
                   },
                 ),
