@@ -1,0 +1,117 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Сервис для базы 1C АНИТ",
+    "version": "1.2.0",
+    "description": "API для получения различных данных\nверсия от 2022-05-17",
+    "contact": {
+      "email": "ag@79900.ru"
+    }
+  },
+  "basePath": "/copy_erp/hs/oas_api",
+  "schemes": [
+    "http"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/login": {
+      "get": {
+        "summary": "Login",
+        "description": "При подключении вернёт настройки",
+        "operationId": "login",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Config"
+            }
+          }
+        }
+      }
+    },
+    "/catalogs/{type}/{guid}": {
+      "get": {
+        "description": "Просто возвращает 200. Используется в отладочных и проверочных целях.",
+        "operationId": "getCatalogElemByGuid",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "type",
+            "description": "Тип справочника",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "guid",
+            "description": "Тип справочника",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Время на сервере",
+            "schema": {
+              "$ref": "#/definitions/RefCatalog"
+            }
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "basicAuth": []
+    }
+  ],
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic"
+    }
+  },
+  "definitions": {
+    "Config": {
+      "description": "Настройки",
+      "type": "object",
+      "properties": {
+        "guidUser": {
+          "type": "string",
+          "description": "guid пользователя"
+        },
+        "nameUser": {
+          "type": "string",
+          "description": "Имя пользователя"
+        }
+      }
+    },
+    "RefCatalog": {
+      "description": "Ссылка на справочник",
+      "type": "object",
+      "properties": {
+        "guid": {
+          "type": "string",
+          "description": "Уникальный идентификатор"
+        },
+        "type": {
+          "type": "string",
+          "description": "Тип справочника"
+        },
+        "code": {
+          "type": "string",
+          "description": "Код справочника"
+        },
+        "name": {
+          "type": "string",
+          "description": "Наименование справочника"
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}

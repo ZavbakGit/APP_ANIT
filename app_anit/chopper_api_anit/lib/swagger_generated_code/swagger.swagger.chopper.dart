@@ -17,6 +17,14 @@ class _$Swagger extends Swagger {
   final definitionType = Swagger;
 
   @override
+  Future<Response<List<TaskItem>>> _tasksUserGet({required String? guidUser}) {
+    final $url = '/tasks_user';
+    final $params = <String, dynamic>{'guidUser': guidUser};
+    final $request = Request('GET', $url, client.baseUrl, parameters: $params);
+    return client.send<List<TaskItem>, TaskItem>($request);
+  }
+
+  @override
   Future<Response<Config>> _loginGet() {
     final $url = '/login';
     final $request = Request('GET', $url, client.baseUrl);
