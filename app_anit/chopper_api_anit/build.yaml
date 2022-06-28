@@ -1,0 +1,56 @@
+targets:
+  $default:
+    sources:
+      - lib/**
+      - swaggers/**
+      - swaggers2/**
+      - swagger_examples/**
+      - $package$
+    builders:
+      chopper_generator:
+        options:
+          header: "//Generated code"
+      swagger_dart_code_generator:
+        options:
+          input_folder: "lib/"
+          output_folder: "lib/swagger_generated_code/"
+          with_base_url: true
+          with_converter: true
+          use_path_for_request_names: true
+          use_default_null_for_lists: false
+          build_only_models: false
+          separate_models: false
+          enums_case_sensitive: false
+          cut_from_model_names: "V3"
+          ignore_headers: false
+          use_required_attribute_for_headers: false
+          include_if_null: false
+          exclude_paths:
+            - "/items/{id}"
+          response_override_value_map:
+            - url: "/v2/commons/availableColours"
+              method: get
+              overridden_value: "List<Map>"
+            - url: "/v2/commons/availableGenres"
+              method: get
+              overridden_value: "List<GenreV2Result>"
+            - url: "/v2/channels"
+              method: get
+              overridden_value: "List<Channel>"
+            - url: "/{country}/{lang}/events/segments/{segmentName}"
+              method: get
+              overridden_value: "Map"
+            - url: "/v1/titlePreferredInstance/{titleCrid}"
+              method: get
+              overridden_value: TitlePreferredInstance
+            - url: "/v2/detailscreen/{crid}"
+              method: get
+              overridden_value: "Map<String, dynamic>"
+          default_header_values_map:
+            - header_name: "X-Entitlements-Token"
+              default_value: "X-Entitlements-Token"
+            - header_name: "X-Cus"
+              default_value: "X-Cus"
+          default_values_map:
+            - type_name: String
+              default_value: ""

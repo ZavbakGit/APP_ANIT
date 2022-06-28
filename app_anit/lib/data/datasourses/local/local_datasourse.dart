@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../core/exeption.dart';
-import '../../domain/models/conected_config_model.dart';
+import '../../../core/exeption.dart';
+import '../../../domain/models/conected_config_model.dart';
 
 const cachedLoaginDataModel = 'CONNECTION_CONFIG_MODEL';
 

@@ -1,5 +1,5 @@
-import 'package:app_anit/domain/models/catalog_model.dart';
 import 'package:app_anit/domain/models/conected_config_model.dart';
+import 'package:app_anit/domain/models/remote_config.dart';
 import 'package:app_anit/domain/repositories/repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
@@ -7,15 +7,15 @@ import 'package:flutter/foundation.dart';
 import '../../core/failures.dart';
 
 class AppData {
-  CatalogModel? curentUser;
+  RemoteConfigModel? remoteConfig;
   ConnectedConfigModel? connectedConfig;
   bool autoLogin;
 
   bool get existConfig => connectedConfig != null;
-  bool get existCurentUser => curentUser != null;
+  bool get existRemoteConfig => remoteConfig != null;
 
   AppData({
-    this.curentUser,
+    this.remoteConfig,
     this.connectedConfig,
     required this.autoLogin,
   });
@@ -28,11 +28,11 @@ class AppModel extends ChangeNotifier {
   });
   final _appData = AppData(autoLogin: true);
 
-  bool get existCurentUser => _appData.curentUser != null;
+  bool get existCurentUser => _appData.remoteConfig != null;
   bool get autoLogin => _appData.autoLogin;
 
   ConnectedConfigModel? get connectionConfig => _appData.connectedConfig;
-  CatalogModel? get curentUser => _appData.curentUser;
+  RemoteConfigModel? get remoteConfig => _appData.remoteConfig;
 
   Future<Either<Failure, None>> saveConnectionConfig(
     ConnectedConfigModel? model,
@@ -55,17 +55,17 @@ class AppModel extends ChangeNotifier {
     });
   }
 
-  Future<Either<Failure, CatalogModel>> login(
+  Future<Either<Failure, RemoteConfigModel>> login(
       ConnectedConfigModel model) async {
     return (await repository.login(model)).map((right) {
-      _appData.curentUser = right;
+      _appData.remoteConfig = right;
       notifyListeners();
       return right;
     });
   }
 
   void logout() {
-    _appData.curentUser = null;
+    _appData.remoteConfig = null;
     _appData.autoLogin = false;
     notifyListeners();
   }

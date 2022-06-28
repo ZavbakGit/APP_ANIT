@@ -47,9 +47,24 @@ dependencies:
   flutter_bloc: ^8.0.1
   get_it: ^7.2.0
 
+  # Remote API 
+  data_connection_checker_tv: ^0.3.5-nullsafety
+  http: ^0.13.4
+
+  chopper: ^4.0.6
+
+  logger:
+
+  chopper_api_anit:
+    path: chopper_api_anit
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+  chopper_generator: ^4.0.6
+  json_annotation: ^4.5.0
+  json_serializable: ^6.2.0
 
   
 

@@ -21,7 +21,6 @@ class LoginScreenCubit extends Cubit<PageState> {
 
   void getConnectionConfig() async {
     emit(_getPageStateApp().copyWith(isLoading: true));
-    await Future.delayed(const Duration(seconds: 1));
     final either = await appModel.getConnectionConfig();
 
     either.fold(

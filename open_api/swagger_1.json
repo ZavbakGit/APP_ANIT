@@ -16,16 +16,16 @@
     "application/json"
   ],
   "paths": {
-    "/login": {
+    "/ping": {
       "get": {
-        "summary": "Login",
-        "description": "При подключении вернёт настройки",
-        "operationId": "login",
+        "summary": "Проверяет, жив ли сервер",
+        "description": "Просто возвращает 200. Используется в отладочных и проверочных целях.",
+        "operationId": "getPing",
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "Время на сервере",
             "schema": {
-              "$ref": "#/definitions/Config"
+              "$ref": "#/definitions/ResponsePingServer"
             }
           }
         }
@@ -55,7 +55,7 @@
           "200": {
             "description": "Время на сервере",
             "schema": {
-              "$ref": "#/definitions/RefCatalog"
+              "$ref": "#/definitions/RefToCatalog"
             }
           }
         }
@@ -73,21 +73,25 @@
     }
   },
   "definitions": {
-    "Config": {
-      "description": "Настройки",
+    "ResponsePingServer": {
+      "description": "Дата и время на сервере",
       "type": "object",
       "properties": {
-        "guidUser": {
+        "data_time": {
           "type": "string",
-          "description": "guid пользователя"
+          "format": "date-time"
         },
-        "nameUser": {
-          "type": "string",
-          "description": "Имя пользователя"
+        "current_user": {
+          "description": "Текущий пользователь",
+          "$ref": "#/definitions/RefToCatalog"
         }
-      }
+      },
+      "required": [
+        "data_time",
+        "current_user"
+      ]
     },
-    "RefCatalog": {
+    "RefToCatalog": {
       "description": "Ссылка на справочник",
       "type": "object",
       "properties": {

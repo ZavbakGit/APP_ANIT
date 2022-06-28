@@ -1,9 +1,8 @@
-import 'package:app_anit/domain/models/catalog_model.dart';
-
 import '../../core/failures.dart';
 import 'package:dartz/dartz.dart';
 
 import '../models/conected_config_model.dart';
+import '../models/remote_config.dart';
 
 abstract class Repository {
   /// Получаем сохраненные данные о подключении
@@ -18,5 +17,5 @@ abstract class Repository {
   ///
   Future<Either<Failure, None>> removeConnectionConfig();
 
-  Future<Either<Failure, CatalogModel>> login(ConnectedConfigModel model);
+  Future<Either<Failure, RemoteConfigModel>> login(ConnectedConfigModel model);
 }
