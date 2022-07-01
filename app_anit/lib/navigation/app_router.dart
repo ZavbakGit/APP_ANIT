@@ -2,6 +2,7 @@ import 'package:app_anit/navigation/router_notifire.dart';
 import 'package:go_router/go_router.dart';
 
 import '../pages/login/login_page.dart';
+import '../pages/task/task_page.dart';
 import '../pages/tasks_user/tasks_page.dart';
 
 class AppRouter {
@@ -26,6 +27,11 @@ class AppRouter {
         name: "login",
         path: "/login",
         builder: (context, _) => const LoginPage(),
+      ),
+      GoRoute(
+        name: "task",
+        path: "/task",
+        builder: (context, _) => const TaskPage(),
       ),
     ], // All the routes can be found there
   );

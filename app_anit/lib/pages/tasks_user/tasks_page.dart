@@ -9,6 +9,7 @@ import '../../core/presentation/divider_widget.dart';
 import '../../core/presentation/page_widget.dart';
 import '../../core/presentation/progres_widget.dart';
 import '../../core/presentation/text_widget.dart';
+import 'package:go_router/go_router.dart';
 
 class TasksPage extends ConsumerWidget {
   const TasksPage({Key? key}) : super(key: key);
@@ -30,9 +31,13 @@ class TasksBodyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<TasksCubit, TasksPageState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state.goGuidTask != null) {
+          context.push('/task');
+        }
+      },
       buildWhen: (previous, current) {
-        return true;
+        return current.goGuidTask == null;
       },
       builder: (context, state) {
         return Scaffold(
@@ -79,7 +84,7 @@ class TasksBodyWidget extends StatelessWidget {
                     children: [
                       if (state.isLoading)
                         const CustomLinearProgressIndicator(),
-                      if (!state.error.isEmpty)
+                      if (state.error.isNotEmpty)
                         Column(
                           children: [
                             const CustomDividerHeader(),
@@ -135,10 +140,13 @@ class TaskItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: ListTile(
-        title: Text(item.title ?? ''),
-        subtitle: Text(item.date?.toIso8601String() ?? ''),
+    return GestureDetector(
+      onTap: () => BlocProvider.of<TasksCubit>(context).onClick(item.guid),
+      child: Card(
+        child: ListTile(
+          title: Text(item.title ?? ''),
+          subtitle: Text(item.date?.toIso8601String() ?? ''),
+        ),
       ),
     );
   }

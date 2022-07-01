@@ -1,9 +1,10 @@
+import 'dart:async';
+
 import 'package:app_anit/domain/repositories/repository.dart';
 import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../domain/models/app_model.dart';
-import 'dart:async';
 
 class TasksCubit extends Cubit<TasksPageState> {
   final Repository repository;
@@ -56,6 +57,10 @@ class TasksCubit extends Cubit<TasksPageState> {
       emit(_pageState());
     });
   }
+
+  onClick(String? guid) {
+    emit(_pageState().copyWith(goGuidTask: guid));
+  }
 }
 
 class TasksPageState {
@@ -63,12 +68,14 @@ class TasksPageState {
   final String user;
   final List<TaskItem> tasks;
   final String error;
+  final String? goGuidTask;
 
   TasksPageState({
     this.user = '',
     this.isLoading = false,
     this.tasks = const [],
     this.error = '',
+    this.goGuidTask,
   });
 
   TasksPageState copyWith({
@@ -76,17 +83,19 @@ class TasksPageState {
     String? user,
     List<TaskItem>? tasks,
     String? error,
+    String? goGuidTask,
   }) {
     return TasksPageState(
       isLoading: isLoading ?? this.isLoading,
       user: user ?? this.user,
       tasks: tasks ?? this.tasks,
       error: error ?? this.error,
+      goGuidTask: goGuidTask ?? this.goGuidTask,
     );
   }
 
   @override
   String toString() {
-    return 'TasksPageState(isLoading: $isLoading, user: $user, tasks: $tasks, error: $error)';
+    return 'TasksPageState(isLoading: $isLoading, user: $user, tasks: $tasks, error: $error, goGuidTask: $goGuidTask)';
   }
 }
