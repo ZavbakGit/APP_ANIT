@@ -6,7 +6,7 @@ import 'package:dartz/dartz.dart';
 
 import '../../../core/exeption.dart';
 import '../../../domain/models/conected_config_model.dart';
-import '../../../domain/models/remote_config.dart';
+import '../../../domain/models/remote_config_model.dart';
 import '../../../domain/repositories/repository.dart';
 import '../local/local_datasourse.dart';
 import '../remote/api_client.dart';
@@ -79,6 +79,21 @@ class RepositoryImpl extends Repository {
           nameUser: response.body!.nameUser!,
         ),
       );
+    } catch (e) {
+      return Left(_getCatchFailure(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<TaskItem>>> tasksUserGet(String guidUser) async {
+    try {
+      final response = await swagger!.tasksUserGet(guidUser: guidUser);
+
+      if (response.errorStatusCode) {
+        return Left(response.getFailureResponse());
+      }
+
+      return Right(response.body ?? []);
     } catch (e) {
       return Left(_getCatchFailure(e));
     }

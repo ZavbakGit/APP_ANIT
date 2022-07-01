@@ -26,12 +26,9 @@ class CustomPageWidget extends StatelessWidget {
   @override
   Widget build(Object context) {
     return SafeArea(
-      child: Scaffold(
-        body: Stack(children: [
-          _getDecorationContainer(),
-          child,
-        ]),
-      ),
-    );
+        child: Stack(children: [
+      _getDecorationContainer(),
+      child,
+    ]));
   }
 }

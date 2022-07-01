@@ -1,5 +1,5 @@
 import 'package:app_anit/domain/models/conected_config_model.dart';
-import 'package:app_anit/domain/models/remote_config.dart';
+import 'package:app_anit/domain/models/remote_config_model.dart';
 import 'package:app_anit/domain/repositories/repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';

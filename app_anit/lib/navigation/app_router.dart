@@ -2,7 +2,7 @@ import 'package:app_anit/navigation/router_notifire.dart';
 import 'package:go_router/go_router.dart';
 
 import '../pages/login/login_page.dart';
-import '../pages/tasks/tasks_page.dart';
+import '../pages/tasks_user/tasks_page.dart';
 
 class AppRouter {
   final RouterNotifier routerNotifier;

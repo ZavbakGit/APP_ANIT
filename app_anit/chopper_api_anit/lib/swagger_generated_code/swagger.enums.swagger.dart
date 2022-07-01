@@ -3,42 +3,42 @@ import 'package:json_annotation/json_annotation.dart';
 enum TaskItemCondition {
   @JsonValue('swaggerGeneratedUnknown')
   swaggerGeneratedUnknown,
-  @JsonValue('appointed')
+  @JsonValue('Appointed')
   appointed,
-  @JsonValue('received')
+  @JsonValue('Received')
   received,
-  @JsonValue('progress')
+  @JsonValue('Progress')
   progress,
-  @JsonValue('postponed')
+  @JsonValue('Postponed')
   postponed,
-  @JsonValue('completed')
+  @JsonValue('Completed')
   completed,
-  @JsonValue('resumed')
-  resumed
+  @JsonValue('Reopened')
+  reopened
 }
 
 const $TaskItemConditionMap = {
-  TaskItemCondition.appointed: 'appointed',
-  TaskItemCondition.received: 'received',
-  TaskItemCondition.progress: 'progress',
-  TaskItemCondition.postponed: 'postponed',
-  TaskItemCondition.completed: 'completed',
-  TaskItemCondition.resumed: 'resumed'
+  TaskItemCondition.appointed: 'Appointed',
+  TaskItemCondition.received: 'Received',
+  TaskItemCondition.progress: 'Progress',
+  TaskItemCondition.postponed: 'Postponed',
+  TaskItemCondition.completed: 'Completed',
+  TaskItemCondition.reopened: 'Reopened'
 };
 
 enum TaskItemImportance {
   @JsonValue('swaggerGeneratedUnknown')
   swaggerGeneratedUnknown,
-  @JsonValue('base')
-  base,
-  @JsonValue('low')
-  low,
-  @JsonValue('high')
-  high
+  @JsonValue('High')
+  high,
+  @JsonValue('Normal')
+  normal,
+  @JsonValue('Low')
+  low
 }
 
 const $TaskItemImportanceMap = {
-  TaskItemImportance.base: 'base',
-  TaskItemImportance.low: 'low',
-  TaskItemImportance.high: 'high'
+  TaskItemImportance.high: 'High',
+  TaskItemImportance.normal: 'Normal',
+  TaskItemImportance.low: 'Low'
 };

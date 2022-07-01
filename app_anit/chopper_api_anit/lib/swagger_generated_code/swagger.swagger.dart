@@ -87,21 +87,27 @@ typedef Tasks = List<TaskItem>;
 @JsonSerializable(explicitToJson: true)
 class TaskItem {
   TaskItem({
+    this.guid,
     this.date,
+    this.$number,
     this.condition,
     this.importance,
+    this.title,
     this.partner,
     this.author,
     this.responsible,
     this.producer,
-    this.title,
   });
 
   factory TaskItem.fromJson(Map<String, dynamic> json) =>
       _$TaskItemFromJson(json);
 
+  @JsonKey(name: 'guid', includeIfNull: false, defaultValue: '')
+  final String? guid;
   @JsonKey(name: 'date', includeIfNull: false)
   final DateTime? date;
+  @JsonKey(name: 'number', includeIfNull: false, defaultValue: '')
+  final String? $number;
   @JsonKey(
       name: 'condition',
       includeIfNull: false,
@@ -114,6 +120,8 @@ class TaskItem {
       toJson: taskItemImportanceToJson,
       fromJson: taskItemImportanceFromJson)
   final enums.TaskItemImportance? importance;
+  @JsonKey(name: 'title', includeIfNull: false, defaultValue: '')
+  final String? title;
   @JsonKey(name: 'partner', includeIfNull: false)
   final RefCatalog? partner;
   @JsonKey(name: 'author', includeIfNull: false)
@@ -122,8 +130,6 @@ class TaskItem {
   final RefCatalog? responsible;
   @JsonKey(name: 'producer', includeIfNull: false)
   final RefCatalog? producer;
-  @JsonKey(name: 'title', includeIfNull: false, defaultValue: '')
-  final String? title;
   static const fromJsonFactory = _$TaskItemFromJson;
   static const toJsonFactory = _$TaskItemToJson;
   Map<String, dynamic> toJson() => _$TaskItemToJson(this);
@@ -135,14 +141,21 @@ class TaskItem {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is TaskItem &&
+            (identical(other.guid, guid) ||
+                const DeepCollectionEquality().equals(other.guid, guid)) &&
             (identical(other.date, date) ||
                 const DeepCollectionEquality().equals(other.date, date)) &&
+            (identical(other.$number, $number) ||
+                const DeepCollectionEquality()
+                    .equals(other.$number, $number)) &&
             (identical(other.condition, condition) ||
                 const DeepCollectionEquality()
                     .equals(other.condition, condition)) &&
             (identical(other.importance, importance) ||
                 const DeepCollectionEquality()
                     .equals(other.importance, importance)) &&
+            (identical(other.title, title) ||
+                const DeepCollectionEquality().equals(other.title, title)) &&
             (identical(other.partner, partner) ||
                 const DeepCollectionEquality()
                     .equals(other.partner, partner)) &&
@@ -153,43 +166,47 @@ class TaskItem {
                     .equals(other.responsible, responsible)) &&
             (identical(other.producer, producer) ||
                 const DeepCollectionEquality()
-                    .equals(other.producer, producer)) &&
-            (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)));
+                    .equals(other.producer, producer)));
   }
 
   @override
   int get hashCode =>
+      const DeepCollectionEquality().hash(guid) ^
       const DeepCollectionEquality().hash(date) ^
+      const DeepCollectionEquality().hash($number) ^
       const DeepCollectionEquality().hash(condition) ^
       const DeepCollectionEquality().hash(importance) ^
+      const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(partner) ^
       const DeepCollectionEquality().hash(author) ^
       const DeepCollectionEquality().hash(responsible) ^
       const DeepCollectionEquality().hash(producer) ^
-      const DeepCollectionEquality().hash(title) ^
       runtimeType.hashCode;
 }
 
 extension $TaskItemExtension on TaskItem {
   TaskItem copyWith(
-      {DateTime? date,
+      {String? guid,
+      DateTime? date,
+      String? $number,
       enums.TaskItemCondition? condition,
       enums.TaskItemImportance? importance,
+      String? title,
       RefCatalog? partner,
       RefCatalog? author,
       RefCatalog? responsible,
-      RefCatalog? producer,
-      String? title}) {
+      RefCatalog? producer}) {
     return TaskItem(
+        guid: guid ?? this.guid,
         date: date ?? this.date,
+        $number: $number ?? this.$number,
         condition: condition ?? this.condition,
         importance: importance ?? this.importance,
+        title: title ?? this.title,
         partner: partner ?? this.partner,
         author: author ?? this.author,
         responsible: responsible ?? this.responsible,
-        producer: producer ?? this.producer,
-        title: title ?? this.title);
+        producer: producer ?? this.producer);
   }
 }
 

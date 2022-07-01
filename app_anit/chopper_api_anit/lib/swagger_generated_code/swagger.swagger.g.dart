@@ -7,10 +7,13 @@ part of 'swagger.swagger.dart';
 // **************************************************************************
 
 TaskItem _$TaskItemFromJson(Map<String, dynamic> json) => TaskItem(
+      guid: json['guid'] as String? ?? '',
       date:
           json['date'] == null ? null : DateTime.parse(json['date'] as String),
+      $number: json['number'] as String? ?? '',
       condition: taskItemConditionFromJson(json['condition']),
       importance: taskItemImportanceFromJson(json['importance']),
+      title: json['title'] as String? ?? '',
       partner: json['partner'] == null
           ? null
           : RefCatalog.fromJson(json['partner'] as Map<String, dynamic>),
@@ -23,7 +26,6 @@ TaskItem _$TaskItemFromJson(Map<String, dynamic> json) => TaskItem(
       producer: json['producer'] == null
           ? null
           : RefCatalog.fromJson(json['producer'] as Map<String, dynamic>),
-      title: json['title'] as String? ?? '',
     );
 
 Map<String, dynamic> _$TaskItemToJson(TaskItem instance) {
@@ -35,14 +37,16 @@ Map<String, dynamic> _$TaskItemToJson(TaskItem instance) {
     }
   }
 
+  writeNotNull('guid', instance.guid);
   writeNotNull('date', instance.date?.toIso8601String());
+  writeNotNull('number', instance.$number);
   writeNotNull('condition', taskItemConditionToJson(instance.condition));
   writeNotNull('importance', taskItemImportanceToJson(instance.importance));
+  writeNotNull('title', instance.title);
   writeNotNull('partner', instance.partner?.toJson());
   writeNotNull('author', instance.author?.toJson());
   writeNotNull('responsible', instance.responsible?.toJson());
   writeNotNull('producer', instance.producer?.toJson());
-  writeNotNull('title', instance.title);
   return val;
 }
 

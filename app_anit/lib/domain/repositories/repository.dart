@@ -1,8 +1,10 @@
+import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
+
 import '../../core/failures.dart';
 import 'package:dartz/dartz.dart';
 
 import '../models/conected_config_model.dart';
-import '../models/remote_config.dart';
+import '../models/remote_config_model.dart';
 
 abstract class Repository {
   /// Получаем сохраненные данные о подключении
@@ -18,4 +20,6 @@ abstract class Repository {
   Future<Either<Failure, None>> removeConnectionConfig();
 
   Future<Either<Failure, RemoteConfigModel>> login(ConnectedConfigModel model);
+
+  Future<Either<Failure, List<TaskItem>>> tasksUserGet(String guidUser);
 }

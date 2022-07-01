@@ -6,7 +6,7 @@
     "contact": {
       "email": "ag@79900.ru"
     },
-    "version": "1.2.0"
+    "version": "1.0.0"
   },
   "externalDocs": {
     "description": "Find out more about Swagger",
@@ -14,7 +14,7 @@
   },
   "servers": [
     {
-      "url": "/copy_erp/hs/oas_api"
+      "url": "http://172.31.255.150/copy_erp/hs/oas_api"
     }
   ],
   "security": [
@@ -120,30 +120,43 @@
       "TaskItem": {
         "type": "object",
         "properties": {
+          "guid": {
+            "description": "guid документа",
+            "type": "string"
+          },
           "date": {
             "type": "string",
+            "description": "Дата документа",
             "format": "date-time"
+          },
+          "number": {
+            "description": "Номер документа",
+            "type": "string"
           },
           "condition": {
             "type": "string",
             "description": "Состояние",
             "enum": [
-              "appointed",
-              "received",
-              "progress",
-              "postponed",
-              "completed",
-              "resumed"
+              "Appointed",
+              "Received",
+              "Progress",
+              "Postponed",
+              "Completed",
+              "Reopened"
             ]
           },
           "importance": {
             "type": "string",
             "description": "Важность",
             "enum": [
-              "base",
-              "low",
-              "high"
+              "High",
+              "Normal",
+              "Low"
             ]
+          },
+          "title": {
+            "description": "ОписаниеСобытия",
+            "type": "string"
           },
           "partner": {
             "$ref": "#/components/schemas/RefCatalog"
@@ -156,9 +169,6 @@
           },
           "producer": {
             "$ref": "#/components/schemas/RefCatalog"
-          },
-          "title": {
-            "type": "string"
           }
         },
         "description": "Элемент журнала задач"
