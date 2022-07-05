@@ -101,6 +101,62 @@
         }
       }
     },
+    "/catalogs/{type}/search": {
+      "get": {
+        "description": "Просто возвращает 200. Используется в отладочных и проверочных целях.",
+        "operationId": "searchCatalog",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Строка поиска",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "description": "Количество",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Cмещение",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "type",
+            "in": "path",
+            "description": "Тип справочника",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Время на сервере",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RefCatalog"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/catalogs/{type}/{guid}": {
       "get": {
         "description": "Просто возвращает 200. Используется в отладочных и проверочных целях.",

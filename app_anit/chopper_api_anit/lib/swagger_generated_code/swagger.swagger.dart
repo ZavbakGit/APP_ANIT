@@ -79,6 +79,34 @@ abstract class Swagger extends ChopperService {
   Future<chopper.Response<Config>> _loginGet();
 
   ///
+  ///@param search Строка поиска
+  ///@param count Количество
+  ///@param offset Cмещение
+  ///@param type Тип справочника
+  Future<chopper.Response<RefCatalog>> catalogsTypeSearchGet(
+      {required String? search,
+      required num? count,
+      required num? offset,
+      required String? type}) {
+    generatedMapping.putIfAbsent(RefCatalog, () => RefCatalog.fromJsonFactory);
+
+    return _catalogsTypeSearchGet(
+        search: search, count: count, offset: offset, type: type);
+  }
+
+  ///
+  ///@param search Строка поиска
+  ///@param count Количество
+  ///@param offset Cмещение
+  ///@param type Тип справочника
+  @Get(path: '/catalogs/{type}/search')
+  Future<chopper.Response<RefCatalog>> _catalogsTypeSearchGet(
+      {@Query('search') required String? search,
+      @Query('count') required num? count,
+      @Query('offset') required num? offset,
+      @Path('type') required String? type});
+
+  ///
   ///@param type Тип справочника
   ///@param guid Тип справочника
   Future<chopper.Response<RefCatalog>> catalogsTypeGuidGet(

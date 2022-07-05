@@ -39,6 +39,22 @@ class _$Swagger extends Swagger {
   }
 
   @override
+  Future<Response<RefCatalog>> _catalogsTypeSearchGet(
+      {required String? search,
+      required num? count,
+      required num? offset,
+      required String? type}) {
+    final $url = '/catalogs/${type}/search';
+    final $params = <String, dynamic>{
+      'search': search,
+      'count': count,
+      'offset': offset
+    };
+    final $request = Request('GET', $url, client.baseUrl, parameters: $params);
+    return client.send<RefCatalog, RefCatalog>($request);
+  }
+
+  @override
   Future<Response<RefCatalog>> _catalogsTypeGuidGet(
       {required String? type, required String? guid}) {
     final $url = '/catalogs/${type}/${guid}';
