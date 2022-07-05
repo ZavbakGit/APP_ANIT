@@ -14,10 +14,6 @@ final sl = GetIt.instance;
 
 Future<void> init() async {
   sl.registerFactory(
-    () => TaskCubit(appModel: sl(), repository: sl()),
-  );
-
-  sl.registerFactory(
     () => TasksCubit(appModel: sl(), repository: sl()),
   );
 

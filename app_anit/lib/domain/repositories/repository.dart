@@ -1,4 +1,5 @@
-import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
+import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart'
+    as sw;
 
 import '../../core/failures.dart';
 import 'package:dartz/dartz.dart';
@@ -21,5 +22,7 @@ abstract class Repository {
 
   Future<Either<Failure, RemoteConfigModel>> login(ConnectedConfigModel model);
 
-  Future<Either<Failure, List<TaskItem>>> tasksUserGet(String guidUser);
+  Future<Either<Failure, List<sw.TaskItem>>> tasksUserGet(String guidUser);
+
+  Future<Either<Failure, sw.Task?>> getTaskByGuid(String guid);
 }

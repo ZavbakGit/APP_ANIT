@@ -45,7 +45,6 @@ class TasksCubit extends Cubit<TasksPageState> {
 
   void refreshData() async {
     emit(_pageState().copyWith(isLoading: true));
-    await Future.delayed(const Duration(seconds: 1));
     final either =
         await repository.tasksUserGet(appModel.remoteConfig!.guidUser);
 

@@ -6,6 +6,50 @@ part of 'swagger.swagger.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+Task _$TaskFromJson(Map<String, dynamic> json) => Task(
+      guid: json['guid'] as String? ?? '',
+      date:
+          json['date'] == null ? null : DateTime.parse(json['date'] as String),
+      $number: json['number'] as String? ?? '',
+      condition: taskConditionFromJson(json['condition']),
+      importance: taskImportanceFromJson(json['importance']),
+      title: json['title'] as String? ?? '',
+      partner: json['partner'] == null
+          ? null
+          : RefCatalog.fromJson(json['partner'] as Map<String, dynamic>),
+      author: json['author'] == null
+          ? null
+          : RefCatalog.fromJson(json['author'] as Map<String, dynamic>),
+      responsible: json['responsible'] == null
+          ? null
+          : RefCatalog.fromJson(json['responsible'] as Map<String, dynamic>),
+      producer: json['producer'] == null
+          ? null
+          : RefCatalog.fromJson(json['producer'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$TaskToJson(Task instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('guid', instance.guid);
+  writeNotNull('date', instance.date?.toIso8601String());
+  writeNotNull('number', instance.$number);
+  writeNotNull('condition', taskConditionToJson(instance.condition));
+  writeNotNull('importance', taskImportanceToJson(instance.importance));
+  writeNotNull('title', instance.title);
+  writeNotNull('partner', instance.partner?.toJson());
+  writeNotNull('author', instance.author?.toJson());
+  writeNotNull('responsible', instance.responsible?.toJson());
+  writeNotNull('producer', instance.producer?.toJson());
+  return val;
+}
+
 TaskItem _$TaskItemFromJson(Map<String, dynamic> json) => TaskItem(
       guid: json['guid'] as String? ?? '',
       date:

@@ -6,12 +6,19 @@ import '../../app/injection_container.dart';
 import '../../core/presentation/page_widget.dart';
 
 class TaskPage extends StatelessWidget {
-  const TaskPage({Key? key}) : super(key: key);
+  final String guid;
+  const TaskPage({
+    Key? key,
+    required this.guid,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final cubit = TaskCubit(appModel: sl(), repository: sl(), guid: guid)
+      ..init();
+
     return BlocProvider(
-      create: (context) => sl<TaskCubit>(),
+      create: (context) => cubit,
       child: const CustomPageWidget(
         child: TaskBodyWidget(),
       ),
@@ -30,9 +37,17 @@ class TaskBodyWidget extends StatelessWidget {
           return true;
         },
         builder: (context, state) {
+          if (state.isLoading) {
+            return const Scaffold(
+              body: Center(
+                child: CustomScrollView(),
+              ),
+            );
+          }
+
           return Scaffold(
             body: Center(
-              child: Text(state.title),
+              child: Text(state.task?.title ?? ''),
             ),
           );
         });

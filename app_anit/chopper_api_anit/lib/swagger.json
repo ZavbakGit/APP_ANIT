@@ -23,6 +23,34 @@
     }
   ],
   "paths": {
+    "/task/{guid}": {
+      "get": {
+        "operationId": "getTaskByGuid",
+        "description": "задача по guid",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "guid",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Task"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/tasks_user": {
       "get": {
         "operationId": "getTaskUser",
@@ -43,7 +71,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Tasks"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TaskItem"
+                  }
                 }
               }
             }
@@ -111,11 +142,61 @@
   },
   "components": {
     "schemas": {
-      "Tasks": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/TaskItem"
-        }
+      "Task": {
+        "type": "object",
+        "properties": {
+          "guid": {
+            "description": "guid документа",
+            "type": "string"
+          },
+          "date": {
+            "type": "string",
+            "description": "Дата документа",
+            "format": "date-time"
+          },
+          "number": {
+            "description": "Номер документа",
+            "type": "string"
+          },
+          "condition": {
+            "type": "string",
+            "description": "Состояние",
+            "enum": [
+              "Appointed",
+              "Received",
+              "Progress",
+              "Postponed",
+              "Completed",
+              "Reopened"
+            ]
+          },
+          "importance": {
+            "type": "string",
+            "description": "Важность",
+            "enum": [
+              "High",
+              "Normal",
+              "Low"
+            ]
+          },
+          "title": {
+            "description": "ОписаниеСобытия",
+            "type": "string"
+          },
+          "partner": {
+            "$ref": "#/components/schemas/RefCatalog"
+          },
+          "author": {
+            "$ref": "#/components/schemas/RefCatalog"
+          },
+          "responsible": {
+            "$ref": "#/components/schemas/RefCatalog"
+          },
+          "producer": {
+            "$ref": "#/components/schemas/RefCatalog"
+          }
+        },
+        "description": "Задача"
       },
       "TaskItem": {
         "type": "object",

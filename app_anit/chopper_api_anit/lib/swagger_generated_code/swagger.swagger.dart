@@ -39,8 +39,23 @@ abstract class Swagger extends ChopperService {
   }
 
   ///
+  ///@param guid
+  Future<chopper.Response<Task>> taskGuidGet({required String? guid}) {
+    generatedMapping.putIfAbsent(Task, () => Task.fromJsonFactory);
+
+    return _taskGuidGet(guid: guid);
+  }
+
+  ///
+  ///@param guid
+  @Get(path: '/task/{guid}')
+  Future<chopper.Response<Task>> _taskGuidGet(
+      {@Path('guid') required String? guid});
+
+  ///
   ///@param guidUser
-  Future<chopper.Response<Tasks>> tasksUserGet({required String? guidUser}) {
+  Future<chopper.Response<List<TaskItem>>> tasksUserGet(
+      {required String? guidUser}) {
     generatedMapping.putIfAbsent(TaskItem, () => TaskItem.fromJsonFactory);
 
     return _tasksUserGet(guidUser: guidUser);
@@ -49,7 +64,7 @@ abstract class Swagger extends ChopperService {
   ///
   ///@param guidUser
   @Get(path: '/tasks_user')
-  Future<chopper.Response<Tasks>> _tasksUserGet(
+  Future<chopper.Response<List<TaskItem>>> _tasksUserGet(
       {@Query('guidUser') required String? guidUser});
 
   ///Login
@@ -82,7 +97,130 @@ abstract class Swagger extends ChopperService {
       @Path('guid') required String? guid});
 }
 
-typedef Tasks = List<TaskItem>;
+@JsonSerializable(explicitToJson: true)
+class Task {
+  Task({
+    this.guid,
+    this.date,
+    this.$number,
+    this.condition,
+    this.importance,
+    this.title,
+    this.partner,
+    this.author,
+    this.responsible,
+    this.producer,
+  });
+
+  factory Task.fromJson(Map<String, dynamic> json) => _$TaskFromJson(json);
+
+  @JsonKey(name: 'guid', includeIfNull: false, defaultValue: '')
+  final String? guid;
+  @JsonKey(name: 'date', includeIfNull: false)
+  final DateTime? date;
+  @JsonKey(name: 'number', includeIfNull: false, defaultValue: '')
+  final String? $number;
+  @JsonKey(
+      name: 'condition',
+      includeIfNull: false,
+      toJson: taskConditionToJson,
+      fromJson: taskConditionFromJson)
+  final enums.TaskCondition? condition;
+  @JsonKey(
+      name: 'importance',
+      includeIfNull: false,
+      toJson: taskImportanceToJson,
+      fromJson: taskImportanceFromJson)
+  final enums.TaskImportance? importance;
+  @JsonKey(name: 'title', includeIfNull: false, defaultValue: '')
+  final String? title;
+  @JsonKey(name: 'partner', includeIfNull: false)
+  final RefCatalog? partner;
+  @JsonKey(name: 'author', includeIfNull: false)
+  final RefCatalog? author;
+  @JsonKey(name: 'responsible', includeIfNull: false)
+  final RefCatalog? responsible;
+  @JsonKey(name: 'producer', includeIfNull: false)
+  final RefCatalog? producer;
+  static const fromJsonFactory = _$TaskFromJson;
+  static const toJsonFactory = _$TaskToJson;
+  Map<String, dynamic> toJson() => _$TaskToJson(this);
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is Task &&
+            (identical(other.guid, guid) ||
+                const DeepCollectionEquality().equals(other.guid, guid)) &&
+            (identical(other.date, date) ||
+                const DeepCollectionEquality().equals(other.date, date)) &&
+            (identical(other.$number, $number) ||
+                const DeepCollectionEquality()
+                    .equals(other.$number, $number)) &&
+            (identical(other.condition, condition) ||
+                const DeepCollectionEquality()
+                    .equals(other.condition, condition)) &&
+            (identical(other.importance, importance) ||
+                const DeepCollectionEquality()
+                    .equals(other.importance, importance)) &&
+            (identical(other.title, title) ||
+                const DeepCollectionEquality().equals(other.title, title)) &&
+            (identical(other.partner, partner) ||
+                const DeepCollectionEquality()
+                    .equals(other.partner, partner)) &&
+            (identical(other.author, author) ||
+                const DeepCollectionEquality().equals(other.author, author)) &&
+            (identical(other.responsible, responsible) ||
+                const DeepCollectionEquality()
+                    .equals(other.responsible, responsible)) &&
+            (identical(other.producer, producer) ||
+                const DeepCollectionEquality()
+                    .equals(other.producer, producer)));
+  }
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(guid) ^
+      const DeepCollectionEquality().hash(date) ^
+      const DeepCollectionEquality().hash($number) ^
+      const DeepCollectionEquality().hash(condition) ^
+      const DeepCollectionEquality().hash(importance) ^
+      const DeepCollectionEquality().hash(title) ^
+      const DeepCollectionEquality().hash(partner) ^
+      const DeepCollectionEquality().hash(author) ^
+      const DeepCollectionEquality().hash(responsible) ^
+      const DeepCollectionEquality().hash(producer) ^
+      runtimeType.hashCode;
+}
+
+extension $TaskExtension on Task {
+  Task copyWith(
+      {String? guid,
+      DateTime? date,
+      String? $number,
+      enums.TaskCondition? condition,
+      enums.TaskImportance? importance,
+      String? title,
+      RefCatalog? partner,
+      RefCatalog? author,
+      RefCatalog? responsible,
+      RefCatalog? producer}) {
+    return Task(
+        guid: guid ?? this.guid,
+        date: date ?? this.date,
+        $number: $number ?? this.$number,
+        condition: condition ?? this.condition,
+        importance: importance ?? this.importance,
+        title: title ?? this.title,
+        partner: partner ?? this.partner,
+        author: author ?? this.author,
+        responsible: responsible ?? this.responsible,
+        producer: producer ?? this.producer);
+  }
+}
 
 @JsonSerializable(explicitToJson: true)
 class TaskItem {
@@ -316,6 +454,105 @@ extension $RefCatalogExtension on RefCatalog {
         code: code ?? this.code,
         name: name ?? this.name);
   }
+}
+
+String? taskConditionToJson(enums.TaskCondition? taskCondition) {
+  return enums.$TaskConditionMap[taskCondition];
+}
+
+enums.TaskCondition taskConditionFromJson(
+  Object? taskCondition, [
+  enums.TaskCondition? defaultValue,
+]) {
+  if (taskCondition is String) {
+    return enums.$TaskConditionMap.entries
+        .firstWhere(
+            (element) =>
+                element.value.toLowerCase() == taskCondition.toLowerCase(),
+            orElse: () =>
+                const MapEntry(enums.TaskCondition.swaggerGeneratedUnknown, ''))
+        .key;
+  }
+
+  final parsedResult = defaultValue == null
+      ? null
+      : enums.$TaskConditionMap.entries
+          .firstWhereOrNull((element) => element.value == defaultValue)
+          ?.key;
+
+  return parsedResult ??
+      defaultValue ??
+      enums.TaskCondition.swaggerGeneratedUnknown;
+}
+
+List<String> taskConditionListToJson(List<enums.TaskCondition>? taskCondition) {
+  if (taskCondition == null) {
+    return [];
+  }
+
+  return taskCondition.map((e) => enums.$TaskConditionMap[e]!).toList();
+}
+
+List<enums.TaskCondition> taskConditionListFromJson(
+  List? taskCondition, [
+  List<enums.TaskCondition>? defaultValue,
+]) {
+  if (taskCondition == null) {
+    return defaultValue ?? [];
+  }
+
+  return taskCondition.map((e) => taskConditionFromJson(e.toString())).toList();
+}
+
+String? taskImportanceToJson(enums.TaskImportance? taskImportance) {
+  return enums.$TaskImportanceMap[taskImportance];
+}
+
+enums.TaskImportance taskImportanceFromJson(
+  Object? taskImportance, [
+  enums.TaskImportance? defaultValue,
+]) {
+  if (taskImportance is String) {
+    return enums.$TaskImportanceMap.entries
+        .firstWhere(
+            (element) =>
+                element.value.toLowerCase() == taskImportance.toLowerCase(),
+            orElse: () => const MapEntry(
+                enums.TaskImportance.swaggerGeneratedUnknown, ''))
+        .key;
+  }
+
+  final parsedResult = defaultValue == null
+      ? null
+      : enums.$TaskImportanceMap.entries
+          .firstWhereOrNull((element) => element.value == defaultValue)
+          ?.key;
+
+  return parsedResult ??
+      defaultValue ??
+      enums.TaskImportance.swaggerGeneratedUnknown;
+}
+
+List<String> taskImportanceListToJson(
+    List<enums.TaskImportance>? taskImportance) {
+  if (taskImportance == null) {
+    return [];
+  }
+
+  return taskImportance.map((e) => enums.$TaskImportanceMap[e]!).toList();
+}
+
+List<enums.TaskImportance> taskImportanceListFromJson(
+  List? taskImportance, [
+  List<enums.TaskImportance>? defaultValue,
+]) {
+  if (taskImportance == null) {
+    return defaultValue ?? [];
+  }
+
+  return taskImportance
+      .map((e) => taskImportanceFromJson(e.toString()))
+      .toList();
 }
 
 String? taskItemConditionToJson(enums.TaskItemCondition? taskItemCondition) {

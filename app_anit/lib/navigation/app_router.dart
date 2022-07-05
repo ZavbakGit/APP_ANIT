@@ -30,8 +30,11 @@ class AppRouter {
       ),
       GoRoute(
         name: "task",
-        path: "/task",
-        builder: (context, _) => const TaskPage(),
+        path: "/task/:guid",
+        builder: (context, state) {
+          final guid = state.params['guid'];
+          return TaskPage(guid: guid!);
+        },
       ),
     ], // All the routes can be found there
   );

@@ -1,7 +1,8 @@
 import 'package:app_anit/core/failures.dart';
 import 'package:chopper/chopper.dart';
-import 'package:chopper_api_anit/swagger_generated_code/client_index.dart';
-import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
+import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart'
+    as sw;
+
 import 'package:dartz/dartz.dart';
 
 import '../../../core/exeption.dart';
@@ -12,7 +13,7 @@ import '../local/local_datasourse.dart';
 import '../remote/api_client.dart';
 
 class RepositoryImpl extends Repository {
-  Swagger? swagger;
+  sw.Swagger? swagger;
   final LocalDatasourse localDatasourse;
 
   RepositoryImpl({
@@ -85,7 +86,8 @@ class RepositoryImpl extends Repository {
   }
 
   @override
-  Future<Either<Failure, List<TaskItem>>> tasksUserGet(String guidUser) async {
+  Future<Either<Failure, List<sw.TaskItem>>> tasksUserGet(
+      String guidUser) async {
     try {
       final response = await swagger!.tasksUserGet(guidUser: guidUser);
 
@@ -94,6 +96,21 @@ class RepositoryImpl extends Repository {
       }
 
       return Right(response.body ?? []);
+    } catch (e) {
+      return Left(_getCatchFailure(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, sw.Task?>> getTaskByGuid(String guid) async {
+    try {
+      final response = await swagger!.taskGuidGet(guid: guid);
+
+      if (response.errorStatusCode) {
+        return Left(response.getFailureResponse());
+      }
+
+      return Right(response.body);
     } catch (e) {
       return Left(_getCatchFailure(e));
     }

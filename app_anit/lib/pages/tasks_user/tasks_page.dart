@@ -33,7 +33,7 @@ class TasksBodyWidget extends StatelessWidget {
     return BlocConsumer<TasksCubit, TasksPageState>(
       listener: (context, state) {
         if (state.goGuidTask != null) {
-          context.push('/task');
+          context.push('/task/${state.goGuidTask}');
         }
       },
       buildWhen: (previous, current) {
