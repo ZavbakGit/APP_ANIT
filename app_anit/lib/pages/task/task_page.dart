@@ -49,11 +49,78 @@ class TaskBodyWidget extends StatelessWidget {
             body: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Center(child: Text(state.task?.title ?? '')),
+                InkWell(
+                  onTap: () => showDialogCustom(context),
+                  child: Center(child: Text(state.task?.title ?? '')),
+                ),
                 Text(state.task?.guid ?? ''),
               ],
             ),
           );
         });
+  }
+
+  Future<Object?> showDialogCustom(BuildContext context) {
+    return showGeneralDialog(
+      barrierColor: Colors.black.withOpacity(0.5),
+      transitionBuilder: (context, a1, a2, widget) {
+        return Transform.scale(
+          scale: a1.value,
+          child: Opacity(
+            opacity: a1.value,
+            child: const Center(
+              child: SafeArea(
+                child: Scaffold(
+                  body: Center(child: Text('jhgjhgjhg')),
+                ),
+              ),
+            ),
+          ),
+        );
+      },
+      transitionDuration: const Duration(milliseconds: 300),
+      barrierDismissible: true,
+      barrierLabel: 'wefdewfe',
+      context: context,
+      pageBuilder: (context, animation1, animation2) {
+        return Container();
+      },
+    );
+  }
+
+  Future<Object?> showDialog(BuildContext context) {
+    return showGeneralDialog(
+      barrierColor: Colors.black.withOpacity(0.5),
+      transitionBuilder: (context, a1, a2, widget) {
+        return Transform.scale(
+          scale: a1.value,
+          child: Opacity(
+            opacity: a1.value,
+            child: Expanded(
+              child: AlertDialog(
+                shape: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16.0)),
+                title: Text('Hello!!'),
+                content: Text('How are you?'),
+              ),
+            ),
+          ),
+        );
+      },
+      transitionDuration: const Duration(milliseconds: 200),
+      barrierDismissible: true,
+      barrierLabel: '',
+      context: context,
+      pageBuilder: (context, animation1, animation2) {
+        return Container(
+          height: 500,
+          width: 500,
+          color: Colors.red,
+          child: const Center(
+            child: Text('kjhjkhjk'),
+          ),
+        );
+      },
+    );
   }
 }
