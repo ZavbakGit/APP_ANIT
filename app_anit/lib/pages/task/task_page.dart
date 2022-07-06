@@ -46,8 +46,12 @@ class TaskBodyWidget extends StatelessWidget {
           }
 
           return Scaffold(
-            body: Center(
-              child: Text(state.task?.title ?? ''),
+            body: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Center(child: Text(state.task?.title ?? '')),
+                Text(state.task?.guid ?? ''),
+              ],
             ),
           );
         });
