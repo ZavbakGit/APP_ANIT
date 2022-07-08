@@ -8,7 +8,14 @@ class SearchDialogPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appBar = CustomSearchAppBar(title: 'Строка поиска ');
+    final FocusNode focusNode = FocusNode();
+    focusNode.requestFocus();
+
+    final appBar = CustomSearchAppBar(
+      title: 'Строка поиска ',
+      queryTextController: TextEditingController(),
+      focusNode: focusNode,
+    );
     return CustomPageWidget(
       child: Scaffold(
         appBar: appBar,
@@ -17,3 +24,5 @@ class SearchDialogPage extends StatelessWidget {
     );
   }
 }
+
+//https://quickbirdstudios.com/blog/flutter-adaptive-search-widget/

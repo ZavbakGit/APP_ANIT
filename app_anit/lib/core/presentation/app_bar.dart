@@ -29,10 +29,15 @@ class CustomSearchAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   final Size preferredSize;
 
-  CustomSearchAppBar({
-    Key? key,
-    this.title,
-  })  : preferredSize = const Size.fromHeight(50.0),
+  final TextEditingController? queryTextController;
+  final FocusNode? focusNode;
+
+  CustomSearchAppBar(
+      {Key? key,
+      this.title,
+      required this.queryTextController,
+      required this.focusNode})
+      : preferredSize = const Size.fromHeight(50.0),
         super(key: key);
 
   @override
@@ -41,10 +46,14 @@ class CustomSearchAppBar extends StatelessWidget with PreferredSizeWidget {
       title: TextField(
         textInputAction: TextInputAction.search,
         decoration: InputDecoration(hintText: title),
+        controller: queryTextController,
+        focusNode: focusNode,
       ),
       actions: [
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            queryTextController!.text = '';
+          },
           icon: const Icon(Icons.clear),
         ),
       ],
