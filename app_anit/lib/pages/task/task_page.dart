@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../app/injection_container.dart';
 import '../../core/presentation/page_widget.dart';
+import '../../core/presentation/text_field.dart';
+import '../search_dialog/search_dialog_page.dart';
 
 class TaskPage extends StatelessWidget {
   final String guid;
@@ -46,15 +48,19 @@ class TaskBodyWidget extends StatelessWidget {
           }
 
           return Scaffold(
-            body: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                InkWell(
-                  onTap: () => showDialogCustom(context),
-                  child: Center(child: Text(state.task?.title ?? '')),
-                ),
-                Text(state.task?.guid ?? ''),
-              ],
+            body: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  InkWell(
+                    onTap: () => showDialogCustom(context),
+                    child: CustomCatalogView(
+                      title: 'Клиент',
+                      name: state.task?.partner?.name ?? '',
+                    ),
+                  ),
+                ],
+              ),
             ),
           );
         });
@@ -68,13 +74,7 @@ class TaskBodyWidget extends StatelessWidget {
           scale: a1.value,
           child: Opacity(
             opacity: a1.value,
-            child: const Center(
-              child: SafeArea(
-                child: Scaffold(
-                  body: Center(child: Text('jhgjhgjhg')),
-                ),
-              ),
-            ),
+            child: SearchDialogPage(),
           ),
         );
       },

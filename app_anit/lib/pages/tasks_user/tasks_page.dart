@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../app/injection_container.dart';
+import '../../core/presentation/app_bar.dart';
 import '../../core/presentation/divider_widget.dart';
 import '../../core/presentation/page_widget.dart';
 import '../../core/presentation/progres_widget.dart';
@@ -40,38 +41,39 @@ class TasksBodyWidget extends StatelessWidget {
         return current.goGuidTask == null;
       },
       builder: (context, state) {
+        final popupMenuButton = PopupMenuButton(
+          icon: const Icon(Icons.more_vert),
+          itemBuilder: (context) => [
+            PopupMenuItem(
+              value: 1,
+              child: const Text("Выйти"),
+              onTap: () {
+                BlocProvider.of<TasksCubit>(context).exit();
+              },
+            ),
+            PopupMenuItem(
+              value: 1,
+              child: const Text("Обновить"),
+              onTap: () {
+                BlocProvider.of<TasksCubit>(context).refreshData();
+              },
+            ),
+            PopupMenuItem(
+              value: 1,
+              child: const Text("Очистить"),
+              onTap: () {
+                BlocProvider.of<TasksCubit>(context).clear();
+              },
+            ),
+          ],
+        );
+
+        final appBar = CustomAppBar(
+          title: state.user,
+          actions: [popupMenuButton],
+        );
         return Scaffold(
-          appBar: AppBar(
-            title: Text(state.user),
-            actions: [
-              PopupMenuButton(
-                icon: const Icon(Icons.more_vert),
-                itemBuilder: (context) => [
-                  PopupMenuItem(
-                    value: 1,
-                    child: const Text("Выйти"),
-                    onTap: () {
-                      BlocProvider.of<TasksCubit>(context).exit();
-                    },
-                  ),
-                  PopupMenuItem(
-                    value: 1,
-                    child: const Text("Обновить"),
-                    onTap: () {
-                      BlocProvider.of<TasksCubit>(context).refreshData();
-                    },
-                  ),
-                  PopupMenuItem(
-                    value: 1,
-                    child: const Text("Очистить"),
-                    onTap: () {
-                      BlocProvider.of<TasksCubit>(context).clear();
-                    },
-                  ),
-                ],
-              )
-            ],
-          ),
+          appBar: appBar,
           body: RefreshIndicator(
             onRefresh: () async {
               BlocProvider.of<TasksCubit>(context).refreshData();
