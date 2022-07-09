@@ -1,19 +1,16 @@
 import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../domain/models/app_model.dart';
 import '../../domain/repositories/repository.dart';
 
 class TaskCubit extends Cubit<TaskPageState> {
   final Repository repository;
-  final AppModel appModel;
   final String guid;
 
   TaskPageState _pageState() => TaskPageState(task: Task(guid: guid));
 
   TaskCubit({
     required this.repository,
-    required this.appModel,
     required this.guid,
   }) : super(TaskPageState().copyWith(task: Task(guid: guid)));
 

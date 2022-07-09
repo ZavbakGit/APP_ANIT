@@ -16,8 +16,7 @@ class TaskPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = TaskCubit(appModel: sl(), repository: sl(), guid: guid)
-      ..init();
+    final cubit = TaskCubit(repository: sl(), guid: guid)..init();
 
     return BlocProvider(
       create: (context) => cubit,

@@ -83,7 +83,7 @@ abstract class Swagger extends ChopperService {
   ///@param count Количество
   ///@param offset Cмещение
   ///@param type Тип справочника
-  Future<chopper.Response<RefCatalog>> catalogsTypeSearchGet(
+  Future<chopper.Response<List<RefCatalog>>> catalogsTypeSearchGet(
       {required String? search,
       required num? count,
       required num? offset,
@@ -100,7 +100,7 @@ abstract class Swagger extends ChopperService {
   ///@param offset Cмещение
   ///@param type Тип справочника
   @Get(path: '/catalogs/{type}/search')
-  Future<chopper.Response<RefCatalog>> _catalogsTypeSearchGet(
+  Future<chopper.Response<List<RefCatalog>>> _catalogsTypeSearchGet(
       {@Query('search') required String? search,
       @Query('count') required num? count,
       @Query('offset') required num? offset,

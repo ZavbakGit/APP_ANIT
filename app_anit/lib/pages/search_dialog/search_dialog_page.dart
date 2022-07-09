@@ -1,9 +1,12 @@
 import 'package:app_anit/pages/search_dialog/search_dialog_cubit.dart';
+import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../app/injection_container.dart';
 import '../../core/presentation/app_bar.dart';
 import '../../core/presentation/progres_widget.dart';
+import '../../core/presentation/text_widget.dart';
 
 class SearchDialogPage extends StatelessWidget {
   SearchDialogPage({Key? key}) : super(key: key);
@@ -15,8 +18,10 @@ class SearchDialogPage extends StatelessWidget {
     final FocusNode focusNode = FocusNode();
     focusNode.requestFocus();
 
+    final cubit = SearchDialogCubit(repository: sl(), type: 'Партнеры');
+
     return BlocProvider(
-      create: (context) => SearchDialogCubit(),
+      create: (context) => cubit,
       child: BlocBuilder<SearchDialogCubit, SearchDialogState>(
         buildWhen: (previous, current) => false,
         builder: (context, state) {
@@ -55,13 +60,64 @@ class ResultWidget extends StatelessWidget {
         if (state.isLoading) {
           return const Center(child: CustomCircularProgressIndicator());
         }
-        return InkWell(
-          onTap: () {
-            BlocProvider.of<SearchDialogCubit>(context).search('jhgjhgjh');
-          },
-          child: Center(child: Text(state.toString())),
-        );
+
+        if (state.error != null) {
+          return Center(child: CustomMessageErrorText(text: state.error ?? ''));
+        }
+
+        if (state.list != null) {
+          if (state.list!.isEmpty) {
+            return const Center(child: CustomTitleText(text: 'Пусто'));
+          } else {
+            return ListWidget(
+              list: state.list!,
+            );
+          }
+        } else {
+          return const Center(child: CustomTitleText(text: 'Нет списка'));
+        }
       },
+    );
+  }
+}
+
+class ListWidget extends StatelessWidget {
+  final List<RefCatalog> list;
+  const ListWidget({Key? key, required this.list}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      physics:
+          const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+      scrollDirection: Axis.vertical,
+      //shrinkWrap: true,
+      itemBuilder: (BuildContext context, int index) => ItemWidget(
+        item: list[index],
+      ),
+      itemCount: list.length,
+    );
+  }
+}
+
+class ItemWidget extends StatelessWidget {
+  final RefCatalog item;
+
+  const ItemWidget({
+    Key? key,
+    required this.item,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {},
+      child: Card(
+        child: ListTile(
+          title: Text(item.name ?? ''),
+          subtitle: Text(item.code ?? ''),
+        ),
+      ),
     );
   }
 }

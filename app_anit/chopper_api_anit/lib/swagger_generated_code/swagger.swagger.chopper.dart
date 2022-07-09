@@ -39,7 +39,7 @@ class _$Swagger extends Swagger {
   }
 
   @override
-  Future<Response<RefCatalog>> _catalogsTypeSearchGet(
+  Future<Response<List<RefCatalog>>> _catalogsTypeSearchGet(
       {required String? search,
       required num? count,
       required num? offset,
@@ -51,7 +51,7 @@ class _$Swagger extends Swagger {
       'offset': offset
     };
     final $request = Request('GET', $url, client.baseUrl, parameters: $params);
-    return client.send<RefCatalog, RefCatalog>($request);
+    return client.send<List<RefCatalog>, RefCatalog>($request);
   }
 
   @override

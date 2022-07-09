@@ -2,6 +2,7 @@ import 'package:app_anit/core/failures.dart';
 import 'package:chopper/chopper.dart';
 import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart'
     as sw;
+import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
 
 import 'package:dartz/dartz.dart';
 
@@ -102,7 +103,7 @@ class RepositoryImpl extends Repository {
   }
 
   @override
-  Future<Either<Failure, sw.Task?>> getTaskByGuid(String guid) async {
+  Future<Either<Failure, sw.Task>> getTaskByGuid(String guid) async {
     try {
       final response = await swagger!.taskGuidGet(guid: guid);
 
@@ -110,7 +111,31 @@ class RepositoryImpl extends Repository {
         return Left(response.getFailureResponse());
       }
 
-      return Right(response.body);
+      return Right(response.body!);
+    } catch (e) {
+      return Left(_getCatchFailure(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<RefCatalog>>> catalogSearch({
+    required String type,
+    required String search,
+    required int offset,
+    required int count,
+  }) async {
+    try {
+      final response = await swagger!.catalogsTypeSearchGet(
+        search: search,
+        count: count,
+        offset: offset,
+        type: type,
+      );
+
+      if (response.errorStatusCode) {
+        return Left(response.getFailureResponse());
+      }
+      return Right(response.body!);
     } catch (e) {
       return Left(_getCatchFailure(e));
     }
