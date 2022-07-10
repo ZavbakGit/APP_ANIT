@@ -1,4 +1,5 @@
 import 'package:app_anit/pages/task/task_cubit.dart';
+import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -8,6 +9,7 @@ import '../../core/presentation/widgets/page_widget.dart';
 import '../../core/presentation/widgets/text_field.dart';
 import '../../core/presentation/extention_enum.dart';
 import '../search_dialog/search_dialog_page.dart';
+import 'package:go_router/go_router.dart';
 
 class TaskPage extends StatelessWidget {
   final String guid;
@@ -94,21 +96,41 @@ class TaskBodyWidget extends StatelessWidget {
                           TextEditingController(text: state.task?.title ?? ''),
                     ),
                     InkWell(
-                      onTap: () => showDialogCustom(context),
+                      onTap: () async {
+                        Navigator.push<RefCatalog>(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                SearchCatalogDialogPage(type: 'Партнеры'),
+                          ),
+                        ).then((value) {
+                          if (value != null) {
+                            context.read<TaskCubit>().changePartner(value);
+                          }
+                        });
+
+                        // await showDialogCustom(context, 'Партнеры')
+                        //     .then((value) {
+                        //   if (value is RefCatalog) {
+                        //     context.read<TaskCubit>().changePartner(value);
+                        //   }
+                        //   return null;
+                        // });
+                      },
                       child: CustomCatalogField(
                         title: 'Клиент',
                         name: state.task?.partner?.name ?? '',
                       ),
                     ),
                     InkWell(
-                      onTap: () => showDialogCustom(context),
+                      onTap: () => showDialogCustom(context, 'Пользователи'),
                       child: CustomCatalogField(
                         title: 'Ответственный',
                         name: state.task?.responsible?.name ?? '',
                       ),
                     ),
                     InkWell(
-                      onTap: () => showDialogCustom(context),
+                      onTap: () => showDialogCustom(context, 'Пользователи'),
                       child: CustomCatalogField(
                         title: 'Постановщик',
                         name: state.task?.producer?.name ?? '',
@@ -122,7 +144,7 @@ class TaskBodyWidget extends StatelessWidget {
         });
   }
 
-  Future<Object?> showDialogCustom(BuildContext context) {
+  Future<Object?> showDialogCustom(BuildContext context, String typeCatalog) {
     return showGeneralDialog(
       barrierColor: Colors.black.withOpacity(0.5),
       transitionBuilder: (context, a1, a2, widget) {
@@ -130,7 +152,9 @@ class TaskBodyWidget extends StatelessWidget {
           scale: a1.value,
           child: Opacity(
             opacity: a1.value,
-            child: SearchDialogPage(),
+            child: SearchCatalogDialogPage(
+              type: typeCatalog,
+            ),
           ),
         );
       },
@@ -140,42 +164,6 @@ class TaskBodyWidget extends StatelessWidget {
       context: context,
       pageBuilder: (context, animation1, animation2) {
         return Container();
-      },
-    );
-  }
-
-  Future<Object?> showDialog(BuildContext context) {
-    return showGeneralDialog(
-      barrierColor: Colors.black.withOpacity(0.5),
-      transitionBuilder: (context, a1, a2, widget) {
-        return Transform.scale(
-          scale: a1.value,
-          child: Opacity(
-            opacity: a1.value,
-            child: Expanded(
-              child: AlertDialog(
-                shape: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(16.0)),
-                title: Text('Hello!!'),
-                content: Text('How are you?'),
-              ),
-            ),
-          ),
-        );
-      },
-      transitionDuration: const Duration(milliseconds: 200),
-      barrierDismissible: true,
-      barrierLabel: '',
-      context: context,
-      pageBuilder: (context, animation1, animation2) {
-        return Container(
-          height: 500,
-          width: 500,
-          color: Colors.red,
-          child: const Center(
-            child: Text('kjhjkhjk'),
-          ),
-        );
       },
     );
   }

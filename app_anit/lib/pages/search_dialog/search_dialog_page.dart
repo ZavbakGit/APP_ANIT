@@ -8,8 +8,13 @@ import '../../core/presentation/widgets/app_bar.dart';
 import '../../core/presentation/widgets/progres_widget.dart';
 import '../../core/presentation/widgets/text_widget.dart';
 
-class SearchDialogPage extends StatelessWidget {
-  SearchDialogPage({Key? key}) : super(key: key);
+class SearchCatalogDialogPage extends StatelessWidget {
+  SearchCatalogDialogPage({
+    Key? key,
+    required this.type,
+  }) : super(key: key);
+
+  final String type;
 
   final textEditingController = TextEditingController();
 
@@ -18,10 +23,8 @@ class SearchDialogPage extends StatelessWidget {
     final FocusNode focusNode = FocusNode();
     focusNode.requestFocus();
 
-    final cubit = SearchDialogCubit(repository: sl(), type: 'Партнеры');
-
     return BlocProvider(
-      create: (context) => cubit,
+      create: (context) => SearchDialogCubit(repository: sl(), type: type),
       child: BlocBuilder<SearchDialogCubit, SearchDialogState>(
         buildWhen: (previous, current) => false,
         builder: (context, state) {
@@ -111,7 +114,9 @@ class ItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context).pop(item);
+      },
       child: Card(
         child: ListTile(
           title: Text(item.name ?? ''),
@@ -121,6 +126,8 @@ class ItemWidget extends StatelessWidget {
     );
   }
 }
+
+
 
 
 //https://quickbirdstudios.com/blog/flutter-adaptive-search-widget/

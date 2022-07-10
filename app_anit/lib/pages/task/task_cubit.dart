@@ -6,8 +6,10 @@ import '../../domain/repositories/repository.dart';
 class TaskCubit extends Cubit<TaskPageState> {
   final Repository repository;
   final String guid;
+  Task? task;
+  bool modified = false;
 
-  TaskPageState _pageState() => TaskPageState(task: Task(guid: guid));
+  TaskPageState _pageState() => TaskPageState();
 
   TaskCubit({
     required this.repository,
@@ -18,6 +20,12 @@ class TaskCubit extends Cubit<TaskPageState> {
     refreshData();
   }
 
+  void changePartner(RefCatalog partner) {
+    task = task?.copyWith(partner: partner);
+    emit(_pageState().copyWith(task: task));
+    modified = true;
+  }
+
   void refreshData() async {
     emit(_pageState().copyWith(isLoading: true));
 
@@ -25,7 +33,8 @@ class TaskCubit extends Cubit<TaskPageState> {
 
     either.fold((fail) {
       emit(_pageState().copyWith(error: 'Что пошло не так'));
-    }, (task) {
+    }, (result) {
+      task = result;
       emit(_pageState().copyWith(task: task));
     });
   }

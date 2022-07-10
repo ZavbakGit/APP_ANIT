@@ -1,4 +1,5 @@
 import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../domain/repositories/repository.dart';
@@ -12,9 +13,17 @@ class SearchDialogCubit extends Cubit<SearchDialogState> {
     required this.type,
   }) : super(SearchDialogState());
 
+  @override
+  Future<void> close() {
+    return super.close();
+  }
+
   void search(String search) async {
     if (search.length > 2) {
       emit(SearchDialogState(isLoading: true));
+
+      //TODO Это для тестов ниже
+      //await Future.delayed(Duration(seconds: 1));
 
       final either = await repository.catalogSearch(
           type: type, search: search, offset: 0, count: 100);
@@ -22,6 +31,7 @@ class SearchDialogCubit extends Cubit<SearchDialogState> {
       either.fold((fail) {
         emit(SearchDialogState(isLoading: false, error: 'Что пошло не так'));
       }, (list) {
+        //TODO Если выйти до того как выполнится запрос то будет исключение. Пока не наше как исправить
         emit(SearchDialogState(isLoading: false, list: list));
       });
     } else {
