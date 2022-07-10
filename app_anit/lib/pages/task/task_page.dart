@@ -1,3 +1,4 @@
+import 'package:app_anit/core/presentation/widgets/app_bar.dart';
 import 'package:app_anit/pages/task/task_cubit.dart';
 import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
 import 'package:flutter/material.dart';
@@ -5,11 +6,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 import '../../app/injection_container.dart';
+import '../../core/presentation/widgets/enum_choise_dialog.dart';
 import '../../core/presentation/widgets/page_widget.dart';
 import '../../core/presentation/widgets/text_field.dart';
 import '../../core/presentation/extention_enum.dart';
 import '../search_dialog/search_dialog_page.dart';
-import 'package:go_router/go_router.dart';
 
 class TaskPage extends StatelessWidget {
   final String guid;
@@ -49,94 +50,184 @@ class TaskBodyWidget extends StatelessWidget {
               ),
             );
           }
+          final title =
+              '${state.isModified ? '*' : ''}${state.task!.$number} от ${DateFormat('dd.MM.yy HH:mm').format(state.task!.date!)}';
+
+          final popupMenuButton = PopupMenuButton(
+            icon: const Icon(Icons.check),
+            itemBuilder: (context) => [],
+          );
+
+          final appBar = CustomAppBar(title: title, actions: [
+            if (state.isModified) popupMenuButton,
+          ]);
 
           return Scaffold(
-            body: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Expanded(
+            appBar: appBar,
+            //TODO надо додумать с подложкой CustomPageWidget
+            body: CustomPageWidget(
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        color: Colors.grey[100],
+                        child: CustomEditTextField(
+                          title: 'Описание',
+                          controller: TextEditingController(
+                            text: state.task?.title ?? '',
+                          ),
+                          onChanged: (value) {
+                            context.read<TaskCubit>().changeTitle(value);
+                          },
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () async {
+                          Navigator.push<RefCatalog>(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  SearchCatalogDialogPage(type: 'Партнеры'),
+                            ),
+                          ).then((value) {
+                            if (value != null) {
+                              context.read<TaskCubit>().changePartner(value);
+                            }
+                          });
+                        },
+                        child: Card(
                           child: CustomCatalogField(
-                            title: 'Дата',
-                            name: DateFormat('dd.MM.yy HH:mm')
-                                .format(state.task!.date!),
+                            title: 'Клиент',
+                            name: state.task?.partner?.name ?? '',
                           ),
                         ),
-                        Expanded(
+                      ),
+                      InkWell(
+                        onTap: () async {
+                          Navigator.push<RefCatalog>(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  SearchCatalogDialogPage(type: 'Пользователи'),
+                            ),
+                          ).then((value) {
+                            if (value != null) {
+                              context
+                                  .read<TaskCubit>()
+                                  .changeResponsible(value);
+                            }
+                          });
+                        },
+                        child: Card(
                           child: CustomCatalogField(
-                            title: 'Номер',
-                            name: state.task?.$number ?? '',
-                          ),
-                        )
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: CustomCatalogField(
-                            title: 'Состояние',
-                            name: state.task?.condition?.description ?? '',
+                            title: 'Ответственный',
+                            name: state.task?.responsible?.name ?? '',
                           ),
                         ),
-                        Expanded(
+                      ),
+                      InkWell(
+                        onTap: () async {
+                          Navigator.push<RefCatalog>(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  SearchCatalogDialogPage(type: 'Пользователи'),
+                            ),
+                          ).then((value) {
+                            if (value != null) {
+                              context.read<TaskCubit>().changeProducer(value);
+                            }
+                          });
+                        },
+                        child: Card(
                           child: CustomCatalogField(
-                            title: 'Важность',
-                            name: state.task?.importance?.description ?? '',
+                            title: 'Постановщик',
+                            name: state.task?.producer?.name ?? '',
                           ),
-                        )
-                      ],
-                    ),
-                    CustomEditTextField(
-                      title: 'Описание',
-                      controller:
-                          TextEditingController(text: state.task?.title ?? ''),
-                    ),
-                    InkWell(
-                      onTap: () async {
-                        Navigator.push<RefCatalog>(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                SearchCatalogDialogPage(type: 'Партнеры'),
-                          ),
-                        ).then((value) {
-                          if (value != null) {
-                            context.read<TaskCubit>().changePartner(value);
-                          }
-                        });
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: InkWell(
+                              onTap: () {
+                                final dialog = SimpleDialog(
+                                  title: const Text('Состояние'),
+                                  children: [
+                                    EnumChoiseDialog(
+                                      groupValue: state.task!.condition!.index,
+                                      list: getListDescriptionTaskCondition(),
+                                    ),
+                                  ],
+                                );
 
-                        // await showDialogCustom(context, 'Партнеры')
-                        //     .then((value) {
-                        //   if (value is RefCatalog) {
-                        //     context.read<TaskCubit>().changePartner(value);
-                        //   }
-                        //   return null;
-                        // });
-                      },
-                      child: CustomCatalogField(
-                        title: 'Клиент',
-                        name: state.task?.partner?.name ?? '',
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return dialog;
+                                  },
+                                ).then((value) {
+                                  if (value != null) {
+                                    context.read<TaskCubit>().changeCondition(
+                                        TaskCondition.values[value]);
+                                  }
+                                  return null;
+                                });
+                              },
+                              child: Card(
+                                color: Colors.yellow[50],
+                                child: CustomCatalogField(
+                                  title: 'Состояние',
+                                  name:
+                                      state.task?.condition?.description ?? '',
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: InkWell(
+                              onTap: () {
+                                final dialog = SimpleDialog(
+                                  title: const Text('Важность'),
+                                  children: [
+                                    EnumChoiseDialog(
+                                      groupValue: state.task!.importance!.index,
+                                      list: getListDescriptionTaskImportance(),
+                                    ),
+                                  ],
+                                );
+
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return dialog;
+                                  },
+                                ).then((value) {
+                                  if (value != null) {
+                                    context.read<TaskCubit>().changeImportance(
+                                        TaskImportance.values[value]);
+                                  }
+                                  return null;
+                                });
+                              },
+                              child: Card(
+                                color: getColorOfImportance(
+                                    state.task!.importance!),
+                                child: CustomCatalogField(
+                                  title: 'Важность',
+                                  name:
+                                      state.task?.importance?.description ?? '',
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
                       ),
-                    ),
-                    InkWell(
-                      onTap: () => showDialogCustom(context, 'Пользователи'),
-                      child: CustomCatalogField(
-                        title: 'Ответственный',
-                        name: state.task?.responsible?.name ?? '',
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () => showDialogCustom(context, 'Пользователи'),
-                      child: CustomCatalogField(
-                        title: 'Постановщик',
-                        name: state.task?.producer?.name ?? '',
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),

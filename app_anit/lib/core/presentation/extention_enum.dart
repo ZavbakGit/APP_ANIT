@@ -1,4 +1,9 @@
 import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
+import 'package:flutter/material.dart';
+
+List<String> getListDescriptionTaskCondition() {
+  return TaskCondition.values.map((it) => it.description).toList();
+}
 
 extension TaskConditionUtils on TaskCondition {
   String get description {
@@ -21,7 +26,28 @@ extension TaskConditionUtils on TaskCondition {
   }
 }
 
+List<String> getListDescriptionTaskImportance() {
+  return TaskImportance.values.map((it) => it.description).toList();
+}
+
+Color? getColorOfImportance(TaskImportance importance) {
+  switch (importance) {
+    case TaskImportance.high:
+      return Colors.red[100];
+    case TaskImportance.normal:
+      return Colors.green[100];
+    case TaskImportance.low:
+      return Colors.blue[100];
+    case TaskImportance.swaggerGeneratedUnknown:
+      return Colors.blue[100];
+  }
+}
+
 extension TaskImportanceUtils on TaskImportance {
+  List<String> getListDescription() {
+    return TaskImportance.values.map((it) => it.description).toList();
+  }
+
   String get description {
     switch (this) {
       case TaskImportance.high:

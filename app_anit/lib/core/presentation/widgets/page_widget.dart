@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 Widget _getDecorationContainer() {
   return Container(
-    decoration: const BoxDecoration(
+    decoration: BoxDecoration(color: Colors.blue[30]
         // gradient: LinearGradient(
         //   begin: Alignment.topLeft,
         //   end: Alignment.bottomRight,

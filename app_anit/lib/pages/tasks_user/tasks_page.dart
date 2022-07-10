@@ -3,6 +3,7 @@ import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:intl/intl.dart';
 
 import '../../app/injection_container.dart';
 import '../../core/presentation/widgets/app_bar.dart';
@@ -147,7 +148,24 @@ class TaskItemWidget extends StatelessWidget {
       child: Card(
         child: ListTile(
           title: Text(item.title ?? ''),
-          subtitle: Text(item.date?.toIso8601String() ?? ''),
+          subtitle: Row(
+            children: [
+              Expanded(
+                  child: Text(DateFormat('dd.MM.yy HH:mm').format(item.date!))),
+              Expanded(
+                child: Chip(
+                  backgroundColor: Colors.amber[50],
+                  avatar: const CircleAvatar(
+                    child: Icon(Icons.account_circle),
+                    backgroundColor: Colors.blue,
+                  ),
+                  label: Text(item.partner?.name ?? ''),
+                  elevation: 2,
+                  shadowColor: Colors.deepOrange,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

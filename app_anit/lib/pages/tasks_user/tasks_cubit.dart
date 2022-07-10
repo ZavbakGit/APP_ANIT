@@ -26,7 +26,7 @@ class TasksCubit extends Cubit<TasksPageState> {
   }
 
   void init() {
-    _timer = Timer.periodic(const Duration(seconds: 10), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 30), (timer) {
       refreshData();
     });
     refreshData();

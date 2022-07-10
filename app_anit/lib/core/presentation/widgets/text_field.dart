@@ -22,11 +22,11 @@ class CustomEditTextField extends StatelessWidget {
   final String title;
   final TextEditingController? controller;
 
-  const CustomEditTextField({
-    Key? key,
-    this.controller,
-    required this.title,
-  }) : super(key: key);
+  final ValueChanged<String>? onChanged;
+
+  const CustomEditTextField(
+      {Key? key, this.controller, required this.title, this.onChanged})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +34,10 @@ class CustomEditTextField extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
       child: TextFormField(
         minLines: 1,
-        maxLines: 2,
+        maxLines: 10,
         controller: controller,
         decoration: InputDecoration(labelText: title, border: InputBorder.none),
+        onChanged: onChanged,
       ),
     );
   }
