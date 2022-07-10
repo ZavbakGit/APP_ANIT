@@ -58,6 +58,8 @@ dependencies:
   chopper_api_anit:
     path: chopper_api_anit
 
+  intl: ^0.17.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

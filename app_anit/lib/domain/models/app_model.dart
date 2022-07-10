@@ -4,7 +4,7 @@ import 'package:app_anit/domain/repositories/repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 
-import '../../core/failures.dart';
+import '../../core/error/failures.dart';
 
 class AppData {
   RemoteConfigModel? remoteConfig;

@@ -2,9 +2,9 @@ import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart'
     as sw;
 import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
 
-import '../../core/failures.dart';
 import 'package:dartz/dartz.dart';
 
+import '../../core/error/failures.dart';
 import '../models/conected_config_model.dart';
 import '../models/remote_config_model.dart';
 

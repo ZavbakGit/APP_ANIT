@@ -5,11 +5,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../app/injection_container.dart';
-import '../../core/presentation/app_bar.dart';
-import '../../core/presentation/divider_widget.dart';
-import '../../core/presentation/page_widget.dart';
-import '../../core/presentation/progres_widget.dart';
-import '../../core/presentation/text_widget.dart';
+import '../../core/presentation/widgets/app_bar.dart';
+import '../../core/presentation/widgets/divider_widget.dart';
+import '../../core/presentation/widgets/page_widget.dart';
+import '../../core/presentation/widgets/progres_widget.dart';
+import '../../core/presentation/widgets/text_widget.dart';
 import 'package:go_router/go_router.dart';
 
 class TasksPage extends ConsumerWidget {

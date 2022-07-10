@@ -1,10 +1,12 @@
 import 'package:app_anit/pages/task/task_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
 import '../../app/injection_container.dart';
-import '../../core/presentation/page_widget.dart';
-import '../../core/presentation/text_field.dart';
+import '../../core/presentation/widgets/page_widget.dart';
+import '../../core/presentation/widgets/text_field.dart';
+import '../../core/presentation/extention_enum.dart';
 import '../search_dialog/search_dialog_page.dart';
 
 class TaskPage extends StatelessWidget {
@@ -48,17 +50,72 @@ class TaskBodyWidget extends StatelessWidget {
 
           return Scaffold(
             body: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  InkWell(
-                    onTap: () => showDialogCustom(context),
-                    child: CustomCatalogView(
-                      title: 'Клиент',
-                      name: state.task?.partner?.name ?? '',
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: CustomCatalogField(
+                            title: 'Дата',
+                            name: DateFormat('dd.MM.yy HH:mm')
+                                .format(state.task!.date!),
+                          ),
+                        ),
+                        Expanded(
+                          child: CustomCatalogField(
+                            title: 'Номер',
+                            name: state.task?.$number ?? '',
+                          ),
+                        )
+                      ],
                     ),
-                  ),
-                ],
+                    Row(
+                      children: [
+                        Expanded(
+                          child: CustomCatalogField(
+                            title: 'Состояние',
+                            name: state.task?.condition?.description ?? '',
+                          ),
+                        ),
+                        Expanded(
+                          child: CustomCatalogField(
+                            title: 'Важность',
+                            name: state.task?.importance?.description ?? '',
+                          ),
+                        )
+                      ],
+                    ),
+                    CustomEditTextField(
+                      title: 'Описание',
+                      controller:
+                          TextEditingController(text: state.task?.title ?? ''),
+                    ),
+                    InkWell(
+                      onTap: () => showDialogCustom(context),
+                      child: CustomCatalogField(
+                        title: 'Клиент',
+                        name: state.task?.partner?.name ?? '',
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () => showDialogCustom(context),
+                      child: CustomCatalogField(
+                        title: 'Ответственный',
+                        name: state.task?.responsible?.name ?? '',
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () => showDialogCustom(context),
+                      child: CustomCatalogField(
+                        title: 'Постановщик',
+                        name: state.task?.producer?.name ?? '',
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           );

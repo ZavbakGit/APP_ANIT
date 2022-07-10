@@ -1,4 +1,3 @@
-import 'package:app_anit/core/failures.dart';
 import 'package:chopper/chopper.dart';
 import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart'
     as sw;
@@ -6,7 +5,8 @@ import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
 
 import 'package:dartz/dartz.dart';
 
-import '../../../core/exeption.dart';
+import '../../../core/error/exeption.dart';
+import '../../../core/error/failures.dart';
 import '../../../domain/models/conected_config_model.dart';
 import '../../../domain/models/remote_config_model.dart';
 import '../../../domain/repositories/repository.dart';

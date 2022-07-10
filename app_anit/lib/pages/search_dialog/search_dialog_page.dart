@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../app/injection_container.dart';
-import '../../core/presentation/app_bar.dart';
-import '../../core/presentation/progres_widget.dart';
-import '../../core/presentation/text_widget.dart';
+import '../../core/presentation/widgets/app_bar.dart';
+import '../../core/presentation/widgets/progres_widget.dart';
+import '../../core/presentation/widgets/text_widget.dart';
 
 class SearchDialogPage extends StatelessWidget {
   SearchDialogPage({Key? key}) : super(key: key);

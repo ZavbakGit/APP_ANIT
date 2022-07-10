@@ -5,12 +5,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../core/presentation/button_widgets.dart';
-import '../../core/presentation/divider_widget.dart';
-import '../../core/presentation/page_widget.dart';
-import '../../core/presentation/progres_widget.dart';
-import '../../core/presentation/text_form_field.dart';
-import '../../core/presentation/text_widget.dart';
+import '../../core/presentation/widgets/button_widgets.dart';
+import '../../core/presentation/widgets/divider_widget.dart';
+import '../../core/presentation/widgets/page_widget.dart';
+import '../../core/presentation/widgets/progres_widget.dart';
+import '../../core/presentation/widgets/text_form_field.dart';
+import '../../core/presentation/widgets/text_widget.dart';
 
 class LoginPage extends ConsumerWidget {
   final bool autoLogin;
