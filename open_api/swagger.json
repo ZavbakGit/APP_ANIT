@@ -23,9 +23,30 @@
     }
   ],
   "paths": {
+    "/task": {
+      "post": {
+        "operationId": "postTask",
+        "description": "Записывает задачу",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Task"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Записано"
+          }
+        }
+      }
+    },
     "/task/{guid}": {
       "get": {
-        "operationId": "getTaskByGuid",
+        "operationId": "getTask",
         "description": "задача по guid",
         "parameters": [
           {
@@ -53,7 +74,7 @@
     },
     "/tasks_user": {
       "get": {
-        "operationId": "getTaskUser",
+        "operationId": "getTasksUser",
         "parameters": [
           {
             "in": "query",
@@ -103,7 +124,7 @@
     },
     "/catalogs/{type}/search": {
       "get": {
-        "description": "Просто возвращает 200. Используется в отладочных и проверочных целях.",
+        "description": "Ищет эементы справочника по подстроке",
         "operationId": "searchCatalog",
         "parameters": [
           {
@@ -160,24 +181,15 @@
         }
       }
     },
-    "/catalogs/{type}/{guid}": {
+    "/enum/{name}": {
       "get": {
-        "description": "Просто возвращает 200. Используется в отладочных и проверочных целях.",
-        "operationId": "getCatalogElemByGuid",
+        "description": "Возвращает массив с перечислениями",
+        "operationId": "getEnumElemets",
         "parameters": [
           {
-            "name": "type",
+            "name": "name",
             "in": "path",
-            "description": "Тип справочника",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "guid",
-            "in": "path",
-            "description": "Тип справочника",
+            "description": "Имя перечисления",
             "required": true,
             "schema": {
               "type": "string"
@@ -186,11 +198,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Время на сервере",
+            "description": "Массив с перечислениями",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RefCatalog"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RefEnum"
+                  }
                 }
               }
             }
@@ -218,25 +233,10 @@
             "type": "string"
           },
           "condition": {
-            "type": "string",
-            "description": "Состояние",
-            "enum": [
-              "Appointed",
-              "Received",
-              "Progress",
-              "Postponed",
-              "Completed",
-              "Reopened"
-            ]
+            "$ref": "#/components/schemas/RefEnum"
           },
           "importance": {
-            "type": "string",
-            "description": "Важность",
-            "enum": [
-              "High",
-              "Normal",
-              "Low"
-            ]
+            "$ref": "#/components/schemas/RefEnum"
           },
           "title": {
             "description": "ОписаниеСобытия",
@@ -326,6 +326,24 @@
           }
         },
         "description": "Настройки"
+      },
+      "RefEnum": {
+        "description": "Ссылка на перечисление",
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Имя перечисления"
+          },
+          "index": {
+            "type": "integer",
+            "description": "Индекс перечисления"
+          },
+          "name": {
+            "type": "string",
+            "description": "Наименование значения перечисления"
+          }
+        }
       },
       "RefCatalog": {
         "description": "Ссылка на справочник",
