@@ -27,10 +27,13 @@ abstract class Repository {
 
   Future<Either<Failure, sw.Task>> getTaskByGuid(String guid);
 
-  Future<Either<Failure, List<RefCatalog>>> catalogSearch({
+  Future<Either<Failure, List<RefCatalog>>> catalogSearch(
+      {required String type,
+      required String search,
+      required int offset,
+      required int count});
+
+  Future<Either<Failure, List<sw.RefEnum>>> getEnumElemets({
     required String type,
-    required String search,
-    required int offset,
-    required int count,
   });
 }

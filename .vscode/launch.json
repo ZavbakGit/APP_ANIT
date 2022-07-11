@@ -1,0 +1,148 @@
+{
+    // Используйте IntelliSense, чтобы узнать о возможных атрибутах.
+    // Наведите указатель мыши, чтобы просмотреть описания существующих атрибутов.
+    // Для получения дополнительной информации посетите: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "app_anit",
+            "cwd": "app_anit",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "app_anit (profile mode)",
+            "cwd": "app_anit",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "app_anit (release mode)",
+            "cwd": "app_anit",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "app_anit_170622",
+            "cwd": "app_anit_170622",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "app_anit_170622 (profile mode)",
+            "cwd": "app_anit_170622",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "app_anit_170622 (release mode)",
+            "cwd": "app_anit_170622",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "app_anit_240622",
+            "cwd": "app_anit_240622",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "app_anit_240622 (profile mode)",
+            "cwd": "app_anit_240622",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "app_anit_240622 (release mode)",
+            "cwd": "app_anit_240622",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "floating_sidebar",
+            "cwd": "floating_sidebar",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "floating_sidebar (profile mode)",
+            "cwd": "floating_sidebar",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "floating_sidebar (release mode)",
+            "cwd": "floating_sidebar",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "test_riverpod",
+            "cwd": "test_riverpod",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "test_riverpod (profile mode)",
+            "cwd": "test_riverpod",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "test_riverpod (release mode)",
+            "cwd": "test_riverpod",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "chopper_api_anit",
+            "cwd": "app_anit\\chopper_api_anit",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "chopper_api_anit (profile mode)",
+            "cwd": "app_anit\\chopper_api_anit",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "chopper_api_anit (release mode)",
+            "cwd": "app_anit\\chopper_api_anit",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "chopper_api_anit",
+            "cwd": "app_anit_170622\\chopper_api_anit",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "chopper_api_anit (profile mode)",
+            "cwd": "app_anit_170622\\chopper_api_anit",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "chopper_api_anit (release mode)",
+            "cwd": "app_anit_170622\\chopper_api_anit",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

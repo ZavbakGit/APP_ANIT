@@ -7,10 +7,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 import '../../app/injection_container.dart';
-import '../../core/presentation/widgets/enum_choise_dialog.dart';
 import '../../core/presentation/widgets/page_widget.dart';
 import '../../core/presentation/widgets/text_field.dart';
-import '../../core/presentation/extention_enum.dart';
+import '../../core/presentation/widgets/enum/ref_enum_field_widget.dart';
 import '../search_dialog/search_dialog_page.dart';
 
 class TaskPage extends StatelessWidget {
@@ -164,73 +163,29 @@ class TaskBodyWidget extends StatelessWidget {
                       Row(
                         children: [
                           Expanded(
-                            child: InkWell(
-                              onTap: () {
-                                // final dialog = SimpleDialog(
-                                //   title: const Text('Состояние'),
-                                //   children: [
-                                //     EnumChoiseDialog(
-                                //       groupValue: state.task!.condition!.index,
-                                //       list: getListDescriptionTaskCondition(),
-                                //     ),
-                                //   ],
-                                // );
-
-                                // showDialog(
-                                //   context: context,
-                                //   builder: (BuildContext context) {
-                                //     return dialog;
-                                //   },
-                                // ).then((value) {
-                                //   if (value != null) {
-                                //     context.read<TaskCubit>().changeCondition(
-                                //         TaskCondition.values[value]);
-                                //   }
-                                //   return null;
-                                // });
-                              },
-                              child: Card(
-                                color: Colors.yellow[50],
-                                child: CustomCatalogField(
-                                  title: 'Состояние',
-                                  name: state.task?.condition?.name ?? '',
-                                ),
+                            child: Card(
+                              color: Colors.blue[100],
+                              child: RefEnumFieldWidget(
+                                title: 'Состояние',
+                                refEnum: state.task!.condition!,
+                                onChoice: (condition) {
+                                  context
+                                      .read<TaskCubit>()
+                                      .changeCondition(condition);
+                                },
                               ),
                             ),
                           ),
                           Expanded(
-                            child: InkWell(
-                              onTap: () {
-                                // final dialog = SimpleDialog(
-                                //   title: const Text('Важность'),
-                                //   children: [
-                                //     EnumChoiseDialog(
-                                //       groupValue: state.task!.importance!.index,
-                                //       list: getListDescriptionTaskImportance(),
-                                //     ),
-                                //   ],
-                                // );
-
-                                // showDialog(
-                                //   context: context,
-                                //   builder: (BuildContext context) {
-                                //     return dialog;
-                                //   },
-                                // ).then((value) {
-                                //   if (value != null) {
-                                //     context.read<TaskCubit>().changeImportance(
-                                //         TaskImportance.values[value]);
-                                //   }
-                                //   return null;
-                                // });
-                              },
-                              child: Card(
-                                // color: getColorOfImportance(
-                                //     state.task!.importance!),
-                                child: CustomCatalogField(
-                                  title: 'Важность',
-                                  name: state.task?.importance?.name ?? '',
-                                ),
+                            child: Card(
+                              child: RefEnumFieldWidget(
+                                title: 'Важность',
+                                refEnum: state.task!.importance!,
+                                onChoice: (importance) {
+                                  context
+                                      .read<TaskCubit>()
+                                      .changeImportance(importance);
+                                },
                               ),
                             ),
                           )
@@ -243,29 +198,5 @@ class TaskBodyWidget extends StatelessWidget {
             ),
           );
         });
-  }
-
-  Future<Object?> showDialogCustom(BuildContext context, String typeCatalog) {
-    return showGeneralDialog(
-      barrierColor: Colors.black.withOpacity(0.5),
-      transitionBuilder: (context, a1, a2, widget) {
-        return Transform.scale(
-          scale: a1.value,
-          child: Opacity(
-            opacity: a1.value,
-            child: SearchCatalogDialogPage(
-              type: typeCatalog,
-            ),
-          ),
-        );
-      },
-      transitionDuration: const Duration(milliseconds: 300),
-      barrierDismissible: true,
-      barrierLabel: 'wefdewfe',
-      context: context,
-      pageBuilder: (context, animation1, animation2) {
-        return Container();
-      },
-    );
   }
 }
