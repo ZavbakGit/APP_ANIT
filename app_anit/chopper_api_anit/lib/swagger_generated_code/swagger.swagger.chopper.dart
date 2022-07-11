@@ -17,6 +17,14 @@ class _$Swagger extends Swagger {
   final definitionType = Swagger;
 
   @override
+  Future<Response<dynamic>> _taskPost({required Task? body}) {
+    final $url = '/task';
+    final $body = body;
+    final $request = Request('POST', $url, client.baseUrl, body: $body);
+    return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
   Future<Response<Task>> _taskGuidGet({required String? guid}) {
     final $url = '/task/${guid}';
     final $request = Request('GET', $url, client.baseUrl);
@@ -55,10 +63,9 @@ class _$Swagger extends Swagger {
   }
 
   @override
-  Future<Response<RefCatalog>> _catalogsTypeGuidGet(
-      {required String? type, required String? guid}) {
-    final $url = '/catalogs/${type}/${guid}';
+  Future<Response<List<RefEnum>>> _enumNameGet({required String? name}) {
+    final $url = '/enum/${name}';
     final $request = Request('GET', $url, client.baseUrl);
-    return client.send<RefCatalog, RefCatalog>($request);
+    return client.send<List<RefEnum>, RefEnum>($request);
   }
 }

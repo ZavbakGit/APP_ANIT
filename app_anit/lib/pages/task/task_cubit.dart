@@ -33,13 +33,13 @@ class TaskCubit extends Cubit<TaskPageState> {
     emit(_pageState());
   }
 
-  void changeCondition(TaskCondition condition) {
+  void changeCondition(RefEnum condition) {
     task = task?.copyWith(condition: condition);
     isModified = true;
     emit(_pageState());
   }
 
-  void changeImportance(TaskImportance importance) {
+  void changeImportance(RefEnum importance) {
     task = task?.copyWith(importance: importance);
     isModified = true;
     emit(_pageState());
@@ -72,13 +72,13 @@ class TaskCubit extends Cubit<TaskPageState> {
 
 class TaskPageState {
   final bool isLoading;
-  final String error;
+  final String? error;
   final Task? task;
   final bool isModified;
 
   TaskPageState({
     this.isLoading = false,
-    this.error = '',
+    this.error,
     this.task,
     this.isModified = false,
   });

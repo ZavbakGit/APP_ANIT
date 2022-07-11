@@ -92,7 +92,7 @@ class TasksBodyWidget extends StatelessWidget {
                           children: [
                             const CustomDividerHeader(),
                             Center(
-                              child: CustomMessageErrorText(text: state.error),
+                              child: CustomErrorText(text: state.error),
                             ),
                           ],
                         ),

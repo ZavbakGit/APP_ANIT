@@ -65,7 +65,7 @@ class ResultWidget extends StatelessWidget {
         }
 
         if (state.error != null) {
-          return Center(child: CustomMessageErrorText(text: state.error ?? ''));
+          return Center(child: CustomErrorText(text: state.error ?? ''));
         }
 
         if (state.list != null) {

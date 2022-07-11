@@ -172,7 +172,7 @@ class LoginFormState extends State<LoginFormWidget> {
                 const CustomDividerField(),
                 if (widget.isLoading) const CustomCircularProgressIndicator(),
                 if (widget.errorMessage != null)
-                  CustomMessageErrorText(text: widget.errorMessage),
+                  CustomErrorText(text: widget.errorMessage),
               ],
             ),
           ),

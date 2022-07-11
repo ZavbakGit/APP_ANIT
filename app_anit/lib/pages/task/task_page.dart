@@ -1,4 +1,5 @@
 import 'package:app_anit/core/presentation/widgets/app_bar.dart';
+import 'package:app_anit/core/presentation/widgets/text_widget.dart';
 import 'package:app_anit/pages/task/task_cubit.dart';
 import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
 import 'package:flutter/material.dart';
@@ -50,6 +51,17 @@ class TaskBodyWidget extends StatelessWidget {
               ),
             );
           }
+
+          if (state.error != null) {
+            return Scaffold(
+              body: Center(
+                child: CustomErrorText(
+                  text: state.error,
+                ),
+              ),
+            );
+          }
+
           final title =
               '${state.isModified ? '*' : ''}${state.task!.$number} от ${DateFormat('dd.MM.yy HH:mm').format(state.task!.date!)}';
 
@@ -154,35 +166,34 @@ class TaskBodyWidget extends StatelessWidget {
                           Expanded(
                             child: InkWell(
                               onTap: () {
-                                final dialog = SimpleDialog(
-                                  title: const Text('Состояние'),
-                                  children: [
-                                    EnumChoiseDialog(
-                                      groupValue: state.task!.condition!.index,
-                                      list: getListDescriptionTaskCondition(),
-                                    ),
-                                  ],
-                                );
+                                // final dialog = SimpleDialog(
+                                //   title: const Text('Состояние'),
+                                //   children: [
+                                //     EnumChoiseDialog(
+                                //       groupValue: state.task!.condition!.index,
+                                //       list: getListDescriptionTaskCondition(),
+                                //     ),
+                                //   ],
+                                // );
 
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return dialog;
-                                  },
-                                ).then((value) {
-                                  if (value != null) {
-                                    context.read<TaskCubit>().changeCondition(
-                                        TaskCondition.values[value]);
-                                  }
-                                  return null;
-                                });
+                                // showDialog(
+                                //   context: context,
+                                //   builder: (BuildContext context) {
+                                //     return dialog;
+                                //   },
+                                // ).then((value) {
+                                //   if (value != null) {
+                                //     context.read<TaskCubit>().changeCondition(
+                                //         TaskCondition.values[value]);
+                                //   }
+                                //   return null;
+                                // });
                               },
                               child: Card(
                                 color: Colors.yellow[50],
                                 child: CustomCatalogField(
                                   title: 'Состояние',
-                                  name:
-                                      state.task?.condition?.description ?? '',
+                                  name: state.task?.condition?.name ?? '',
                                 ),
                               ),
                             ),
@@ -190,36 +201,35 @@ class TaskBodyWidget extends StatelessWidget {
                           Expanded(
                             child: InkWell(
                               onTap: () {
-                                final dialog = SimpleDialog(
-                                  title: const Text('Важность'),
-                                  children: [
-                                    EnumChoiseDialog(
-                                      groupValue: state.task!.importance!.index,
-                                      list: getListDescriptionTaskImportance(),
-                                    ),
-                                  ],
-                                );
+                                // final dialog = SimpleDialog(
+                                //   title: const Text('Важность'),
+                                //   children: [
+                                //     EnumChoiseDialog(
+                                //       groupValue: state.task!.importance!.index,
+                                //       list: getListDescriptionTaskImportance(),
+                                //     ),
+                                //   ],
+                                // );
 
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return dialog;
-                                  },
-                                ).then((value) {
-                                  if (value != null) {
-                                    context.read<TaskCubit>().changeImportance(
-                                        TaskImportance.values[value]);
-                                  }
-                                  return null;
-                                });
+                                // showDialog(
+                                //   context: context,
+                                //   builder: (BuildContext context) {
+                                //     return dialog;
+                                //   },
+                                // ).then((value) {
+                                //   if (value != null) {
+                                //     context.read<TaskCubit>().changeImportance(
+                                //         TaskImportance.values[value]);
+                                //   }
+                                //   return null;
+                                // });
                               },
                               child: Card(
-                                color: getColorOfImportance(
-                                    state.task!.importance!),
+                                // color: getColorOfImportance(
+                                //     state.task!.importance!),
                                 child: CustomCatalogField(
                                   title: 'Важность',
-                                  name:
-                                      state.task?.importance?.description ?? '',
+                                  name: state.task?.importance?.name ?? '',
                                 ),
                               ),
                             ),
