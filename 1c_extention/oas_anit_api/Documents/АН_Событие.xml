@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.11">
+	<Document uuid="3e3c7a37-0065-41ac-9e36-9037be55e27f">
+		<InternalInfo>
+			<xr:GeneratedType name="DocumentObject.АН_Событие" category="Object">
+				<xr:TypeId>40fd7b5d-6098-4814-981e-849893a2124c</xr:TypeId>
+				<xr:ValueId>3f93a9e9-f0a0-4e1b-a1ff-6b393a92bd06</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="DocumentRef.АН_Событие" category="Ref">
+				<xr:TypeId>384de716-b125-40e6-b076-d9eaf7de40f5</xr:TypeId>
+				<xr:ValueId>cc5a2bf7-d2e7-488d-bb28-ed74d395ffca</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="DocumentSelection.АН_Событие" category="Selection">
+				<xr:TypeId>6f413876-6780-43dc-b0ed-a03914c2dee0</xr:TypeId>
+				<xr:ValueId>c61ba153-0dd9-439e-9a4d-9833902b78d2</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="DocumentList.АН_Событие" category="List">
+				<xr:TypeId>c0143ed4-898e-4d3e-977c-43b017221ab9</xr:TypeId>
+				<xr:ValueId>1cbf7624-a742-4e5f-a74f-e99099e5232e</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="DocumentManager.АН_Событие" category="Manager">
+				<xr:TypeId>c9bf4b67-ddfd-4b6f-8bad-0bf0e81e529f</xr:TypeId>
+				<xr:ValueId>a0d15c80-2577-44a4-a2b7-5d248bec7b6d</xr:ValueId>
+			</xr:GeneratedType>
+		</InternalInfo>
+		<Properties>
+			<Name>АН_Событие</Name>
+			<Comment/>
+			<ObjectBelonging>Adopted</ObjectBelonging>
+			<ExtendedConfigurationObject>9bdcad4b-a13e-4906-8cf7-fe584ba5a26e</ExtendedConfigurationObject>
+			<RegisterRecords/>
+		</Properties>
+		<ChildObjects/>
+	</Document>
+</MetaDataObject>

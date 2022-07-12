@@ -7,9 +7,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 import '../../app/injection_container.dart';
+import '../../core/presentation/widgets/enums/ref_enum_field_widget.dart';
 import '../../core/presentation/widgets/page_widget.dart';
 import '../../core/presentation/widgets/text_field.dart';
-import '../../core/presentation/widgets/enum/ref_enum_field_widget.dart';
 import '../search_dialog/search_dialog_page.dart';
 
 class TaskPage extends StatelessWidget {

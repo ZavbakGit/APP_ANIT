@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ConfigDumpInfo xmlns="http://v8.1c.ru/8.3/xcf/dumpinfo" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" format="Hierarchical" version="2.11">
+	<ConfigVersions>
+		<Metadata name="CommonModule.oas_anit" id="3f8ae080-d6ef-4917-adca-ca42f2f6de2b" configVersion="f19859492b674b47b4074d7add9e67dafb148a14"/>
+		<Metadata name="CommonModule.oas_anit.Module" id="3f8ae080-d6ef-4917-adca-ca42f2f6de2b.0" configVersion="60af062bd2f8efcc4e9d71f3776760de7dc3915a"/>
+		<Metadata name="Configuration.oas_anit_api" id="d0296233-40b5-43b1-ae80-6b3aa7b5d82a" configVersion="6b6b7be1a29a0865bb2433b42c2064e49fba21e8"/>
+		<Metadata name="DataProcessor.oas_anit_GetPing" id="99bf983e-3f32-46c7-a436-48d266dde0ba" configVersion="508967015e0041241711db14dc84471c6f44a5fd"/>
+		<Metadata name="DataProcessor.oas_anit_GetPing.ObjectModule" id="99bf983e-3f32-46c7-a436-48d266dde0ba.0" configVersion="f0641237d901d6aa410cd0e20a400cb8a61c3b2a"/>
+		<Metadata name="DataProcessor.oas_anit_get_enum_elemets" id="13f182d6-bd47-4be9-a622-7c5a9b3c5b9a" configVersion="48c062e3f43d4fb071be27e7196b94475acfc5ab"/>
+		<Metadata name="DataProcessor.oas_anit_get_enum_elemets.ObjectModule" id="13f182d6-bd47-4be9-a622-7c5a9b3c5b9a.0" configVersion="76d98bc938efbd19d7f9195ca82f16b87cd5b66d"/>
+		<Metadata name="DataProcessor.oas_anit_login" id="adb859aa-8fcf-45db-9a47-d3c88b7c7bae" configVersion="be4164285b47cc59486164be3a768f5e576edc7e"/>
+		<Metadata name="DataProcessor.oas_anit_login.ObjectModule" id="adb859aa-8fcf-45db-9a47-d3c88b7c7bae.0" configVersion="691924d33ac19e6908228fe3cfadb241f40d16fd"/>
+		<Metadata name="DataProcessor.oas_anit_search_catalog" id="e42f2579-31ee-440b-9543-725c015cf45a" configVersion="cf4304803cc4a6a7f500ef151215b12c936d0604"/>
+		<Metadata name="DataProcessor.oas_anit_search_catalog.ObjectModule" id="e42f2579-31ee-440b-9543-725c015cf45a.0" configVersion="7dfba4bd0f51b0279d5d64e82db9b3d8ebf2fdd0"/>
+		<Metadata name="DataProcessor.oas_anit_task_by_guid" id="df8cc748-6ddc-4e62-863f-b3bba2d2f070" configVersion="c66bef84ff8899d550c54183fd2c8bf1cfc3b14c"/>
+		<Metadata name="DataProcessor.oas_anit_task_by_guid.ObjectModule" id="df8cc748-6ddc-4e62-863f-b3bba2d2f070.0" configVersion="b97d66a2ac1122129c04049e3f17f3996951ab4b"/>
+		<Metadata name="DataProcessor.oas_anit_task_post" id="0097cb1a-db85-45bb-95ae-9f6b2ab82a38" configVersion="f862fec542c496a6561a3f959e8e65841c411b20"/>
+		<Metadata name="DataProcessor.oas_anit_task_post.ObjectModule" id="0097cb1a-db85-45bb-95ae-9f6b2ab82a38.0" configVersion="d34d43081c6bcb9f5992a30c8e6dc9389e6f0f0d"/>
+		<Metadata name="DataProcessor.oas_anit_tasks_user" id="965bee45-44eb-46e1-a524-77c3761a9532" configVersion="d6849acd6b12762f90f15263248056495af6a1ff"/>
+		<Metadata name="DataProcessor.oas_anit_tasks_user.ObjectModule" id="965bee45-44eb-46e1-a524-77c3761a9532.0" configVersion="dd3094c6765ef9166b74e6a8b362dcb5e45042b4"/>
+		<Metadata name="Document.АН_Событие" id="3e3c7a37-0065-41ac-9e36-9037be55e27f" configVersion="e4679aa44083a8691275fc0c2c0b1f4682545512"/>
+		<Metadata name="Enum.АН_СостоянияСобытия" id="09eb8574-a264-4c3b-bb72-83f137688497" configVersion="b06f92d85b125a019ae350f68387962e3f209dcc">
+			<Metadata name="Enum.АН_СостоянияСобытия.EnumValue.Выполняется" id="0c075629-6be6-4949-aad5-9578b4329e79"/>
+			<Metadata name="Enum.АН_СостоянияСобытия.EnumValue.Отложено" id="1036e05e-e16f-4874-9920-649d9d650ca4"/>
+			<Metadata name="Enum.АН_СостоянияСобытия.EnumValue.Завершено" id="3240ebd3-751f-40c3-9158-c4dcb6a266c4"/>
+			<Metadata name="Enum.АН_СостоянияСобытия.EnumValue.Принято" id="89e3ff9f-e5e1-4d35-8a63-4e3e74fb0dba"/>
+			<Metadata name="Enum.АН_СостоянияСобытия.EnumValue.Назначено" id="e1a804b4-9e13-4cb5-93ab-111e1e4ceb01"/>
+			<Metadata name="Enum.АН_СостоянияСобытия.EnumValue.Возобновлено" id="e914bc13-3c79-4a90-a92d-4162c94cc5a9"/>
+		</Metadata>
+		<Metadata name="HTTPService.OAS_REST_API" id="5b41f027-8334-4639-a265-b3a8983106ea" configVersion="3dbf8eb439c3648dde337035dde682a012a7244d">
+			<Metadata name="HTTPService.OAS_REST_API.URLTemplate.Res.Method.Request" id="8ce725ec-07d2-4dee-94fb-6ed055f67e54"/>
+			<Metadata name="HTTPService.OAS_REST_API.URLTemplate.Res" id="9e5a2fff-3d87-413a-81dc-e8325634c3fd"/>
+		</Metadata>
+		<Metadata name="HTTPService.OAS_REST_API.Module" id="5b41f027-8334-4639-a265-b3a8983106ea.0" configVersion="5157cb497a8cc42cb05cec52790676d0eccc4ec8"/>
+		<Metadata name="Language.Русский" id="27cf7c8b-b7ac-4f7b-bed9-ac6c4a5ddad3" configVersion="ec15f92ab59373403a780d8828792646a25b15b6"/>
+		<Metadata name="Role.oas_anit_ОсновнаяРоль" id="12178648-2a25-4d9f-9ba2-c918ab618dab" configVersion="a214717e9f2c4f332c015316a8d9c4d8b313eb5d"/>
+	</ConfigVersions>
+</ConfigDumpInfo>
