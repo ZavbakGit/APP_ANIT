@@ -4,14 +4,18 @@ import 'package:flutter/material.dart';
 import 'ref_enum_dialog_widget.dart';
 
 class RefEnumFieldWidget extends StatelessWidget {
-  final RefEnum refEnum;
+  final RefEnum? refEnum;
   final String title;
+  final String type;
+  String? titleDialog;
   final ValueChanged<RefEnum>? onChoice;
 
-  const RefEnumFieldWidget({
+  RefEnumFieldWidget({
     Key? key,
     required this.refEnum,
     required this.title,
+    required this.type,
+    this.titleDialog,
     this.onChoice,
   }) : super(key: key);
 
@@ -27,7 +31,8 @@ class RefEnumFieldWidget extends StatelessWidget {
               children: [
                 RefEnumDialogWidget(
                   refEnum: refEnum,
-                  titleDialog: title,
+                  titleDialog: titleDialog,
+                  type: type,
                 ),
               ],
             ),
@@ -40,7 +45,7 @@ class RefEnumFieldWidget extends StatelessWidget {
       },
       child: ListTile(
         title: Text(title),
-        subtitle: Text(refEnum.name ?? ''),
+        subtitle: Text(refEnum?.name ?? ''),
       ),
     );
   }

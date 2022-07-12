@@ -13,6 +13,8 @@ import '../../core/presentation/widgets/progres_widget.dart';
 import '../../core/presentation/widgets/text_widget.dart';
 import 'package:go_router/go_router.dart';
 
+import '../task/task_page.dart';
+
 class TasksPage extends ConsumerWidget {
   const TasksPage({Key? key}) : super(key: key);
 
@@ -35,7 +37,18 @@ class TasksBodyWidget extends StatelessWidget {
     return BlocConsumer<TasksCubit, TasksPageState>(
       listener: (context, state) {
         if (state.goGuidTask != null) {
-          context.push('/task/${state.goGuidTask}');
+          Navigator.push<bool>(
+            context,
+            MaterialPageRoute(
+              builder: (context) => TaskPage(guid: state.goGuidTask!),
+            ),
+          ).then((value) {
+            if (value != null) {
+              if (value) {
+                context.read<TasksCubit>().refreshData();
+              }
+            }
+          });
         }
       },
       buildWhen: (previous, current) {
@@ -70,7 +83,7 @@ class TasksBodyWidget extends StatelessWidget {
         );
 
         final appBar = CustomAppBar(
-          title: state.user,
+          title: Text(state.user),
           actions: [popupMenuButton],
         );
         return Scaffold(

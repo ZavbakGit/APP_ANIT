@@ -36,4 +36,9 @@ abstract class Repository {
   Future<Either<Failure, List<sw.RefEnum>>> getEnumElemets({
     required String type,
   });
+
+  @override
+  Future<Either<Failure, None>> saveTask({
+    required sw.Task task,
+  });
 }

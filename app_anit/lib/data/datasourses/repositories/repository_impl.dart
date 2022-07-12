@@ -156,6 +156,22 @@ class RepositoryImpl extends Repository {
       return Left(_getCatchFailure(e));
     }
   }
+
+  @override
+  Future<Either<Failure, None>> saveTask({
+    required sw.Task task,
+  }) async {
+    try {
+      final response = await swagger!.taskPost(body: task);
+
+      if (response.errorStatusCode) {
+        return Left(response.getFailureResponse());
+      }
+      return const Right(None());
+    } catch (e) {
+      return Left(_getCatchFailure(e));
+    }
+  }
 }
 
 Failure _getCatchFailure(Object e) {
@@ -163,7 +179,7 @@ Failure _getCatchFailure(Object e) {
 }
 
 extension ResponseExt on Response {
-  bool get errorStatusCode => statusCode != 200;
+  bool get errorStatusCode => ![200, 201].contains(statusCode);
 
   Failure getFailureResponse() {
     return ServerFailure(error: error?.toString());
