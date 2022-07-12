@@ -50,7 +50,7 @@ class BodyWidget extends StatelessWidget {
           return Scaffold(
               body: Center(child: CustomErrorText(text: state.error)));
         }
-        // Чтобы блок не затирал курсор не убегал
+        // Чтобы курсор не убегал меняем если разница
         if (textController.text != (state.task?.title ?? '')) {
           textController.text = state.task?.title ?? '';
         }
@@ -77,37 +77,7 @@ class BodyWidget extends StatelessWidget {
               return true;
             }
 
-            showDialog<bool>(
-              context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  title: const Text("Внимание"),
-                  content: const Text("Задача изменена. Сохранить?"),
-                  actions: [
-                    SimpleDialogOption(
-                      onPressed: () {
-                        Navigator.of(context).pop(false);
-                      },
-                      child: const Text('Cancel'),
-                    ),
-                    SimpleDialogOption(
-                      onPressed: () {
-                        Navigator.of(context).pop(true);
-                      },
-                      child: const Text('ОК'),
-                    ),
-                  ],
-                );
-              },
-            ).then((value) {
-              if (value != null) {
-                if (value) {
-                  context.read<TaskCubit>().save();
-                } else {
-                  context.read<TaskCubit>().exit();
-                }
-              }
-            });
+            _showAlertDialog(context);
 
             return false;
           },
@@ -117,16 +87,13 @@ class BodyWidget extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    Container(
-                      color: Colors.grey[500],
-                      child: Card(
-                        child: CustomEditTextField(
-                          title: '',
-                          controller: textController,
-                          onChanged: (value) {
-                            context.read<TaskCubit>().changeTitle(value);
-                          },
-                        ),
+                    Card(
+                      child: CustomEditTextField(
+                        title: '',
+                        controller: textController,
+                        onChanged: (value) {
+                          context.read<TaskCubit>().changeTitle(value);
+                        },
                       ),
                     ),
                     RefCatalogFieldWidget(
@@ -187,5 +154,39 @@ class BodyWidget extends StatelessWidget {
         );
       },
     );
+  }
+
+  void _showAlertDialog(BuildContext context) {
+    showDialog<bool>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Внимание"),
+          content: const Text("Задача изменена. Сохранить?"),
+          actions: [
+            SimpleDialogOption(
+              onPressed: () {
+                Navigator.of(context).pop(false);
+              },
+              child: const Text('Cancel'),
+            ),
+            SimpleDialogOption(
+              onPressed: () {
+                Navigator.of(context).pop(true);
+              },
+              child: const Text('ОК'),
+            ),
+          ],
+        );
+      },
+    ).then((value) {
+      if (value != null) {
+        if (value) {
+          context.read<TaskCubit>().save();
+        } else {
+          context.read<TaskCubit>().exit();
+        }
+      }
+    });
   }
 }

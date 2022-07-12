@@ -1,5 +1,6 @@
 import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../domain/repositories/repository.dart';
 
 class TaskCubit extends Cubit<TaskState> {
@@ -18,6 +19,8 @@ class TaskCubit extends Cubit<TaskState> {
   }
 
   TaskState get baseState => TaskState(task: task, isModified: isModified);
+  TaskState get exitState =>
+      TaskState(task: task, isModified: isModified, exit: true);
 
   void refreshData() async {
     emit(TaskState(isLoading: true));
@@ -34,7 +37,7 @@ class TaskCubit extends Cubit<TaskState> {
 
   void exit() async {
     isModified = false;
-    emit(TaskState(task: task, exit: true, isModified: isModified));
+    emit(exitState);
   }
 
   void save() async {
@@ -44,7 +47,7 @@ class TaskCubit extends Cubit<TaskState> {
     either.fold((fail) {
       emit(TaskState(error: fail.error));
     }, (result) {
-      emit(TaskState(task: task, exit: true, isModified: isModified));
+      emit(exitState);
     });
   }
 
@@ -102,6 +105,6 @@ class TaskState {
 
   @override
   String toString() {
-    return 'TaskState(isLoading: $isLoading, error: $error, task: $task, isModified: $isModified)';
+    return 'TaskState(isLoading: $isLoading, error: $error, task: $task, isModified: $isModified, exit: $exit)';
   }
 }
