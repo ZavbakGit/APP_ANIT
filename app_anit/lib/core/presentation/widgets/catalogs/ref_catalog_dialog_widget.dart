@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../app/injection_container.dart';
 import '../../../../domain/repositories/repository.dart';
+import 'dart:async';
 
 class RefCatalogDialogWidget extends StatelessWidget {
   final String type;
@@ -131,23 +132,38 @@ class RefCatalogDialogCubit extends Cubit<StateDialog> {
   final Repository repository;
   final String type;
 
+  Timer? _debounce;
+
   RefCatalogDialogCubit({
     required this.repository,
     required this.type,
   }) : super(StateDialog());
 
-  void search(String search) async {
-    if (search.length > 2) {
-      final either = await repository.catalogSearch(
-          type: type, search: search, offset: 0, count: 30);
+  @override
+  Future<void> close() {
+    _debounce?.cancel();
+    return super.close();
+  }
 
-      either.fold((fail) {
-        emit(StateDialog(error: 'Ошибка'));
-      }, (result) {
-        emit(StateDialog(list: result));
+  void search(String search) {
+    emit(StateDialog(isLoading: true));
+    if (search.length > 2) {
+      if (_debounce?.isActive ?? false) _debounce?.cancel();
+      _debounce = Timer(const Duration(milliseconds: 500), () async {
+        final either = await repository.catalogSearch(
+            type: type, search: search, offset: 0, count: 30);
+
+        either.fold(
+          (fail) {
+            emit(StateDialog(error: 'Ошибка'));
+          },
+          (result) {
+            emit(StateDialog(list: result));
+          },
+        );
       });
     } else {
-      StateDialog(list: []);
+      emit(StateDialog(list: []));
     }
   }
 }

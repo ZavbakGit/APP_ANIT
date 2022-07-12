@@ -3,6 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../domain/repositories/repository.dart';
+import 'dart:async';
 
 class SearchDialogCubit extends Cubit<SearchDialogState> {
   final Repository repository;
@@ -13,30 +14,33 @@ class SearchDialogCubit extends Cubit<SearchDialogState> {
     required this.type,
   }) : super(SearchDialogState());
 
+  Timer? _debounce;
+
   @override
   Future<void> close() {
+    _debounce?.cancel();
     return super.close();
   }
 
-  void search(String search) async {
-    if (search.length > 2) {
-      emit(SearchDialogState(isLoading: true));
+  void search(String search) {
+    if (_debounce?.isActive ?? false) _debounce?.cancel();
+    _debounce = Timer(const Duration(milliseconds: 2000), () async {
+      if (search.length > 2) {
+        emit(SearchDialogState(isLoading: true));
 
-      //TODO Это для тестов ниже
-      //await Future.delayed(Duration(seconds: 1));
+        final either = await repository.catalogSearch(
+            type: type, search: search, offset: 0, count: 100);
 
-      final either = await repository.catalogSearch(
-          type: type, search: search, offset: 0, count: 100);
-
-      either.fold((fail) {
-        emit(SearchDialogState(isLoading: false, error: 'Что пошло не так'));
-      }, (list) {
-        //TODO Если выйти до того как выполнится запрос то будет исключение. Пока не наше как исправить
-        emit(SearchDialogState(isLoading: false, list: list));
-      });
-    } else {
-      emit(SearchDialogState(isLoading: false, list: []));
-    }
+        either.fold((fail) {
+          emit(SearchDialogState(isLoading: false, error: 'Что пошло не так'));
+        }, (list) {
+          //TODO Если выйти до того как выполнится запрос то будет исключение. Пока не наше как исправить
+          emit(SearchDialogState(isLoading: false, list: list));
+        });
+      } else {
+        emit(SearchDialogState(isLoading: false, list: []));
+      }
+    });
   }
 }
 
