@@ -60,7 +60,25 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "Задачу",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Task"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/task_new": {
+      "get": {
+        "operationId": "newTask",
+        "description": "Данные для новой задачи",
+        "responses": {
+          "200": {
+            "description": "Новая задача",
             "content": {
               "application/json": {
                 "schema": {
