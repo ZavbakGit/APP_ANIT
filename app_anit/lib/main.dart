@@ -17,6 +17,7 @@ class AnitApp extends StatelessWidget {
     final router = sl<AppRouter>().router; // I like this one better
 
     return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
       routeInformationParser: router.routeInformationParser,
       routerDelegate: router.routerDelegate,
       title: 'flutter_riverpod + go_router Demo',

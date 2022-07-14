@@ -17,6 +17,28 @@ class CustomErrorText extends StatelessWidget {
   }
 }
 
+class CustomAppBarTitleText extends StatelessWidget {
+  final String? text;
+
+  const CustomAppBarTitleText({
+    Key? key,
+    this.text,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text ?? '',
+      style: const TextStyle(
+        color: Colors.white,
+        fontSize: 14,
+        fontFamily: "Roboto",
+        fontWeight: FontWeight.w500,
+      ),
+    );
+  }
+}
+
 class CustomTitleText extends StatelessWidget {
   final String? text;
 

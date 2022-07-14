@@ -10,6 +10,7 @@ class TasksCubit extends Cubit<TasksPageState> {
   final Repository repository;
   final AppModel appModel;
   final List<TaskItem> tasks = [];
+  final List<TaskItem> controlleredTasks = [];
 
   late Timer? _timer;
 
@@ -18,8 +19,13 @@ class TasksCubit extends Cubit<TasksPageState> {
     required this.appModel,
   }) : super(TasksPageState(user: appModel.remoteConfig!.user));
 
-  TasksPageState get _baseState =>
-      TasksPageState(user: appModel.remoteConfig!.user, tasks: tasks);
+  TasksPageState get _baseState => TasksPageState(
+        user: appModel.remoteConfig!.user,
+        tasks: tasks,
+        controlledTasks: controlleredTasks,
+      );
+
+  RefCatalog get user => appModel.remoteConfig!.user;
 
   void exit() {
     appModel.logout();
@@ -38,26 +44,25 @@ class TasksCubit extends Cubit<TasksPageState> {
     return super.close();
   }
 
-  void clear() {
-    tasks.clear();
-    emit(_baseState);
-  }
-
   void refreshData() async {
     emit(_baseState.copyWith(isLoading: true));
     final either =
         await repository.tasksUserGet(appModel.remoteConfig!.user.guid!);
 
     tasks.clear();
+    controlleredTasks.clear();
     either.fold((fail) {
       emit(_baseState.copyWith(error: 'Что пошло не так'));
     }, (list) {
-      tasks.addAll(list);
+      tasks.addAll(
+          list.where((element) => element.responsible!.guid == user.guid));
+      controlleredTasks.addAll(
+          list.where((element) => element.responsible!.guid != user.guid));
       emit(_baseState);
     });
   }
 
-  void onClickAddTask() {
+  void onClickAddTask({bool isControled = false}) {
     emit(_baseState.copyWith(addTask: true, notRebuild: true));
   }
 
@@ -70,6 +75,7 @@ class TasksPageState {
   final bool isLoading;
   final RefCatalog user;
   final List<TaskItem> tasks;
+  final List<TaskItem> controlledTasks;
   final String error;
   final String? goGuidTask;
   final bool addTask;
@@ -79,6 +85,7 @@ class TasksPageState {
     required this.user,
     this.isLoading = false,
     this.tasks = const [],
+    this.controlledTasks = const [],
     this.error = '',
     this.addTask = false,
     this.notRebuild = false,
@@ -89,6 +96,7 @@ class TasksPageState {
     bool? isLoading,
     RefCatalog? user,
     List<TaskItem>? tasks,
+    List<TaskItem>? controlledTasks,
     String? error,
     String? goGuidTask,
     bool? addTask,
@@ -98,6 +106,7 @@ class TasksPageState {
       isLoading: isLoading ?? this.isLoading,
       user: user ?? this.user,
       tasks: tasks ?? this.tasks,
+      controlledTasks: controlledTasks ?? this.controlledTasks,
       error: error ?? this.error,
       goGuidTask: goGuidTask ?? this.goGuidTask,
       addTask: addTask ?? this.addTask,
