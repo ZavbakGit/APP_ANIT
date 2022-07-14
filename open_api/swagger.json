@@ -132,7 +132,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RemoteConfig"
+                  "$ref": "#/components/schemas/Config"
                 }
               }
             }
@@ -331,14 +331,19 @@
         },
         "description": "Элемент журнала задач"
       },
-      "RemoteConfig": {
-        "description": "Настройки",
+      "Config": {
         "type": "object",
         "properties": {
-          "user": {
-            "$ref": "#/components/schemas/RefCatalog"
+          "guidUser": {
+            "type": "string",
+            "description": "guid пользователя"
+          },
+          "nameUser": {
+            "type": "string",
+            "description": "Имя пользователя"
           }
-        }
+        },
+        "description": "Настройки"
       },
       "RefEnum": {
         "description": "Ссылка на перечисление",

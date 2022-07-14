@@ -62,6 +62,17 @@ abstract class Swagger extends ChopperService {
       {@Path('guid') required String? guid});
 
   ///
+  Future<chopper.Response<Task>> taskNewGet() {
+    generatedMapping.putIfAbsent(Task, () => Task.fromJsonFactory);
+
+    return _taskNewGet();
+  }
+
+  ///
+  @Get(path: '/task_new')
+  Future<chopper.Response<Task>> _taskNewGet();
+
+  ///
   ///@param guidUser
   Future<chopper.Response<List<TaskItem>>> tasksUserGet(
       {required String? guidUser}) {
