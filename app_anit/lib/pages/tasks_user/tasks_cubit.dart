@@ -16,10 +16,10 @@ class TasksCubit extends Cubit<TasksPageState> {
   TasksCubit({
     required this.repository,
     required this.appModel,
-  }) : super(TasksPageState());
+  }) : super(TasksPageState(user: appModel.remoteConfig!.user));
 
   TasksPageState _pageState() =>
-      TasksPageState(user: appModel.remoteConfig?.nameUser ?? '', tasks: tasks);
+      TasksPageState(user: appModel.remoteConfig!.user, tasks: tasks);
 
   void exit() {
     appModel.logout();
@@ -46,7 +46,7 @@ class TasksCubit extends Cubit<TasksPageState> {
   void refreshData() async {
     emit(_pageState().copyWith(isLoading: true));
     final either =
-        await repository.tasksUserGet(appModel.remoteConfig!.guidUser);
+        await repository.tasksUserGet(appModel.remoteConfig!.user!.guid!);
 
     tasks.clear();
     either.fold((fail) {
@@ -64,13 +64,13 @@ class TasksCubit extends Cubit<TasksPageState> {
 
 class TasksPageState {
   final bool isLoading;
-  final String user;
+  final RefCatalog user;
   final List<TaskItem> tasks;
   final String error;
   final String? goGuidTask;
 
   TasksPageState({
-    this.user = '',
+    required this.user,
     this.isLoading = false,
     this.tasks = const [],
     this.error = '',
@@ -79,7 +79,7 @@ class TasksPageState {
 
   TasksPageState copyWith({
     bool? isLoading,
-    String? user,
+    RefCatalog? user,
     List<TaskItem>? tasks,
     String? error,
     String? goGuidTask,
@@ -91,10 +91,5 @@ class TasksPageState {
       error: error ?? this.error,
       goGuidTask: goGuidTask ?? this.goGuidTask,
     );
-  }
-
-  @override
-  String toString() {
-    return 'TasksPageState(isLoading: $isLoading, user: $user, tasks: $tasks, error: $error, goGuidTask: $goGuidTask)';
   }
 }

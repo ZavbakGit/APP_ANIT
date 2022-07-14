@@ -12,7 +12,7 @@ targets:
           header: "//Generated code"
       swagger_dart_code_generator:
         options:
-          input_folder: "lib/"
+          input_folder: "lib/api"
           output_folder: "lib/swagger_generated_code/"
           with_base_url: true
           with_converter: true

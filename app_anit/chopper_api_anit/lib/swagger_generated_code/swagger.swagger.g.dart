@@ -98,12 +98,13 @@ Map<String, dynamic> _$TaskItemToJson(TaskItem instance) {
   return val;
 }
 
-Config _$ConfigFromJson(Map<String, dynamic> json) => Config(
-      guidUser: json['guidUser'] as String? ?? '',
-      nameUser: json['nameUser'] as String? ?? '',
+RemoteConfig _$RemoteConfigFromJson(Map<String, dynamic> json) => RemoteConfig(
+      user: json['user'] == null
+          ? null
+          : RefCatalog.fromJson(json['user'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$ConfigToJson(Config instance) {
+Map<String, dynamic> _$RemoteConfigToJson(RemoteConfig instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -112,8 +113,7 @@ Map<String, dynamic> _$ConfigToJson(Config instance) {
     }
   }
 
-  writeNotNull('guidUser', instance.guidUser);
-  writeNotNull('nameUser', instance.nameUser);
+  writeNotNull('user', instance.user?.toJson());
   return val;
 }
 

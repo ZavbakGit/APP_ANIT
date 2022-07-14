@@ -77,15 +77,16 @@ abstract class Swagger extends ChopperService {
       {@Query('guidUser') required String? guidUser});
 
   ///Login
-  Future<chopper.Response<Config>> loginGet() {
-    generatedMapping.putIfAbsent(Config, () => Config.fromJsonFactory);
+  Future<chopper.Response<RemoteConfig>> loginGet() {
+    generatedMapping.putIfAbsent(
+        RemoteConfig, () => RemoteConfig.fromJsonFactory);
 
     return _loginGet();
   }
 
   ///Login
   @Get(path: '/login')
-  Future<chopper.Response<Config>> _loginGet();
+  Future<chopper.Response<RemoteConfig>> _loginGet();
 
   ///
   ///@param search Строка поиска
@@ -374,21 +375,19 @@ extension $TaskItemExtension on TaskItem {
 }
 
 @JsonSerializable(explicitToJson: true)
-class Config {
-  Config({
-    this.guidUser,
-    this.nameUser,
+class RemoteConfig {
+  RemoteConfig({
+    this.user,
   });
 
-  factory Config.fromJson(Map<String, dynamic> json) => _$ConfigFromJson(json);
+  factory RemoteConfig.fromJson(Map<String, dynamic> json) =>
+      _$RemoteConfigFromJson(json);
 
-  @JsonKey(name: 'guidUser', includeIfNull: false, defaultValue: '')
-  final String? guidUser;
-  @JsonKey(name: 'nameUser', includeIfNull: false, defaultValue: '')
-  final String? nameUser;
-  static const fromJsonFactory = _$ConfigFromJson;
-  static const toJsonFactory = _$ConfigToJson;
-  Map<String, dynamic> toJson() => _$ConfigToJson(this);
+  @JsonKey(name: 'user', includeIfNull: false)
+  final RefCatalog? user;
+  static const fromJsonFactory = _$RemoteConfigFromJson;
+  static const toJsonFactory = _$RemoteConfigToJson;
+  Map<String, dynamic> toJson() => _$RemoteConfigToJson(this);
 
   @override
   String toString() => jsonEncode(this);
@@ -396,27 +395,19 @@ class Config {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is Config &&
-            (identical(other.guidUser, guidUser) ||
-                const DeepCollectionEquality()
-                    .equals(other.guidUser, guidUser)) &&
-            (identical(other.nameUser, nameUser) ||
-                const DeepCollectionEquality()
-                    .equals(other.nameUser, nameUser)));
+        (other is RemoteConfig &&
+            (identical(other.user, user) ||
+                const DeepCollectionEquality().equals(other.user, user)));
   }
 
   @override
   int get hashCode =>
-      const DeepCollectionEquality().hash(guidUser) ^
-      const DeepCollectionEquality().hash(nameUser) ^
-      runtimeType.hashCode;
+      const DeepCollectionEquality().hash(user) ^ runtimeType.hashCode;
 }
 
-extension $ConfigExtension on Config {
-  Config copyWith({String? guidUser, String? nameUser}) {
-    return Config(
-        guidUser: guidUser ?? this.guidUser,
-        nameUser: nameUser ?? this.nameUser);
+extension $RemoteConfigExtension on RemoteConfig {
+  RemoteConfig copyWith({RefCatalog? user}) {
+    return RemoteConfig(user: user ?? this.user);
   }
 }
 

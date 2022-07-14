@@ -81,7 +81,7 @@ class TasksBodyWidget extends StatelessWidget {
         );
 
         final appBar = CustomAppBar(
-          title: Text(state.user),
+          title: Text(state.user.name!),
           actions: [popupMenuButton],
         );
         return Scaffold(

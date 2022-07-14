@@ -77,8 +77,7 @@ class RepositoryImpl extends Repository {
 
       return Right(
         RemoteConfigModel(
-          guidUser: response.body!.guidUser!,
-          nameUser: response.body!.nameUser!,
+          user: response.body!.user!,
         ),
       );
     } catch (e) {

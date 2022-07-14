@@ -40,10 +40,10 @@ class _$Swagger extends Swagger {
   }
 
   @override
-  Future<Response<Config>> _loginGet() {
+  Future<Response<RemoteConfig>> _loginGet() {
     final $url = '/login';
     final $request = Request('GET', $url, client.baseUrl);
-    return client.send<Config, Config>($request);
+    return client.send<RemoteConfig, RemoteConfig>($request);
   }
 
   @override

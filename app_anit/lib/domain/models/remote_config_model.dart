@@ -1,12 +1,9 @@
+import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
+
 class RemoteConfigModel {
-  String guidUser;
-  String nameUser;
+  RefCatalog user;
 
   RemoteConfigModel({
-    required this.guidUser,
-    required this.nameUser,
+    required this.user,
   });
-
-  @override
-  String toString() => 'RemoteConfig(guid: $guidUser, name: $nameUser)';
 }
