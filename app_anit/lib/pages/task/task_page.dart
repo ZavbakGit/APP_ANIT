@@ -1,9 +1,11 @@
 import 'package:app_anit/core/presentation/widgets/app_bar.dart';
+import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 import '../../app/injection_container.dart';
+import '../../core/presentation/widgets/catalogs/ref_catalog_dialog_widget.dart';
 import '../../core/presentation/widgets/catalogs/ref_catalog_field_widget.dart';
 import '../../core/presentation/widgets/enums/ref_enum_field_widget.dart';
 import '../../core/presentation/widgets/page_widget.dart';
@@ -13,15 +15,15 @@ import '../../core/presentation/widgets/text_widget.dart';
 import '../task/task_cubit.dart';
 
 class TaskPage extends StatelessWidget {
-  final String guid;
+  final String? guid;
   const TaskPage({
     Key? key,
-    required this.guid,
+    this.guid,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => TaskCubit(repository: sl(), guid: guid)..init(),
+      create: (context) => TaskCubit(repository: sl(), guidTask: guid)..init(),
       child: const BodyWidget(),
     );
   }
@@ -61,7 +63,10 @@ class BodyWidget extends StatelessWidget {
         final appBar = CustomAppBar(
           title: Text(title),
           actions: [
-            if (state.isModified)
+            if (state.isModified &&
+                state.task!.partner != null &&
+                state.task!.responsible != null &&
+                state.task!.title!.isNotEmpty)
               IconButton(
                 onPressed: () {
                   context.read<TaskCubit>().save();
@@ -73,7 +78,10 @@ class BodyWidget extends StatelessWidget {
 
         return WillPopScope(
           onWillPop: () async {
-            if (!state.isModified) {
+            if (!state.isModified ||
+                state.task!.partner == null ||
+                state.task!.responsible == null ||
+                state.task!.title!.isEmpty) {
               return true;
             }
 
@@ -87,19 +95,26 @@ class BodyWidget extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    Card(
-                      child: CustomEditTextField(
-                        title: '',
-                        controller: textController,
-                        onChanged: (value) {
-                          context.read<TaskCubit>().changeTitle(value);
-                        },
-                      ),
+                    CustomEditTextField(
+                      title: 'Описание',
+                      errorText:
+                          textController.text.isEmpty ? 'Не заполнено' : null,
+                      controller: textController,
+                      onChanged: (value) {
+                        context.read<TaskCubit>().changeTitle(value);
+                      },
                     ),
+                    const Divider(
+                        height: 24,
+                        color: Colors.grey,
+                        indent: 16,
+                        endIndent: 16),
                     RefCatalogFieldWidget(
                       refCatalog: state.task?.partner,
                       title: 'Клиент',
                       type: 'Партнеры',
+                      errorTitle:
+                          state.task?.partner == null ? 'Не заполнено' : null,
                       onChoice: (val) {
                         context.read<TaskCubit>().changePartner(val);
                       },
@@ -115,11 +130,15 @@ class BodyWidget extends StatelessWidget {
                     RefCatalogFieldWidget(
                       refCatalog: state.task?.responsible,
                       title: 'Ответственный',
+                      errorTitle: state.task?.responsible == null
+                          ? 'Не заполнено'
+                          : null,
                       type: 'Пользователи',
                       onChoice: (val) {
                         context.read<TaskCubit>().changeResponsible(val);
                       },
                     ),
+                    const Divider(height: 8),
                     Row(
                       children: [
                         Expanded(
@@ -145,6 +164,25 @@ class BodyWidget extends StatelessWidget {
                           ),
                         ),
                       ],
+                    ),
+                    const Divider(height: 8),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+                      child: Align(
+                        alignment: Alignment.topLeft,
+                        child: ControllersWidget(
+                          state: state,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+                      child: Align(
+                        alignment: Alignment.topLeft,
+                        child: AssistantsWidget(
+                          state: state,
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -188,5 +226,150 @@ class BodyWidget extends StatelessWidget {
         }
       }
     });
+  }
+}
+
+class AssistantsWidget extends StatelessWidget {
+  final TaskState state;
+
+  const AssistantsWidget({
+    Key? key,
+    required this.state,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final list = state.task!.assistants;
+    final title = list!.length > 0 ? '(${list.length})' : '';
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Text('Соисполнители $title'),
+            IconButton(
+              icon: const Icon(Icons.add),
+              onPressed: () {
+                Navigator.push<RefCatalog>(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => RefCatalogDialogWidget(
+                      type: 'Пользователи',
+                      titleDialog: 'Соисполнитель',
+                    ),
+                  ),
+                ).then((value) {
+                  if (value != null) {
+                    context.read<TaskCubit>().addAssitant(value);
+                  }
+                });
+              },
+            ),
+          ],
+        ),
+        const Divider(height: 8),
+        Wrap(
+          spacing: 8,
+          children: [
+            ...state.task!.assistants!
+                .map(
+                  (assistant) => Chip(
+                    backgroundColor: Colors.amber[50],
+                    avatar: const CircleAvatar(
+                      child: Icon(Icons.account_circle),
+                      backgroundColor: Colors.blue,
+                    ),
+                    label: SizedBox(
+                      width: 80,
+                      child: Text(
+                        assistant.name!,
+                      ),
+                    ),
+                    elevation: 2,
+                    shadowColor: Colors.deepOrange,
+                    deleteIcon: const Icon(Icons.close),
+                    onDeleted: () {
+                      context.read<TaskCubit>().dellAssistant(assistant.guid!);
+                    },
+                  ),
+                )
+                .toList(),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class ControllersWidget extends StatelessWidget {
+  final TaskState state;
+
+  const ControllersWidget({
+    Key? key,
+    required this.state,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final list = state.task!.controllers;
+    final title = list!.length > 0 ? '(${list.length})' : '';
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Text('Контролеры $title'),
+            IconButton(
+              icon: const Icon(Icons.add),
+              onPressed: () {
+                Navigator.push<RefCatalog>(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => RefCatalogDialogWidget(
+                      type: 'Пользователи',
+                      titleDialog: 'Контролер',
+                    ),
+                  ),
+                ).then((value) {
+                  if (value != null) {
+                    context.read<TaskCubit>().addController(value);
+                  }
+                });
+              },
+            ),
+          ],
+        ),
+        const Divider(height: 8),
+        Wrap(
+          children: [
+            ...state.task!.controllers!
+                .map(
+                  (controller) => Chip(
+                    backgroundColor: Colors.amber[50],
+                    avatar: const CircleAvatar(
+                      child: Icon(Icons.account_circle),
+                      backgroundColor: Colors.blue,
+                    ),
+                    label: SizedBox(
+                      width: 80,
+                      child: Text(controller.name!),
+                    ),
+                    elevation: 2,
+                    shadowColor: Colors.deepOrange,
+                    deleteIcon: const Icon(Icons.close),
+                    onDeleted: () {
+                      context
+                          .read<TaskCubit>()
+                          .dellController(controller.guid!);
+                    },
+                  ),
+                )
+                .toList(),
+          ],
+        ),
+      ],
+    );
   }
 }

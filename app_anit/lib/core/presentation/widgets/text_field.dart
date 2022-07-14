@@ -21,12 +21,17 @@ class CustomCatalogField extends StatelessWidget {
 class CustomEditTextField extends StatelessWidget {
   final String title;
   final TextEditingController? controller;
+  final String? errorText;
 
   final ValueChanged<String>? onChanged;
 
-  const CustomEditTextField(
-      {Key? key, this.controller, required this.title, this.onChanged})
-      : super(key: key);
+  const CustomEditTextField({
+    Key? key,
+    this.controller,
+    required this.title,
+    this.onChanged,
+    this.errorText,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +41,8 @@ class CustomEditTextField extends StatelessWidget {
         minLines: 1,
         maxLines: 10,
         controller: controller,
-        decoration: InputDecoration(labelText: title, border: InputBorder.none),
+        decoration: InputDecoration(
+            labelText: title, border: InputBorder.none, errorText: errorText),
         onChanged: onChanged,
       ),
     );

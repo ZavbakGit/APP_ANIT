@@ -117,6 +117,21 @@ class RepositoryImpl extends Repository {
   }
 
   @override
+  Future<Either<Failure, sw.Task>> taskNewGet() async {
+    try {
+      final response = await swagger!.taskNewGet();
+
+      if (response.errorStatusCode) {
+        return Left(response.getFailureResponse());
+      }
+
+      return Right(response.body!);
+    } catch (e) {
+      return Left(_getCatchFailure(e));
+    }
+  }
+
+  @override
   Future<Either<Failure, List<RefCatalog>>> catalogSearch({
     required String type,
     required String search,

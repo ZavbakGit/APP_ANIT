@@ -30,6 +30,14 @@ Task _$TaskFromJson(Map<String, dynamic> json) => Task(
       producer: json['producer'] == null
           ? null
           : RefCatalog.fromJson(json['producer'] as Map<String, dynamic>),
+      controllers: (json['controllers'] as List<dynamic>?)
+              ?.map((e) => RefCatalog.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+      assistants: (json['assistants'] as List<dynamic>?)
+              ?.map((e) => RefCatalog.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
     );
 
 Map<String, dynamic> _$TaskToJson(Task instance) {
@@ -51,6 +59,10 @@ Map<String, dynamic> _$TaskToJson(Task instance) {
   writeNotNull('author', instance.author?.toJson());
   writeNotNull('responsible', instance.responsible?.toJson());
   writeNotNull('producer', instance.producer?.toJson());
+  writeNotNull(
+      'controllers', instance.controllers?.map((e) => e.toJson()).toList());
+  writeNotNull(
+      'assistants', instance.assistants?.map((e) => e.toJson()).toList());
   return val;
 }
 

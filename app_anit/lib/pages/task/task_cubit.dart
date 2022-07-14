@@ -5,13 +5,13 @@ import '../../domain/repositories/repository.dart';
 
 class TaskCubit extends Cubit<TaskState> {
   final Repository repository;
-  final String guid;
+  final String? guidTask;
   Task? task;
   bool isModified = false;
 
   TaskCubit({
     required this.repository,
-    required this.guid,
+    required this.guidTask,
   }) : super(TaskState(isLoading: true));
 
   init() {
@@ -25,7 +25,9 @@ class TaskCubit extends Cubit<TaskState> {
   void refreshData() async {
     emit(TaskState(isLoading: true));
 
-    final either = await repository.getTaskByGuid(guid);
+    final either = (guidTask != null)
+        ? await repository.getTaskByGuid(guidTask!)
+        : await repository.taskNewGet();
 
     either.fold((fail) {
       emit(TaskState(error: fail.error));
@@ -85,6 +87,50 @@ class TaskCubit extends Cubit<TaskState> {
     task = task?.copyWith(importance: val);
     isModified = true;
     emit(baseState);
+  }
+
+  void dellController(String guidController) {
+    task = task?.copyWith(
+        controllers: task!.controllers!
+            .where((element) => element.guid != guidController)
+            .toList());
+    isModified = true;
+    emit(baseState);
+  }
+
+  void dellAssistant(String guidAssistant) {
+    task = task?.copyWith(
+        assistants: task!.assistants!
+            .where((element) => element.guid != guidAssistant)
+            .toList());
+    isModified = true;
+    emit(baseState);
+  }
+
+  void addController(RefCatalog value) {
+    if (!task!.controllers!.map((e) => e.guid).contains(value.guid)) {
+      final list = [
+        ...task!.controllers!,
+        value,
+      ];
+
+      task = task?.copyWith(controllers: list);
+      isModified = true;
+      emit(baseState);
+    }
+  }
+
+  void addAssitant(RefCatalog value) {
+    if (!task!.assistants!.map((e) => e.guid).contains(value.guid)) {
+      final list = [
+        ...task!.assistants!,
+        value,
+      ];
+
+      task = task?.copyWith(assistants: list);
+      isModified = true;
+      emit(baseState);
+    }
   }
 }
 

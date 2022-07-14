@@ -18,7 +18,7 @@ class TasksCubit extends Cubit<TasksPageState> {
     required this.appModel,
   }) : super(TasksPageState(user: appModel.remoteConfig!.user));
 
-  TasksPageState _pageState() =>
+  TasksPageState get _baseState =>
       TasksPageState(user: appModel.remoteConfig!.user, tasks: tasks);
 
   void exit() {
@@ -40,25 +40,29 @@ class TasksCubit extends Cubit<TasksPageState> {
 
   void clear() {
     tasks.clear();
-    emit(_pageState());
+    emit(_baseState);
   }
 
   void refreshData() async {
-    emit(_pageState().copyWith(isLoading: true));
+    emit(_baseState.copyWith(isLoading: true));
     final either =
-        await repository.tasksUserGet(appModel.remoteConfig!.user!.guid!);
+        await repository.tasksUserGet(appModel.remoteConfig!.user.guid!);
 
     tasks.clear();
     either.fold((fail) {
-      emit(_pageState().copyWith(error: 'Что пошло не так'));
+      emit(_baseState.copyWith(error: 'Что пошло не так'));
     }, (list) {
       tasks.addAll(list);
-      emit(_pageState());
+      emit(_baseState);
     });
   }
 
-  onClick(String? guid) {
-    emit(_pageState().copyWith(goGuidTask: guid));
+  void onClickAddTask() {
+    emit(_baseState.copyWith(addTask: true, notRebuild: true));
+  }
+
+  void onClick(String? guid) {
+    emit(_baseState.copyWith(goGuidTask: guid, notRebuild: true));
   }
 }
 
@@ -68,12 +72,16 @@ class TasksPageState {
   final List<TaskItem> tasks;
   final String error;
   final String? goGuidTask;
+  final bool addTask;
+  final bool notRebuild;
 
   TasksPageState({
     required this.user,
     this.isLoading = false,
     this.tasks = const [],
     this.error = '',
+    this.addTask = false,
+    this.notRebuild = false,
     this.goGuidTask,
   });
 
@@ -83,6 +91,8 @@ class TasksPageState {
     List<TaskItem>? tasks,
     String? error,
     String? goGuidTask,
+    bool? addTask,
+    bool? notRebuild,
   }) {
     return TasksPageState(
       isLoading: isLoading ?? this.isLoading,
@@ -90,6 +100,8 @@ class TasksPageState {
       tasks: tasks ?? this.tasks,
       error: error ?? this.error,
       goGuidTask: goGuidTask ?? this.goGuidTask,
+      addTask: addTask ?? this.addTask,
+      notRebuild: notRebuild ?? this.notRebuild,
     );
   }
 }

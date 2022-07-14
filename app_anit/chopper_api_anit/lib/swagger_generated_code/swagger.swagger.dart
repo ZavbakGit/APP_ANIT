@@ -155,6 +155,8 @@ class Task {
     this.author,
     this.responsible,
     this.producer,
+    this.controllers,
+    this.assistants,
   });
 
   factory Task.fromJson(Map<String, dynamic> json) => _$TaskFromJson(json);
@@ -179,6 +181,12 @@ class Task {
   final RefCatalog? responsible;
   @JsonKey(name: 'producer', includeIfNull: false)
   final RefCatalog? producer;
+  @JsonKey(
+      name: 'controllers', includeIfNull: false, defaultValue: <RefCatalog>[])
+  final List<RefCatalog>? controllers;
+  @JsonKey(
+      name: 'assistants', includeIfNull: false, defaultValue: <RefCatalog>[])
+  final List<RefCatalog>? assistants;
   static const fromJsonFactory = _$TaskFromJson;
   static const toJsonFactory = _$TaskToJson;
   Map<String, dynamic> toJson() => _$TaskToJson(this);
@@ -215,7 +223,13 @@ class Task {
                     .equals(other.responsible, responsible)) &&
             (identical(other.producer, producer) ||
                 const DeepCollectionEquality()
-                    .equals(other.producer, producer)));
+                    .equals(other.producer, producer)) &&
+            (identical(other.controllers, controllers) ||
+                const DeepCollectionEquality()
+                    .equals(other.controllers, controllers)) &&
+            (identical(other.assistants, assistants) ||
+                const DeepCollectionEquality()
+                    .equals(other.assistants, assistants)));
   }
 
   @override
@@ -230,6 +244,8 @@ class Task {
       const DeepCollectionEquality().hash(author) ^
       const DeepCollectionEquality().hash(responsible) ^
       const DeepCollectionEquality().hash(producer) ^
+      const DeepCollectionEquality().hash(controllers) ^
+      const DeepCollectionEquality().hash(assistants) ^
       runtimeType.hashCode;
 }
 
@@ -244,7 +260,9 @@ extension $TaskExtension on Task {
       RefCatalog? partner,
       RefCatalog? author,
       RefCatalog? responsible,
-      RefCatalog? producer}) {
+      RefCatalog? producer,
+      List<RefCatalog>? controllers,
+      List<RefCatalog>? assistants}) {
     return Task(
         guid: guid ?? this.guid,
         date: date ?? this.date,
@@ -255,7 +273,9 @@ extension $TaskExtension on Task {
         partner: partner ?? this.partner,
         author: author ?? this.author,
         responsible: responsible ?? this.responsible,
-        producer: producer ?? this.producer);
+        producer: producer ?? this.producer,
+        controllers: controllers ?? this.controllers,
+        assistants: assistants ?? this.assistants);
   }
 }
 

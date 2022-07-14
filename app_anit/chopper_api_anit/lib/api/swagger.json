@@ -60,7 +60,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Задачу",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -271,6 +271,18 @@
           },
           "producer": {
             "$ref": "#/components/schemas/RefCatalog"
+          },
+          "controllers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RefCatalog"
+            }
+          },
+          "assistants": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RefCatalog"
+            }
           }
         },
         "description": "Задача"

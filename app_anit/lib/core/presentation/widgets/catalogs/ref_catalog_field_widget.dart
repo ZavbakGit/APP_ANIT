@@ -6,12 +6,14 @@ class RefCatalogFieldWidget extends StatelessWidget {
   final String type;
   final RefCatalog? refCatalog;
   final String title;
+  final String? errorTitle;
   final ValueChanged<RefCatalog>? onChoice;
 
   const RefCatalogFieldWidget({
     Key? key,
     required this.refCatalog,
     required this.title,
+    this.errorTitle,
     required this.type,
     this.onChoice,
   }) : super(key: key);
@@ -37,7 +39,18 @@ class RefCatalogFieldWidget extends StatelessWidget {
         }
       },
       child: ListTile(
-        title: Text(title),
+        title: Row(
+          children: [
+            Expanded(child: Text(title)),
+            const SizedBox(
+              width: 8,
+            ),
+            if (errorTitle != null)
+              Expanded(
+                  child: Text(errorTitle!,
+                      style: TextStyle(color: Colors.red[300]))),
+          ],
+        ),
         subtitle: Text(refCatalog?.name ?? ''),
       ),
     );

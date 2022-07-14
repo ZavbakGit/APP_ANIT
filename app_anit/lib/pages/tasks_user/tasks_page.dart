@@ -48,9 +48,24 @@ class TasksBodyWidget extends StatelessWidget {
             }
           });
         }
+
+        if (state.addTask) {
+          Navigator.push<bool>(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const TaskPage(),
+            ),
+          ).then((value) {
+            if (value != null) {
+              if (value) {
+                context.read<TasksCubit>().refreshData();
+              }
+            }
+          });
+        }
       },
       buildWhen: (previous, current) {
-        return current.goGuidTask == null;
+        return !current.notRebuild;
       },
       builder: (context, state) {
         final popupMenuButton = PopupMenuButton(
@@ -86,9 +101,15 @@ class TasksBodyWidget extends StatelessWidget {
         );
         return Scaffold(
           appBar: appBar,
+          floatingActionButton: FloatingActionButton(
+            child: const Icon(Icons.add),
+            onPressed: () {
+              context.read<TasksCubit>().onClickAddTask();
+            },
+          ),
           body: RefreshIndicator(
             onRefresh: () async {
-              BlocProvider.of<TasksCubit>(context).refreshData();
+              context.read<TasksCubit>().refreshData();
             },
             child: Column(
               children: [
@@ -155,7 +176,7 @@ class TaskItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => BlocProvider.of<TasksCubit>(context).onClick(item.guid),
+      onTap: () => context.read<TasksCubit>().onClick(item.guid),
       child: Card(
         child: ListTile(
           title: Text(item.title ?? ''),

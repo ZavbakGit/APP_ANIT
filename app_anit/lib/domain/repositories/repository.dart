@@ -27,6 +27,8 @@ abstract class Repository {
 
   Future<Either<Failure, sw.Task>> getTaskByGuid(String guid);
 
+  Future<Either<Failure, sw.Task>> taskNewGet();
+
   Future<Either<Failure, List<RefCatalog>>> catalogSearch(
       {required String type,
       required String search,
