@@ -127,22 +127,6 @@ class LoginFormState extends State<LoginFormWidget> {
                 const CustomDividerHeader(),
                 CustomTextFormWidget(
                   enabled: !widget.isLoading,
-                  controller: baseUrlController,
-                  labelText: 'Сервис (http://192.168.2.38/dostavka/hs/oas)',
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Не заполнено';
-                    }
-
-                    if (!Uri.parse(value).isAbsolute) {
-                      return 'Не является адресом';
-                    }
-                    return null;
-                  },
-                ),
-                const CustomDividerField(),
-                CustomTextFormWidget(
-                  enabled: !widget.isLoading,
                   controller: loginController,
                   labelText: 'Логин',
                   validator: (value) {

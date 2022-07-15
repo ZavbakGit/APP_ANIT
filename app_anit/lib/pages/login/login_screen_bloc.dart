@@ -52,7 +52,6 @@ class LoginScreenCubit extends Cubit<PageState> {
     );
 
     final connectionConfig = ConnectedConfigModel(
-      baseUrl: baseUrl,
       login: login,
       password: password,
     );

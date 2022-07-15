@@ -47,38 +47,6 @@ class TasksBodyWidget extends StatelessWidget {
     required this.tabController,
   });
 
-  void listnerState(context, state) {
-    if (state.goGuidTask != null) {
-      Navigator.push<bool>(
-        context,
-        MaterialPageRoute(
-          builder: (context) => TaskPage(guid: state.goGuidTask!),
-        ),
-      ).then((value) {
-        if (value != null) {
-          if (value) {
-            context.read<TasksCubit>().refreshData();
-          }
-        }
-      });
-    }
-
-    if (state.addTask) {
-      Navigator.push<bool>(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const TaskPage(),
-        ),
-      ).then((value) {
-        if (value != null) {
-          if (value) {
-            context.read<TasksCubit>().refreshData();
-          }
-        }
-      });
-    }
-  }
-
   List<Widget> getPopupMenu() {
     return [
       PopupMenuButton(
@@ -168,7 +136,36 @@ class TasksBodyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<TasksCubit, TasksPageState>(
-      listener: listnerState,
+      listener: (context, state) {
+        if (state.goGuidTask != null) {
+          Navigator.push<bool>(
+            context,
+            MaterialPageRoute(
+              builder: (context) => TaskPage(guid: state.goGuidTask!),
+            ),
+          ).then((value) {
+            if (value != null) {
+              if (value) {
+                context.read<TasksCubit>().refreshData();
+              }
+            }
+          });
+        }
+        if (state.addTask) {
+          Navigator.push<bool>(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const TaskPage(),
+            ),
+          ).then((value) {
+            if (value != null) {
+              if (value) {
+                context.read<TasksCubit>().refreshData();
+              }
+            }
+          });
+        }
+      },
       buildWhen: (previous, current) {
         return !current.notRebuild;
       },

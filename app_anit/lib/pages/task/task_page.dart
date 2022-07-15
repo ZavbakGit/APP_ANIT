@@ -23,7 +23,8 @@ class TaskPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => TaskCubit(repository: sl(), guidTask: guid)..init(),
+      create: (context) =>
+          TaskCubit(repository: sl(), guidTask: guid, appModel: sl())..init(),
       child: const BodyWidget(),
     );
   }
@@ -339,6 +340,13 @@ class ControllersWidget extends StatelessWidget {
                 });
               },
             ),
+            if (state.isControledTask)
+              IconButton(
+                icon: const Icon(Icons.check),
+                onPressed: () {
+                  context.read<TaskCubit>().setControlDone();
+                },
+              ),
           ],
         ),
         const Divider(height: 8),

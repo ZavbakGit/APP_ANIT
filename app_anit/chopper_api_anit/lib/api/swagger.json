@@ -246,6 +246,11 @@
             "description": "Дата документа",
             "format": "date-time"
           },
+          "date_control": {
+            "type": "string",
+            "description": "Дата контроля",
+            "format": "date-time"
+          },
           "number": {
             "description": "Номер документа",
             "type": "string"

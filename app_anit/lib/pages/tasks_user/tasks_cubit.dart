@@ -46,6 +46,8 @@ class TasksCubit extends Cubit<TasksPageState> {
 
   void refreshData() async {
     emit(_baseState.copyWith(isLoading: true));
+
+    await Future.delayed(const Duration(milliseconds: 500));
     final either =
         await repository.tasksUserGet(appModel.remoteConfig!.user.guid!);
 
@@ -55,9 +57,12 @@ class TasksCubit extends Cubit<TasksPageState> {
       emit(_baseState.copyWith(error: 'Что пошло не так'));
     }, (list) {
       tasks.addAll(
-          list.where((element) => element.responsible!.guid == user.guid));
+        list.where((element) => element.responsible!.guid == user.guid),
+      );
       controlleredTasks.addAll(
-          list.where((element) => element.responsible!.guid != user.guid));
+        list.where((element) => element.responsible!.guid != user.guid),
+      );
+
       emit(_baseState);
     });
   }

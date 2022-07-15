@@ -1,15 +1,15 @@
 import 'dart:convert';
 
 class ConnectedConfigModel {
-  final String baseUrl;
   final String login;
   final String password;
 
   ConnectedConfigModel({
-    required this.baseUrl,
     required this.login,
     required this.password,
   });
+
+  String get baseUrl => 'http://172.31.255.150/copy_erp/hs/oas_api';
 
   Map<String, dynamic> toMap() {
     return {
@@ -21,7 +21,6 @@ class ConnectedConfigModel {
 
   factory ConnectedConfigModel.fromMap(Map<String, dynamic> map) {
     return ConnectedConfigModel(
-      baseUrl: map['baseUrl'] ?? '',
       login: map['login'] ?? '',
       password: map['password'] ?? '',
     );

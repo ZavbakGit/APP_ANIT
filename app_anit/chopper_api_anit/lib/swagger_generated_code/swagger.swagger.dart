@@ -147,6 +147,7 @@ class Task {
   Task({
     this.guid,
     this.date,
+    this.dateControl,
     this.$number,
     this.condition,
     this.importance,
@@ -165,6 +166,8 @@ class Task {
   final String? guid;
   @JsonKey(name: 'date', includeIfNull: false)
   final DateTime? date;
+  @JsonKey(name: 'date_control', includeIfNull: false)
+  final DateTime? dateControl;
   @JsonKey(name: 'number', includeIfNull: false, defaultValue: '')
   final String? $number;
   @JsonKey(name: 'condition', includeIfNull: false)
@@ -202,6 +205,9 @@ class Task {
                 const DeepCollectionEquality().equals(other.guid, guid)) &&
             (identical(other.date, date) ||
                 const DeepCollectionEquality().equals(other.date, date)) &&
+            (identical(other.dateControl, dateControl) ||
+                const DeepCollectionEquality()
+                    .equals(other.dateControl, dateControl)) &&
             (identical(other.$number, $number) ||
                 const DeepCollectionEquality()
                     .equals(other.$number, $number)) &&
@@ -236,6 +242,7 @@ class Task {
   int get hashCode =>
       const DeepCollectionEquality().hash(guid) ^
       const DeepCollectionEquality().hash(date) ^
+      const DeepCollectionEquality().hash(dateControl) ^
       const DeepCollectionEquality().hash($number) ^
       const DeepCollectionEquality().hash(condition) ^
       const DeepCollectionEquality().hash(importance) ^
@@ -253,6 +260,7 @@ extension $TaskExtension on Task {
   Task copyWith(
       {String? guid,
       DateTime? date,
+      DateTime? dateControl,
       String? $number,
       RefEnum? condition,
       RefEnum? importance,
@@ -266,6 +274,7 @@ extension $TaskExtension on Task {
     return Task(
         guid: guid ?? this.guid,
         date: date ?? this.date,
+        dateControl: dateControl ?? this.dateControl,
         $number: $number ?? this.$number,
         condition: condition ?? this.condition,
         importance: importance ?? this.importance,
