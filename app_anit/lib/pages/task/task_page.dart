@@ -314,7 +314,7 @@ class ControllersWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final list = state.task!.controllers;
-    final title = list!.length > 0 ? '(${list.length})' : '';
+    final title = list!.isNotEmpty ? '(${list.length})' : '';
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

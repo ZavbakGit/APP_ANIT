@@ -202,9 +202,8 @@ class TaskListWidget extends StatelessWidget {
           const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
       scrollDirection: Axis.vertical,
       //shrinkWrap: true,
-      itemBuilder: (BuildContext context, int index) => TaskItemWidget(
-        item: list[index],
-      ),
+      itemBuilder: (BuildContext context, int index) =>
+          TaskItemWidget(item: list[index]),
       itemCount: list.length,
     );
   }
