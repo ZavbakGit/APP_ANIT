@@ -65,7 +65,7 @@ class LoginScreenCubit extends Cubit<PageState> {
 
     either.fold(
       (fail) {
-        emit(pageStateCurent.copyWith(error: 'Что пошло не так'));
+        emit(pageStateCurent.copyWith(error: 'Что то не так!'));
       },
       (none) {
         emit(_getPageStateApp().copyWith(isGoHome: true));
@@ -80,7 +80,7 @@ class PageState {
   final String baseUrl;
   final String login;
   final String password;
-  final String error;
+  final String? error;
   final bool isGoHome;
 
   const PageState({
@@ -88,7 +88,7 @@ class PageState {
     this.baseUrl = '',
     this.login = '',
     this.password = '',
-    this.error = '',
+    this.error,
     this.isGoHome = false,
   });
 

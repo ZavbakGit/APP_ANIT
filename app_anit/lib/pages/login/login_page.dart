@@ -1,4 +1,5 @@
 import 'package:app_anit/app/injection_container.dart';
+import 'package:app_anit/core/presentation/widgets/custom_error_messge.dart';
 import 'package:app_anit/pages/login/login_screen_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -156,7 +157,7 @@ class LoginFormState extends State<LoginFormWidget> {
                 const CustomDividerField(),
                 if (widget.isLoading) const CustomCircularProgressIndicator(),
                 if (widget.errorMessage != null)
-                  CustomErrorText(text: widget.errorMessage),
+                  CustomErrorMessage(text: widget.errorMessage),
               ],
             ),
           ),
