@@ -14,7 +14,9 @@ class AnitApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final router = sl<AppRouter>().router; // I like this one better
+    final router = sl<AppRouter>().router;
+
+    // I like this one better
 
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
