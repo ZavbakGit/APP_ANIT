@@ -27,7 +27,7 @@ class RefCatalogDialogWidget extends StatelessWidget {
     focusNode.requestFocus();
 
     final textEditingController = TextEditingController();
-
+    //TODO разобраться с  FocusManager
     return BlocProvider(
       create: (context) => RefCatalogDialogCubit(type: type, repository: sl()),
       child: BlocBuilder<RefCatalogDialogCubit, StateDialog>(
@@ -45,7 +45,12 @@ class RefCatalogDialogWidget extends StatelessWidget {
                 context.read<RefCatalogDialogCubit>().search('');
               },
             ),
-            body: BodyWidget(state: state),
+            body: GestureDetector(
+              onTapDown: (details) {
+                FocusManager.instance.primaryFocus?.unfocus();
+              },
+              child: BodyWidget(state: state),
+            ),
           );
         },
       ),
@@ -80,17 +85,27 @@ class BodyWidget extends StatelessWidget {
 
     final List<RefCatalog> list = state.list ?? [];
 
-    return ListView.builder(
-      scrollDirection: Axis.vertical,
-      //shrinkWrap: true,
-      itemBuilder: (BuildContext context, int index) => Card(
-        child: ListTile(
-          onTap: () => Navigator.of(context).pop(list[index]),
-          title: Text(list[index].name ?? ''),
-          subtitle: Text(list[index].code ?? ''),
+    return GestureDetector(
+      onTapDown: (details) {
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+      child: ListView.builder(
+        scrollDirection: Axis.vertical,
+        //shrinkWrap: true,
+        itemBuilder: (BuildContext context, int index) => Card(
+          child: GestureDetector(
+            onTapDown: (details) {
+              FocusManager.instance.primaryFocus?.unfocus();
+            },
+            child: ListTile(
+              onTap: () => Navigator.of(context).pop(list[index]),
+              title: Text(list[index].name ?? ''),
+              subtitle: Text(list[index].code ?? ''),
+            ),
+          ),
         ),
+        itemCount: list.length,
       ),
-      itemCount: list.length,
     );
   }
 }
