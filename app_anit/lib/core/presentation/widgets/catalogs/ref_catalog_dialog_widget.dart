@@ -46,6 +46,7 @@ class RefCatalogDialogWidget extends StatelessWidget {
               },
             ),
             body: GestureDetector(
+              behavior: HitTestBehavior.opaque,
               onTapDown: (details) {
                 FocusManager.instance.primaryFocus?.unfocus();
               },
@@ -94,8 +95,11 @@ class BodyWidget extends StatelessWidget {
         //shrinkWrap: true,
         itemBuilder: (BuildContext context, int index) => Card(
           child: GestureDetector(
-            onTapDown: (details) {
+            onTap: () {
               FocusManager.instance.primaryFocus?.unfocus();
+            },
+            onTapDown: (details) {
+              //FocusManager.instance.primaryFocus?.unfocus();
             },
             child: ListTile(
               onTap: () => Navigator.of(context).pop(list[index]),
