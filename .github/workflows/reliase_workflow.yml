@@ -32,4 +32,4 @@ jobs:
         with:
           # Если каталог не основной то добовляем к пути папку с проектом app_anit
           artifacts:  "app_anit/build/app/outputs/apk/release/*.apk,app_anit/build/app/outputs/bundle/release/*.aab"
-          token: ${{secrets.cidi_flutter}}
+          token: ${{secrets.APP_ANIT_TOKEN}}
