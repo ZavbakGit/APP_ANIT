@@ -1,6 +1,6 @@
-import 'package:app_anit/core/presentation/widgets/app_bar.dart';
-import 'package:app_anit/core/presentation/widgets/progres_widget.dart';
-import 'package:app_anit/core/presentation/widgets/text_widget.dart';
+import 'package:app_anit/core/presentation/widgets_design/app_bar.dart';
+import 'package:app_anit/core/presentation/widgets_design/progres_widget.dart';
+import 'package:app_anit/core/presentation/widgets_design/text_widget.dart';
 import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,7 +27,6 @@ class RefCatalogDialogWidget extends StatelessWidget {
     focusNode.requestFocus();
 
     final textEditingController = TextEditingController();
-    //TODO разобраться с  FocusManager
     return BlocProvider(
       create: (context) => RefCatalogDialogCubit(type: type, repository: sl()),
       child: BlocBuilder<RefCatalogDialogCubit, StateDialog>(
@@ -45,9 +44,8 @@ class RefCatalogDialogWidget extends StatelessWidget {
                 context.read<RefCatalogDialogCubit>().search('');
               },
             ),
-            body: GestureDetector(
-              behavior: HitTestBehavior.opaque,
-              onTapDown: (details) {
+            body: Listener(
+              onPointerDown: (event) {
                 FocusManager.instance.primaryFocus?.unfocus();
               },
               child: BodyWidget(state: state),

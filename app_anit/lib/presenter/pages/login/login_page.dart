@@ -1,17 +1,17 @@
 import 'package:app_anit/app/injection_container.dart';
-import 'package:app_anit/core/presentation/widgets/custom_error_messge.dart';
-import 'package:app_anit/pages/login/login_screen_bloc.dart';
+import 'package:app_anit/core/presentation/widgets_design/custom_error_messge.dart';
+import 'package:app_anit/presenter/pages/login/login_screen_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../core/presentation/widgets/button_widgets.dart';
-import '../../core/presentation/widgets/divider_widget.dart';
-import '../../core/presentation/widgets/page_widget.dart';
-import '../../core/presentation/widgets/progres_widget.dart';
-import '../../core/presentation/widgets/text_form_field.dart';
-import '../../core/presentation/widgets/text_widget.dart';
+import '../../../core/presentation/widgets_design/button_widgets.dart';
+import '../../../core/presentation/widgets_design/divider_widget.dart';
+import '../../../core/presentation/widgets_design/page_widget.dart';
+import '../../../core/presentation/widgets_design/progres_widget.dart';
+import '../../../core/presentation/widgets_design/text_form_field.dart';
+import '../../../core/presentation/widgets_design/text_widget.dart';
 
 class LoginPage extends ConsumerWidget {
   final bool autoLogin;
@@ -157,7 +157,7 @@ class LoginFormState extends State<LoginFormWidget> {
                 const CustomDividerField(),
                 if (widget.isLoading) const CustomCircularProgressIndicator(),
                 if (widget.errorMessage != null)
-                  CustomErrorMessage(text: widget.errorMessage),
+                  CustomErrorWidget(text: widget.errorMessage),
               ],
             ),
           ),

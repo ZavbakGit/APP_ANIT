@@ -1,15 +1,15 @@
-import 'package:app_anit/pages/tasks_user/tasks_cubit.dart';
+import 'package:app_anit/core/presentation/widgets_design/app_bar.dart';
+import 'package:app_anit/presenter/pages/tasks_user/tasks_cubit.dart';
 import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
-import '../../app/injection_container.dart';
-import '../../core/presentation/widgets/app_bar.dart';
-import '../../core/presentation/widgets/divider_widget.dart';
-import '../../core/presentation/widgets/page_widget.dart';
-import '../../core/presentation/widgets/progres_widget.dart';
-import '../../core/presentation/widgets/text_widget.dart';
+import '../../../app/injection_container.dart';
+import '../../../core/presentation/widgets_design/divider_widget.dart';
+import '../../../core/presentation/widgets_design/page_widget.dart';
+import '../../../core/presentation/widgets_design/progres_widget.dart';
+import '../../../core/presentation/widgets_design/text_widget.dart';
 import '../task/task_page.dart';
 
 class TasksPage extends StatefulWidget {

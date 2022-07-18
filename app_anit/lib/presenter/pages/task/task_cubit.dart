@@ -2,8 +2,8 @@ import 'package:app_anit/core/error/failures.dart';
 import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../domain/models/app_model.dart';
-import '../../domain/repositories/repository.dart';
+import '../../../domain/models/app_model.dart';
+import '../../../domain/repositories/repository.dart';
 
 class TaskCubit extends Cubit<TaskState> {
   final Repository repository;

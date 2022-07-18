@@ -1,3 +1,4 @@
+import 'package:app_anit/presenter/pages/tasks_user/tasks_cubit.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -7,7 +8,6 @@ import '../domain/models/app_model.dart';
 import '../domain/repositories/repository.dart';
 import '../navigation/app_router.dart';
 import '../navigation/router_notifire.dart';
-import '../pages/tasks_user/tasks_cubit.dart';
 
 final sl = GetIt.instance;
 

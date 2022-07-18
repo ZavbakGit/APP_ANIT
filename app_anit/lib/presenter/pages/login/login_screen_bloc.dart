@@ -1,8 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../domain/models/app_model.dart';
-import '../../domain/models/conected_config_model.dart';
 import 'package:dartz/dartz.dart';
+
+import '../../../domain/models/app_model.dart';
+import '../../../domain/models/conected_config_model.dart';
 
 class LoginScreenCubit extends Cubit<PageState> {
   final AppModel appModel;

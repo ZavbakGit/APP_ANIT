@@ -1,4 +1,4 @@
-import 'package:app_anit/core/presentation/widgets/catalogs/ref_catalog_dialog_widget.dart';
+import 'package:app_anit/presenter/widgets/catalogs/ref_catalog_dialog_widget.dart';
 import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
 import 'package:flutter/material.dart';
 

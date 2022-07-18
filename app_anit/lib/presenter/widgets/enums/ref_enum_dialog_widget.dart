@@ -1,5 +1,5 @@
-import 'package:app_anit/core/presentation/widgets/progres_widget.dart';
-import 'package:app_anit/core/presentation/widgets/text_widget.dart';
+import 'package:app_anit/core/presentation/widgets_design/progres_widget.dart';
+import 'package:app_anit/core/presentation/widgets_design/text_widget.dart';
 import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
