@@ -66,7 +66,7 @@ class LoginScreenCubit extends Cubit<PageState> {
 
     either.fold(
       (fail) {
-        emit(pageStateCurent.copyWith(error: 'Что то не так!'));
+        emit(pageStateCurent.copyWith(error: fail.error));
       },
       (none) {
         emit(_getPageStateApp().copyWith(isGoHome: true));
