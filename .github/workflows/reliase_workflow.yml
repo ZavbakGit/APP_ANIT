@@ -21,7 +21,7 @@ jobs:
           channel: 'stable'
       - run: flutter --version
       - run: flutter pub get
-      - run: flutter test
+      # - run: flutter test
       # - run: flutter build apk -t lib/main.dart --split-per-abi
       - name: Build APK
         run: flutter build apk --split-per-abi --release
