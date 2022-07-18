@@ -7,10 +7,10 @@ class RefEnumFieldWidget extends StatelessWidget {
   final RefEnum? refEnum;
   final String title;
   final String type;
-  String? titleDialog;
+  final String? titleDialog;
   final ValueChanged<RefEnum>? onChoice;
 
-  RefEnumFieldWidget({
+  const RefEnumFieldWidget({
     Key? key,
     required this.refEnum,
     required this.title,

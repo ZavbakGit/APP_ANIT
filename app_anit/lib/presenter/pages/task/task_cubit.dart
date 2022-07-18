@@ -1,4 +1,5 @@
 import 'package:app_anit/core/error/failures.dart';
+import 'package:app_anit/core/extencion/date_extencion.dart';
 import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,22 +17,13 @@ class TaskCubit extends Cubit<TaskState> {
     required this.repository,
     required this.guidTask,
     required this.appModel,
-  }) : super(TaskState(isLoading: true, isControledTask: false));
+  }) : super(TaskState(isLoading: true));
 
   init() {
     refreshData();
   }
 
-  bool get isControlledTask {
-    if (task?.responsible?.guid == null) {
-      return false;
-    }
-
-    return task?.responsible?.guid != appModel.remoteConfig?.user.guid;
-  }
-
-  TaskState get baseState => TaskState(
-      task: task, isModified: isModified, isControledTask: isControlledTask);
+  TaskState get baseState => TaskState(task: task, isModified: isModified);
   TaskState get exitState => baseState.copyWith(exit: true);
   TaskState get loadingState => baseState.copyWith(isLoading: true);
   TaskState getErrorSate(Failure failure) =>
@@ -153,6 +145,12 @@ class TaskCubit extends Cubit<TaskState> {
     isModified = true;
     emit(baseState);
   }
+
+  void setControl() {
+    task = task?.copyWith(dateControl: getEmptyDate());
+    isModified = true;
+    emit(baseState);
+  }
 }
 
 class TaskState {
@@ -161,16 +159,25 @@ class TaskState {
   final Task? task;
   final bool isModified;
   final bool exit;
-  final bool isControledTask;
 
   TaskState({
     this.isLoading = false,
     this.error,
     this.task,
     this.isModified = false,
-    required this.isControledTask,
     this.exit = false,
   });
+
+  bool get isControlDone {
+    if (task?.dateControl == null) {
+      return false;
+    }
+    if (task!.dateControl!.isEmptyDate) {
+      return false;
+    }
+
+    return true;
+  }
 
   @override
   String toString() {
@@ -191,7 +198,6 @@ class TaskState {
       task: task ?? this.task,
       isModified: isModified ?? this.isModified,
       exit: exit ?? this.exit,
-      isControledTask: isControledTask ?? this.isControledTask,
     );
   }
 }

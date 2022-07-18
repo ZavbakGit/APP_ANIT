@@ -39,7 +39,6 @@ abstract class Repository {
     required String type,
   });
 
-  @override
   Future<Either<Failure, None>> saveTask({
     required sw.Task task,
   });

@@ -54,11 +54,12 @@ class TasksCubit extends Cubit<TasksPageState> {
     tasks.clear();
     controlleredTasks.clear();
     either.fold((fail) {
-      emit(_baseState.copyWith(error: 'Что пошло не так'));
+      emit(_baseState.copyWith(error: fail.error));
     }, (list) {
       tasks.addAll(
         list.where((element) => element.responsible!.guid == user.guid),
       );
+      //TODO контролёров надо выгружать или выгрузить признак, что ты контролёр
       controlleredTasks.addAll(
         list.where((element) => element.responsible!.guid != user.guid),
       );

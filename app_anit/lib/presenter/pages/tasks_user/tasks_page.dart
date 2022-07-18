@@ -1,12 +1,12 @@
+import 'package:app_anit/core/extencion/date_extencion.dart';
 import 'package:app_anit/core/presentation/widgets_design/app_bar.dart';
 import 'package:app_anit/presenter/pages/tasks_user/tasks_cubit.dart';
 import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 
 import '../../../app/injection_container.dart';
-import '../../../core/presentation/widgets_design/divider_widget.dart';
+import '../../../core/presentation/widgets_design/custom_error_widget.dart';
 import '../../../core/presentation/widgets_design/page_widget.dart';
 import '../../../core/presentation/widgets_design/progres_widget.dart';
 import '../../../core/presentation/widgets_design/text_widget.dart';
@@ -65,11 +65,11 @@ class TasksBodyWidget extends StatelessWidget {
   }
 
   CustomAppBar getAppBar(TasksPageState state) {
-    final controled = state.controlledTasks.length > 0
+    final controled = state.controlledTasks.isNotEmpty
         ? '(${state.controlledTasks.length})'
         : '';
 
-    final tasks = state.tasks.length > 0 ? '(${state.tasks.length})' : '';
+    final tasks = state.tasks.isNotEmpty ? '(${state.tasks.length})' : '';
 
     return CustomAppBar(
       title: Padding(
@@ -110,13 +110,9 @@ class TasksBodyWidget extends StatelessWidget {
               children: [
                 if (state.isLoading) const CustomLinearProgressIndicator(),
                 if (state.error.isNotEmpty)
-                  Column(
-                    children: [
-                      const CustomDividerHeader(),
-                      Center(
-                        child: CustomErrorText(text: state.error),
-                      ),
-                    ],
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(8, 32, 8, 8),
+                    child: CustomErrorWidget(text: state.error),
                   ),
               ],
             ),
@@ -227,13 +223,14 @@ class TaskItemWidget extends StatelessWidget {
           subtitle: Row(
             children: [
               Expanded(
-                  child: Text(DateFormat('dd.MM.yy HH:mm').format(item.date!))),
+                child: Text(item.date!.getStrDateTime()),
+              ),
               Expanded(
                 child: Chip(
                   backgroundColor: Colors.amber[50],
                   avatar: const CircleAvatar(
-                    child: Icon(Icons.account_circle),
                     backgroundColor: Colors.blue,
+                    child: Icon(Icons.account_circle),
                   ),
                   label: Text(item.partner?.name ?? ''),
                   elevation: 2,

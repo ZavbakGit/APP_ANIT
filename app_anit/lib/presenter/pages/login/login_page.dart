@@ -1,5 +1,5 @@
 import 'package:app_anit/app/injection_container.dart';
-import 'package:app_anit/core/presentation/widgets_design/custom_error_messge.dart';
+import 'package:app_anit/core/presentation/widgets_design/custom_error_widget.dart';
 import 'package:app_anit/presenter/pages/login/login_screen_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
