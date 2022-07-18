@@ -10,7 +10,7 @@ import '../../../core/presentation/widgets_design/button_widgets.dart';
 import '../../../core/presentation/widgets_design/divider_widget.dart';
 import '../../../core/presentation/widgets_design/page_widget.dart';
 import '../../../core/presentation/widgets_design/progres_widget.dart';
-import '../../../core/presentation/widgets_design/text_form_field.dart';
+import '../../../core/presentation/widgets_design/text_field.dart';
 import '../../../core/presentation/widgets_design/text_widget.dart';
 
 class LoginPage extends ConsumerWidget {

@@ -39,6 +39,7 @@ class BodyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textController = TextEditingController();
+    final FocusNode focusNode = FocusNode();
 
     return BlocConsumer<TaskCubit, TaskState>(
       listener: (context, state) {
@@ -69,6 +70,9 @@ class BodyWidget extends StatelessWidget {
         final title =
             '${state.isModified ? '*' : ''}${state.task!.$number} от ${DateFormat('dd.MM.yy HH:mm').format(state.task!.date!)}';
 
+        if (state.isNewTask) {
+          focusNode.requestFocus();
+        }
         return WillPopScope(
           onWillPop: () async {
             if (!state.isModified ||
@@ -92,6 +96,7 @@ class BodyWidget extends StatelessWidget {
                 child: Column(
                   children: [
                     CustomEditTextField(
+                      focusNode: focusNode,
                       title: 'Описание',
                       errorText:
                           textController.text.isEmpty ? 'Не заполнено' : null,
@@ -117,14 +122,6 @@ class BodyWidget extends StatelessWidget {
                       },
                     ),
                     RefCatalogFieldWidget(
-                      refCatalog: state.task?.producer,
-                      title: 'Постановщик',
-                      type: 'Пользователи',
-                      onChoice: (val) {
-                        context.read<TaskCubit>().changeProducer(val);
-                      },
-                    ),
-                    RefCatalogFieldWidget(
                       refCatalog: state.task?.responsible,
                       title: 'Ответственный',
                       errorTitle: state.task?.responsible == null
@@ -133,6 +130,14 @@ class BodyWidget extends StatelessWidget {
                       type: 'Пользователи',
                       onChoice: (val) {
                         context.read<TaskCubit>().changeResponsible(val);
+                      },
+                    ),
+                    RefCatalogFieldWidget(
+                      refCatalog: state.task?.producer,
+                      title: 'Постановщик',
+                      type: 'Пользователи',
+                      onChoice: (val) {
+                        context.read<TaskCubit>().changeProducer(val);
                       },
                     ),
                     const Divider(height: 8),

@@ -17,22 +17,25 @@ class TaskCubit extends Cubit<TaskState> {
     required this.repository,
     required this.guidTask,
     required this.appModel,
-  }) : super(TaskState(isLoading: true));
+  }) : super(TaskState(isLoading: true, isNewTask: guidTask == null));
 
   init() {
     refreshData();
   }
 
-  TaskState get baseState => TaskState(task: task, isModified: isModified);
+  TaskState get baseState =>
+      TaskState(task: task, isModified: isModified, isNewTask: isNewTask);
   TaskState get exitState => baseState.copyWith(exit: true);
   TaskState get loadingState => baseState.copyWith(isLoading: true);
   TaskState getErrorSate(Failure failure) =>
       baseState.copyWith(error: failure.error);
 
+  bool get isNewTask => guidTask == null;
+
   void refreshData() async {
     emit(loadingState);
 
-    final either = (guidTask != null)
+    final either = (!isNewTask)
         ? await repository.getTaskByGuid(guidTask!)
         : await repository.taskNewGet();
 
@@ -159,6 +162,7 @@ class TaskState {
   final Task? task;
   final bool isModified;
   final bool exit;
+  final bool isNewTask;
 
   TaskState({
     this.isLoading = false,
@@ -166,6 +170,7 @@ class TaskState {
     this.task,
     this.isModified = false,
     this.exit = false,
+    required this.isNewTask,
   });
 
   bool get isControlDone {
@@ -190,7 +195,7 @@ class TaskState {
     Task? task,
     bool? isModified,
     bool? exit,
-    bool? isControledTask,
+    bool? isNewTask,
   }) {
     return TaskState(
       isLoading: isLoading ?? this.isLoading,
@@ -198,6 +203,7 @@ class TaskState {
       task: task ?? this.task,
       isModified: isModified ?? this.isModified,
       exit: exit ?? this.exit,
+      isNewTask: isNewTask ?? this.isNewTask,
     );
   }
 }

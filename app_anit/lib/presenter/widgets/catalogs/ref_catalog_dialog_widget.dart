@@ -9,6 +9,8 @@ import '../../../../app/injection_container.dart';
 import '../../../../domain/repositories/repository.dart';
 import 'dart:async';
 
+import '../../../core/presentation/widgets_design/custom_error_widget.dart';
+
 class RefCatalogDialogWidget extends StatelessWidget {
   final String type;
   final String titleDialog;
@@ -72,7 +74,10 @@ class BodyWidget extends StatelessWidget {
 
     if (state.error != null) {
       return Center(
-        child: CustomErrorText(text: state.error),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(8, 32, 8, 8),
+          child: CustomErrorWidget(text: state.error),
+        ),
       );
     }
 
@@ -172,7 +177,7 @@ class RefCatalogDialogCubit extends Cubit<StateDialog> {
 
         either.fold(
           (fail) {
-            emit(StateDialog(error: 'Ошибка'));
+            emit(StateDialog(error: fail.error));
           },
           (result) {
             emit(StateDialog(list: result));
