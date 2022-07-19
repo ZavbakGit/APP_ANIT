@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../app/injection_container.dart';
 import '../../../../domain/repositories/repository.dart';
+import '../../../core/presentation/widgets_design/custom_error_widget.dart';
 
 class RefEnumDialogWidget extends StatelessWidget {
   final RefEnum? refEnum;
@@ -33,7 +34,10 @@ class RefEnumDialogWidget extends StatelessWidget {
 
           if (state.error != null) {
             return Center(
-              child: CustomErrorText(text: state.error),
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(8, 32, 8, 8),
+                child: CustomErrorWidget(text: state.error),
+              ),
             );
           }
 
@@ -113,7 +117,7 @@ class RefEnumDialogCubit extends Cubit<StateDialog> {
     final either = await repository.getEnumElemets(type: type);
 
     either.fold((fail) {
-      emit(StateDialog(error: 'Ошибка'));
+      emit(StateDialog(error: fail.error));
     }, (result) {
       emit(StateDialog(list: result));
     });

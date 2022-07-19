@@ -215,11 +215,18 @@ class TaskItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textStyleTitle = item.condition!.name == 'Завершено'
+        ? const TextStyle(decoration: TextDecoration.lineThrough)
+        : null;
+
     return GestureDetector(
       onTap: () => context.read<TasksCubit>().onClick(item.guid),
       child: Card(
         child: ListTile(
-          title: Text(item.title ?? ''),
+          title: Text(
+            item.title ?? '',
+            style: textStyleTitle,
+          ),
           subtitle: Row(
             children: [
               Expanded(

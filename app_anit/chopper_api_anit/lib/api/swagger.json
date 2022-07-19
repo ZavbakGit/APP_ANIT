@@ -308,30 +308,12 @@
             "description": "Номер документа",
             "type": "string"
           },
-          "condition": {
-            "type": "string",
-            "description": "Состояние",
-            "enum": [
-              "Appointed",
-              "Received",
-              "Progress",
-              "Postponed",
-              "Completed",
-              "Reopened"
-            ]
-          },
-          "importance": {
-            "type": "string",
-            "description": "Важность",
-            "enum": [
-              "High",
-              "Normal",
-              "Low"
-            ]
-          },
           "title": {
             "description": "ОписаниеСобытия",
             "type": "string"
+          },
+          "condition": {
+            "$ref": "#/components/schemas/RefEnum"
           },
           "partner": {
             "$ref": "#/components/schemas/RefCatalog"
@@ -344,6 +326,15 @@
           },
           "producer": {
             "$ref": "#/components/schemas/RefCatalog"
+          },
+          "is_controllers": {
+            "type": "boolean"
+          },
+          "is_assistants": {
+            "type": "boolean"
+          },
+          "is_responsible": {
+            "type": "boolean"
           }
         },
         "description": "Элемент журнала задач"

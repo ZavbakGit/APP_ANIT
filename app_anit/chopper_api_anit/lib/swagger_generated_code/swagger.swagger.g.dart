@@ -75,9 +75,10 @@ TaskItem _$TaskItemFromJson(Map<String, dynamic> json) => TaskItem(
       date:
           json['date'] == null ? null : DateTime.parse(json['date'] as String),
       $number: json['number'] as String? ?? '',
-      condition: taskItemConditionFromJson(json['condition']),
-      importance: taskItemImportanceFromJson(json['importance']),
       title: json['title'] as String? ?? '',
+      condition: json['condition'] == null
+          ? null
+          : RefEnum.fromJson(json['condition'] as Map<String, dynamic>),
       partner: json['partner'] == null
           ? null
           : RefCatalog.fromJson(json['partner'] as Map<String, dynamic>),
@@ -90,6 +91,9 @@ TaskItem _$TaskItemFromJson(Map<String, dynamic> json) => TaskItem(
       producer: json['producer'] == null
           ? null
           : RefCatalog.fromJson(json['producer'] as Map<String, dynamic>),
+      isControllers: json['is_controllers'] as bool?,
+      isAssistants: json['is_assistants'] as bool?,
+      isResponsible: json['is_responsible'] as bool?,
     );
 
 Map<String, dynamic> _$TaskItemToJson(TaskItem instance) {
@@ -104,13 +108,15 @@ Map<String, dynamic> _$TaskItemToJson(TaskItem instance) {
   writeNotNull('guid', instance.guid);
   writeNotNull('date', instance.date?.toIso8601String());
   writeNotNull('number', instance.$number);
-  writeNotNull('condition', taskItemConditionToJson(instance.condition));
-  writeNotNull('importance', taskItemImportanceToJson(instance.importance));
   writeNotNull('title', instance.title);
+  writeNotNull('condition', instance.condition?.toJson());
   writeNotNull('partner', instance.partner?.toJson());
   writeNotNull('author', instance.author?.toJson());
   writeNotNull('responsible', instance.responsible?.toJson());
   writeNotNull('producer', instance.producer?.toJson());
+  writeNotNull('is_controllers', instance.isControllers);
+  writeNotNull('is_assistants', instance.isAssistants);
+  writeNotNull('is_responsible', instance.isResponsible);
   return val;
 }
 
