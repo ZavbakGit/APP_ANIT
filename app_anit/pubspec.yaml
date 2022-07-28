@@ -55,6 +55,9 @@ dependencies:
 
   logger:
 
+  freezed_annotation: ^2.1.0
+  collection: ^1.16.0
+
   chopper_api_anit:
     path: chopper_api_anit
 
@@ -67,6 +70,10 @@ dev_dependencies:
   chopper_generator: ^4.0.6
   json_annotation: ^4.5.0
   json_serializable: ^6.2.0
+
+  freezed: ^2.1.0+1
+  flutter_gen_runner: ^4.1.6
+  build_runner: ^2.1.7
 
   
 

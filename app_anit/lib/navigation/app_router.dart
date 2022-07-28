@@ -1,4 +1,5 @@
 import 'package:app_anit/navigation/router_notifire.dart';
+import 'package:app_anit/presenter/pages/main/main_page.dart';
 import 'package:app_anit/presenter/pages/task/task_page.dart';
 import 'package:app_anit/presenter/pages/tasks_user/tasks_page.dart';
 import 'package:go_router/go_router.dart';
@@ -21,6 +22,11 @@ class AppRouter {
       GoRoute(
         name: "home",
         path: "/",
+        builder: (context, _) => MainPage(),
+      ),
+      GoRoute(
+        name: "tasks",
+        path: "/tasks",
         builder: (context, _) => const TasksPage(),
       ),
       GoRoute(
