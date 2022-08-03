@@ -22,8 +22,14 @@ class ApiClient {
   late final Swagger api;
 
   void _init() {
+    final httpClient = HttpClient()
+      ..connectionTimeout = const Duration(seconds: 10)
+      //Ниже идёт если сертификат самовыпущенный
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+
     final clientHttp = http.IOClient(
-      HttpClient()..connectionTimeout = const Duration(seconds: 10),
+      httpClient,
     );
 
     final client = ChopperClient(

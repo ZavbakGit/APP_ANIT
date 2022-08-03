@@ -9,7 +9,7 @@ class ConnectedConfigModel {
     required this.password,
   });
 
-  String get baseUrl => 'http://172.31.255.150/copy_erp/hs/oas_api';
+  String get baseUrl => 'https://172.31.255.150/copy_erp/hs/oas_api';
 
   Map<String, dynamic> toMap() {
     return {
