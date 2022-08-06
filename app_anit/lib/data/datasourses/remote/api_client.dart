@@ -23,10 +23,10 @@ class ApiClient {
 
   void _init() {
     final httpClient = HttpClient()
-      ..connectionTimeout = const Duration(seconds: 10)
-      //Ниже идёт если сертификат самовыпущенный
-      ..badCertificateCallback =
-          (X509Certificate cert, String host, int port) => true;
+      ..connectionTimeout = const Duration(seconds: 10);
+    //Ниже идёт если сертификат самовыпущенный
+    // httpClient.badCertificateCallback =
+    //     (X509Certificate cert, String host, int port) => true;
 
     final clientHttp = http.IOClient(
       httpClient,
