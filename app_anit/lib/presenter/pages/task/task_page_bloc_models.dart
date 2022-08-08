@@ -20,6 +20,7 @@ class TaskPageState with _$TaskPageState {
 @freezed
 class TaskPageEvent with _$TaskPageEvent {
   const factory TaskPageEvent.init() = TaskPageEventInit;
+  const factory TaskPageEvent.load() = TaskPageEventLoad;
   const factory TaskPageEvent.exit() = TaskPageEventExit;
   const factory TaskPageEvent.save() = TaskPageEventSave;
   const factory TaskPageEvent.changeTitle(String val) =
@@ -52,4 +53,5 @@ class TaskPageEvent with _$TaskPageEvent {
 class TaskPageSR with _$TaskPageSR {
   const factory TaskPageSR.exit() = Exit;
   const factory TaskPageSR.openSaveDialog() = OpenSaveDialog;
+  const factory TaskPageSR.chooseAnResponsible() = ChoiseOfResponsible;
 }

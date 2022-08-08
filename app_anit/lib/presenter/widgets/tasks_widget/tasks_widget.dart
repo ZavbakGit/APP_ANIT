@@ -89,7 +89,7 @@ class TasksWidget extends StatelessWidget {
         Navigator.push<bool>(
           context,
           MaterialPageRoute(
-            builder: (context) => const TaskPage(isController: true),
+            builder: (context) => const TaskPage(isAssignment: true),
           ),
         ).then((value) {
           if (value != null) {

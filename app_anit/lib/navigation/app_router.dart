@@ -1,10 +1,10 @@
 import 'package:app_anit/navigation/router_notifire.dart';
 import 'package:app_anit/presenter/pages/main/main_page.dart';
-import 'package:app_anit/presenter/pages/task/task_page.dart';
 import 'package:app_anit/presenter/pages/tasks_user/tasks_page.dart';
 import 'package:go_router/go_router.dart';
 
 import '../presenter/pages/login/login_page.dart';
+import '../presenter/pages/task/task_page.dart';
 
 class AppRouter {
   final RouterNotifier routerNotifier;

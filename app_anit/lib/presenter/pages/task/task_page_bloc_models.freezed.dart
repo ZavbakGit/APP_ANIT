@@ -486,6 +486,7 @@ mixin _$TaskPageEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
+    required TResult Function() load,
     required TResult Function() exit,
     required TResult Function() save,
     required TResult Function(String val) changeTitle,
@@ -506,6 +507,7 @@ mixin _$TaskPageEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? load,
     TResult Function()? exit,
     TResult Function()? save,
     TResult Function(String val)? changeTitle,
@@ -526,6 +528,7 @@ mixin _$TaskPageEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? load,
     TResult Function()? exit,
     TResult Function()? save,
     TResult Function(String val)? changeTitle,
@@ -547,6 +550,7 @@ mixin _$TaskPageEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TaskPageEventInit value) init,
+    required TResult Function(TaskPageEventLoad value) load,
     required TResult Function(TaskPageEventExit value) exit,
     required TResult Function(TaskPageEventSave value) save,
     required TResult Function(TaskPageEventChangeTitle value) changeTitle,
@@ -571,6 +575,7 @@ mixin _$TaskPageEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
     TResult Function(TaskPageEventSave value)? save,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
@@ -591,6 +596,7 @@ mixin _$TaskPageEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
     TResult Function(TaskPageEventSave value)? save,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
@@ -670,6 +676,7 @@ class _$TaskPageEventInit implements TaskPageEventInit {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
+    required TResult Function() load,
     required TResult Function() exit,
     required TResult Function() save,
     required TResult Function(String val) changeTitle,
@@ -693,6 +700,7 @@ class _$TaskPageEventInit implements TaskPageEventInit {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? load,
     TResult Function()? exit,
     TResult Function()? save,
     TResult Function(String val)? changeTitle,
@@ -716,6 +724,7 @@ class _$TaskPageEventInit implements TaskPageEventInit {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? load,
     TResult Function()? exit,
     TResult Function()? save,
     TResult Function(String val)? changeTitle,
@@ -743,6 +752,7 @@ class _$TaskPageEventInit implements TaskPageEventInit {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TaskPageEventInit value) init,
+    required TResult Function(TaskPageEventLoad value) load,
     required TResult Function(TaskPageEventExit value) exit,
     required TResult Function(TaskPageEventSave value) save,
     required TResult Function(TaskPageEventChangeTitle value) changeTitle,
@@ -770,6 +780,7 @@ class _$TaskPageEventInit implements TaskPageEventInit {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
     TResult Function(TaskPageEventSave value)? save,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
@@ -793,6 +804,7 @@ class _$TaskPageEventInit implements TaskPageEventInit {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
     TResult Function(TaskPageEventSave value)? save,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
@@ -819,6 +831,205 @@ class _$TaskPageEventInit implements TaskPageEventInit {
 
 abstract class TaskPageEventInit implements TaskPageEvent {
   const factory TaskPageEventInit() = _$TaskPageEventInit;
+}
+
+/// @nodoc
+abstract class _$$TaskPageEventLoadCopyWith<$Res> {
+  factory _$$TaskPageEventLoadCopyWith(
+          _$TaskPageEventLoad value, $Res Function(_$TaskPageEventLoad) then) =
+      __$$TaskPageEventLoadCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$TaskPageEventLoadCopyWithImpl<$Res>
+    extends _$TaskPageEventCopyWithImpl<$Res>
+    implements _$$TaskPageEventLoadCopyWith<$Res> {
+  __$$TaskPageEventLoadCopyWithImpl(
+      _$TaskPageEventLoad _value, $Res Function(_$TaskPageEventLoad) _then)
+      : super(_value, (v) => _then(v as _$TaskPageEventLoad));
+
+  @override
+  _$TaskPageEventLoad get _value => super._value as _$TaskPageEventLoad;
+}
+
+/// @nodoc
+
+class _$TaskPageEventLoad implements TaskPageEventLoad {
+  const _$TaskPageEventLoad();
+
+  @override
+  String toString() {
+    return 'TaskPageEvent.load()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$TaskPageEventLoad);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() load,
+    required TResult Function() exit,
+    required TResult Function() save,
+    required TResult Function(String val) changeTitle,
+    required TResult Function(RefCatalog val) changePartner,
+    required TResult Function(RefCatalog val) changeResponsible,
+    required TResult Function(RefCatalog val) changeProducer,
+    required TResult Function(RefEnum val) changeCondition,
+    required TResult Function(RefEnum val) changeImportance,
+    required TResult Function(RefCatalog val) dellController,
+    required TResult Function(RefCatalog val) dellAssistant,
+    required TResult Function(RefCatalog val) addController,
+    required TResult Function(RefCatalog val) addAssitant,
+    required TResult Function() setControlDone,
+    required TResult Function() setControl,
+    required TResult Function(bool val) saveDialogResult,
+  }) {
+    return load();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? load,
+    TResult Function()? exit,
+    TResult Function()? save,
+    TResult Function(String val)? changeTitle,
+    TResult Function(RefCatalog val)? changePartner,
+    TResult Function(RefCatalog val)? changeResponsible,
+    TResult Function(RefCatalog val)? changeProducer,
+    TResult Function(RefEnum val)? changeCondition,
+    TResult Function(RefEnum val)? changeImportance,
+    TResult Function(RefCatalog val)? dellController,
+    TResult Function(RefCatalog val)? dellAssistant,
+    TResult Function(RefCatalog val)? addController,
+    TResult Function(RefCatalog val)? addAssitant,
+    TResult Function()? setControlDone,
+    TResult Function()? setControl,
+    TResult Function(bool val)? saveDialogResult,
+  }) {
+    return load?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? load,
+    TResult Function()? exit,
+    TResult Function()? save,
+    TResult Function(String val)? changeTitle,
+    TResult Function(RefCatalog val)? changePartner,
+    TResult Function(RefCatalog val)? changeResponsible,
+    TResult Function(RefCatalog val)? changeProducer,
+    TResult Function(RefEnum val)? changeCondition,
+    TResult Function(RefEnum val)? changeImportance,
+    TResult Function(RefCatalog val)? dellController,
+    TResult Function(RefCatalog val)? dellAssistant,
+    TResult Function(RefCatalog val)? addController,
+    TResult Function(RefCatalog val)? addAssitant,
+    TResult Function()? setControlDone,
+    TResult Function()? setControl,
+    TResult Function(bool val)? saveDialogResult,
+    required TResult orElse(),
+  }) {
+    if (load != null) {
+      return load();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(TaskPageEventInit value) init,
+    required TResult Function(TaskPageEventLoad value) load,
+    required TResult Function(TaskPageEventExit value) exit,
+    required TResult Function(TaskPageEventSave value) save,
+    required TResult Function(TaskPageEventChangeTitle value) changeTitle,
+    required TResult Function(TaskPageEventChangePartner value) changePartner,
+    required TResult Function(TaskPageEventChangeResponsible value)
+        changeResponsible,
+    required TResult Function(TaskPageEventChangeProducer value) changeProducer,
+    required TResult Function(TaskPageEventChangeCondition value)
+        changeCondition,
+    required TResult Function(TaskPageEventChangeImportance value)
+        changeImportance,
+    required TResult Function(TaskPageEventDellController value) dellController,
+    required TResult Function(TaskPageEventDellAssistant value) dellAssistant,
+    required TResult Function(TaskPageEventAddController value) addController,
+    required TResult Function(TaskPageEventAddAssitant value) addAssitant,
+    required TResult Function(TaskPageEventSetControlDone value) setControlDone,
+    required TResult Function(TaskPageEventSetControl value) setControl,
+    required TResult Function(TaskPageEventSaveDialogResult value)
+        saveDialogResult,
+  }) {
+    return load(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
+    TResult Function(TaskPageEventExit value)? exit,
+    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventChangeTitle value)? changeTitle,
+    TResult Function(TaskPageEventChangePartner value)? changePartner,
+    TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
+    TResult Function(TaskPageEventChangeProducer value)? changeProducer,
+    TResult Function(TaskPageEventChangeCondition value)? changeCondition,
+    TResult Function(TaskPageEventChangeImportance value)? changeImportance,
+    TResult Function(TaskPageEventDellController value)? dellController,
+    TResult Function(TaskPageEventDellAssistant value)? dellAssistant,
+    TResult Function(TaskPageEventAddController value)? addController,
+    TResult Function(TaskPageEventAddAssitant value)? addAssitant,
+    TResult Function(TaskPageEventSetControlDone value)? setControlDone,
+    TResult Function(TaskPageEventSetControl value)? setControl,
+    TResult Function(TaskPageEventSaveDialogResult value)? saveDialogResult,
+  }) {
+    return load?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
+    TResult Function(TaskPageEventExit value)? exit,
+    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventChangeTitle value)? changeTitle,
+    TResult Function(TaskPageEventChangePartner value)? changePartner,
+    TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
+    TResult Function(TaskPageEventChangeProducer value)? changeProducer,
+    TResult Function(TaskPageEventChangeCondition value)? changeCondition,
+    TResult Function(TaskPageEventChangeImportance value)? changeImportance,
+    TResult Function(TaskPageEventDellController value)? dellController,
+    TResult Function(TaskPageEventDellAssistant value)? dellAssistant,
+    TResult Function(TaskPageEventAddController value)? addController,
+    TResult Function(TaskPageEventAddAssitant value)? addAssitant,
+    TResult Function(TaskPageEventSetControlDone value)? setControlDone,
+    TResult Function(TaskPageEventSetControl value)? setControl,
+    TResult Function(TaskPageEventSaveDialogResult value)? saveDialogResult,
+    required TResult orElse(),
+  }) {
+    if (load != null) {
+      return load(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class TaskPageEventLoad implements TaskPageEvent {
+  const factory TaskPageEventLoad() = _$TaskPageEventLoad;
 }
 
 /// @nodoc
@@ -863,6 +1074,7 @@ class _$TaskPageEventExit implements TaskPageEventExit {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
+    required TResult Function() load,
     required TResult Function() exit,
     required TResult Function() save,
     required TResult Function(String val) changeTitle,
@@ -886,6 +1098,7 @@ class _$TaskPageEventExit implements TaskPageEventExit {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? load,
     TResult Function()? exit,
     TResult Function()? save,
     TResult Function(String val)? changeTitle,
@@ -909,6 +1122,7 @@ class _$TaskPageEventExit implements TaskPageEventExit {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? load,
     TResult Function()? exit,
     TResult Function()? save,
     TResult Function(String val)? changeTitle,
@@ -936,6 +1150,7 @@ class _$TaskPageEventExit implements TaskPageEventExit {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TaskPageEventInit value) init,
+    required TResult Function(TaskPageEventLoad value) load,
     required TResult Function(TaskPageEventExit value) exit,
     required TResult Function(TaskPageEventSave value) save,
     required TResult Function(TaskPageEventChangeTitle value) changeTitle,
@@ -963,6 +1178,7 @@ class _$TaskPageEventExit implements TaskPageEventExit {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
     TResult Function(TaskPageEventSave value)? save,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
@@ -986,6 +1202,7 @@ class _$TaskPageEventExit implements TaskPageEventExit {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
     TResult Function(TaskPageEventSave value)? save,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
@@ -1056,6 +1273,7 @@ class _$TaskPageEventSave implements TaskPageEventSave {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
+    required TResult Function() load,
     required TResult Function() exit,
     required TResult Function() save,
     required TResult Function(String val) changeTitle,
@@ -1079,6 +1297,7 @@ class _$TaskPageEventSave implements TaskPageEventSave {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? load,
     TResult Function()? exit,
     TResult Function()? save,
     TResult Function(String val)? changeTitle,
@@ -1102,6 +1321,7 @@ class _$TaskPageEventSave implements TaskPageEventSave {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? load,
     TResult Function()? exit,
     TResult Function()? save,
     TResult Function(String val)? changeTitle,
@@ -1129,6 +1349,7 @@ class _$TaskPageEventSave implements TaskPageEventSave {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TaskPageEventInit value) init,
+    required TResult Function(TaskPageEventLoad value) load,
     required TResult Function(TaskPageEventExit value) exit,
     required TResult Function(TaskPageEventSave value) save,
     required TResult Function(TaskPageEventChangeTitle value) changeTitle,
@@ -1156,6 +1377,7 @@ class _$TaskPageEventSave implements TaskPageEventSave {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
     TResult Function(TaskPageEventSave value)? save,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
@@ -1179,6 +1401,7 @@ class _$TaskPageEventSave implements TaskPageEventSave {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
     TResult Function(TaskPageEventSave value)? save,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
@@ -1276,6 +1499,7 @@ class _$TaskPageEventChangeTitle implements TaskPageEventChangeTitle {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
+    required TResult Function() load,
     required TResult Function() exit,
     required TResult Function() save,
     required TResult Function(String val) changeTitle,
@@ -1299,6 +1523,7 @@ class _$TaskPageEventChangeTitle implements TaskPageEventChangeTitle {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? load,
     TResult Function()? exit,
     TResult Function()? save,
     TResult Function(String val)? changeTitle,
@@ -1322,6 +1547,7 @@ class _$TaskPageEventChangeTitle implements TaskPageEventChangeTitle {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? load,
     TResult Function()? exit,
     TResult Function()? save,
     TResult Function(String val)? changeTitle,
@@ -1349,6 +1575,7 @@ class _$TaskPageEventChangeTitle implements TaskPageEventChangeTitle {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TaskPageEventInit value) init,
+    required TResult Function(TaskPageEventLoad value) load,
     required TResult Function(TaskPageEventExit value) exit,
     required TResult Function(TaskPageEventSave value) save,
     required TResult Function(TaskPageEventChangeTitle value) changeTitle,
@@ -1376,6 +1603,7 @@ class _$TaskPageEventChangeTitle implements TaskPageEventChangeTitle {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
     TResult Function(TaskPageEventSave value)? save,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
@@ -1399,6 +1627,7 @@ class _$TaskPageEventChangeTitle implements TaskPageEventChangeTitle {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
     TResult Function(TaskPageEventSave value)? save,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
@@ -1503,6 +1732,7 @@ class _$TaskPageEventChangePartner implements TaskPageEventChangePartner {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
+    required TResult Function() load,
     required TResult Function() exit,
     required TResult Function() save,
     required TResult Function(String val) changeTitle,
@@ -1526,6 +1756,7 @@ class _$TaskPageEventChangePartner implements TaskPageEventChangePartner {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? load,
     TResult Function()? exit,
     TResult Function()? save,
     TResult Function(String val)? changeTitle,
@@ -1549,6 +1780,7 @@ class _$TaskPageEventChangePartner implements TaskPageEventChangePartner {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? load,
     TResult Function()? exit,
     TResult Function()? save,
     TResult Function(String val)? changeTitle,
@@ -1576,6 +1808,7 @@ class _$TaskPageEventChangePartner implements TaskPageEventChangePartner {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TaskPageEventInit value) init,
+    required TResult Function(TaskPageEventLoad value) load,
     required TResult Function(TaskPageEventExit value) exit,
     required TResult Function(TaskPageEventSave value) save,
     required TResult Function(TaskPageEventChangeTitle value) changeTitle,
@@ -1603,6 +1836,7 @@ class _$TaskPageEventChangePartner implements TaskPageEventChangePartner {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
     TResult Function(TaskPageEventSave value)? save,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
@@ -1626,6 +1860,7 @@ class _$TaskPageEventChangePartner implements TaskPageEventChangePartner {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
     TResult Function(TaskPageEventSave value)? save,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
@@ -1731,6 +1966,7 @@ class _$TaskPageEventChangeResponsible
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
+    required TResult Function() load,
     required TResult Function() exit,
     required TResult Function() save,
     required TResult Function(String val) changeTitle,
@@ -1754,6 +1990,7 @@ class _$TaskPageEventChangeResponsible
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? load,
     TResult Function()? exit,
     TResult Function()? save,
     TResult Function(String val)? changeTitle,
@@ -1777,6 +2014,7 @@ class _$TaskPageEventChangeResponsible
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? load,
     TResult Function()? exit,
     TResult Function()? save,
     TResult Function(String val)? changeTitle,
@@ -1804,6 +2042,7 @@ class _$TaskPageEventChangeResponsible
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TaskPageEventInit value) init,
+    required TResult Function(TaskPageEventLoad value) load,
     required TResult Function(TaskPageEventExit value) exit,
     required TResult Function(TaskPageEventSave value) save,
     required TResult Function(TaskPageEventChangeTitle value) changeTitle,
@@ -1831,6 +2070,7 @@ class _$TaskPageEventChangeResponsible
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
     TResult Function(TaskPageEventSave value)? save,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
@@ -1854,6 +2094,7 @@ class _$TaskPageEventChangeResponsible
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
     TResult Function(TaskPageEventSave value)? save,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
@@ -1958,6 +2199,7 @@ class _$TaskPageEventChangeProducer implements TaskPageEventChangeProducer {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
+    required TResult Function() load,
     required TResult Function() exit,
     required TResult Function() save,
     required TResult Function(String val) changeTitle,
@@ -1981,6 +2223,7 @@ class _$TaskPageEventChangeProducer implements TaskPageEventChangeProducer {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? load,
     TResult Function()? exit,
     TResult Function()? save,
     TResult Function(String val)? changeTitle,
@@ -2004,6 +2247,7 @@ class _$TaskPageEventChangeProducer implements TaskPageEventChangeProducer {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? load,
     TResult Function()? exit,
     TResult Function()? save,
     TResult Function(String val)? changeTitle,
@@ -2031,6 +2275,7 @@ class _$TaskPageEventChangeProducer implements TaskPageEventChangeProducer {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TaskPageEventInit value) init,
+    required TResult Function(TaskPageEventLoad value) load,
     required TResult Function(TaskPageEventExit value) exit,
     required TResult Function(TaskPageEventSave value) save,
     required TResult Function(TaskPageEventChangeTitle value) changeTitle,
@@ -2058,6 +2303,7 @@ class _$TaskPageEventChangeProducer implements TaskPageEventChangeProducer {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
     TResult Function(TaskPageEventSave value)? save,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
@@ -2081,6 +2327,7 @@ class _$TaskPageEventChangeProducer implements TaskPageEventChangeProducer {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
     TResult Function(TaskPageEventSave value)? save,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
@@ -2185,6 +2432,7 @@ class _$TaskPageEventChangeCondition implements TaskPageEventChangeCondition {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
+    required TResult Function() load,
     required TResult Function() exit,
     required TResult Function() save,
     required TResult Function(String val) changeTitle,
@@ -2208,6 +2456,7 @@ class _$TaskPageEventChangeCondition implements TaskPageEventChangeCondition {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? load,
     TResult Function()? exit,
     TResult Function()? save,
     TResult Function(String val)? changeTitle,
@@ -2231,6 +2480,7 @@ class _$TaskPageEventChangeCondition implements TaskPageEventChangeCondition {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? load,
     TResult Function()? exit,
     TResult Function()? save,
     TResult Function(String val)? changeTitle,
@@ -2258,6 +2508,7 @@ class _$TaskPageEventChangeCondition implements TaskPageEventChangeCondition {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TaskPageEventInit value) init,
+    required TResult Function(TaskPageEventLoad value) load,
     required TResult Function(TaskPageEventExit value) exit,
     required TResult Function(TaskPageEventSave value) save,
     required TResult Function(TaskPageEventChangeTitle value) changeTitle,
@@ -2285,6 +2536,7 @@ class _$TaskPageEventChangeCondition implements TaskPageEventChangeCondition {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
     TResult Function(TaskPageEventSave value)? save,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
@@ -2308,6 +2560,7 @@ class _$TaskPageEventChangeCondition implements TaskPageEventChangeCondition {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
     TResult Function(TaskPageEventSave value)? save,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
@@ -2412,6 +2665,7 @@ class _$TaskPageEventChangeImportance implements TaskPageEventChangeImportance {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
+    required TResult Function() load,
     required TResult Function() exit,
     required TResult Function() save,
     required TResult Function(String val) changeTitle,
@@ -2435,6 +2689,7 @@ class _$TaskPageEventChangeImportance implements TaskPageEventChangeImportance {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? load,
     TResult Function()? exit,
     TResult Function()? save,
     TResult Function(String val)? changeTitle,
@@ -2458,6 +2713,7 @@ class _$TaskPageEventChangeImportance implements TaskPageEventChangeImportance {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? load,
     TResult Function()? exit,
     TResult Function()? save,
     TResult Function(String val)? changeTitle,
@@ -2485,6 +2741,7 @@ class _$TaskPageEventChangeImportance implements TaskPageEventChangeImportance {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TaskPageEventInit value) init,
+    required TResult Function(TaskPageEventLoad value) load,
     required TResult Function(TaskPageEventExit value) exit,
     required TResult Function(TaskPageEventSave value) save,
     required TResult Function(TaskPageEventChangeTitle value) changeTitle,
@@ -2512,6 +2769,7 @@ class _$TaskPageEventChangeImportance implements TaskPageEventChangeImportance {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
     TResult Function(TaskPageEventSave value)? save,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
@@ -2535,6 +2793,7 @@ class _$TaskPageEventChangeImportance implements TaskPageEventChangeImportance {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
     TResult Function(TaskPageEventSave value)? save,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
@@ -2639,6 +2898,7 @@ class _$TaskPageEventDellController implements TaskPageEventDellController {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
+    required TResult Function() load,
     required TResult Function() exit,
     required TResult Function() save,
     required TResult Function(String val) changeTitle,
@@ -2662,6 +2922,7 @@ class _$TaskPageEventDellController implements TaskPageEventDellController {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? load,
     TResult Function()? exit,
     TResult Function()? save,
     TResult Function(String val)? changeTitle,
@@ -2685,6 +2946,7 @@ class _$TaskPageEventDellController implements TaskPageEventDellController {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? load,
     TResult Function()? exit,
     TResult Function()? save,
     TResult Function(String val)? changeTitle,
@@ -2712,6 +2974,7 @@ class _$TaskPageEventDellController implements TaskPageEventDellController {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TaskPageEventInit value) init,
+    required TResult Function(TaskPageEventLoad value) load,
     required TResult Function(TaskPageEventExit value) exit,
     required TResult Function(TaskPageEventSave value) save,
     required TResult Function(TaskPageEventChangeTitle value) changeTitle,
@@ -2739,6 +3002,7 @@ class _$TaskPageEventDellController implements TaskPageEventDellController {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
     TResult Function(TaskPageEventSave value)? save,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
@@ -2762,6 +3026,7 @@ class _$TaskPageEventDellController implements TaskPageEventDellController {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
     TResult Function(TaskPageEventSave value)? save,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
@@ -2866,6 +3131,7 @@ class _$TaskPageEventDellAssistant implements TaskPageEventDellAssistant {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
+    required TResult Function() load,
     required TResult Function() exit,
     required TResult Function() save,
     required TResult Function(String val) changeTitle,
@@ -2889,6 +3155,7 @@ class _$TaskPageEventDellAssistant implements TaskPageEventDellAssistant {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? load,
     TResult Function()? exit,
     TResult Function()? save,
     TResult Function(String val)? changeTitle,
@@ -2912,6 +3179,7 @@ class _$TaskPageEventDellAssistant implements TaskPageEventDellAssistant {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? load,
     TResult Function()? exit,
     TResult Function()? save,
     TResult Function(String val)? changeTitle,
@@ -2939,6 +3207,7 @@ class _$TaskPageEventDellAssistant implements TaskPageEventDellAssistant {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TaskPageEventInit value) init,
+    required TResult Function(TaskPageEventLoad value) load,
     required TResult Function(TaskPageEventExit value) exit,
     required TResult Function(TaskPageEventSave value) save,
     required TResult Function(TaskPageEventChangeTitle value) changeTitle,
@@ -2966,6 +3235,7 @@ class _$TaskPageEventDellAssistant implements TaskPageEventDellAssistant {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
     TResult Function(TaskPageEventSave value)? save,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
@@ -2989,6 +3259,7 @@ class _$TaskPageEventDellAssistant implements TaskPageEventDellAssistant {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
     TResult Function(TaskPageEventSave value)? save,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
@@ -3093,6 +3364,7 @@ class _$TaskPageEventAddController implements TaskPageEventAddController {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
+    required TResult Function() load,
     required TResult Function() exit,
     required TResult Function() save,
     required TResult Function(String val) changeTitle,
@@ -3116,6 +3388,7 @@ class _$TaskPageEventAddController implements TaskPageEventAddController {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? load,
     TResult Function()? exit,
     TResult Function()? save,
     TResult Function(String val)? changeTitle,
@@ -3139,6 +3412,7 @@ class _$TaskPageEventAddController implements TaskPageEventAddController {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? load,
     TResult Function()? exit,
     TResult Function()? save,
     TResult Function(String val)? changeTitle,
@@ -3166,6 +3440,7 @@ class _$TaskPageEventAddController implements TaskPageEventAddController {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TaskPageEventInit value) init,
+    required TResult Function(TaskPageEventLoad value) load,
     required TResult Function(TaskPageEventExit value) exit,
     required TResult Function(TaskPageEventSave value) save,
     required TResult Function(TaskPageEventChangeTitle value) changeTitle,
@@ -3193,6 +3468,7 @@ class _$TaskPageEventAddController implements TaskPageEventAddController {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
     TResult Function(TaskPageEventSave value)? save,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
@@ -3216,6 +3492,7 @@ class _$TaskPageEventAddController implements TaskPageEventAddController {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
     TResult Function(TaskPageEventSave value)? save,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
@@ -3319,6 +3596,7 @@ class _$TaskPageEventAddAssitant implements TaskPageEventAddAssitant {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
+    required TResult Function() load,
     required TResult Function() exit,
     required TResult Function() save,
     required TResult Function(String val) changeTitle,
@@ -3342,6 +3620,7 @@ class _$TaskPageEventAddAssitant implements TaskPageEventAddAssitant {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? load,
     TResult Function()? exit,
     TResult Function()? save,
     TResult Function(String val)? changeTitle,
@@ -3365,6 +3644,7 @@ class _$TaskPageEventAddAssitant implements TaskPageEventAddAssitant {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? load,
     TResult Function()? exit,
     TResult Function()? save,
     TResult Function(String val)? changeTitle,
@@ -3392,6 +3672,7 @@ class _$TaskPageEventAddAssitant implements TaskPageEventAddAssitant {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TaskPageEventInit value) init,
+    required TResult Function(TaskPageEventLoad value) load,
     required TResult Function(TaskPageEventExit value) exit,
     required TResult Function(TaskPageEventSave value) save,
     required TResult Function(TaskPageEventChangeTitle value) changeTitle,
@@ -3419,6 +3700,7 @@ class _$TaskPageEventAddAssitant implements TaskPageEventAddAssitant {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
     TResult Function(TaskPageEventSave value)? save,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
@@ -3442,6 +3724,7 @@ class _$TaskPageEventAddAssitant implements TaskPageEventAddAssitant {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
     TResult Function(TaskPageEventSave value)? save,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
@@ -3522,6 +3805,7 @@ class _$TaskPageEventSetControlDone implements TaskPageEventSetControlDone {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
+    required TResult Function() load,
     required TResult Function() exit,
     required TResult Function() save,
     required TResult Function(String val) changeTitle,
@@ -3545,6 +3829,7 @@ class _$TaskPageEventSetControlDone implements TaskPageEventSetControlDone {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? load,
     TResult Function()? exit,
     TResult Function()? save,
     TResult Function(String val)? changeTitle,
@@ -3568,6 +3853,7 @@ class _$TaskPageEventSetControlDone implements TaskPageEventSetControlDone {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? load,
     TResult Function()? exit,
     TResult Function()? save,
     TResult Function(String val)? changeTitle,
@@ -3595,6 +3881,7 @@ class _$TaskPageEventSetControlDone implements TaskPageEventSetControlDone {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TaskPageEventInit value) init,
+    required TResult Function(TaskPageEventLoad value) load,
     required TResult Function(TaskPageEventExit value) exit,
     required TResult Function(TaskPageEventSave value) save,
     required TResult Function(TaskPageEventChangeTitle value) changeTitle,
@@ -3622,6 +3909,7 @@ class _$TaskPageEventSetControlDone implements TaskPageEventSetControlDone {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
     TResult Function(TaskPageEventSave value)? save,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
@@ -3645,6 +3933,7 @@ class _$TaskPageEventSetControlDone implements TaskPageEventSetControlDone {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
     TResult Function(TaskPageEventSave value)? save,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
@@ -3717,6 +4006,7 @@ class _$TaskPageEventSetControl implements TaskPageEventSetControl {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
+    required TResult Function() load,
     required TResult Function() exit,
     required TResult Function() save,
     required TResult Function(String val) changeTitle,
@@ -3740,6 +4030,7 @@ class _$TaskPageEventSetControl implements TaskPageEventSetControl {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? load,
     TResult Function()? exit,
     TResult Function()? save,
     TResult Function(String val)? changeTitle,
@@ -3763,6 +4054,7 @@ class _$TaskPageEventSetControl implements TaskPageEventSetControl {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? load,
     TResult Function()? exit,
     TResult Function()? save,
     TResult Function(String val)? changeTitle,
@@ -3790,6 +4082,7 @@ class _$TaskPageEventSetControl implements TaskPageEventSetControl {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TaskPageEventInit value) init,
+    required TResult Function(TaskPageEventLoad value) load,
     required TResult Function(TaskPageEventExit value) exit,
     required TResult Function(TaskPageEventSave value) save,
     required TResult Function(TaskPageEventChangeTitle value) changeTitle,
@@ -3817,6 +4110,7 @@ class _$TaskPageEventSetControl implements TaskPageEventSetControl {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
     TResult Function(TaskPageEventSave value)? save,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
@@ -3840,6 +4134,7 @@ class _$TaskPageEventSetControl implements TaskPageEventSetControl {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
     TResult Function(TaskPageEventSave value)? save,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
@@ -3938,6 +4233,7 @@ class _$TaskPageEventSaveDialogResult implements TaskPageEventSaveDialogResult {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
+    required TResult Function() load,
     required TResult Function() exit,
     required TResult Function() save,
     required TResult Function(String val) changeTitle,
@@ -3961,6 +4257,7 @@ class _$TaskPageEventSaveDialogResult implements TaskPageEventSaveDialogResult {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? load,
     TResult Function()? exit,
     TResult Function()? save,
     TResult Function(String val)? changeTitle,
@@ -3984,6 +4281,7 @@ class _$TaskPageEventSaveDialogResult implements TaskPageEventSaveDialogResult {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? load,
     TResult Function()? exit,
     TResult Function()? save,
     TResult Function(String val)? changeTitle,
@@ -4011,6 +4309,7 @@ class _$TaskPageEventSaveDialogResult implements TaskPageEventSaveDialogResult {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TaskPageEventInit value) init,
+    required TResult Function(TaskPageEventLoad value) load,
     required TResult Function(TaskPageEventExit value) exit,
     required TResult Function(TaskPageEventSave value) save,
     required TResult Function(TaskPageEventChangeTitle value) changeTitle,
@@ -4038,6 +4337,7 @@ class _$TaskPageEventSaveDialogResult implements TaskPageEventSaveDialogResult {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
     TResult Function(TaskPageEventSave value)? save,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
@@ -4061,6 +4361,7 @@ class _$TaskPageEventSaveDialogResult implements TaskPageEventSaveDialogResult {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
     TResult Function(TaskPageEventSave value)? save,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
@@ -4101,18 +4402,21 @@ mixin _$TaskPageSR {
   TResult when<TResult extends Object?>({
     required TResult Function() exit,
     required TResult Function() openSaveDialog,
+    required TResult Function() chooseAnResponsible,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? exit,
     TResult Function()? openSaveDialog,
+    TResult Function()? chooseAnResponsible,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? exit,
     TResult Function()? openSaveDialog,
+    TResult Function()? chooseAnResponsible,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -4120,18 +4424,21 @@ mixin _$TaskPageSR {
   TResult map<TResult extends Object?>({
     required TResult Function(Exit value) exit,
     required TResult Function(OpenSaveDialog value) openSaveDialog,
+    required TResult Function(ChoiseOfResponsible value) chooseAnResponsible,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Exit value)? exit,
     TResult Function(OpenSaveDialog value)? openSaveDialog,
+    TResult Function(ChoiseOfResponsible value)? chooseAnResponsible,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Exit value)? exit,
     TResult Function(OpenSaveDialog value)? openSaveDialog,
+    TResult Function(ChoiseOfResponsible value)? chooseAnResponsible,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -4193,6 +4500,7 @@ class _$Exit implements Exit {
   TResult when<TResult extends Object?>({
     required TResult Function() exit,
     required TResult Function() openSaveDialog,
+    required TResult Function() chooseAnResponsible,
   }) {
     return exit();
   }
@@ -4202,6 +4510,7 @@ class _$Exit implements Exit {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? exit,
     TResult Function()? openSaveDialog,
+    TResult Function()? chooseAnResponsible,
   }) {
     return exit?.call();
   }
@@ -4211,6 +4520,7 @@ class _$Exit implements Exit {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? exit,
     TResult Function()? openSaveDialog,
+    TResult Function()? chooseAnResponsible,
     required TResult orElse(),
   }) {
     if (exit != null) {
@@ -4224,6 +4534,7 @@ class _$Exit implements Exit {
   TResult map<TResult extends Object?>({
     required TResult Function(Exit value) exit,
     required TResult Function(OpenSaveDialog value) openSaveDialog,
+    required TResult Function(ChoiseOfResponsible value) chooseAnResponsible,
   }) {
     return exit(this);
   }
@@ -4233,6 +4544,7 @@ class _$Exit implements Exit {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Exit value)? exit,
     TResult Function(OpenSaveDialog value)? openSaveDialog,
+    TResult Function(ChoiseOfResponsible value)? chooseAnResponsible,
   }) {
     return exit?.call(this);
   }
@@ -4242,6 +4554,7 @@ class _$Exit implements Exit {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Exit value)? exit,
     TResult Function(OpenSaveDialog value)? openSaveDialog,
+    TResult Function(ChoiseOfResponsible value)? chooseAnResponsible,
     required TResult orElse(),
   }) {
     if (exit != null) {
@@ -4298,6 +4611,7 @@ class _$OpenSaveDialog implements OpenSaveDialog {
   TResult when<TResult extends Object?>({
     required TResult Function() exit,
     required TResult Function() openSaveDialog,
+    required TResult Function() chooseAnResponsible,
   }) {
     return openSaveDialog();
   }
@@ -4307,6 +4621,7 @@ class _$OpenSaveDialog implements OpenSaveDialog {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? exit,
     TResult Function()? openSaveDialog,
+    TResult Function()? chooseAnResponsible,
   }) {
     return openSaveDialog?.call();
   }
@@ -4316,6 +4631,7 @@ class _$OpenSaveDialog implements OpenSaveDialog {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? exit,
     TResult Function()? openSaveDialog,
+    TResult Function()? chooseAnResponsible,
     required TResult orElse(),
   }) {
     if (openSaveDialog != null) {
@@ -4329,6 +4645,7 @@ class _$OpenSaveDialog implements OpenSaveDialog {
   TResult map<TResult extends Object?>({
     required TResult Function(Exit value) exit,
     required TResult Function(OpenSaveDialog value) openSaveDialog,
+    required TResult Function(ChoiseOfResponsible value) chooseAnResponsible,
   }) {
     return openSaveDialog(this);
   }
@@ -4338,6 +4655,7 @@ class _$OpenSaveDialog implements OpenSaveDialog {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Exit value)? exit,
     TResult Function(OpenSaveDialog value)? openSaveDialog,
+    TResult Function(ChoiseOfResponsible value)? chooseAnResponsible,
   }) {
     return openSaveDialog?.call(this);
   }
@@ -4347,6 +4665,7 @@ class _$OpenSaveDialog implements OpenSaveDialog {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Exit value)? exit,
     TResult Function(OpenSaveDialog value)? openSaveDialog,
+    TResult Function(ChoiseOfResponsible value)? chooseAnResponsible,
     required TResult orElse(),
   }) {
     if (openSaveDialog != null) {
@@ -4358,4 +4677,115 @@ class _$OpenSaveDialog implements OpenSaveDialog {
 
 abstract class OpenSaveDialog implements TaskPageSR {
   const factory OpenSaveDialog() = _$OpenSaveDialog;
+}
+
+/// @nodoc
+abstract class _$$ChoiseOfResponsibleCopyWith<$Res> {
+  factory _$$ChoiseOfResponsibleCopyWith(_$ChoiseOfResponsible value,
+          $Res Function(_$ChoiseOfResponsible) then) =
+      __$$ChoiseOfResponsibleCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ChoiseOfResponsibleCopyWithImpl<$Res>
+    extends _$TaskPageSRCopyWithImpl<$Res>
+    implements _$$ChoiseOfResponsibleCopyWith<$Res> {
+  __$$ChoiseOfResponsibleCopyWithImpl(
+      _$ChoiseOfResponsible _value, $Res Function(_$ChoiseOfResponsible) _then)
+      : super(_value, (v) => _then(v as _$ChoiseOfResponsible));
+
+  @override
+  _$ChoiseOfResponsible get _value => super._value as _$ChoiseOfResponsible;
+}
+
+/// @nodoc
+
+class _$ChoiseOfResponsible implements ChoiseOfResponsible {
+  const _$ChoiseOfResponsible();
+
+  @override
+  String toString() {
+    return 'TaskPageSR.chooseAnResponsible()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ChoiseOfResponsible);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() exit,
+    required TResult Function() openSaveDialog,
+    required TResult Function() chooseAnResponsible,
+  }) {
+    return chooseAnResponsible();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? exit,
+    TResult Function()? openSaveDialog,
+    TResult Function()? chooseAnResponsible,
+  }) {
+    return chooseAnResponsible?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? exit,
+    TResult Function()? openSaveDialog,
+    TResult Function()? chooseAnResponsible,
+    required TResult orElse(),
+  }) {
+    if (chooseAnResponsible != null) {
+      return chooseAnResponsible();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Exit value) exit,
+    required TResult Function(OpenSaveDialog value) openSaveDialog,
+    required TResult Function(ChoiseOfResponsible value) chooseAnResponsible,
+  }) {
+    return chooseAnResponsible(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Exit value)? exit,
+    TResult Function(OpenSaveDialog value)? openSaveDialog,
+    TResult Function(ChoiseOfResponsible value)? chooseAnResponsible,
+  }) {
+    return chooseAnResponsible?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Exit value)? exit,
+    TResult Function(OpenSaveDialog value)? openSaveDialog,
+    TResult Function(ChoiseOfResponsible value)? chooseAnResponsible,
+    required TResult orElse(),
+  }) {
+    if (chooseAnResponsible != null) {
+      return chooseAnResponsible(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChoiseOfResponsible implements TaskPageSR {
+  const factory ChoiseOfResponsible() = _$ChoiseOfResponsible;
 }
