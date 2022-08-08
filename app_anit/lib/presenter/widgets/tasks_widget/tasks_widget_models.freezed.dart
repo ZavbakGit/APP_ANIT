@@ -463,6 +463,7 @@ mixin _$TasksWidgetEvent {
     required TResult Function() refresh,
     required TResult Function() openTasks,
     required TResult Function() addTask,
+    required TResult Function() addTaskController,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -471,6 +472,7 @@ mixin _$TasksWidgetEvent {
     TResult Function()? refresh,
     TResult Function()? openTasks,
     TResult Function()? addTask,
+    TResult Function()? addTaskController,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -479,6 +481,7 @@ mixin _$TasksWidgetEvent {
     TResult Function()? refresh,
     TResult Function()? openTasks,
     TResult Function()? addTask,
+    TResult Function()? addTaskController,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -488,6 +491,8 @@ mixin _$TasksWidgetEvent {
     required TResult Function(TasksWidgetRefresh value) refresh,
     required TResult Function(TasksWidgetOpenTasks value) openTasks,
     required TResult Function(TasksWidgetOpenAddTask value) addTask,
+    required TResult Function(TasksWidgetOpenAddTaskController value)
+        addTaskController,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -496,6 +501,7 @@ mixin _$TasksWidgetEvent {
     TResult Function(TasksWidgetRefresh value)? refresh,
     TResult Function(TasksWidgetOpenTasks value)? openTasks,
     TResult Function(TasksWidgetOpenAddTask value)? addTask,
+    TResult Function(TasksWidgetOpenAddTaskController value)? addTaskController,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -504,6 +510,7 @@ mixin _$TasksWidgetEvent {
     TResult Function(TasksWidgetRefresh value)? refresh,
     TResult Function(TasksWidgetOpenTasks value)? openTasks,
     TResult Function(TasksWidgetOpenAddTask value)? addTask,
+    TResult Function(TasksWidgetOpenAddTaskController value)? addTaskController,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -571,6 +578,7 @@ class _$TasksWidgetInit implements TasksWidgetInit {
     required TResult Function() refresh,
     required TResult Function() openTasks,
     required TResult Function() addTask,
+    required TResult Function() addTaskController,
   }) {
     return init();
   }
@@ -582,6 +590,7 @@ class _$TasksWidgetInit implements TasksWidgetInit {
     TResult Function()? refresh,
     TResult Function()? openTasks,
     TResult Function()? addTask,
+    TResult Function()? addTaskController,
   }) {
     return init?.call();
   }
@@ -593,6 +602,7 @@ class _$TasksWidgetInit implements TasksWidgetInit {
     TResult Function()? refresh,
     TResult Function()? openTasks,
     TResult Function()? addTask,
+    TResult Function()? addTaskController,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -608,6 +618,8 @@ class _$TasksWidgetInit implements TasksWidgetInit {
     required TResult Function(TasksWidgetRefresh value) refresh,
     required TResult Function(TasksWidgetOpenTasks value) openTasks,
     required TResult Function(TasksWidgetOpenAddTask value) addTask,
+    required TResult Function(TasksWidgetOpenAddTaskController value)
+        addTaskController,
   }) {
     return init(this);
   }
@@ -619,6 +631,7 @@ class _$TasksWidgetInit implements TasksWidgetInit {
     TResult Function(TasksWidgetRefresh value)? refresh,
     TResult Function(TasksWidgetOpenTasks value)? openTasks,
     TResult Function(TasksWidgetOpenAddTask value)? addTask,
+    TResult Function(TasksWidgetOpenAddTaskController value)? addTaskController,
   }) {
     return init?.call(this);
   }
@@ -630,6 +643,7 @@ class _$TasksWidgetInit implements TasksWidgetInit {
     TResult Function(TasksWidgetRefresh value)? refresh,
     TResult Function(TasksWidgetOpenTasks value)? openTasks,
     TResult Function(TasksWidgetOpenAddTask value)? addTask,
+    TResult Function(TasksWidgetOpenAddTaskController value)? addTaskController,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -688,6 +702,7 @@ class _$TasksWidgetRefresh implements TasksWidgetRefresh {
     required TResult Function() refresh,
     required TResult Function() openTasks,
     required TResult Function() addTask,
+    required TResult Function() addTaskController,
   }) {
     return refresh();
   }
@@ -699,6 +714,7 @@ class _$TasksWidgetRefresh implements TasksWidgetRefresh {
     TResult Function()? refresh,
     TResult Function()? openTasks,
     TResult Function()? addTask,
+    TResult Function()? addTaskController,
   }) {
     return refresh?.call();
   }
@@ -710,6 +726,7 @@ class _$TasksWidgetRefresh implements TasksWidgetRefresh {
     TResult Function()? refresh,
     TResult Function()? openTasks,
     TResult Function()? addTask,
+    TResult Function()? addTaskController,
     required TResult orElse(),
   }) {
     if (refresh != null) {
@@ -725,6 +742,8 @@ class _$TasksWidgetRefresh implements TasksWidgetRefresh {
     required TResult Function(TasksWidgetRefresh value) refresh,
     required TResult Function(TasksWidgetOpenTasks value) openTasks,
     required TResult Function(TasksWidgetOpenAddTask value) addTask,
+    required TResult Function(TasksWidgetOpenAddTaskController value)
+        addTaskController,
   }) {
     return refresh(this);
   }
@@ -736,6 +755,7 @@ class _$TasksWidgetRefresh implements TasksWidgetRefresh {
     TResult Function(TasksWidgetRefresh value)? refresh,
     TResult Function(TasksWidgetOpenTasks value)? openTasks,
     TResult Function(TasksWidgetOpenAddTask value)? addTask,
+    TResult Function(TasksWidgetOpenAddTaskController value)? addTaskController,
   }) {
     return refresh?.call(this);
   }
@@ -747,6 +767,7 @@ class _$TasksWidgetRefresh implements TasksWidgetRefresh {
     TResult Function(TasksWidgetRefresh value)? refresh,
     TResult Function(TasksWidgetOpenTasks value)? openTasks,
     TResult Function(TasksWidgetOpenAddTask value)? addTask,
+    TResult Function(TasksWidgetOpenAddTaskController value)? addTaskController,
     required TResult orElse(),
   }) {
     if (refresh != null) {
@@ -805,6 +826,7 @@ class _$TasksWidgetOpenTasks implements TasksWidgetOpenTasks {
     required TResult Function() refresh,
     required TResult Function() openTasks,
     required TResult Function() addTask,
+    required TResult Function() addTaskController,
   }) {
     return openTasks();
   }
@@ -816,6 +838,7 @@ class _$TasksWidgetOpenTasks implements TasksWidgetOpenTasks {
     TResult Function()? refresh,
     TResult Function()? openTasks,
     TResult Function()? addTask,
+    TResult Function()? addTaskController,
   }) {
     return openTasks?.call();
   }
@@ -827,6 +850,7 @@ class _$TasksWidgetOpenTasks implements TasksWidgetOpenTasks {
     TResult Function()? refresh,
     TResult Function()? openTasks,
     TResult Function()? addTask,
+    TResult Function()? addTaskController,
     required TResult orElse(),
   }) {
     if (openTasks != null) {
@@ -842,6 +866,8 @@ class _$TasksWidgetOpenTasks implements TasksWidgetOpenTasks {
     required TResult Function(TasksWidgetRefresh value) refresh,
     required TResult Function(TasksWidgetOpenTasks value) openTasks,
     required TResult Function(TasksWidgetOpenAddTask value) addTask,
+    required TResult Function(TasksWidgetOpenAddTaskController value)
+        addTaskController,
   }) {
     return openTasks(this);
   }
@@ -853,6 +879,7 @@ class _$TasksWidgetOpenTasks implements TasksWidgetOpenTasks {
     TResult Function(TasksWidgetRefresh value)? refresh,
     TResult Function(TasksWidgetOpenTasks value)? openTasks,
     TResult Function(TasksWidgetOpenAddTask value)? addTask,
+    TResult Function(TasksWidgetOpenAddTaskController value)? addTaskController,
   }) {
     return openTasks?.call(this);
   }
@@ -864,6 +891,7 @@ class _$TasksWidgetOpenTasks implements TasksWidgetOpenTasks {
     TResult Function(TasksWidgetRefresh value)? refresh,
     TResult Function(TasksWidgetOpenTasks value)? openTasks,
     TResult Function(TasksWidgetOpenAddTask value)? addTask,
+    TResult Function(TasksWidgetOpenAddTaskController value)? addTaskController,
     required TResult orElse(),
   }) {
     if (openTasks != null) {
@@ -923,6 +951,7 @@ class _$TasksWidgetOpenAddTask implements TasksWidgetOpenAddTask {
     required TResult Function() refresh,
     required TResult Function() openTasks,
     required TResult Function() addTask,
+    required TResult Function() addTaskController,
   }) {
     return addTask();
   }
@@ -934,6 +963,7 @@ class _$TasksWidgetOpenAddTask implements TasksWidgetOpenAddTask {
     TResult Function()? refresh,
     TResult Function()? openTasks,
     TResult Function()? addTask,
+    TResult Function()? addTaskController,
   }) {
     return addTask?.call();
   }
@@ -945,6 +975,7 @@ class _$TasksWidgetOpenAddTask implements TasksWidgetOpenAddTask {
     TResult Function()? refresh,
     TResult Function()? openTasks,
     TResult Function()? addTask,
+    TResult Function()? addTaskController,
     required TResult orElse(),
   }) {
     if (addTask != null) {
@@ -960,6 +991,8 @@ class _$TasksWidgetOpenAddTask implements TasksWidgetOpenAddTask {
     required TResult Function(TasksWidgetRefresh value) refresh,
     required TResult Function(TasksWidgetOpenTasks value) openTasks,
     required TResult Function(TasksWidgetOpenAddTask value) addTask,
+    required TResult Function(TasksWidgetOpenAddTaskController value)
+        addTaskController,
   }) {
     return addTask(this);
   }
@@ -971,6 +1004,7 @@ class _$TasksWidgetOpenAddTask implements TasksWidgetOpenAddTask {
     TResult Function(TasksWidgetRefresh value)? refresh,
     TResult Function(TasksWidgetOpenTasks value)? openTasks,
     TResult Function(TasksWidgetOpenAddTask value)? addTask,
+    TResult Function(TasksWidgetOpenAddTaskController value)? addTaskController,
   }) {
     return addTask?.call(this);
   }
@@ -982,6 +1016,7 @@ class _$TasksWidgetOpenAddTask implements TasksWidgetOpenAddTask {
     TResult Function(TasksWidgetRefresh value)? refresh,
     TResult Function(TasksWidgetOpenTasks value)? openTasks,
     TResult Function(TasksWidgetOpenAddTask value)? addTask,
+    TResult Function(TasksWidgetOpenAddTaskController value)? addTaskController,
     required TResult orElse(),
   }) {
     if (addTask != null) {
@@ -996,23 +1031,156 @@ abstract class TasksWidgetOpenAddTask implements TasksWidgetEvent {
 }
 
 /// @nodoc
+abstract class _$$TasksWidgetOpenAddTaskControllerCopyWith<$Res> {
+  factory _$$TasksWidgetOpenAddTaskControllerCopyWith(
+          _$TasksWidgetOpenAddTaskController value,
+          $Res Function(_$TasksWidgetOpenAddTaskController) then) =
+      __$$TasksWidgetOpenAddTaskControllerCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$TasksWidgetOpenAddTaskControllerCopyWithImpl<$Res>
+    extends _$TasksWidgetEventCopyWithImpl<$Res>
+    implements _$$TasksWidgetOpenAddTaskControllerCopyWith<$Res> {
+  __$$TasksWidgetOpenAddTaskControllerCopyWithImpl(
+      _$TasksWidgetOpenAddTaskController _value,
+      $Res Function(_$TasksWidgetOpenAddTaskController) _then)
+      : super(_value, (v) => _then(v as _$TasksWidgetOpenAddTaskController));
+
+  @override
+  _$TasksWidgetOpenAddTaskController get _value =>
+      super._value as _$TasksWidgetOpenAddTaskController;
+}
+
+/// @nodoc
+
+class _$TasksWidgetOpenAddTaskController
+    implements TasksWidgetOpenAddTaskController {
+  const _$TasksWidgetOpenAddTaskController();
+
+  @override
+  String toString() {
+    return 'TasksWidgetEvent.addTaskController()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$TasksWidgetOpenAddTaskController);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() refresh,
+    required TResult Function() openTasks,
+    required TResult Function() addTask,
+    required TResult Function() addTaskController,
+  }) {
+    return addTaskController();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? refresh,
+    TResult Function()? openTasks,
+    TResult Function()? addTask,
+    TResult Function()? addTaskController,
+  }) {
+    return addTaskController?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? refresh,
+    TResult Function()? openTasks,
+    TResult Function()? addTask,
+    TResult Function()? addTaskController,
+    required TResult orElse(),
+  }) {
+    if (addTaskController != null) {
+      return addTaskController();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(TasksWidgetInit value) init,
+    required TResult Function(TasksWidgetRefresh value) refresh,
+    required TResult Function(TasksWidgetOpenTasks value) openTasks,
+    required TResult Function(TasksWidgetOpenAddTask value) addTask,
+    required TResult Function(TasksWidgetOpenAddTaskController value)
+        addTaskController,
+  }) {
+    return addTaskController(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(TasksWidgetInit value)? init,
+    TResult Function(TasksWidgetRefresh value)? refresh,
+    TResult Function(TasksWidgetOpenTasks value)? openTasks,
+    TResult Function(TasksWidgetOpenAddTask value)? addTask,
+    TResult Function(TasksWidgetOpenAddTaskController value)? addTaskController,
+  }) {
+    return addTaskController?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(TasksWidgetInit value)? init,
+    TResult Function(TasksWidgetRefresh value)? refresh,
+    TResult Function(TasksWidgetOpenTasks value)? openTasks,
+    TResult Function(TasksWidgetOpenAddTask value)? addTask,
+    TResult Function(TasksWidgetOpenAddTaskController value)? addTaskController,
+    required TResult orElse(),
+  }) {
+    if (addTaskController != null) {
+      return addTaskController(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class TasksWidgetOpenAddTaskController implements TasksWidgetEvent {
+  const factory TasksWidgetOpenAddTaskController() =
+      _$TasksWidgetOpenAddTaskController;
+}
+
+/// @nodoc
 mixin _$TasksWidgetSR {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() openTasks,
     required TResult Function() addTask,
+    required TResult Function() addTaskController,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? openTasks,
     TResult Function()? addTask,
+    TResult Function()? addTaskController,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? openTasks,
     TResult Function()? addTask,
+    TResult Function()? addTaskController,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1020,18 +1188,21 @@ mixin _$TasksWidgetSR {
   TResult map<TResult extends Object?>({
     required TResult Function(_OpenTasks value) openTasks,
     required TResult Function(_AddTask value) addTask,
+    required TResult Function(_AddTaskController value) addTaskController,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_OpenTasks value)? openTasks,
     TResult Function(_AddTask value)? addTask,
+    TResult Function(_AddTaskController value)? addTaskController,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_OpenTasks value)? openTasks,
     TResult Function(_AddTask value)? addTask,
+    TResult Function(_AddTaskController value)? addTaskController,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1096,6 +1267,7 @@ class _$_OpenTasks implements _OpenTasks {
   TResult when<TResult extends Object?>({
     required TResult Function() openTasks,
     required TResult Function() addTask,
+    required TResult Function() addTaskController,
   }) {
     return openTasks();
   }
@@ -1105,6 +1277,7 @@ class _$_OpenTasks implements _OpenTasks {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? openTasks,
     TResult Function()? addTask,
+    TResult Function()? addTaskController,
   }) {
     return openTasks?.call();
   }
@@ -1114,6 +1287,7 @@ class _$_OpenTasks implements _OpenTasks {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? openTasks,
     TResult Function()? addTask,
+    TResult Function()? addTaskController,
     required TResult orElse(),
   }) {
     if (openTasks != null) {
@@ -1127,6 +1301,7 @@ class _$_OpenTasks implements _OpenTasks {
   TResult map<TResult extends Object?>({
     required TResult Function(_OpenTasks value) openTasks,
     required TResult Function(_AddTask value) addTask,
+    required TResult Function(_AddTaskController value) addTaskController,
   }) {
     return openTasks(this);
   }
@@ -1136,6 +1311,7 @@ class _$_OpenTasks implements _OpenTasks {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_OpenTasks value)? openTasks,
     TResult Function(_AddTask value)? addTask,
+    TResult Function(_AddTaskController value)? addTaskController,
   }) {
     return openTasks?.call(this);
   }
@@ -1145,6 +1321,7 @@ class _$_OpenTasks implements _OpenTasks {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_OpenTasks value)? openTasks,
     TResult Function(_AddTask value)? addTask,
+    TResult Function(_AddTaskController value)? addTaskController,
     required TResult orElse(),
   }) {
     if (openTasks != null) {
@@ -1199,6 +1376,7 @@ class _$_AddTask implements _AddTask {
   TResult when<TResult extends Object?>({
     required TResult Function() openTasks,
     required TResult Function() addTask,
+    required TResult Function() addTaskController,
   }) {
     return addTask();
   }
@@ -1208,6 +1386,7 @@ class _$_AddTask implements _AddTask {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? openTasks,
     TResult Function()? addTask,
+    TResult Function()? addTaskController,
   }) {
     return addTask?.call();
   }
@@ -1217,6 +1396,7 @@ class _$_AddTask implements _AddTask {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? openTasks,
     TResult Function()? addTask,
+    TResult Function()? addTaskController,
     required TResult orElse(),
   }) {
     if (addTask != null) {
@@ -1230,6 +1410,7 @@ class _$_AddTask implements _AddTask {
   TResult map<TResult extends Object?>({
     required TResult Function(_OpenTasks value) openTasks,
     required TResult Function(_AddTask value) addTask,
+    required TResult Function(_AddTaskController value) addTaskController,
   }) {
     return addTask(this);
   }
@@ -1239,6 +1420,7 @@ class _$_AddTask implements _AddTask {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_OpenTasks value)? openTasks,
     TResult Function(_AddTask value)? addTask,
+    TResult Function(_AddTaskController value)? addTaskController,
   }) {
     return addTask?.call(this);
   }
@@ -1248,6 +1430,7 @@ class _$_AddTask implements _AddTask {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_OpenTasks value)? openTasks,
     TResult Function(_AddTask value)? addTask,
+    TResult Function(_AddTaskController value)? addTaskController,
     required TResult orElse(),
   }) {
     if (addTask != null) {
@@ -1259,4 +1442,115 @@ class _$_AddTask implements _AddTask {
 
 abstract class _AddTask implements TasksWidgetSR {
   const factory _AddTask() = _$_AddTask;
+}
+
+/// @nodoc
+abstract class _$$_AddTaskControllerCopyWith<$Res> {
+  factory _$$_AddTaskControllerCopyWith(_$_AddTaskController value,
+          $Res Function(_$_AddTaskController) then) =
+      __$$_AddTaskControllerCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_AddTaskControllerCopyWithImpl<$Res>
+    extends _$TasksWidgetSRCopyWithImpl<$Res>
+    implements _$$_AddTaskControllerCopyWith<$Res> {
+  __$$_AddTaskControllerCopyWithImpl(
+      _$_AddTaskController _value, $Res Function(_$_AddTaskController) _then)
+      : super(_value, (v) => _then(v as _$_AddTaskController));
+
+  @override
+  _$_AddTaskController get _value => super._value as _$_AddTaskController;
+}
+
+/// @nodoc
+
+class _$_AddTaskController implements _AddTaskController {
+  const _$_AddTaskController();
+
+  @override
+  String toString() {
+    return 'TasksWidgetSR.addTaskController()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_AddTaskController);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() openTasks,
+    required TResult Function() addTask,
+    required TResult Function() addTaskController,
+  }) {
+    return addTaskController();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? openTasks,
+    TResult Function()? addTask,
+    TResult Function()? addTaskController,
+  }) {
+    return addTaskController?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? openTasks,
+    TResult Function()? addTask,
+    TResult Function()? addTaskController,
+    required TResult orElse(),
+  }) {
+    if (addTaskController != null) {
+      return addTaskController();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_OpenTasks value) openTasks,
+    required TResult Function(_AddTask value) addTask,
+    required TResult Function(_AddTaskController value) addTaskController,
+  }) {
+    return addTaskController(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_OpenTasks value)? openTasks,
+    TResult Function(_AddTask value)? addTask,
+    TResult Function(_AddTaskController value)? addTaskController,
+  }) {
+    return addTaskController?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_OpenTasks value)? openTasks,
+    TResult Function(_AddTask value)? addTask,
+    TResult Function(_AddTaskController value)? addTaskController,
+    required TResult orElse(),
+  }) {
+    if (addTaskController != null) {
+      return addTaskController(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddTaskController implements TasksWidgetSR {
+  const factory _AddTaskController() = _$_AddTaskController;
 }

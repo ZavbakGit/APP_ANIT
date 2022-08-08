@@ -17,15 +17,18 @@ import '../task/task_cubit.dart';
 
 class TaskPage extends StatelessWidget {
   final String? guid;
-  const TaskPage({
-    Key? key,
-    this.guid,
-  }) : super(key: key);
+  final bool isController;
+  const TaskPage({Key? key, this.guid, this.isController = false})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          TaskCubit(repository: sl(), guidTask: guid, appModel: sl())..init(),
+      create: (context) => TaskCubit(
+          repository: sl(),
+          guidTask: guid,
+          appModel: sl(),
+          isNewControllerTask: isController)
+        ..init(),
       child: const CustomPageWidget(
         child: BodyWidget(),
       ),

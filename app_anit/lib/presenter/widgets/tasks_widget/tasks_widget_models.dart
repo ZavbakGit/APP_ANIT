@@ -22,10 +22,13 @@ class TasksWidgetEvent with _$TasksWidgetEvent {
   const factory TasksWidgetEvent.refresh() = TasksWidgetRefresh;
   const factory TasksWidgetEvent.openTasks() = TasksWidgetOpenTasks;
   const factory TasksWidgetEvent.addTask() = TasksWidgetOpenAddTask;
+  const factory TasksWidgetEvent.addTaskController() =
+      TasksWidgetOpenAddTaskController;
 }
 
 @freezed
 class TasksWidgetSR with _$TasksWidgetSR {
   const factory TasksWidgetSR.openTasks() = _OpenTasks;
   const factory TasksWidgetSR.addTask() = _AddTask;
+  const factory TasksWidgetSR.addTaskController() = _AddTaskController;
 }

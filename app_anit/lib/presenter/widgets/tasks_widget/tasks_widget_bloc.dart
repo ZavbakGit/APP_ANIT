@@ -24,6 +24,7 @@ class TasksWidgetBloc
     on<TasksWidgetRefresh>(_refresh);
     on<TasksWidgetOpenTasks>(_openTasks);
     on<TasksWidgetOpenAddTask>(_addTask);
+    on<TasksWidgetOpenAddTaskController>(_addTaskController);
   }
 
   @override
@@ -78,5 +79,12 @@ class TasksWidgetBloc
     Emitter<TasksWidgetState> emit,
   ) {
     addSr(const TasksWidgetSR.addTask());
+  }
+
+  FutureOr<void> _addTaskController(
+    TasksWidgetOpenAddTaskController event,
+    Emitter<TasksWidgetState> emit,
+  ) {
+    addSr(const TasksWidgetSR.addTaskController());
   }
 }

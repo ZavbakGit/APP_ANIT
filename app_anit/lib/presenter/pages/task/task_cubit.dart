@@ -9,6 +9,7 @@ import '../../../domain/repositories/repository.dart';
 class TaskCubit extends Cubit<TaskState> {
   final Repository repository;
   final String? guidTask;
+  final bool? isNewControllerTask;
   final AppModel appModel;
   Task? task;
   bool isModified = false;
@@ -17,10 +18,11 @@ class TaskCubit extends Cubit<TaskState> {
     required this.repository,
     required this.guidTask,
     required this.appModel,
+    this.isNewControllerTask,
   }) : super(TaskState(isLoading: true, isNewTask: guidTask == null));
 
   init() {
-    refreshData();
+    getData();
   }
 
   TaskState get baseState =>
@@ -32,7 +34,7 @@ class TaskCubit extends Cubit<TaskState> {
 
   bool get isNewTask => guidTask == null;
 
-  void refreshData() async {
+  void getData() async {
     emit(loadingState);
 
     final either = (!isNewTask)
@@ -43,7 +45,11 @@ class TaskCubit extends Cubit<TaskState> {
       emit(getErrorSate(fail));
     }, (result) {
       task = result;
-      emit(baseState);
+      if (isNewControllerTask ?? false) {
+        addController(appModel.remoteConfig!.user);
+      } else {
+        emit(baseState);
+      }
     });
   }
 

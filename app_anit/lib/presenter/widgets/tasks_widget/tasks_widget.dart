@@ -39,11 +39,26 @@ class TasksWidget extends StatelessWidget {
                         Expanded(
                           child: Align(
                             alignment: Alignment.bottomRight,
-                            child: IconButton(
-                                onPressed: () => context
-                                    .read<TasksWidgetBloc>()
-                                    .add(const TasksWidgetEvent.addTask()),
-                                icon: const Icon(Icons.add)),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: IconButton(
+                                      onPressed: () => context
+                                          .read<TasksWidgetBloc>()
+                                          .add(const TasksWidgetEvent
+                                              .addTaskController()),
+                                      icon: const Icon(Icons.add)),
+                                ),
+                                Expanded(
+                                  child: IconButton(
+                                      onPressed: () => context
+                                          .read<TasksWidgetBloc>()
+                                          .add(
+                                              const TasksWidgetEvent.addTask()),
+                                      icon: const Icon(Icons.add)),
+                                ),
+                              ],
+                            ),
                           ),
                         )
                       ],
@@ -70,6 +85,22 @@ class TasksWidget extends StatelessWidget {
       ).then((value) => context
           .read<TasksWidgetBloc>()
           .add(const TasksWidgetEvent.refresh())),
+      addTaskController: () {
+        Navigator.push<bool>(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const TaskPage(isController: true),
+          ),
+        ).then((value) {
+          if (value != null) {
+            if (value) {
+              context
+                  .read<TasksWidgetBloc>()
+                  .add(const TasksWidgetEvent.refresh());
+            }
+          }
+        });
+      },
       addTask: () {
         Navigator.push<bool>(
           context,

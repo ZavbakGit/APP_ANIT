@@ -3,7 +3,7 @@ part 'main_page_bloc_models.freezed.dart';
 
 @freezed
 class MainPageState with _$MainPageState {
-  MainPageStateData get data => this as MainPageStateData;
+  //MainPageStateData get data => this as MainPageStateData;
 
   const MainPageState._();
 
