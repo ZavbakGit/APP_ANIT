@@ -26,8 +26,7 @@ class TasksWidget extends StatelessWidget {
                 .add(const TasksWidgetEvent.openTasks()),
             child: Card(
               borderOnForeground: false,
-              child: Container(
-                color: Colors.lightGreen,
+              child: SizedBox(
                 height: 150,
                 width: 150,
                 child: Padding(
@@ -36,12 +35,17 @@ class TasksWidget extends StatelessWidget {
                     data: (state) => Column(
                       children: [
                         Text(
-                            'Задач ${state.data.countTask}/ ${state.data.countControlleredTask}'),
-                        IconButton(
-                            onPressed: () => context
-                                .read<TasksWidgetBloc>()
-                                .add(const TasksWidgetEvent.addTask()),
-                            icon: Icon(Icons.add))
+                            'Задачи ${state.data.countTask}/ ${state.data.countControlleredTask}'),
+                        Expanded(
+                          child: Align(
+                            alignment: Alignment.bottomRight,
+                            child: IconButton(
+                                onPressed: () => context
+                                    .read<TasksWidgetBloc>()
+                                    .add(const TasksWidgetEvent.addTask()),
+                                icon: const Icon(Icons.add)),
+                          ),
+                        )
                       ],
                     ),
                     empty: (state) => const CustomCircularProgressIndicator(),
