@@ -1,8 +1,10 @@
 import 'package:app_anit/core/presentation/widgets_design/progres_widget.dart';
+import 'package:app_anit/presenter/disign_system/widgets/ds_text.dart';
 import 'package:app_anit/presenter/widgets/tasks_widget/tasks_widget_bloc.dart';
 import 'package:app_anit/presenter/widgets/tasks_widget/tasks_widget_models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../app/injection_container.dart';
 import '../../../arch/sr_bloc/sr_bloc_builder.dart';
@@ -34,8 +36,8 @@ class TasksWidget extends StatelessWidget {
                   child: state.map(
                     data: (state) => Column(
                       children: [
-                        Text(
-                            'Задачи ${state.data.countTask}/ ${state.data.countControlleredTask}'),
+                        DsText.headingTwo(
+                            'Задачи ${state.data.countTask}/${state.data.countControlleredTask}'),
                         Expanded(
                           child: Align(
                             alignment: Alignment.bottomRight,

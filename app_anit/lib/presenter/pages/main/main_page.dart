@@ -4,6 +4,7 @@ import 'package:app_anit/presenter/pages/main/main_page_bloc.dart';
 import 'package:app_anit/presenter/pages/main/main_page_bloc_models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../app/injection_container.dart';
 import '../../../arch/sr_bloc/sr_bloc_builder.dart';
@@ -49,6 +50,13 @@ List<Widget> _getPopupMenu() {
           child: const Text("Выйти"),
           onTap: () {
             context.read<MainPageBloc>().add(const MainPageEvent.exit());
+          },
+        ),
+        PopupMenuItem(
+          value: 2,
+          child: const Text("Дизайн система"),
+          onTap: () {
+            context.push('/design_system');
           },
         ),
       ],

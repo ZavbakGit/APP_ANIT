@@ -2,6 +2,7 @@ import 'package:app_anit/navigation/app_router.dart';
 import 'package:flutter/material.dart';
 import 'app/injection_container.dart' as di;
 import 'app/injection_container.dart';
+import 'presenter/disign_system/theme/theme.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,9 +24,7 @@ class AnitApp extends StatelessWidget {
       routeInformationParser: router.routeInformationParser,
       routerDelegate: router.routerDelegate,
       title: 'flutter_riverpod + go_router Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: basicTheme(),
     );
   }
 }

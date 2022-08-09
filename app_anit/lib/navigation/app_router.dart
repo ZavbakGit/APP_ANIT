@@ -3,6 +3,7 @@ import 'package:app_anit/presenter/pages/main/main_page.dart';
 import 'package:app_anit/presenter/pages/tasks_user/tasks_page.dart';
 import 'package:go_router/go_router.dart';
 
+import '../presenter/pages/design_system/test_design_system_page.dart';
 import '../presenter/pages/login/login_page.dart';
 import '../presenter/pages/task/task_page.dart';
 
@@ -22,12 +23,17 @@ class AppRouter {
       GoRoute(
         name: "home",
         path: "/",
-        builder: (context, _) => MainPage(),
+        builder: (context, _) => const MainPage(),
       ),
       GoRoute(
         name: "tasks",
         path: "/tasks",
         builder: (context, _) => const TasksPage(),
+      ),
+      GoRoute(
+        name: "design_systen",
+        path: "/design_system",
+        builder: (context, _) => const TestDesignSystemPage(),
       ),
       GoRoute(
         name: "login",
