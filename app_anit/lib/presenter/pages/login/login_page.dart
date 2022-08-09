@@ -1,12 +1,12 @@
 import 'package:app_anit/app/injection_container.dart';
 import 'package:app_anit/core/presentation/widgets_design/custom_error_widget.dart';
+import 'package:app_anit/presenter/disign_system/widgets/ds_text.dart';
 import 'package:app_anit/presenter/pages/login/login_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../core/presentation/widgets_design/button_widgets.dart';
 import '../../../core/presentation/widgets_design/divider_widget.dart';
 import '../../../core/presentation/widgets_design/page_widget.dart';
 import '../../../core/presentation/widgets_design/progres_widget.dart';
@@ -151,9 +151,9 @@ class LoginFormState extends State<LoginFormWidget> {
                   obscureText: true,
                 ),
                 const CustomDividerField(),
-                CustomPrimaryButton(
+                ElevatedButton(
                     onPressed: widget.isLoading ? null : _submit,
-                    text: 'Login'),
+                    child: const DsText.textButton('Login')),
                 const CustomDividerField(),
                 if (widget.isLoading) const CustomCircularProgressIndicator(),
                 if (widget.errorMessage != null)
