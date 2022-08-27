@@ -64,7 +64,7 @@ class _FormWidgetState extends State<FormWidget> {
                 }
                 return null;
               },
-              obscureText: true,
+              obscureText: false,
             ),
             verticalSpaceRegular,
             CustomTextFormWidget(
