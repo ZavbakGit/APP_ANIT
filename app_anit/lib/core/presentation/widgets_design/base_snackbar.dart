@@ -14,6 +14,8 @@ class BaseSnackbar {
     String? actionLabel,
     VoidCallback? actionPressedCallback,
   }) {
+    final colorTheme = Theme.of(context).colorScheme;
+
     final snackBarAction =
         (actionLabel != null && actionPressedCallback != null)
             ? SnackBarAction(
