@@ -24,7 +24,7 @@ class AnitApp extends StatelessWidget {
       routeInformationParser: router.routeInformationParser,
       routerDelegate: router.routerDelegate,
       title: 'flutter_riverpod + go_router Demo',
-      theme: basicTheme(),
+      theme: themeLight(),
     );
   }
 }

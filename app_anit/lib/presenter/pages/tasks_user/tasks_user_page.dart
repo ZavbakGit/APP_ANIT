@@ -1,5 +1,4 @@
 import 'package:app_anit/core/extencion/date_extencion.dart';
-import 'package:app_anit/core/presentation/widgets_design/page_widget.dart';
 import 'package:app_anit/presenter/pages/tasks_user/tasks_user_bloc.dart';
 import 'package:app_anit/presenter/pages/tasks_user/tasks_user_models.dart';
 import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
@@ -72,7 +71,20 @@ class _PageContentState extends State<_PageContent>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Row(
+          children: [
+            Text(widget.title),
+            if (widget.isLoading)
+              const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: SizedBox(
+                  height: 24,
+                  width: 24,
+                  child: CustomCircularProgressIndicator(),
+                ),
+              ),
+          ],
+        ),
         bottom: TabBar(
           controller: _tabController,
           tabs: [
@@ -117,21 +129,14 @@ class TaskListWidget extends StatelessWidget {
       onRefresh: () async {
         context.read<TasksUserBlok>().add(const TasksUserEvent.refresh());
       },
-      child: Column(
-        children: [
-          if (isLoading) const CustomLinearProgressIndicator(),
-          Expanded(
-            child: ListView.builder(
-              physics: const BouncingScrollPhysics(
-                  parent: AlwaysScrollableScrollPhysics()),
-              scrollDirection: Axis.vertical,
-              //shrinkWrap: true,
-              itemBuilder: (BuildContext context, int index) =>
-                  TaskItemWidget(item: list[index]),
-              itemCount: list.length,
-            ),
-          ),
-        ],
+      child: ListView.builder(
+        physics: const BouncingScrollPhysics(
+            parent: AlwaysScrollableScrollPhysics()),
+        scrollDirection: Axis.vertical,
+        //shrinkWrap: true,
+        itemBuilder: (BuildContext context, int index) =>
+            TaskItemWidget(item: list[index]),
+        itemCount: list.length,
       ),
     );
   }
@@ -165,16 +170,7 @@ class TaskItemWidget extends StatelessWidget {
                 child: Text(item.date!.getStrDateTime()),
               ),
               Expanded(
-                child: Chip(
-                  backgroundColor: Colors.amber[50],
-                  avatar: const CircleAvatar(
-                    backgroundColor: Colors.blue,
-                    child: Icon(Icons.account_circle),
-                  ),
-                  label: Text(item.partner?.name ?? ''),
-                  elevation: 2,
-                  shadowColor: Colors.deepOrange,
-                ),
+                child: Text(item.partner?.name ?? ''),
               ),
             ],
           ),
