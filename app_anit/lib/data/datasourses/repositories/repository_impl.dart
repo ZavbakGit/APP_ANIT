@@ -47,8 +47,6 @@ class RepositoryImpl extends Repository {
     try {
       await localDatasourse.saveConnectingDataModel(data);
       _initApiClient(data);
-
-      //return Left(CacheFailure());
       return const Right(None());
     } on CacheException {
       return Left(CacheFailure());

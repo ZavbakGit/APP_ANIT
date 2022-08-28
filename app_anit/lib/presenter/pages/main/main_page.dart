@@ -1,14 +1,11 @@
-import 'package:app_anit/core/presentation/widgets_design/progres_widget.dart';
-import 'package:app_anit/core/presentation/widgets_design/text_widget.dart';
+import 'package:app_anit/core/presentation/widgets_design/empty_page.dart';
 import 'package:app_anit/presenter/pages/main/main_page_bloc.dart';
 import 'package:app_anit/presenter/pages/main/main_page_bloc_models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../app/injection_container.dart';
 import '../../../arch/sr_bloc/sr_bloc_builder.dart';
-import '../../../core/presentation/widgets_design/app_bar.dart';
 import '../../../core/presentation/widgets_design/page_widget.dart';
 import '../../widgets/tasks_widget/tasks_widget.dart';
 
@@ -23,14 +20,9 @@ class MainPage extends StatelessWidget {
       child: SrBlocBuilder<MainPageBloc, MainPageState, MainPageSR>(
         onSR: _onSingleResult,
         builder: (context, state) {
-          return Scaffold(
-            appBar: state.mapOrNull(data: (state) => _getAppBar(state)),
-            body: CustomPageWidget(
-              child: state.map(
-                empty: (state) => const _MainPageEmpty(),
-                data: (state) => _MainPageContent(state: state),
-              ),
-            ),
+          return state.map(
+            empty: (_) => const CustomEmptyPage(),
+            data: (value) => _MainPageContent(title: value.user),
           );
         },
       ),
@@ -52,52 +44,45 @@ List<Widget> _getPopupMenu() {
             context.read<MainPageBloc>().add(const MainPageEvent.exit());
           },
         ),
-        PopupMenuItem(
-          value: 2,
-          child: const Text("Дизайн система"),
-          onTap: () {
-            context.push('/design_system');
-          },
-        ),
       ],
     )
   ];
 }
 
-CustomAppBar _getAppBar(MainPageStateData state) {
-  return CustomAppBar(
-    title: CustomAppBarTitleText(
-      text: state.user,
-    ),
-    actions: _getPopupMenu(),
-  );
-}
-
-class _MainPageEmpty extends StatelessWidget {
-  const _MainPageEmpty({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: CustomCircularProgressIndicator(),
-    );
-  }
-}
-
 class _MainPageContent extends StatelessWidget {
-  final MainPageStateData state;
+  final String title;
 
   const _MainPageContent({
-    required this.state,
     Key? key,
+    required this.title,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      children: const [TasksWidget()],
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(title),
+          actions: _getPopupMenu(),
+        ),
+        body: CustomPageWidget(
+          child: SingleChildScrollView(
+            child: Wrap(
+              children: const [
+                TasksWidget(),
+                TasksWidget(),
+                TasksWidget(),
+                TasksWidget(),
+                TasksWidget(),
+                TasksWidget(),
+                TasksWidget(),
+                TasksWidget(),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

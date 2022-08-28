@@ -37,20 +37,20 @@ mixin _$MainPageState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(MainPageStateData value) data,
-    required TResult Function(_Empty value) empty,
+    required TResult Function(_StData value) data,
+    required TResult Function(_StEmpty value) empty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(MainPageStateData value)? data,
-    TResult Function(_Empty value)? empty,
+    TResult Function(_StData value)? data,
+    TResult Function(_StEmpty value)? empty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(MainPageStateData value)? data,
-    TResult Function(_Empty value)? empty,
+    TResult Function(_StData value)? data,
+    TResult Function(_StEmpty value)? empty,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -74,29 +74,26 @@ class _$MainPageStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$$MainPageStateDataCopyWith<$Res> {
-  factory _$$MainPageStateDataCopyWith(
-          _$MainPageStateData value, $Res Function(_$MainPageStateData) then) =
-      __$$MainPageStateDataCopyWithImpl<$Res>;
+abstract class _$$_StDataCopyWith<$Res> {
+  factory _$$_StDataCopyWith(_$_StData value, $Res Function(_$_StData) then) =
+      __$$_StDataCopyWithImpl<$Res>;
   $Res call({String user});
 }
 
 /// @nodoc
-class __$$MainPageStateDataCopyWithImpl<$Res>
-    extends _$MainPageStateCopyWithImpl<$Res>
-    implements _$$MainPageStateDataCopyWith<$Res> {
-  __$$MainPageStateDataCopyWithImpl(
-      _$MainPageStateData _value, $Res Function(_$MainPageStateData) _then)
-      : super(_value, (v) => _then(v as _$MainPageStateData));
+class __$$_StDataCopyWithImpl<$Res> extends _$MainPageStateCopyWithImpl<$Res>
+    implements _$$_StDataCopyWith<$Res> {
+  __$$_StDataCopyWithImpl(_$_StData _value, $Res Function(_$_StData) _then)
+      : super(_value, (v) => _then(v as _$_StData));
 
   @override
-  _$MainPageStateData get _value => super._value as _$MainPageStateData;
+  _$_StData get _value => super._value as _$_StData;
 
   @override
   $Res call({
     Object? user = freezed,
   }) {
-    return _then(_$MainPageStateData(
+    return _then(_$_StData(
       user: user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -107,8 +104,8 @@ class __$$MainPageStateDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$MainPageStateData extends MainPageStateData {
-  const _$MainPageStateData({required this.user}) : super._();
+class _$_StData extends _StData {
+  const _$_StData({required this.user}) : super._();
 
   @override
   final String user;
@@ -122,7 +119,7 @@ class _$MainPageStateData extends MainPageStateData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MainPageStateData &&
+            other is _$_StData &&
             const DeepCollectionEquality().equals(other.user, user));
   }
 
@@ -132,8 +129,8 @@ class _$MainPageStateData extends MainPageStateData {
 
   @JsonKey(ignore: true)
   @override
-  _$$MainPageStateDataCopyWith<_$MainPageStateData> get copyWith =>
-      __$$MainPageStateDataCopyWithImpl<_$MainPageStateData>(this, _$identity);
+  _$$_StDataCopyWith<_$_StData> get copyWith =>
+      __$$_StDataCopyWithImpl<_$_StData>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -169,8 +166,8 @@ class _$MainPageStateData extends MainPageStateData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(MainPageStateData value) data,
-    required TResult Function(_Empty value) empty,
+    required TResult Function(_StData value) data,
+    required TResult Function(_StEmpty value) empty,
   }) {
     return data(this);
   }
@@ -178,8 +175,8 @@ class _$MainPageStateData extends MainPageStateData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(MainPageStateData value)? data,
-    TResult Function(_Empty value)? empty,
+    TResult Function(_StData value)? data,
+    TResult Function(_StEmpty value)? empty,
   }) {
     return data?.call(this);
   }
@@ -187,8 +184,8 @@ class _$MainPageStateData extends MainPageStateData {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(MainPageStateData value)? data,
-    TResult Function(_Empty value)? empty,
+    TResult Function(_StData value)? data,
+    TResult Function(_StEmpty value)? empty,
     required TResult orElse(),
   }) {
     if (data != null) {
@@ -198,37 +195,37 @@ class _$MainPageStateData extends MainPageStateData {
   }
 }
 
-abstract class MainPageStateData extends MainPageState {
-  const factory MainPageStateData({required final String user}) =
-      _$MainPageStateData;
-  const MainPageStateData._() : super._();
+abstract class _StData extends MainPageState {
+  const factory _StData({required final String user}) = _$_StData;
+  const _StData._() : super._();
 
   String get user;
   @JsonKey(ignore: true)
-  _$$MainPageStateDataCopyWith<_$MainPageStateData> get copyWith =>
+  _$$_StDataCopyWith<_$_StData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_EmptyCopyWith<$Res> {
-  factory _$$_EmptyCopyWith(_$_Empty value, $Res Function(_$_Empty) then) =
-      __$$_EmptyCopyWithImpl<$Res>;
+abstract class _$$_StEmptyCopyWith<$Res> {
+  factory _$$_StEmptyCopyWith(
+          _$_StEmpty value, $Res Function(_$_StEmpty) then) =
+      __$$_StEmptyCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_EmptyCopyWithImpl<$Res> extends _$MainPageStateCopyWithImpl<$Res>
-    implements _$$_EmptyCopyWith<$Res> {
-  __$$_EmptyCopyWithImpl(_$_Empty _value, $Res Function(_$_Empty) _then)
-      : super(_value, (v) => _then(v as _$_Empty));
+class __$$_StEmptyCopyWithImpl<$Res> extends _$MainPageStateCopyWithImpl<$Res>
+    implements _$$_StEmptyCopyWith<$Res> {
+  __$$_StEmptyCopyWithImpl(_$_StEmpty _value, $Res Function(_$_StEmpty) _then)
+      : super(_value, (v) => _then(v as _$_StEmpty));
 
   @override
-  _$_Empty get _value => super._value as _$_Empty;
+  _$_StEmpty get _value => super._value as _$_StEmpty;
 }
 
 /// @nodoc
 
-class _$_Empty extends _Empty {
-  const _$_Empty() : super._();
+class _$_StEmpty extends _StEmpty {
+  const _$_StEmpty() : super._();
 
   @override
   String toString() {
@@ -238,7 +235,7 @@ class _$_Empty extends _Empty {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Empty);
+        (other.runtimeType == runtimeType && other is _$_StEmpty);
   }
 
   @override
@@ -278,8 +275,8 @@ class _$_Empty extends _Empty {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(MainPageStateData value) data,
-    required TResult Function(_Empty value) empty,
+    required TResult Function(_StData value) data,
+    required TResult Function(_StEmpty value) empty,
   }) {
     return empty(this);
   }
@@ -287,8 +284,8 @@ class _$_Empty extends _Empty {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(MainPageStateData value)? data,
-    TResult Function(_Empty value)? empty,
+    TResult Function(_StData value)? data,
+    TResult Function(_StEmpty value)? empty,
   }) {
     return empty?.call(this);
   }
@@ -296,8 +293,8 @@ class _$_Empty extends _Empty {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(MainPageStateData value)? data,
-    TResult Function(_Empty value)? empty,
+    TResult Function(_StData value)? data,
+    TResult Function(_StEmpty value)? empty,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -307,9 +304,9 @@ class _$_Empty extends _Empty {
   }
 }
 
-abstract class _Empty extends MainPageState {
-  const factory _Empty() = _$_Empty;
-  const _Empty._() : super._();
+abstract class _StEmpty extends MainPageState {
+  const factory _StEmpty() = _$_StEmpty;
+  const _StEmpty._() : super._();
 }
 
 /// @nodoc
@@ -335,20 +332,20 @@ mixin _$MainPageEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(MainPageEventInit value) init,
-    required TResult Function(MainPageEventExit value) exit,
+    required TResult Function(EvInit value) init,
+    required TResult Function(EvExit value) exit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(MainPageEventInit value)? init,
-    TResult Function(MainPageEventExit value)? exit,
+    TResult Function(EvInit value)? init,
+    TResult Function(EvExit value)? exit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(MainPageEventInit value)? init,
-    TResult Function(MainPageEventExit value)? exit,
+    TResult Function(EvInit value)? init,
+    TResult Function(EvExit value)? exit,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -372,28 +369,25 @@ class _$MainPageEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$$MainPageEventInitCopyWith<$Res> {
-  factory _$$MainPageEventInitCopyWith(
-          _$MainPageEventInit value, $Res Function(_$MainPageEventInit) then) =
-      __$$MainPageEventInitCopyWithImpl<$Res>;
+abstract class _$$EvInitCopyWith<$Res> {
+  factory _$$EvInitCopyWith(_$EvInit value, $Res Function(_$EvInit) then) =
+      __$$EvInitCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$MainPageEventInitCopyWithImpl<$Res>
-    extends _$MainPageEventCopyWithImpl<$Res>
-    implements _$$MainPageEventInitCopyWith<$Res> {
-  __$$MainPageEventInitCopyWithImpl(
-      _$MainPageEventInit _value, $Res Function(_$MainPageEventInit) _then)
-      : super(_value, (v) => _then(v as _$MainPageEventInit));
+class __$$EvInitCopyWithImpl<$Res> extends _$MainPageEventCopyWithImpl<$Res>
+    implements _$$EvInitCopyWith<$Res> {
+  __$$EvInitCopyWithImpl(_$EvInit _value, $Res Function(_$EvInit) _then)
+      : super(_value, (v) => _then(v as _$EvInit));
 
   @override
-  _$MainPageEventInit get _value => super._value as _$MainPageEventInit;
+  _$EvInit get _value => super._value as _$EvInit;
 }
 
 /// @nodoc
 
-class _$MainPageEventInit implements MainPageEventInit {
-  const _$MainPageEventInit();
+class _$EvInit implements EvInit {
+  const _$EvInit();
 
   @override
   String toString() {
@@ -403,7 +397,7 @@ class _$MainPageEventInit implements MainPageEventInit {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$MainPageEventInit);
+        (other.runtimeType == runtimeType && other is _$EvInit);
   }
 
   @override
@@ -443,8 +437,8 @@ class _$MainPageEventInit implements MainPageEventInit {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(MainPageEventInit value) init,
-    required TResult Function(MainPageEventExit value) exit,
+    required TResult Function(EvInit value) init,
+    required TResult Function(EvExit value) exit,
   }) {
     return init(this);
   }
@@ -452,8 +446,8 @@ class _$MainPageEventInit implements MainPageEventInit {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(MainPageEventInit value)? init,
-    TResult Function(MainPageEventExit value)? exit,
+    TResult Function(EvInit value)? init,
+    TResult Function(EvExit value)? exit,
   }) {
     return init?.call(this);
   }
@@ -461,8 +455,8 @@ class _$MainPageEventInit implements MainPageEventInit {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(MainPageEventInit value)? init,
-    TResult Function(MainPageEventExit value)? exit,
+    TResult Function(EvInit value)? init,
+    TResult Function(EvExit value)? exit,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -472,33 +466,30 @@ class _$MainPageEventInit implements MainPageEventInit {
   }
 }
 
-abstract class MainPageEventInit implements MainPageEvent {
-  const factory MainPageEventInit() = _$MainPageEventInit;
+abstract class EvInit implements MainPageEvent {
+  const factory EvInit() = _$EvInit;
 }
 
 /// @nodoc
-abstract class _$$MainPageEventExitCopyWith<$Res> {
-  factory _$$MainPageEventExitCopyWith(
-          _$MainPageEventExit value, $Res Function(_$MainPageEventExit) then) =
-      __$$MainPageEventExitCopyWithImpl<$Res>;
+abstract class _$$EvExitCopyWith<$Res> {
+  factory _$$EvExitCopyWith(_$EvExit value, $Res Function(_$EvExit) then) =
+      __$$EvExitCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$MainPageEventExitCopyWithImpl<$Res>
-    extends _$MainPageEventCopyWithImpl<$Res>
-    implements _$$MainPageEventExitCopyWith<$Res> {
-  __$$MainPageEventExitCopyWithImpl(
-      _$MainPageEventExit _value, $Res Function(_$MainPageEventExit) _then)
-      : super(_value, (v) => _then(v as _$MainPageEventExit));
+class __$$EvExitCopyWithImpl<$Res> extends _$MainPageEventCopyWithImpl<$Res>
+    implements _$$EvExitCopyWith<$Res> {
+  __$$EvExitCopyWithImpl(_$EvExit _value, $Res Function(_$EvExit) _then)
+      : super(_value, (v) => _then(v as _$EvExit));
 
   @override
-  _$MainPageEventExit get _value => super._value as _$MainPageEventExit;
+  _$EvExit get _value => super._value as _$EvExit;
 }
 
 /// @nodoc
 
-class _$MainPageEventExit implements MainPageEventExit {
-  const _$MainPageEventExit();
+class _$EvExit implements EvExit {
+  const _$EvExit();
 
   @override
   String toString() {
@@ -508,7 +499,7 @@ class _$MainPageEventExit implements MainPageEventExit {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$MainPageEventExit);
+        (other.runtimeType == runtimeType && other is _$EvExit);
   }
 
   @override
@@ -548,8 +539,8 @@ class _$MainPageEventExit implements MainPageEventExit {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(MainPageEventInit value) init,
-    required TResult Function(MainPageEventExit value) exit,
+    required TResult Function(EvInit value) init,
+    required TResult Function(EvExit value) exit,
   }) {
     return exit(this);
   }
@@ -557,8 +548,8 @@ class _$MainPageEventExit implements MainPageEventExit {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(MainPageEventInit value)? init,
-    TResult Function(MainPageEventExit value)? exit,
+    TResult Function(EvInit value)? init,
+    TResult Function(EvExit value)? exit,
   }) {
     return exit?.call(this);
   }
@@ -566,8 +557,8 @@ class _$MainPageEventExit implements MainPageEventExit {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(MainPageEventInit value)? init,
-    TResult Function(MainPageEventExit value)? exit,
+    TResult Function(EvInit value)? init,
+    TResult Function(EvExit value)? exit,
     required TResult orElse(),
   }) {
     if (exit != null) {
@@ -577,8 +568,8 @@ class _$MainPageEventExit implements MainPageEventExit {
   }
 }
 
-abstract class MainPageEventExit implements MainPageEvent {
-  const factory MainPageEventExit() = _$MainPageEventExit;
+abstract class EvExit implements MainPageEvent {
+  const factory EvExit() = _$EvExit;
 }
 
 /// @nodoc
@@ -602,17 +593,17 @@ mixin _$MainPageSR {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_ShowSnackbar value) showSnackbar,
+    required TResult Function(_EvShowSnackbar value) showSnackbar,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_ShowSnackbar value)? showSnackbar,
+    TResult Function(_EvShowSnackbar value)? showSnackbar,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ShowSnackbar value)? showSnackbar,
+    TResult Function(_EvShowSnackbar value)? showSnackbar,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -652,30 +643,31 @@ class _$MainPageSRCopyWithImpl<$Res> implements $MainPageSRCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_ShowSnackbarCopyWith<$Res>
+abstract class _$$_EvShowSnackbarCopyWith<$Res>
     implements $MainPageSRCopyWith<$Res> {
-  factory _$$_ShowSnackbarCopyWith(
-          _$_ShowSnackbar value, $Res Function(_$_ShowSnackbar) then) =
-      __$$_ShowSnackbarCopyWithImpl<$Res>;
+  factory _$$_EvShowSnackbarCopyWith(
+          _$_EvShowSnackbar value, $Res Function(_$_EvShowSnackbar) then) =
+      __$$_EvShowSnackbarCopyWithImpl<$Res>;
   @override
   $Res call({String text});
 }
 
 /// @nodoc
-class __$$_ShowSnackbarCopyWithImpl<$Res> extends _$MainPageSRCopyWithImpl<$Res>
-    implements _$$_ShowSnackbarCopyWith<$Res> {
-  __$$_ShowSnackbarCopyWithImpl(
-      _$_ShowSnackbar _value, $Res Function(_$_ShowSnackbar) _then)
-      : super(_value, (v) => _then(v as _$_ShowSnackbar));
+class __$$_EvShowSnackbarCopyWithImpl<$Res>
+    extends _$MainPageSRCopyWithImpl<$Res>
+    implements _$$_EvShowSnackbarCopyWith<$Res> {
+  __$$_EvShowSnackbarCopyWithImpl(
+      _$_EvShowSnackbar _value, $Res Function(_$_EvShowSnackbar) _then)
+      : super(_value, (v) => _then(v as _$_EvShowSnackbar));
 
   @override
-  _$_ShowSnackbar get _value => super._value as _$_ShowSnackbar;
+  _$_EvShowSnackbar get _value => super._value as _$_EvShowSnackbar;
 
   @override
   $Res call({
     Object? text = freezed,
   }) {
-    return _then(_$_ShowSnackbar(
+    return _then(_$_EvShowSnackbar(
       text: text == freezed
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
@@ -686,8 +678,8 @@ class __$$_ShowSnackbarCopyWithImpl<$Res> extends _$MainPageSRCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ShowSnackbar implements _ShowSnackbar {
-  const _$_ShowSnackbar({required this.text});
+class _$_EvShowSnackbar implements _EvShowSnackbar {
+  const _$_EvShowSnackbar({required this.text});
 
   @override
   final String text;
@@ -701,7 +693,7 @@ class _$_ShowSnackbar implements _ShowSnackbar {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ShowSnackbar &&
+            other is _$_EvShowSnackbar &&
             const DeepCollectionEquality().equals(other.text, text));
   }
 
@@ -711,8 +703,8 @@ class _$_ShowSnackbar implements _ShowSnackbar {
 
   @JsonKey(ignore: true)
   @override
-  _$$_ShowSnackbarCopyWith<_$_ShowSnackbar> get copyWith =>
-      __$$_ShowSnackbarCopyWithImpl<_$_ShowSnackbar>(this, _$identity);
+  _$$_EvShowSnackbarCopyWith<_$_EvShowSnackbar> get copyWith =>
+      __$$_EvShowSnackbarCopyWithImpl<_$_EvShowSnackbar>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -745,7 +737,7 @@ class _$_ShowSnackbar implements _ShowSnackbar {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_ShowSnackbar value) showSnackbar,
+    required TResult Function(_EvShowSnackbar value) showSnackbar,
   }) {
     return showSnackbar(this);
   }
@@ -753,7 +745,7 @@ class _$_ShowSnackbar implements _ShowSnackbar {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_ShowSnackbar value)? showSnackbar,
+    TResult Function(_EvShowSnackbar value)? showSnackbar,
   }) {
     return showSnackbar?.call(this);
   }
@@ -761,7 +753,7 @@ class _$_ShowSnackbar implements _ShowSnackbar {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ShowSnackbar value)? showSnackbar,
+    TResult Function(_EvShowSnackbar value)? showSnackbar,
     required TResult orElse(),
   }) {
     if (showSnackbar != null) {
@@ -771,13 +763,14 @@ class _$_ShowSnackbar implements _ShowSnackbar {
   }
 }
 
-abstract class _ShowSnackbar implements MainPageSR {
-  const factory _ShowSnackbar({required final String text}) = _$_ShowSnackbar;
+abstract class _EvShowSnackbar implements MainPageSR {
+  const factory _EvShowSnackbar({required final String text}) =
+      _$_EvShowSnackbar;
 
   @override
   String get text;
   @override
   @JsonKey(ignore: true)
-  _$$_ShowSnackbarCopyWith<_$_ShowSnackbar> get copyWith =>
+  _$$_EvShowSnackbarCopyWith<_$_EvShowSnackbar> get copyWith =>
       throw _privateConstructorUsedError;
 }

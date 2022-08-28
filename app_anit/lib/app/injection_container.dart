@@ -1,4 +1,4 @@
-import 'package:app_anit/presenter/pages/tasks_user/tasks_cubit.dart';
+import 'package:app_anit/presenter/pages/tasks_user_old/tasks_cubit_old.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -13,7 +13,7 @@ final sl = GetIt.instance;
 
 Future<void> init() async {
   sl.registerFactory(
-    () => TasksCubit(appModel: sl(), repository: sl()),
+    () => TasksCubitOld(appModel: sl(), repository: sl()),
   );
 
   sl.registerLazySingleton<AppRouter>(() => AppRouter(routerNotifier: sl()));

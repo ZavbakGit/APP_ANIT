@@ -11,20 +11,19 @@ class MainPageBloc extends SrBloc<MainPageEvent, MainPageState, MainPageSR> {
   MainPageBloc({
     required this.appModel,
   }) : super(const MainPageState.empty()) {
-    on<MainPageEventInit>(_init);
-    on<MainPageEventExit>(_exit);
+    on<EvInit>(_init);
+    on<EvExit>(_exit);
   }
 
   FutureOr<void> _init(
-    MainPageEventInit event,
+    EvInit event,
     Emitter<MainPageState> emit,
   ) async {
-    await Future.delayed(const Duration(seconds: 1));
     emit(MainPageState.data(user: appModel.remoteConfig!.user.name!));
   }
 
   FutureOr<void> _exit(
-    MainPageEventExit event,
+    EvExit event,
     Emitter<MainPageState> emit,
   ) async {
     appModel.logout();

@@ -1,6 +1,6 @@
 import 'package:app_anit/core/extencion/date_extencion.dart';
 import 'package:app_anit/core/presentation/widgets_design/app_bar.dart';
-import 'package:app_anit/presenter/pages/tasks_user/tasks_cubit.dart';
+import 'package:app_anit/presenter/pages/tasks_user_old/tasks_cubit_old.dart';
 import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,14 +13,15 @@ import '../../../core/presentation/widgets_design/text_widget.dart';
 import '../task/task_page.dart';
 import '../task/task_page_tmp.dart';
 
-class TasksPage extends StatefulWidget {
-  const TasksPage({Key? key}) : super(key: key);
+class TasksPageOld extends StatefulWidget {
+  const TasksPageOld({Key? key}) : super(key: key);
 
   @override
-  State<TasksPage> createState() => _TasksPageState();
+  State<TasksPageOld> createState() => _TasksPageOldState();
 }
 
-class _TasksPageState extends State<TasksPage> with TickerProviderStateMixin {
+class _TasksPageOldState extends State<TasksPageOld>
+    with TickerProviderStateMixin {
   late TabController _tabController;
 
   @override
@@ -32,7 +33,7 @@ class _TasksPageState extends State<TasksPage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => sl<TasksCubit>()..init(),
+      create: (context) => sl<TasksCubitOld>()..init(),
       child: CustomPageWidget(
         child: TasksBodyWidget(tabController: _tabController),
       ),
@@ -57,7 +58,7 @@ class TasksBodyWidget extends StatelessWidget {
             value: 1,
             child: const Text("Выйти"),
             onTap: () {
-              context.read<TasksCubit>().exit();
+              context.read<TasksCubitOld>().exit();
             },
           ),
         ],
@@ -101,7 +102,7 @@ class TasksBodyWidget extends StatelessWidget {
   }) {
     return RefreshIndicator(
       onRefresh: () async {
-        context.read<TasksCubit>().refreshData();
+        context.read<TasksCubitOld>().refreshData();
       },
       child: Column(
         children: [
@@ -132,7 +133,7 @@ class TasksBodyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<TasksCubit, TasksPageState>(
+    return BlocConsumer<TasksCubitOld, TasksPageState>(
       listener: (context, state) {
         if (state.goGuidTask != null) {
           Navigator.push<bool>(
@@ -143,7 +144,7 @@ class TasksBodyWidget extends StatelessWidget {
           ).then((value) {
             if (value != null) {
               if (value) {
-                context.read<TasksCubit>().refreshData();
+                context.read<TasksCubitOld>().refreshData();
               }
             }
           });
@@ -157,7 +158,7 @@ class TasksBodyWidget extends StatelessWidget {
           ).then((value) {
             if (value != null) {
               if (value) {
-                context.read<TasksCubit>().refreshData();
+                context.read<TasksCubitOld>().refreshData();
               }
             }
           });
@@ -172,7 +173,7 @@ class TasksBodyWidget extends StatelessWidget {
           floatingActionButton: FloatingActionButton(
             child: const Icon(Icons.add),
             onPressed: () {
-              context.read<TasksCubit>().onClickAddTask();
+              context.read<TasksCubitOld>().onClickAddTask();
             },
           ),
           body: TabBarView(
@@ -221,7 +222,7 @@ class TaskItemWidget extends StatelessWidget {
         : null;
 
     return GestureDetector(
-      onTap: () => context.read<TasksCubit>().onClick(item.guid),
+      onTap: () => context.read<TasksCubitOld>().onClick(item.guid),
       child: Card(
         child: ListTile(
           title: Text(

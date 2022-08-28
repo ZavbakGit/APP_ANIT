@@ -9,18 +9,19 @@ class MainPageState with _$MainPageState {
 
   const factory MainPageState.data({
     required String user,
-  }) = MainPageStateData;
+  }) = _StData;
 
-  const factory MainPageState.empty() = _Empty;
+  const factory MainPageState.empty() = _StEmpty;
 }
 
 @freezed
 class MainPageEvent with _$MainPageEvent {
-  const factory MainPageEvent.init() = MainPageEventInit;
-  const factory MainPageEvent.exit() = MainPageEventExit;
+  const factory MainPageEvent.init() = EvInit;
+  const factory MainPageEvent.exit() = EvExit;
 }
 
 @freezed
 class MainPageSR with _$MainPageSR {
-  const factory MainPageSR.showSnackbar({required String text}) = _ShowSnackbar;
+  const factory MainPageSR.showSnackbar({required String text}) =
+      _EvShowSnackbar;
 }

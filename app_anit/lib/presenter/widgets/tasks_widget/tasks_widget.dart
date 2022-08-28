@@ -1,15 +1,15 @@
 import 'package:app_anit/core/presentation/widgets_design/progres_widget.dart';
-import 'package:app_anit/presenter/disign_system/widgets/ds_text.dart';
 import 'package:app_anit/presenter/widgets/tasks_widget/tasks_widget_bloc.dart';
 import 'package:app_anit/presenter/widgets/tasks_widget/tasks_widget_models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../app/injection_container.dart';
 import '../../../arch/sr_bloc/sr_bloc_builder.dart';
+import '../../disign_system/saherd/ui_helpers.dart';
 import '../../pages/task/task_page.dart';
-import '../../pages/tasks_user/tasks_page.dart';
+import '../../pages/tasks_user/tasks_user_page.dart';
+import '../../pages/tasks_user_old/tasks_page_old.dart';
 
 class TasksWidget extends StatelessWidget {
   const TasksWidget({Key? key}) : super(key: key);
@@ -27,40 +27,60 @@ class TasksWidget extends StatelessWidget {
                 .read<TasksWidgetBloc>()
                 .add(const TasksWidgetEvent.openTasks()),
             child: Card(
-              borderOnForeground: false,
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(50),
+                ),
+              ),
               child: SizedBox(
-                height: 150,
-                width: 150,
+                height: screenHeight(context) / 4,
+                width: screenWidth(context) / 2 - 16,
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: state.map(
                     data: (state) => Column(
                       children: [
-                        DsText.headingTwo(
-                            'Задачи ${state.data.countTask}/${state.data.countControlleredTask}'),
                         Expanded(
-                          child: Align(
-                            alignment: Alignment.bottomRight,
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: IconButton(
-                                      onPressed: () => context
-                                          .read<TasksWidgetBloc>()
-                                          .add(const TasksWidgetEvent
-                                              .addTaskController()),
-                                      icon: const Icon(Icons.add)),
-                                ),
-                                Expanded(
-                                  child: IconButton(
-                                      onPressed: () => context
-                                          .read<TasksWidgetBloc>()
-                                          .add(
-                                              const TasksWidgetEvent.addTask()),
-                                      icon: const Icon(Icons.add)),
-                                ),
-                              ],
-                            ),
+                          flex: 10,
+                          child: Column(
+                            children: [
+                              Text(
+                                'Задачи',
+                                style: Theme.of(context).textTheme.titleMedium,
+                              ),
+                              Text(
+                                '${state.data.countTask}/${state.data.countControlleredTask}',
+                                style: Theme.of(context).textTheme.bodyLarge,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          flex: 0,
+                          child: Column(
+                            children: [
+                              const Divider(),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: IconButton(
+                                        onPressed: () => context
+                                            .read<TasksWidgetBloc>()
+                                            .add(const TasksWidgetEvent
+                                                .addTaskController()),
+                                        icon: const Icon(Icons.add_task)),
+                                  ),
+                                  Expanded(
+                                    child: IconButton(
+                                        onPressed: () => context
+                                            .read<TasksWidgetBloc>()
+                                            .add(const TasksWidgetEvent
+                                                .addTask()),
+                                        icon: const Icon(Icons.add)),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         )
                       ],
@@ -82,7 +102,7 @@ class TasksWidget extends StatelessWidget {
       openTasks: () => Navigator.push<bool>(
         context,
         MaterialPageRoute(
-          builder: (context) => const TasksPage(),
+          builder: (context) => const TasksUserPage(),
         ),
       ).then((value) => context
           .read<TasksWidgetBloc>()

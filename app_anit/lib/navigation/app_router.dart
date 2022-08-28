@@ -1,12 +1,11 @@
 import 'package:app_anit/navigation/router_notifire.dart';
-import 'package:app_anit/presenter/pages/login_old/login_page_old.dart';
 import 'package:app_anit/presenter/pages/main/main_page.dart';
-import 'package:app_anit/presenter/pages/tasks_user/tasks_page.dart';
 import 'package:go_router/go_router.dart';
 
 import '../presenter/pages/design_system/test_design_system_page.dart';
 import '../presenter/pages/login/login_page.dart';
 import '../presenter/pages/task/task_page.dart';
+import '../presenter/pages/tasks_user/tasks_user_page.dart';
 
 class AppRouter {
   final RouterNotifier routerNotifier;
@@ -29,7 +28,7 @@ class AppRouter {
       GoRoute(
         name: "tasks",
         path: "/tasks",
-        builder: (context, _) => const TasksPage(),
+        builder: (context, _) => const TasksUserPage(),
       ),
       GoRoute(
         name: "design_systen",

@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../domain/models/app_model.dart';
 
-class TasksCubit extends Cubit<TasksPageState> {
+class TasksCubitOld extends Cubit<TasksPageState> {
   final Repository repository;
   final AppModel appModel;
   final List<TaskItem> tasks = [];
@@ -14,7 +14,7 @@ class TasksCubit extends Cubit<TasksPageState> {
 
   late Timer? _timer;
 
-  TasksCubit({
+  TasksCubitOld({
     required this.repository,
     required this.appModel,
   }) : super(TasksPageState(user: appModel.remoteConfig!.user));
