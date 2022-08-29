@@ -1,4 +1,5 @@
 import 'package:app_anit/core/extencion/date_extencion.dart';
+import 'package:app_anit/core/presentation/widgets_design/error_page.dart';
 import 'package:app_anit/presenter/pages/tasks_user/tasks_user_bloc.dart';
 import 'package:app_anit/presenter/pages/tasks_user/tasks_user_models.dart';
 import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
@@ -7,8 +8,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../app/injection_container.dart';
 import '../../../arch/sr_bloc/sr_bloc_builder.dart';
+import '../../../core/presentation/widgets_design/base_snackbar.dart';
 import '../../../core/presentation/widgets_design/empty_page.dart';
 import '../../../core/presentation/widgets_design/progres_widget.dart';
+import '../task/task_page.dart';
 
 class TasksUserPage extends StatelessWidget {
   const TasksUserPage({Key? key}) : super(key: key);
@@ -29,14 +32,55 @@ class TasksUserPage extends StatelessWidget {
               title: value.title,
               isLoading: value.isLoading,
             ),
-            error: (value) => Center(),
+            error: (value) => ErrorPage(
+                message: value.message,
+                onClick: () => context
+                    .read<TasksUserBlok>()
+                    .add(const TasksUserEvent.refresh())),
           );
         },
       ),
     );
   }
 
-  void _onSingleResult(BuildContext context, TasksUserSR singleResult) {}
+  void _onSingleResult(BuildContext context, TasksUserSR sr) {
+    sr.when(
+        exit: () {},
+        showSnackBar: (message) =>
+            BaseSnackbar.show(context: context, text: message),
+        openTask: (guid) {
+          Navigator.push<bool>(
+            context,
+            MaterialPageRoute(
+              builder: (context) => TaskPage(guid: guid),
+            ),
+          ).then((value) {
+            if (value != null) {
+              if (value) {
+                context
+                    .read<TasksUserBlok>()
+                    .add(const TasksUserEvent.refresh());
+              }
+            }
+          });
+        },
+        openNewTask: () {
+          Navigator.push<bool>(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const TaskPage(),
+            ),
+          ).then((value) {
+            if (value != null) {
+              if (value) {
+                context
+                    .read<TasksUserBlok>()
+                    .add(const TasksUserEvent.refresh());
+              }
+            }
+          });
+        });
+  }
 }
 
 class _PageContent extends StatefulWidget {
@@ -97,6 +141,12 @@ class _PageContentState extends State<_PageContent>
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () {
+          context.read<TasksUserBlok>().add(const TasksUserEvent.onTapFab());
+        },
+      ),
       body: TabBarView(
         controller: _tabController,
         children: [
@@ -134,8 +184,9 @@ class TaskListWidget extends StatelessWidget {
             parent: AlwaysScrollableScrollPhysics()),
         scrollDirection: Axis.vertical,
         //shrinkWrap: true,
-        itemBuilder: (BuildContext context, int index) =>
-            TaskItemWidget(item: list[index]),
+        itemBuilder: (BuildContext context, int index) {
+          return TaskItemWidget(item: list[index]);
+        },
         itemCount: list.length,
       ),
     );
@@ -156,24 +207,24 @@ class TaskItemWidget extends StatelessWidget {
         ? const TextStyle(decoration: TextDecoration.lineThrough)
         : null;
 
-    return GestureDetector(
-      onTap: () {},
-      child: Card(
-        child: ListTile(
-          title: Text(
-            item.title ?? '',
-            style: textStyleTitle,
-          ),
-          subtitle: Row(
-            children: [
-              Expanded(
-                child: Text(item.date!.getStrDateTime()),
-              ),
-              Expanded(
-                child: Text(item.partner?.name ?? ''),
-              ),
-            ],
-          ),
+    return Card(
+      child: ListTile(
+        onTap: () => context
+            .read<TasksUserBlok>()
+            .add(TasksUserEvent.onTapItem(item.guid!)),
+        title: Text(
+          item.title ?? '',
+          style: textStyleTitle,
+        ),
+        subtitle: Row(
+          children: [
+            Expanded(
+              child: Text(item.date!.getStrDateTime()),
+            ),
+            Expanded(
+              child: Text(item.partner?.name ?? ''),
+            ),
+          ],
         ),
       ),
     );

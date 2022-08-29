@@ -548,18 +548,24 @@ mixin _$TasksUserEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() refresh,
+    required TResult Function(String guid) onTapItem,
+    required TResult Function() onTapFab,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? refresh,
+    TResult Function(String guid)? onTapItem,
+    TResult Function()? onTapFab,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? refresh,
+    TResult Function(String guid)? onTapItem,
+    TResult Function()? onTapFab,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -567,18 +573,24 @@ mixin _$TasksUserEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(EvInit value) init,
     required TResult Function(EvRefresh value) refresh,
+    required TResult Function(EvOnTapItem value) onTapItem,
+    required TResult Function(EvOnTapFab value) onTapFab,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(EvInit value)? init,
     TResult Function(EvRefresh value)? refresh,
+    TResult Function(EvOnTapItem value)? onTapItem,
+    TResult Function(EvOnTapFab value)? onTapFab,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EvInit value)? init,
     TResult Function(EvRefresh value)? refresh,
+    TResult Function(EvOnTapItem value)? onTapItem,
+    TResult Function(EvOnTapFab value)? onTapFab,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -641,6 +653,8 @@ class _$EvInit implements EvInit {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() refresh,
+    required TResult Function(String guid) onTapItem,
+    required TResult Function() onTapFab,
   }) {
     return init();
   }
@@ -650,6 +664,8 @@ class _$EvInit implements EvInit {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? refresh,
+    TResult Function(String guid)? onTapItem,
+    TResult Function()? onTapFab,
   }) {
     return init?.call();
   }
@@ -659,6 +675,8 @@ class _$EvInit implements EvInit {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? refresh,
+    TResult Function(String guid)? onTapItem,
+    TResult Function()? onTapFab,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -672,6 +690,8 @@ class _$EvInit implements EvInit {
   TResult map<TResult extends Object?>({
     required TResult Function(EvInit value) init,
     required TResult Function(EvRefresh value) refresh,
+    required TResult Function(EvOnTapItem value) onTapItem,
+    required TResult Function(EvOnTapFab value) onTapFab,
   }) {
     return init(this);
   }
@@ -681,6 +701,8 @@ class _$EvInit implements EvInit {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(EvInit value)? init,
     TResult Function(EvRefresh value)? refresh,
+    TResult Function(EvOnTapItem value)? onTapItem,
+    TResult Function(EvOnTapFab value)? onTapFab,
   }) {
     return init?.call(this);
   }
@@ -690,6 +712,8 @@ class _$EvInit implements EvInit {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EvInit value)? init,
     TResult Function(EvRefresh value)? refresh,
+    TResult Function(EvOnTapItem value)? onTapItem,
+    TResult Function(EvOnTapFab value)? onTapFab,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -745,6 +769,8 @@ class _$EvRefresh implements EvRefresh {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() refresh,
+    required TResult Function(String guid) onTapItem,
+    required TResult Function() onTapFab,
   }) {
     return refresh();
   }
@@ -754,6 +780,8 @@ class _$EvRefresh implements EvRefresh {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? refresh,
+    TResult Function(String guid)? onTapItem,
+    TResult Function()? onTapFab,
   }) {
     return refresh?.call();
   }
@@ -763,6 +791,8 @@ class _$EvRefresh implements EvRefresh {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? refresh,
+    TResult Function(String guid)? onTapItem,
+    TResult Function()? onTapFab,
     required TResult orElse(),
   }) {
     if (refresh != null) {
@@ -776,6 +806,8 @@ class _$EvRefresh implements EvRefresh {
   TResult map<TResult extends Object?>({
     required TResult Function(EvInit value) init,
     required TResult Function(EvRefresh value) refresh,
+    required TResult Function(EvOnTapItem value) onTapItem,
+    required TResult Function(EvOnTapFab value) onTapFab,
   }) {
     return refresh(this);
   }
@@ -785,6 +817,8 @@ class _$EvRefresh implements EvRefresh {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(EvInit value)? init,
     TResult Function(EvRefresh value)? refresh,
+    TResult Function(EvOnTapItem value)? onTapItem,
+    TResult Function(EvOnTapFab value)? onTapFab,
   }) {
     return refresh?.call(this);
   }
@@ -794,6 +828,8 @@ class _$EvRefresh implements EvRefresh {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EvInit value)? init,
     TResult Function(EvRefresh value)? refresh,
+    TResult Function(EvOnTapItem value)? onTapItem,
+    TResult Function(EvOnTapFab value)? onTapFab,
     required TResult orElse(),
   }) {
     if (refresh != null) {
@@ -805,6 +841,269 @@ class _$EvRefresh implements EvRefresh {
 
 abstract class EvRefresh implements TasksUserEvent {
   const factory EvRefresh() = _$EvRefresh;
+}
+
+/// @nodoc
+abstract class _$$EvOnTapItemCopyWith<$Res> {
+  factory _$$EvOnTapItemCopyWith(
+          _$EvOnTapItem value, $Res Function(_$EvOnTapItem) then) =
+      __$$EvOnTapItemCopyWithImpl<$Res>;
+  $Res call({String guid});
+}
+
+/// @nodoc
+class __$$EvOnTapItemCopyWithImpl<$Res>
+    extends _$TasksUserEventCopyWithImpl<$Res>
+    implements _$$EvOnTapItemCopyWith<$Res> {
+  __$$EvOnTapItemCopyWithImpl(
+      _$EvOnTapItem _value, $Res Function(_$EvOnTapItem) _then)
+      : super(_value, (v) => _then(v as _$EvOnTapItem));
+
+  @override
+  _$EvOnTapItem get _value => super._value as _$EvOnTapItem;
+
+  @override
+  $Res call({
+    Object? guid = freezed,
+  }) {
+    return _then(_$EvOnTapItem(
+      guid == freezed
+          ? _value.guid
+          : guid // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$EvOnTapItem implements EvOnTapItem {
+  const _$EvOnTapItem(this.guid);
+
+  @override
+  final String guid;
+
+  @override
+  String toString() {
+    return 'TasksUserEvent.onTapItem(guid: $guid)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EvOnTapItem &&
+            const DeepCollectionEquality().equals(other.guid, guid));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(guid));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$EvOnTapItemCopyWith<_$EvOnTapItem> get copyWith =>
+      __$$EvOnTapItemCopyWithImpl<_$EvOnTapItem>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() refresh,
+    required TResult Function(String guid) onTapItem,
+    required TResult Function() onTapFab,
+  }) {
+    return onTapItem(guid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? refresh,
+    TResult Function(String guid)? onTapItem,
+    TResult Function()? onTapFab,
+  }) {
+    return onTapItem?.call(guid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? refresh,
+    TResult Function(String guid)? onTapItem,
+    TResult Function()? onTapFab,
+    required TResult orElse(),
+  }) {
+    if (onTapItem != null) {
+      return onTapItem(guid);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EvInit value) init,
+    required TResult Function(EvRefresh value) refresh,
+    required TResult Function(EvOnTapItem value) onTapItem,
+    required TResult Function(EvOnTapFab value) onTapFab,
+  }) {
+    return onTapItem(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(EvInit value)? init,
+    TResult Function(EvRefresh value)? refresh,
+    TResult Function(EvOnTapItem value)? onTapItem,
+    TResult Function(EvOnTapFab value)? onTapFab,
+  }) {
+    return onTapItem?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EvInit value)? init,
+    TResult Function(EvRefresh value)? refresh,
+    TResult Function(EvOnTapItem value)? onTapItem,
+    TResult Function(EvOnTapFab value)? onTapFab,
+    required TResult orElse(),
+  }) {
+    if (onTapItem != null) {
+      return onTapItem(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EvOnTapItem implements TasksUserEvent {
+  const factory EvOnTapItem(final String guid) = _$EvOnTapItem;
+
+  String get guid;
+  @JsonKey(ignore: true)
+  _$$EvOnTapItemCopyWith<_$EvOnTapItem> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$EvOnTapFabCopyWith<$Res> {
+  factory _$$EvOnTapFabCopyWith(
+          _$EvOnTapFab value, $Res Function(_$EvOnTapFab) then) =
+      __$$EvOnTapFabCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$EvOnTapFabCopyWithImpl<$Res>
+    extends _$TasksUserEventCopyWithImpl<$Res>
+    implements _$$EvOnTapFabCopyWith<$Res> {
+  __$$EvOnTapFabCopyWithImpl(
+      _$EvOnTapFab _value, $Res Function(_$EvOnTapFab) _then)
+      : super(_value, (v) => _then(v as _$EvOnTapFab));
+
+  @override
+  _$EvOnTapFab get _value => super._value as _$EvOnTapFab;
+}
+
+/// @nodoc
+
+class _$EvOnTapFab implements EvOnTapFab {
+  const _$EvOnTapFab();
+
+  @override
+  String toString() {
+    return 'TasksUserEvent.onTapFab()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$EvOnTapFab);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() refresh,
+    required TResult Function(String guid) onTapItem,
+    required TResult Function() onTapFab,
+  }) {
+    return onTapFab();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? refresh,
+    TResult Function(String guid)? onTapItem,
+    TResult Function()? onTapFab,
+  }) {
+    return onTapFab?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? refresh,
+    TResult Function(String guid)? onTapItem,
+    TResult Function()? onTapFab,
+    required TResult orElse(),
+  }) {
+    if (onTapFab != null) {
+      return onTapFab();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EvInit value) init,
+    required TResult Function(EvRefresh value) refresh,
+    required TResult Function(EvOnTapItem value) onTapItem,
+    required TResult Function(EvOnTapFab value) onTapFab,
+  }) {
+    return onTapFab(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(EvInit value)? init,
+    TResult Function(EvRefresh value)? refresh,
+    TResult Function(EvOnTapItem value)? onTapItem,
+    TResult Function(EvOnTapFab value)? onTapFab,
+  }) {
+    return onTapFab?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EvInit value)? init,
+    TResult Function(EvRefresh value)? refresh,
+    TResult Function(EvOnTapItem value)? onTapItem,
+    TResult Function(EvOnTapFab value)? onTapFab,
+    required TResult orElse(),
+  }) {
+    if (onTapFab != null) {
+      return onTapFab(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EvOnTapFab implements TasksUserEvent {
+  const factory EvOnTapFab() = _$EvOnTapFab;
 }
 
 /// @nodoc

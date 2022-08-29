@@ -19,6 +19,8 @@ class TasksUserState with _$TasksUserState {
 class TasksUserEvent with _$TasksUserEvent {
   const factory TasksUserEvent.init() = EvInit;
   const factory TasksUserEvent.refresh() = EvRefresh;
+  const factory TasksUserEvent.onTapItem(String guid) = EvOnTapItem;
+  const factory TasksUserEvent.onTapFab() = EvOnTapFab;
 }
 
 @freezed

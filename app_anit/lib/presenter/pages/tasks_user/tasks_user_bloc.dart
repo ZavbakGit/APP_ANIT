@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:app_anit/core/extencion/date_extencion.dart';
 import 'package:app_anit/presenter/pages/tasks_user/tasks_user_models.dart';
 import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,6 +24,8 @@ class TasksUserBlok
   }) : super(const TasksUserState.empty()) {
     on<EvInit>(_init);
     on<EvRefresh>(_refresh);
+    on<EvOnTapItem>(_onTapItem);
+    on<EvOnTapFab>(_onTapFab);
   }
 
   FutureOr<void> _init(
@@ -76,5 +77,19 @@ class TasksUserBlok
         controlledTasks: controlledTasks,
       ));
     });
+  }
+
+  FutureOr<void> _onTapItem(
+    EvOnTapItem event,
+    Emitter<TasksUserState> emit,
+  ) {
+    addSr(TasksUserSR.openTask(event.guid));
+  }
+
+  FutureOr<void> _onTapFab(
+    EvOnTapFab event,
+    Emitter<TasksUserState> emit,
+  ) {
+    addSr(const TasksUserSR.openNewTask());
   }
 }
