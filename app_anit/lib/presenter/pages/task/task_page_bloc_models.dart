@@ -9,6 +9,7 @@ class TaskPageState with _$TaskPageState {
   const factory TaskPageState.data({
     required Task task,
     required bool isModified,
+    required bool userIsController,
   }) = _StData;
 
   const factory TaskPageState.empty() = _StEmpty;

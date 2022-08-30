@@ -1,8 +1,10 @@
 import 'dart:async';
 
+import 'package:app_anit/domain/models/task_extention.dart';
 import 'package:app_anit/presenter/pages/task/task_page_bloc_models.dart';
 import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../core/extencion/date_extencion.dart';
 import '../../../domain/models/app_model.dart';
 import '../../../domain/repositories/repository.dart';
 
@@ -47,6 +49,8 @@ class TaskPageBloc extends SrBloc<TaskPageEvent, TaskPageState, TaskPageSR> {
     on<TaskPageEventDellController>(_changeTask);
     on<TaskPageEventAddAssitant>(_changeTask);
     on<TaskPageEventDellAssistant>(_changeTask);
+    on<TaskPageEventSetControl>(_changeTask);
+    on<TaskPageEventSetControlDone>(_changeTask);
   }
 
   bool get isNewTask => guid == null;
@@ -79,10 +83,18 @@ class TaskPageBloc extends SrBloc<TaskPageEvent, TaskPageState, TaskPageSR> {
       task = result;
       if (isAssignment ?? false) {
         _addController(appModel.remoteConfig!.user);
-        emit(TaskPageState.data(task: task, isModified: isModified));
+        emit(TaskPageState.data(
+            task: task,
+            isModified: isModified,
+            userIsController:
+                task.userIsController(appModel.remoteConfig!.user)));
         addSr(const TaskPageSR.chooseAnResponsible());
       } else {
-        emit(TaskPageState.data(task: task, isModified: isModified));
+        emit(TaskPageState.data(
+            task: task,
+            isModified: isModified,
+            userIsController:
+                task.userIsController(appModel.remoteConfig!.user)));
       }
     });
   }
@@ -113,7 +125,7 @@ class TaskPageBloc extends SrBloc<TaskPageEvent, TaskPageState, TaskPageSR> {
       changeImportance: (value) => task = task.copyWith(importance: value.val),
       addController: (value) {
         if (!task.controllers!.map((e) => e.guid).contains(value.val.guid)) {
-          final list = [
+          final list = <RefCatalog>[
             ...task.controllers ?? [],
             value.val,
           ];
@@ -123,7 +135,7 @@ class TaskPageBloc extends SrBloc<TaskPageEvent, TaskPageState, TaskPageSR> {
       },
       addAssitant: (value) {
         if (!task.assistants!.map((e) => e.guid).contains(value.val.guid)) {
-          final list = [
+          final list = <RefCatalog>[
             ...task.assistants ?? [],
             value.val,
           ];
@@ -145,8 +157,14 @@ class TaskPageBloc extends SrBloc<TaskPageEvent, TaskPageState, TaskPageSR> {
               .toList(),
         );
       },
+      setControl: (value) => task = task.copyWith(dateControl: getEmptyDate()),
+      setControlDone: (value) =>
+          task = task.copyWith(dateControl: DateTime.now()),
     );
 
-    emit(TaskPageState.data(task: task, isModified: isModified));
+    emit(TaskPageState.data(
+        task: task,
+        isModified: isModified,
+        userIsController: task.userIsController(appModel.remoteConfig!.user)));
   }
 }

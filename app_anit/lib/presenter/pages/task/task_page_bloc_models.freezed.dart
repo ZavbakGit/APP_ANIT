@@ -18,21 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$TaskPageState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Task task, bool isModified) data,
+    required TResult Function(Task task, bool isModified, bool userIsController)
+        data,
     required TResult Function() empty,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Task task, bool isModified)? data,
+    TResult Function(Task task, bool isModified, bool userIsController)? data,
     TResult Function()? empty,
     TResult Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Task task, bool isModified)? data,
+    TResult Function(Task task, bool isModified, bool userIsController)? data,
     TResult Function()? empty,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -83,7 +84,7 @@ class _$TaskPageStateCopyWithImpl<$Res>
 abstract class _$$_StDataCopyWith<$Res> {
   factory _$$_StDataCopyWith(_$_StData value, $Res Function(_$_StData) then) =
       __$$_StDataCopyWithImpl<$Res>;
-  $Res call({Task task, bool isModified});
+  $Res call({Task task, bool isModified, bool userIsController});
 }
 
 /// @nodoc
@@ -99,6 +100,7 @@ class __$$_StDataCopyWithImpl<$Res> extends _$TaskPageStateCopyWithImpl<$Res>
   $Res call({
     Object? task = freezed,
     Object? isModified = freezed,
+    Object? userIsController = freezed,
   }) {
     return _then(_$_StData(
       task: task == freezed
@@ -109,6 +111,10 @@ class __$$_StDataCopyWithImpl<$Res> extends _$TaskPageStateCopyWithImpl<$Res>
           ? _value.isModified
           : isModified // ignore: cast_nullable_to_non_nullable
               as bool,
+      userIsController: userIsController == freezed
+          ? _value.userIsController
+          : userIsController // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -116,16 +122,22 @@ class __$$_StDataCopyWithImpl<$Res> extends _$TaskPageStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_StData extends _StData {
-  const _$_StData({required this.task, required this.isModified}) : super._();
+  const _$_StData(
+      {required this.task,
+      required this.isModified,
+      required this.userIsController})
+      : super._();
 
   @override
   final Task task;
   @override
   final bool isModified;
+  @override
+  final bool userIsController;
 
   @override
   String toString() {
-    return 'TaskPageState.data(task: $task, isModified: $isModified)';
+    return 'TaskPageState.data(task: $task, isModified: $isModified, userIsController: $userIsController)';
   }
 
   @override
@@ -135,14 +147,17 @@ class _$_StData extends _StData {
             other is _$_StData &&
             const DeepCollectionEquality().equals(other.task, task) &&
             const DeepCollectionEquality()
-                .equals(other.isModified, isModified));
+                .equals(other.isModified, isModified) &&
+            const DeepCollectionEquality()
+                .equals(other.userIsController, userIsController));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(task),
-      const DeepCollectionEquality().hash(isModified));
+      const DeepCollectionEquality().hash(isModified),
+      const DeepCollectionEquality().hash(userIsController));
 
   @JsonKey(ignore: true)
   @override
@@ -152,33 +167,34 @@ class _$_StData extends _StData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Task task, bool isModified) data,
+    required TResult Function(Task task, bool isModified, bool userIsController)
+        data,
     required TResult Function() empty,
     required TResult Function(String message) error,
   }) {
-    return data(task, isModified);
+    return data(task, isModified, userIsController);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Task task, bool isModified)? data,
+    TResult Function(Task task, bool isModified, bool userIsController)? data,
     TResult Function()? empty,
     TResult Function(String message)? error,
   }) {
-    return data?.call(task, isModified);
+    return data?.call(task, isModified, userIsController);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Task task, bool isModified)? data,
+    TResult Function(Task task, bool isModified, bool userIsController)? data,
     TResult Function()? empty,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (data != null) {
-      return data(task, isModified);
+      return data(task, isModified, userIsController);
     }
     return orElse();
   }
@@ -220,11 +236,14 @@ class _$_StData extends _StData {
 
 abstract class _StData extends TaskPageState {
   const factory _StData(
-      {required final Task task, required final bool isModified}) = _$_StData;
+      {required final Task task,
+      required final bool isModified,
+      required final bool userIsController}) = _$_StData;
   const _StData._() : super._();
 
   Task get task;
   bool get isModified;
+  bool get userIsController;
   @JsonKey(ignore: true)
   _$$_StDataCopyWith<_$_StData> get copyWith =>
       throw _privateConstructorUsedError;
@@ -269,7 +288,8 @@ class _$_StEmpty extends _StEmpty {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Task task, bool isModified) data,
+    required TResult Function(Task task, bool isModified, bool userIsController)
+        data,
     required TResult Function() empty,
     required TResult Function(String message) error,
   }) {
@@ -279,7 +299,7 @@ class _$_StEmpty extends _StEmpty {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Task task, bool isModified)? data,
+    TResult Function(Task task, bool isModified, bool userIsController)? data,
     TResult Function()? empty,
     TResult Function(String message)? error,
   }) {
@@ -289,7 +309,7 @@ class _$_StEmpty extends _StEmpty {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Task task, bool isModified)? data,
+    TResult Function(Task task, bool isModified, bool userIsController)? data,
     TResult Function()? empty,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -403,7 +423,8 @@ class _$_StError extends _StError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Task task, bool isModified) data,
+    required TResult Function(Task task, bool isModified, bool userIsController)
+        data,
     required TResult Function() empty,
     required TResult Function(String message) error,
   }) {
@@ -413,7 +434,7 @@ class _$_StError extends _StError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Task task, bool isModified)? data,
+    TResult Function(Task task, bool isModified, bool userIsController)? data,
     TResult Function()? empty,
     TResult Function(String message)? error,
   }) {
@@ -423,7 +444,7 @@ class _$_StError extends _StError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Task task, bool isModified)? data,
+    TResult Function(Task task, bool isModified, bool userIsController)? data,
     TResult Function()? empty,
     TResult Function(String message)? error,
     required TResult orElse(),
