@@ -37,8 +37,16 @@ class TaskPageBloc extends SrBloc<TaskPageEvent, TaskPageState, TaskPageSR> {
     on<TaskPageEventInit>(_init);
     on<TaskPageEventExit>(_exit);
     on<TaskPageEventLoad>(_load);
-    on<TaskPageEventAddController>(_addControllerEvent);
-    on<TaskPageEventChangeResponsible>(_changeResponsible);
+    on<TaskPageEventChangeTitle>(_changeTask);
+    on<TaskPageEventChangePartner>(_changeTask);
+    on<TaskPageEventChangeResponsible>(_changeTask);
+    on<TaskPageEventChangeProducer>(_changeTask);
+    on<TaskPageEventChangeCondition>(_changeTask);
+    on<TaskPageEventChangeImportance>(_changeTask);
+    on<TaskPageEventAddController>(_changeTask);
+    on<TaskPageEventDellController>(_changeTask);
+    on<TaskPageEventAddAssitant>(_changeTask);
+    on<TaskPageEventDellAssistant>(_changeTask);
   }
 
   bool get isNewTask => guid == null;
@@ -79,15 +87,6 @@ class TaskPageBloc extends SrBloc<TaskPageEvent, TaskPageState, TaskPageSR> {
     });
   }
 
-  FutureOr<void> _addControllerEvent(
-    TaskPageEventAddController event,
-    Emitter<TaskPageState> emit,
-  ) {
-    _addController(event.val);
-    isModified = true;
-    emit(TaskPageState.data(task: task, isModified: isModified));
-  }
-
   _addController(RefCatalog val) {
     if (!task.controllers!.map((e) => e.guid).contains(val.guid)) {
       final list = [
@@ -99,12 +98,55 @@ class TaskPageBloc extends SrBloc<TaskPageEvent, TaskPageState, TaskPageSR> {
     }
   }
 
-  FutureOr<void> _changeResponsible(
-    TaskPageEventChangeResponsible event,
+  FutureOr<void> _changeTask(
+    TaskPageEvent event,
     Emitter<TaskPageState> emit,
   ) {
-    task = task.copyWith(responsible: event.val);
     isModified = true;
+    event.mapOrNull(
+      changeTitle: (value) => task = task.copyWith(title: value.val),
+      changePartner: (value) => task = task.copyWith(partner: value.val),
+      changeResponsible: (value) =>
+          task = task.copyWith(responsible: value.val),
+      changeProducer: (value) => task = task.copyWith(producer: value.val),
+      changeCondition: (value) => task = task.copyWith(condition: value.val),
+      changeImportance: (value) => task = task.copyWith(importance: value.val),
+      addController: (value) {
+        if (!task.controllers!.map((e) => e.guid).contains(value.val.guid)) {
+          final list = [
+            ...task.controllers ?? [],
+            value.val,
+          ];
+
+          task = task.copyWith(controllers: list);
+        }
+      },
+      addAssitant: (value) {
+        if (!task.assistants!.map((e) => e.guid).contains(value.val.guid)) {
+          final list = [
+            ...task.assistants ?? [],
+            value.val,
+          ];
+
+          task = task.copyWith(assistants: list);
+        }
+      },
+      dellController: (value) {
+        task = task.copyWith(
+          controllers: task.controllers!
+              .where((element) => element.guid != value.val.guid)
+              .toList(),
+        );
+      },
+      dellAssistant: (value) {
+        task = task.copyWith(
+          controllers: task.assistants!
+              .where((element) => element.guid != value.val.guid)
+              .toList(),
+        );
+      },
+    );
+
     emit(TaskPageState.data(task: task, isModified: isModified));
   }
 }

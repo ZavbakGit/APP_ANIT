@@ -10,7 +10,10 @@ import '../../../app/injection_container.dart';
 import '../../../arch/sr_bloc/sr_bloc_builder.dart';
 import '../../../core/presentation/widgets_design/empty_page.dart';
 import '../../../core/presentation/widgets_design/error_page.dart';
+import '../../../core/presentation/widgets_design/text_field.dart';
 import '../../widgets/catalogs/ref_catalog_dialog_widget.dart';
+import '../../widgets/catalogs/ref_catalog_field_widget.dart';
+import '../../widgets/enums/ref_enum_field_widget.dart';
 
 class TaskPage extends StatelessWidget {
   final String? guid;
@@ -72,6 +75,8 @@ class TaskPage extends StatelessWidget {
   }
 }
 
+final _textController = TextEditingController();
+
 class _PageContent extends StatelessWidget {
   final Task task;
   final bool isModified;
@@ -86,20 +91,196 @@ class _PageContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: CustomPageWidget(child: Text(task.toString())),
-      appBar: AppBar(title: Text(title), actions: [
-        if (isModified &&
-            task.partner != null &&
-            task.responsible != null &&
-            task.title!.isNotEmpty)
-          IconButton(
-            onPressed: () {
-              context.read<TaskPageBloc>().add(const TaskPageEvent.save());
-            },
-            icon: const Icon(Icons.check),
+    final FocusNode focusNode = FocusNode();
+
+    if (_textController.text != (task.title)) {
+      _textController.text = task.title ?? '';
+    }
+
+    return Listener(
+      onPointerDown: (event) {
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+      child: Scaffold(
+        appBar: AppBar(title: Text(title), actions: [
+          if (isModified &&
+              task.partner != null &&
+              task.responsible != null &&
+              task.title!.isNotEmpty)
+            IconButton(
+              onPressed: () {
+                context.read<TaskPageBloc>().add(const TaskPageEvent.save());
+              },
+              icon: const Icon(Icons.check),
+            ),
+        ]),
+        body: CustomPageWidget(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  CustomEditTextField(
+                    focusNode: focusNode,
+                    title: 'Описание',
+                    errorText:
+                        _textController.text.isEmpty ? 'Не заполнено' : null,
+                    controller: _textController,
+                    onChanged: (value) {
+                      context
+                          .read<TaskPageBloc>()
+                          .add(TaskPageEvent.changeTitle(value));
+                    },
+                  ),
+                  const Divider(),
+                  RefCatalogFieldWidget(
+                    refCatalog: task.partner,
+                    title: 'Клиент',
+                    type: 'Партнеры',
+                    errorTitle: task.partner == null ? 'Не заполнено' : null,
+                    onChoice: (val) {
+                      context
+                          .read<TaskPageBloc>()
+                          .add(TaskPageEvent.changePartner(val));
+                    },
+                  ),
+                  RefCatalogFieldWidget(
+                    refCatalog: task.responsible,
+                    title: 'Ответственный',
+                    errorTitle:
+                        task.responsible == null ? 'Не заполнено' : null,
+                    type: 'Пользователи',
+                    onChoice: (val) {
+                      context
+                          .read<TaskPageBloc>()
+                          .add(TaskPageEvent.changeResponsible(val));
+                    },
+                  ),
+                  RefCatalogFieldWidget(
+                    refCatalog: task.producer,
+                    title: 'Постановщик',
+                    type: 'Пользователи',
+                    onChoice: (val) {
+                      context
+                          .read<TaskPageBloc>()
+                          .add(TaskPageEvent.changeProducer(val));
+                    },
+                  ),
+                  const Divider(),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: RefEnumFieldWidget(
+                          title: 'Состояние',
+                          refEnum: task.condition!,
+                          type: 'АН_СостоянияСобытия',
+                          titleDialog: 'Состояние',
+                          onChoice: (val) {
+                            context
+                                .read<TaskPageBloc>()
+                                .add(TaskPageEvent.changeCondition(val));
+                          },
+                        ),
+                      ),
+                      Expanded(
+                        child: RefEnumFieldWidget(
+                          title: 'Важность',
+                          refEnum: task.importance!,
+                          type: 'ВариантыВажностиЗадачи',
+                          titleDialog: 'Важность',
+                          onChoice: (val) {
+                            context
+                                .read<TaskPageBloc>()
+                                .add(TaskPageEvent.changeImportance(val));
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                  ChippWraper(
+                    list: task.controllers ?? [],
+                    title: 'Контролеры',
+                    onAdd: (catalog) => context
+                        .read<TaskPageBloc>()
+                        .add(TaskPageEvent.addController(catalog)),
+                    onDell: (catalog) => context
+                        .read<TaskPageBloc>()
+                        .add(TaskPageEvent.dellController(catalog)),
+                  ),
+                ],
+              ),
+            ),
           ),
-      ]),
+        ),
+      ),
+    );
+  }
+}
+
+class ChippWraper extends StatelessWidget {
+  final List<RefCatalog> list;
+  final String title;
+  final void Function(RefCatalog catalog) onAdd;
+  final void Function(RefCatalog catalog) onDell;
+
+  const ChippWraper({
+    Key? key,
+    required this.list,
+    required this.title,
+    required this.onAdd,
+    required this.onDell,
+  }) : super(key: key);
+
+  String get count => list.isNotEmpty ? '(${list.length})' : '';
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Text('Контролеры $count'),
+            IconButton(
+              icon: const Icon(Icons.add),
+              onPressed: () {
+                Navigator.push<RefCatalog>(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => RefCatalogDialogWidget(
+                      type: 'Пользователи',
+                      titleDialog: 'Контролер',
+                    ),
+                  ),
+                ).then((value) {
+                  if (value != null) {
+                    onAdd(value);
+                  }
+                });
+              },
+            ),
+          ],
+        ),
+        const Divider(),
+        Wrap(
+          children: [
+            ...list
+                .map(
+                  (controller) => Chip(
+                    avatar: const CircleAvatar(
+                      child: Icon(Icons.account_circle),
+                    ),
+                    label: Text(controller.name!),
+                    deleteIcon: const Icon(Icons.close),
+                    onDeleted: () {
+                      onDell(controller);
+                    },
+                  ),
+                )
+                .toList(),
+          ],
+        ),
+      ],
     );
   }
 }
