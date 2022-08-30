@@ -4,9 +4,12 @@ import 'package:app_anit/presenter/pages/task/task_page_bloc_models.dart';
 import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
 import '../../../app/injection_container.dart';
 import '../../../arch/sr_bloc/sr_bloc_builder.dart';
+import '../../../core/presentation/widgets_design/empty_page.dart';
+import '../../../core/presentation/widgets_design/error_page.dart';
 import '../../widgets/catalogs/ref_catalog_dialog_widget.dart';
 
 class TaskPage extends StatelessWidget {
@@ -30,13 +33,16 @@ class TaskPage extends StatelessWidget {
             )..add(const TaskPageEventInit()),
         child: SrBlocBuilder<TaskPageBloc, TaskPageState, TaskPageSR>(
           onSR: _onSingleResult,
-          builder: (_, blocState) => Scaffold(
-            body: CustomPageWidget(
-              child: blocState.map(
-                data: (state) => _PageContent(state: state),
-                empty: (state) => _PageEmpty(state: state),
-                error: (state) => _PageError(state: state),
-              ),
+          builder: (_, blocState) => blocState.map(
+            data: (state) => _PageContent(
+              isModified: state.isModified,
+              task: state.task,
+            ),
+            empty: (state) => const CustomEmptyPage(),
+            error: (state) => ErrorPage(
+              message: state.message,
+              onClick: () =>
+                  context.read<TaskPageBloc>().add(const TaskPageEvent.load()),
             ),
           ),
         ));
@@ -67,46 +73,33 @@ class TaskPage extends StatelessWidget {
 }
 
 class _PageContent extends StatelessWidget {
-  final TaskPageStateData state;
+  final Task task;
+  final bool isModified;
   const _PageContent({
     Key? key,
-    required this.state,
+    required this.task,
+    required this.isModified,
   }) : super(key: key);
+
+  String get title =>
+      '${isModified ? '*' : ''}${task.$number} от ${DateFormat('dd.MM.yy HH:mm').format(task.date!)}';
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(state.toString()),
-    );
-  }
-}
-
-class _PageEmpty extends StatelessWidget {
-  final Empty state;
-  const _PageEmpty({
-    Key? key,
-    required this.state,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text(state.toString()),
-    );
-  }
-}
-
-class _PageError extends StatelessWidget {
-  final Error state;
-  const _PageError({
-    Key? key,
-    required this.state,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text(state.toString()),
+    return Scaffold(
+      body: CustomPageWidget(child: Text(task.toString())),
+      appBar: AppBar(title: Text(title), actions: [
+        if (isModified &&
+            task.partner != null &&
+            task.responsible != null &&
+            task.title!.isNotEmpty)
+          IconButton(
+            onPressed: () {
+              context.read<TaskPageBloc>().add(const TaskPageEvent.save());
+            },
+            icon: const Icon(Icons.check),
+          ),
+      ]),
     );
   }
 }

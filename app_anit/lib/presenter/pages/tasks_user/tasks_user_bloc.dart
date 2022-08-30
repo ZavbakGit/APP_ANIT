@@ -62,7 +62,7 @@ class TasksUserBlok
     controlledTasks.clear();
 
     either.fold((fail) {
-      emit(TasksUserState.error('Ошибка: ${fail.error}'));
+      emit(TasksUserState.error(message: 'Ошибка: ${fail.error}'));
     }, (list) {
       tasks.addAll(list
           .where((element) => element.isResponsible! || element.isAssistants!));

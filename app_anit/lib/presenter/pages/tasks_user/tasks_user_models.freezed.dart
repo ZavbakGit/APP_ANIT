@@ -22,7 +22,7 @@ mixin _$TasksUserState {
             List<TaskItem> tasks, List<TaskItem> controlledTasks)
         data,
     required TResult Function() empty,
-    required TResult Function(String message) error,
+    required TResult Function(String? message) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -31,7 +31,7 @@ mixin _$TasksUserState {
             List<TaskItem> controlledTasks)?
         data,
     TResult Function()? empty,
-    TResult Function(String message)? error,
+    TResult Function(String? message)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,7 +40,7 @@ mixin _$TasksUserState {
             List<TaskItem> controlledTasks)?
         data,
     TResult Function()? empty,
-    TResult Function(String message)? error,
+    TResult Function(String? message)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -199,7 +199,7 @@ class _$_StData implements _StData {
             List<TaskItem> tasks, List<TaskItem> controlledTasks)
         data,
     required TResult Function() empty,
-    required TResult Function(String message) error,
+    required TResult Function(String? message) error,
   }) {
     return data(isLoading, title, tasks, controlledTasks);
   }
@@ -211,7 +211,7 @@ class _$_StData implements _StData {
             List<TaskItem> controlledTasks)?
         data,
     TResult Function()? empty,
-    TResult Function(String message)? error,
+    TResult Function(String? message)? error,
   }) {
     return data?.call(isLoading, title, tasks, controlledTasks);
   }
@@ -223,7 +223,7 @@ class _$_StData implements _StData {
             List<TaskItem> controlledTasks)?
         data,
     TResult Function()? empty,
-    TResult Function(String message)? error,
+    TResult Function(String? message)? error,
     required TResult orElse(),
   }) {
     if (data != null) {
@@ -326,7 +326,7 @@ class _$_StEmpty implements _StEmpty {
             List<TaskItem> tasks, List<TaskItem> controlledTasks)
         data,
     required TResult Function() empty,
-    required TResult Function(String message) error,
+    required TResult Function(String? message) error,
   }) {
     return empty();
   }
@@ -338,7 +338,7 @@ class _$_StEmpty implements _StEmpty {
             List<TaskItem> controlledTasks)?
         data,
     TResult Function()? empty,
-    TResult Function(String message)? error,
+    TResult Function(String? message)? error,
   }) {
     return empty?.call();
   }
@@ -350,7 +350,7 @@ class _$_StEmpty implements _StEmpty {
             List<TaskItem> controlledTasks)?
         data,
     TResult Function()? empty,
-    TResult Function(String message)? error,
+    TResult Function(String? message)? error,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -403,7 +403,7 @@ abstract class _$$_StErrorCopyWith<$Res> {
   factory _$$_StErrorCopyWith(
           _$_StError value, $Res Function(_$_StError) then) =
       __$$_StErrorCopyWithImpl<$Res>;
-  $Res call({String message});
+  $Res call({String? message});
 }
 
 /// @nodoc
@@ -420,10 +420,10 @@ class __$$_StErrorCopyWithImpl<$Res> extends _$TasksUserStateCopyWithImpl<$Res>
     Object? message = freezed,
   }) {
     return _then(_$_StError(
-      message == freezed
+      message: message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -431,10 +431,10 @@ class __$$_StErrorCopyWithImpl<$Res> extends _$TasksUserStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_StError implements _StError {
-  const _$_StError(this.message);
+  const _$_StError({this.message});
 
   @override
-  final String message;
+  final String? message;
 
   @override
   String toString() {
@@ -465,7 +465,7 @@ class _$_StError implements _StError {
             List<TaskItem> tasks, List<TaskItem> controlledTasks)
         data,
     required TResult Function() empty,
-    required TResult Function(String message) error,
+    required TResult Function(String? message) error,
   }) {
     return error(message);
   }
@@ -477,7 +477,7 @@ class _$_StError implements _StError {
             List<TaskItem> controlledTasks)?
         data,
     TResult Function()? empty,
-    TResult Function(String message)? error,
+    TResult Function(String? message)? error,
   }) {
     return error?.call(message);
   }
@@ -489,7 +489,7 @@ class _$_StError implements _StError {
             List<TaskItem> controlledTasks)?
         data,
     TResult Function()? empty,
-    TResult Function(String message)? error,
+    TResult Function(String? message)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -534,9 +534,9 @@ class _$_StError implements _StError {
 }
 
 abstract class _StError implements TasksUserState {
-  const factory _StError(final String message) = _$_StError;
+  const factory _StError({final String? message}) = _$_StError;
 
-  String get message;
+  String? get message;
   @JsonKey(ignore: true)
   _$$_StErrorCopyWith<_$_StError> get copyWith =>
       throw _privateConstructorUsedError;

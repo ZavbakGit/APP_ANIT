@@ -12,7 +12,7 @@ class TasksUserState with _$TasksUserState {
   }) = _StData;
 
   const factory TasksUserState.empty() = _StEmpty;
-  const factory TasksUserState.error(String message) = _StError;
+  const factory TasksUserState.error({String? message}) = _StError;
 }
 
 @freezed

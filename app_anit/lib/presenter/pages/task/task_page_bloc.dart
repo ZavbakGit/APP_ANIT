@@ -72,7 +72,7 @@ class TaskPageBloc extends SrBloc<TaskPageEvent, TaskPageState, TaskPageSR> {
       if (isAssignment ?? false) {
         _addController(appModel.remoteConfig!.user);
         emit(TaskPageState.data(task: task, isModified: isModified));
-        addSr(const ChoiseOfResponsible());
+        addSr(const TaskPageSR.chooseAnResponsible());
       } else {
         emit(TaskPageState.data(task: task, isModified: isModified));
       }

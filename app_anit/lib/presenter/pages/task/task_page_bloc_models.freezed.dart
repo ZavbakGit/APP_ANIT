@@ -40,23 +40,23 @@ mixin _$TaskPageState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(TaskPageStateData value) data,
-    required TResult Function(Empty value) empty,
-    required TResult Function(Error value) error,
+    required TResult Function(_StData value) data,
+    required TResult Function(_StEmpty value) empty,
+    required TResult Function(_StError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(TaskPageStateData value)? data,
-    TResult Function(Empty value)? empty,
-    TResult Function(Error value)? error,
+    TResult Function(_StData value)? data,
+    TResult Function(_StEmpty value)? empty,
+    TResult Function(_StError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(TaskPageStateData value)? data,
-    TResult Function(Empty value)? empty,
-    TResult Function(Error value)? error,
+    TResult Function(_StData value)? data,
+    TResult Function(_StEmpty value)? empty,
+    TResult Function(_StError value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -80,30 +80,27 @@ class _$TaskPageStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$$TaskPageStateDataCopyWith<$Res> {
-  factory _$$TaskPageStateDataCopyWith(
-          _$TaskPageStateData value, $Res Function(_$TaskPageStateData) then) =
-      __$$TaskPageStateDataCopyWithImpl<$Res>;
+abstract class _$$_StDataCopyWith<$Res> {
+  factory _$$_StDataCopyWith(_$_StData value, $Res Function(_$_StData) then) =
+      __$$_StDataCopyWithImpl<$Res>;
   $Res call({Task task, bool isModified});
 }
 
 /// @nodoc
-class __$$TaskPageStateDataCopyWithImpl<$Res>
-    extends _$TaskPageStateCopyWithImpl<$Res>
-    implements _$$TaskPageStateDataCopyWith<$Res> {
-  __$$TaskPageStateDataCopyWithImpl(
-      _$TaskPageStateData _value, $Res Function(_$TaskPageStateData) _then)
-      : super(_value, (v) => _then(v as _$TaskPageStateData));
+class __$$_StDataCopyWithImpl<$Res> extends _$TaskPageStateCopyWithImpl<$Res>
+    implements _$$_StDataCopyWith<$Res> {
+  __$$_StDataCopyWithImpl(_$_StData _value, $Res Function(_$_StData) _then)
+      : super(_value, (v) => _then(v as _$_StData));
 
   @override
-  _$TaskPageStateData get _value => super._value as _$TaskPageStateData;
+  _$_StData get _value => super._value as _$_StData;
 
   @override
   $Res call({
     Object? task = freezed,
     Object? isModified = freezed,
   }) {
-    return _then(_$TaskPageStateData(
+    return _then(_$_StData(
       task: task == freezed
           ? _value.task
           : task // ignore: cast_nullable_to_non_nullable
@@ -118,9 +115,8 @@ class __$$TaskPageStateDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$TaskPageStateData extends TaskPageStateData {
-  const _$TaskPageStateData({required this.task, required this.isModified})
-      : super._();
+class _$_StData extends _StData {
+  const _$_StData({required this.task, required this.isModified}) : super._();
 
   @override
   final Task task;
@@ -136,7 +132,7 @@ class _$TaskPageStateData extends TaskPageStateData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TaskPageStateData &&
+            other is _$_StData &&
             const DeepCollectionEquality().equals(other.task, task) &&
             const DeepCollectionEquality()
                 .equals(other.isModified, isModified));
@@ -150,8 +146,8 @@ class _$TaskPageStateData extends TaskPageStateData {
 
   @JsonKey(ignore: true)
   @override
-  _$$TaskPageStateDataCopyWith<_$TaskPageStateData> get copyWith =>
-      __$$TaskPageStateDataCopyWithImpl<_$TaskPageStateData>(this, _$identity);
+  _$$_StDataCopyWith<_$_StData> get copyWith =>
+      __$$_StDataCopyWithImpl<_$_StData>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -190,9 +186,9 @@ class _$TaskPageStateData extends TaskPageStateData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(TaskPageStateData value) data,
-    required TResult Function(Empty value) empty,
-    required TResult Function(Error value) error,
+    required TResult Function(_StData value) data,
+    required TResult Function(_StEmpty value) empty,
+    required TResult Function(_StError value) error,
   }) {
     return data(this);
   }
@@ -200,9 +196,9 @@ class _$TaskPageStateData extends TaskPageStateData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(TaskPageStateData value)? data,
-    TResult Function(Empty value)? empty,
-    TResult Function(Error value)? error,
+    TResult Function(_StData value)? data,
+    TResult Function(_StEmpty value)? empty,
+    TResult Function(_StError value)? error,
   }) {
     return data?.call(this);
   }
@@ -210,9 +206,9 @@ class _$TaskPageStateData extends TaskPageStateData {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(TaskPageStateData value)? data,
-    TResult Function(Empty value)? empty,
-    TResult Function(Error value)? error,
+    TResult Function(_StData value)? data,
+    TResult Function(_StEmpty value)? empty,
+    TResult Function(_StError value)? error,
     required TResult orElse(),
   }) {
     if (data != null) {
@@ -222,39 +218,39 @@ class _$TaskPageStateData extends TaskPageStateData {
   }
 }
 
-abstract class TaskPageStateData extends TaskPageState {
-  const factory TaskPageStateData(
-      {required final Task task,
-      required final bool isModified}) = _$TaskPageStateData;
-  const TaskPageStateData._() : super._();
+abstract class _StData extends TaskPageState {
+  const factory _StData(
+      {required final Task task, required final bool isModified}) = _$_StData;
+  const _StData._() : super._();
 
   Task get task;
   bool get isModified;
   @JsonKey(ignore: true)
-  _$$TaskPageStateDataCopyWith<_$TaskPageStateData> get copyWith =>
+  _$$_StDataCopyWith<_$_StData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EmptyCopyWith<$Res> {
-  factory _$$EmptyCopyWith(_$Empty value, $Res Function(_$Empty) then) =
-      __$$EmptyCopyWithImpl<$Res>;
+abstract class _$$_StEmptyCopyWith<$Res> {
+  factory _$$_StEmptyCopyWith(
+          _$_StEmpty value, $Res Function(_$_StEmpty) then) =
+      __$$_StEmptyCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$EmptyCopyWithImpl<$Res> extends _$TaskPageStateCopyWithImpl<$Res>
-    implements _$$EmptyCopyWith<$Res> {
-  __$$EmptyCopyWithImpl(_$Empty _value, $Res Function(_$Empty) _then)
-      : super(_value, (v) => _then(v as _$Empty));
+class __$$_StEmptyCopyWithImpl<$Res> extends _$TaskPageStateCopyWithImpl<$Res>
+    implements _$$_StEmptyCopyWith<$Res> {
+  __$$_StEmptyCopyWithImpl(_$_StEmpty _value, $Res Function(_$_StEmpty) _then)
+      : super(_value, (v) => _then(v as _$_StEmpty));
 
   @override
-  _$Empty get _value => super._value as _$Empty;
+  _$_StEmpty get _value => super._value as _$_StEmpty;
 }
 
 /// @nodoc
 
-class _$Empty extends Empty {
-  const _$Empty() : super._();
+class _$_StEmpty extends _StEmpty {
+  const _$_StEmpty() : super._();
 
   @override
   String toString() {
@@ -264,7 +260,7 @@ class _$Empty extends Empty {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Empty);
+        (other.runtimeType == runtimeType && other is _$_StEmpty);
   }
 
   @override
@@ -307,9 +303,9 @@ class _$Empty extends Empty {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(TaskPageStateData value) data,
-    required TResult Function(Empty value) empty,
-    required TResult Function(Error value) error,
+    required TResult Function(_StData value) data,
+    required TResult Function(_StEmpty value) empty,
+    required TResult Function(_StError value) error,
   }) {
     return empty(this);
   }
@@ -317,9 +313,9 @@ class _$Empty extends Empty {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(TaskPageStateData value)? data,
-    TResult Function(Empty value)? empty,
-    TResult Function(Error value)? error,
+    TResult Function(_StData value)? data,
+    TResult Function(_StEmpty value)? empty,
+    TResult Function(_StError value)? error,
   }) {
     return empty?.call(this);
   }
@@ -327,9 +323,9 @@ class _$Empty extends Empty {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(TaskPageStateData value)? data,
-    TResult Function(Empty value)? empty,
-    TResult Function(Error value)? error,
+    TResult Function(_StData value)? data,
+    TResult Function(_StEmpty value)? empty,
+    TResult Function(_StError value)? error,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -339,32 +335,33 @@ class _$Empty extends Empty {
   }
 }
 
-abstract class Empty extends TaskPageState {
-  const factory Empty() = _$Empty;
-  const Empty._() : super._();
+abstract class _StEmpty extends TaskPageState {
+  const factory _StEmpty() = _$_StEmpty;
+  const _StEmpty._() : super._();
 }
 
 /// @nodoc
-abstract class _$$ErrorCopyWith<$Res> {
-  factory _$$ErrorCopyWith(_$Error value, $Res Function(_$Error) then) =
-      __$$ErrorCopyWithImpl<$Res>;
+abstract class _$$_StErrorCopyWith<$Res> {
+  factory _$$_StErrorCopyWith(
+          _$_StError value, $Res Function(_$_StError) then) =
+      __$$_StErrorCopyWithImpl<$Res>;
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$ErrorCopyWithImpl<$Res> extends _$TaskPageStateCopyWithImpl<$Res>
-    implements _$$ErrorCopyWith<$Res> {
-  __$$ErrorCopyWithImpl(_$Error _value, $Res Function(_$Error) _then)
-      : super(_value, (v) => _then(v as _$Error));
+class __$$_StErrorCopyWithImpl<$Res> extends _$TaskPageStateCopyWithImpl<$Res>
+    implements _$$_StErrorCopyWith<$Res> {
+  __$$_StErrorCopyWithImpl(_$_StError _value, $Res Function(_$_StError) _then)
+      : super(_value, (v) => _then(v as _$_StError));
 
   @override
-  _$Error get _value => super._value as _$Error;
+  _$_StError get _value => super._value as _$_StError;
 
   @override
   $Res call({
     Object? message = freezed,
   }) {
-    return _then(_$Error(
+    return _then(_$_StError(
       message: message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -375,8 +372,8 @@ class __$$ErrorCopyWithImpl<$Res> extends _$TaskPageStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Error extends Error {
-  const _$Error({required this.message}) : super._();
+class _$_StError extends _StError {
+  const _$_StError({required this.message}) : super._();
 
   @override
   final String message;
@@ -390,7 +387,7 @@ class _$Error extends Error {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Error &&
+            other is _$_StError &&
             const DeepCollectionEquality().equals(other.message, message));
   }
 
@@ -400,8 +397,8 @@ class _$Error extends Error {
 
   @JsonKey(ignore: true)
   @override
-  _$$ErrorCopyWith<_$Error> get copyWith =>
-      __$$ErrorCopyWithImpl<_$Error>(this, _$identity);
+  _$$_StErrorCopyWith<_$_StError> get copyWith =>
+      __$$_StErrorCopyWithImpl<_$_StError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -440,9 +437,9 @@ class _$Error extends Error {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(TaskPageStateData value) data,
-    required TResult Function(Empty value) empty,
-    required TResult Function(Error value) error,
+    required TResult Function(_StData value) data,
+    required TResult Function(_StEmpty value) empty,
+    required TResult Function(_StError value) error,
   }) {
     return error(this);
   }
@@ -450,9 +447,9 @@ class _$Error extends Error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(TaskPageStateData value)? data,
-    TResult Function(Empty value)? empty,
-    TResult Function(Error value)? error,
+    TResult Function(_StData value)? data,
+    TResult Function(_StEmpty value)? empty,
+    TResult Function(_StError value)? error,
   }) {
     return error?.call(this);
   }
@@ -460,9 +457,9 @@ class _$Error extends Error {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(TaskPageStateData value)? data,
-    TResult Function(Empty value)? empty,
-    TResult Function(Error value)? error,
+    TResult Function(_StData value)? data,
+    TResult Function(_StEmpty value)? empty,
+    TResult Function(_StError value)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -472,13 +469,14 @@ class _$Error extends Error {
   }
 }
 
-abstract class Error extends TaskPageState {
-  const factory Error({required final String message}) = _$Error;
-  const Error._() : super._();
+abstract class _StError extends TaskPageState {
+  const factory _StError({required final String message}) = _$_StError;
+  const _StError._() : super._();
 
   String get message;
   @JsonKey(ignore: true)
-  _$$ErrorCopyWith<_$Error> get copyWith => throw _privateConstructorUsedError;
+  _$$_StErrorCopyWith<_$_StError> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -4422,23 +4420,23 @@ mixin _$TaskPageSR {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Exit value) exit,
-    required TResult Function(OpenSaveDialog value) openSaveDialog,
-    required TResult Function(ChoiseOfResponsible value) chooseAnResponsible,
+    required TResult Function(_SrExit value) exit,
+    required TResult Function(_SrOpenSaveDialog value) openSaveDialog,
+    required TResult Function(_SrChoiseOfResponsible value) chooseAnResponsible,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Exit value)? exit,
-    TResult Function(OpenSaveDialog value)? openSaveDialog,
-    TResult Function(ChoiseOfResponsible value)? chooseAnResponsible,
+    TResult Function(_SrExit value)? exit,
+    TResult Function(_SrOpenSaveDialog value)? openSaveDialog,
+    TResult Function(_SrChoiseOfResponsible value)? chooseAnResponsible,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Exit value)? exit,
-    TResult Function(OpenSaveDialog value)? openSaveDialog,
-    TResult Function(ChoiseOfResponsible value)? chooseAnResponsible,
+    TResult Function(_SrExit value)? exit,
+    TResult Function(_SrOpenSaveDialog value)? openSaveDialog,
+    TResult Function(_SrChoiseOfResponsible value)? chooseAnResponsible,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -4461,25 +4459,25 @@ class _$TaskPageSRCopyWithImpl<$Res> implements $TaskPageSRCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$ExitCopyWith<$Res> {
-  factory _$$ExitCopyWith(_$Exit value, $Res Function(_$Exit) then) =
-      __$$ExitCopyWithImpl<$Res>;
+abstract class _$$_SrExitCopyWith<$Res> {
+  factory _$$_SrExitCopyWith(_$_SrExit value, $Res Function(_$_SrExit) then) =
+      __$$_SrExitCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ExitCopyWithImpl<$Res> extends _$TaskPageSRCopyWithImpl<$Res>
-    implements _$$ExitCopyWith<$Res> {
-  __$$ExitCopyWithImpl(_$Exit _value, $Res Function(_$Exit) _then)
-      : super(_value, (v) => _then(v as _$Exit));
+class __$$_SrExitCopyWithImpl<$Res> extends _$TaskPageSRCopyWithImpl<$Res>
+    implements _$$_SrExitCopyWith<$Res> {
+  __$$_SrExitCopyWithImpl(_$_SrExit _value, $Res Function(_$_SrExit) _then)
+      : super(_value, (v) => _then(v as _$_SrExit));
 
   @override
-  _$Exit get _value => super._value as _$Exit;
+  _$_SrExit get _value => super._value as _$_SrExit;
 }
 
 /// @nodoc
 
-class _$Exit implements Exit {
-  const _$Exit();
+class _$_SrExit implements _SrExit {
+  const _$_SrExit();
 
   @override
   String toString() {
@@ -4489,7 +4487,7 @@ class _$Exit implements Exit {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Exit);
+        (other.runtimeType == runtimeType && other is _$_SrExit);
   }
 
   @override
@@ -4532,9 +4530,9 @@ class _$Exit implements Exit {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Exit value) exit,
-    required TResult Function(OpenSaveDialog value) openSaveDialog,
-    required TResult Function(ChoiseOfResponsible value) chooseAnResponsible,
+    required TResult Function(_SrExit value) exit,
+    required TResult Function(_SrOpenSaveDialog value) openSaveDialog,
+    required TResult Function(_SrChoiseOfResponsible value) chooseAnResponsible,
   }) {
     return exit(this);
   }
@@ -4542,9 +4540,9 @@ class _$Exit implements Exit {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Exit value)? exit,
-    TResult Function(OpenSaveDialog value)? openSaveDialog,
-    TResult Function(ChoiseOfResponsible value)? chooseAnResponsible,
+    TResult Function(_SrExit value)? exit,
+    TResult Function(_SrOpenSaveDialog value)? openSaveDialog,
+    TResult Function(_SrChoiseOfResponsible value)? chooseAnResponsible,
   }) {
     return exit?.call(this);
   }
@@ -4552,9 +4550,9 @@ class _$Exit implements Exit {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Exit value)? exit,
-    TResult Function(OpenSaveDialog value)? openSaveDialog,
-    TResult Function(ChoiseOfResponsible value)? chooseAnResponsible,
+    TResult Function(_SrExit value)? exit,
+    TResult Function(_SrOpenSaveDialog value)? openSaveDialog,
+    TResult Function(_SrChoiseOfResponsible value)? chooseAnResponsible,
     required TResult orElse(),
   }) {
     if (exit != null) {
@@ -4564,33 +4562,33 @@ class _$Exit implements Exit {
   }
 }
 
-abstract class Exit implements TaskPageSR {
-  const factory Exit() = _$Exit;
+abstract class _SrExit implements TaskPageSR {
+  const factory _SrExit() = _$_SrExit;
 }
 
 /// @nodoc
-abstract class _$$OpenSaveDialogCopyWith<$Res> {
-  factory _$$OpenSaveDialogCopyWith(
-          _$OpenSaveDialog value, $Res Function(_$OpenSaveDialog) then) =
-      __$$OpenSaveDialogCopyWithImpl<$Res>;
+abstract class _$$_SrOpenSaveDialogCopyWith<$Res> {
+  factory _$$_SrOpenSaveDialogCopyWith(
+          _$_SrOpenSaveDialog value, $Res Function(_$_SrOpenSaveDialog) then) =
+      __$$_SrOpenSaveDialogCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$OpenSaveDialogCopyWithImpl<$Res>
+class __$$_SrOpenSaveDialogCopyWithImpl<$Res>
     extends _$TaskPageSRCopyWithImpl<$Res>
-    implements _$$OpenSaveDialogCopyWith<$Res> {
-  __$$OpenSaveDialogCopyWithImpl(
-      _$OpenSaveDialog _value, $Res Function(_$OpenSaveDialog) _then)
-      : super(_value, (v) => _then(v as _$OpenSaveDialog));
+    implements _$$_SrOpenSaveDialogCopyWith<$Res> {
+  __$$_SrOpenSaveDialogCopyWithImpl(
+      _$_SrOpenSaveDialog _value, $Res Function(_$_SrOpenSaveDialog) _then)
+      : super(_value, (v) => _then(v as _$_SrOpenSaveDialog));
 
   @override
-  _$OpenSaveDialog get _value => super._value as _$OpenSaveDialog;
+  _$_SrOpenSaveDialog get _value => super._value as _$_SrOpenSaveDialog;
 }
 
 /// @nodoc
 
-class _$OpenSaveDialog implements OpenSaveDialog {
-  const _$OpenSaveDialog();
+class _$_SrOpenSaveDialog implements _SrOpenSaveDialog {
+  const _$_SrOpenSaveDialog();
 
   @override
   String toString() {
@@ -4600,7 +4598,7 @@ class _$OpenSaveDialog implements OpenSaveDialog {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$OpenSaveDialog);
+        (other.runtimeType == runtimeType && other is _$_SrOpenSaveDialog);
   }
 
   @override
@@ -4643,9 +4641,9 @@ class _$OpenSaveDialog implements OpenSaveDialog {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Exit value) exit,
-    required TResult Function(OpenSaveDialog value) openSaveDialog,
-    required TResult Function(ChoiseOfResponsible value) chooseAnResponsible,
+    required TResult Function(_SrExit value) exit,
+    required TResult Function(_SrOpenSaveDialog value) openSaveDialog,
+    required TResult Function(_SrChoiseOfResponsible value) chooseAnResponsible,
   }) {
     return openSaveDialog(this);
   }
@@ -4653,9 +4651,9 @@ class _$OpenSaveDialog implements OpenSaveDialog {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Exit value)? exit,
-    TResult Function(OpenSaveDialog value)? openSaveDialog,
-    TResult Function(ChoiseOfResponsible value)? chooseAnResponsible,
+    TResult Function(_SrExit value)? exit,
+    TResult Function(_SrOpenSaveDialog value)? openSaveDialog,
+    TResult Function(_SrChoiseOfResponsible value)? chooseAnResponsible,
   }) {
     return openSaveDialog?.call(this);
   }
@@ -4663,9 +4661,9 @@ class _$OpenSaveDialog implements OpenSaveDialog {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Exit value)? exit,
-    TResult Function(OpenSaveDialog value)? openSaveDialog,
-    TResult Function(ChoiseOfResponsible value)? chooseAnResponsible,
+    TResult Function(_SrExit value)? exit,
+    TResult Function(_SrOpenSaveDialog value)? openSaveDialog,
+    TResult Function(_SrChoiseOfResponsible value)? chooseAnResponsible,
     required TResult orElse(),
   }) {
     if (openSaveDialog != null) {
@@ -4675,33 +4673,34 @@ class _$OpenSaveDialog implements OpenSaveDialog {
   }
 }
 
-abstract class OpenSaveDialog implements TaskPageSR {
-  const factory OpenSaveDialog() = _$OpenSaveDialog;
+abstract class _SrOpenSaveDialog implements TaskPageSR {
+  const factory _SrOpenSaveDialog() = _$_SrOpenSaveDialog;
 }
 
 /// @nodoc
-abstract class _$$ChoiseOfResponsibleCopyWith<$Res> {
-  factory _$$ChoiseOfResponsibleCopyWith(_$ChoiseOfResponsible value,
-          $Res Function(_$ChoiseOfResponsible) then) =
-      __$$ChoiseOfResponsibleCopyWithImpl<$Res>;
+abstract class _$$_SrChoiseOfResponsibleCopyWith<$Res> {
+  factory _$$_SrChoiseOfResponsibleCopyWith(_$_SrChoiseOfResponsible value,
+          $Res Function(_$_SrChoiseOfResponsible) then) =
+      __$$_SrChoiseOfResponsibleCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ChoiseOfResponsibleCopyWithImpl<$Res>
+class __$$_SrChoiseOfResponsibleCopyWithImpl<$Res>
     extends _$TaskPageSRCopyWithImpl<$Res>
-    implements _$$ChoiseOfResponsibleCopyWith<$Res> {
-  __$$ChoiseOfResponsibleCopyWithImpl(
-      _$ChoiseOfResponsible _value, $Res Function(_$ChoiseOfResponsible) _then)
-      : super(_value, (v) => _then(v as _$ChoiseOfResponsible));
+    implements _$$_SrChoiseOfResponsibleCopyWith<$Res> {
+  __$$_SrChoiseOfResponsibleCopyWithImpl(_$_SrChoiseOfResponsible _value,
+      $Res Function(_$_SrChoiseOfResponsible) _then)
+      : super(_value, (v) => _then(v as _$_SrChoiseOfResponsible));
 
   @override
-  _$ChoiseOfResponsible get _value => super._value as _$ChoiseOfResponsible;
+  _$_SrChoiseOfResponsible get _value =>
+      super._value as _$_SrChoiseOfResponsible;
 }
 
 /// @nodoc
 
-class _$ChoiseOfResponsible implements ChoiseOfResponsible {
-  const _$ChoiseOfResponsible();
+class _$_SrChoiseOfResponsible implements _SrChoiseOfResponsible {
+  const _$_SrChoiseOfResponsible();
 
   @override
   String toString() {
@@ -4711,7 +4710,7 @@ class _$ChoiseOfResponsible implements ChoiseOfResponsible {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ChoiseOfResponsible);
+        (other.runtimeType == runtimeType && other is _$_SrChoiseOfResponsible);
   }
 
   @override
@@ -4754,9 +4753,9 @@ class _$ChoiseOfResponsible implements ChoiseOfResponsible {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Exit value) exit,
-    required TResult Function(OpenSaveDialog value) openSaveDialog,
-    required TResult Function(ChoiseOfResponsible value) chooseAnResponsible,
+    required TResult Function(_SrExit value) exit,
+    required TResult Function(_SrOpenSaveDialog value) openSaveDialog,
+    required TResult Function(_SrChoiseOfResponsible value) chooseAnResponsible,
   }) {
     return chooseAnResponsible(this);
   }
@@ -4764,9 +4763,9 @@ class _$ChoiseOfResponsible implements ChoiseOfResponsible {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Exit value)? exit,
-    TResult Function(OpenSaveDialog value)? openSaveDialog,
-    TResult Function(ChoiseOfResponsible value)? chooseAnResponsible,
+    TResult Function(_SrExit value)? exit,
+    TResult Function(_SrOpenSaveDialog value)? openSaveDialog,
+    TResult Function(_SrChoiseOfResponsible value)? chooseAnResponsible,
   }) {
     return chooseAnResponsible?.call(this);
   }
@@ -4774,9 +4773,9 @@ class _$ChoiseOfResponsible implements ChoiseOfResponsible {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Exit value)? exit,
-    TResult Function(OpenSaveDialog value)? openSaveDialog,
-    TResult Function(ChoiseOfResponsible value)? chooseAnResponsible,
+    TResult Function(_SrExit value)? exit,
+    TResult Function(_SrOpenSaveDialog value)? openSaveDialog,
+    TResult Function(_SrChoiseOfResponsible value)? chooseAnResponsible,
     required TResult orElse(),
   }) {
     if (chooseAnResponsible != null) {
@@ -4786,6 +4785,6 @@ class _$ChoiseOfResponsible implements ChoiseOfResponsible {
   }
 }
 
-abstract class ChoiseOfResponsible implements TaskPageSR {
-  const factory ChoiseOfResponsible() = _$ChoiseOfResponsible;
+abstract class _SrChoiseOfResponsible implements TaskPageSR {
+  const factory _SrChoiseOfResponsible() = _$_SrChoiseOfResponsible;
 }

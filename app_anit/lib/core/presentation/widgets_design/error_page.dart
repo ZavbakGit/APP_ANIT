@@ -6,12 +6,12 @@ class ErrorPage extends StatelessWidget {
   const ErrorPage({
     Key? key,
     this.onClick,
-    required this.message,
+    this.message,
     this.buttonTitle = 'Повторить',
   }) : super(key: key);
 
   final void Function()? onClick;
-  final String message;
+  final String? message;
   final String buttonTitle;
 
   @override
@@ -26,11 +26,12 @@ class ErrorPage extends StatelessWidget {
             children: [
               Text('Ошибка', style: Theme.of(context).textTheme.displaySmall),
               verticalSpaceLarge,
-              Text(message,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyMedium
-                      ?.copyWith(color: Theme.of(context).colorScheme.error)),
+              if (message != null)
+                Text(message!,
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyMedium
+                        ?.copyWith(color: Theme.of(context).colorScheme.error)),
               verticalSpaceRegular,
               if (onClick != null)
                 ElevatedButton(onPressed: onClick, child: Text(buttonTitle)),

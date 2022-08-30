@@ -9,12 +9,12 @@ class TaskPageState with _$TaskPageState {
   const factory TaskPageState.data({
     required Task task,
     required bool isModified,
-  }) = TaskPageStateData;
+  }) = _StData;
 
-  const factory TaskPageState.empty() = Empty;
+  const factory TaskPageState.empty() = _StEmpty;
   const factory TaskPageState.error({
     required String message,
-  }) = Error;
+  }) = _StError;
 }
 
 @freezed
@@ -51,7 +51,7 @@ class TaskPageEvent with _$TaskPageEvent {
 
 @freezed
 class TaskPageSR with _$TaskPageSR {
-  const factory TaskPageSR.exit() = Exit;
-  const factory TaskPageSR.openSaveDialog() = OpenSaveDialog;
-  const factory TaskPageSR.chooseAnResponsible() = ChoiseOfResponsible;
+  const factory TaskPageSR.exit() = _SrExit;
+  const factory TaskPageSR.openSaveDialog() = _SrOpenSaveDialog;
+  const factory TaskPageSR.chooseAnResponsible() = _SrChoiseOfResponsible;
 }

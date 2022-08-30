@@ -10,6 +10,7 @@ import '../../../app/injection_container.dart';
 import '../../../arch/sr_bloc/sr_bloc_builder.dart';
 import '../../../core/presentation/widgets_design/base_snackbar.dart';
 import '../../../core/presentation/widgets_design/empty_page.dart';
+import '../../../core/presentation/widgets_design/page_widget.dart';
 import '../../../core/presentation/widgets_design/progres_widget.dart';
 import '../task/task_page.dart';
 
@@ -179,15 +180,17 @@ class TaskListWidget extends StatelessWidget {
       onRefresh: () async {
         context.read<TasksUserBlok>().add(const TasksUserEvent.refresh());
       },
-      child: ListView.builder(
-        physics: const BouncingScrollPhysics(
-            parent: AlwaysScrollableScrollPhysics()),
-        scrollDirection: Axis.vertical,
-        //shrinkWrap: true,
-        itemBuilder: (BuildContext context, int index) {
-          return TaskItemWidget(item: list[index]);
-        },
-        itemCount: list.length,
+      child: CustomPageWidget(
+        child: ListView.builder(
+          physics: const BouncingScrollPhysics(
+              parent: AlwaysScrollableScrollPhysics()),
+          scrollDirection: Axis.vertical,
+          //shrinkWrap: true,
+          itemBuilder: (BuildContext context, int index) {
+            return TaskItemWidget(item: list[index]);
+          },
+          itemCount: list.length,
+        ),
       ),
     );
   }
