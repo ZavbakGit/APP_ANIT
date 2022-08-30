@@ -38,7 +38,7 @@ class TaskPage extends StatelessWidget {
             )..add(const TaskPageEventInit()),
         child: SrBlocBuilder<TaskPageBloc, TaskPageState, TaskPageSR>(
           onSR: _onSingleResult,
-          builder: (_, blocState) => blocState.map(
+          builder: (context, blocState) => blocState.map(
             data: (state) => _PageContent(
               isModified: state.isModified,
               task: state.task,
