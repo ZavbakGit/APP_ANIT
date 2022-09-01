@@ -1,4 +1,4 @@
-import 'package:app_anit/core/presentation/widgets_design/progres_widget.dart';
+import 'package:app_anit/core/presentation/widgets_design/custom_progres_widgets.dart';
 import 'package:app_anit/presenter/widgets/tasks_widget/tasks_widget_bloc.dart';
 import 'package:app_anit/presenter/widgets/tasks_widget/tasks_widget_models.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../app/injection_container.dart';
 import '../../../arch/sr_bloc/sr_bloc_builder.dart';
-import '../../disign_system/saherd/ui_helpers.dart';
+import '../../disign_system/ui_helpers.dart';
 import '../../pages/task/task_page.dart';
 import '../../pages/tasks_user/tasks_user_page.dart';
 

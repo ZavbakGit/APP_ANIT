@@ -1,12 +1,13 @@
-import 'package:app_anit/core/presentation/widgets_design/empty_page.dart';
+import 'package:app_anit/core/presentation/widgets_design/custom_empty_page.dart';
 import 'package:app_anit/presenter/pages/main/main_page_bloc.dart';
 import 'package:app_anit/presenter/pages/main/main_page_bloc_models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../app/injection_container.dart';
 import '../../../arch/sr_bloc/sr_bloc_builder.dart';
-import '../../../core/presentation/widgets_design/page_widget.dart';
+import '../../../core/presentation/widgets_design/custom_page_widget.dart';
 import '../../widgets/tasks_widget/tasks_widget.dart';
 
 class MainPage extends StatelessWidget {
@@ -44,6 +45,13 @@ List<Widget> _getPopupMenu() {
             context.read<MainPageBloc>().add(const MainPageEvent.exit());
           },
         ),
+        PopupMenuItem(
+          value: 2,
+          child: const Text("Дизайн система"),
+          onTap: () {
+            context.push('/design_system');
+          },
+        ),
       ],
     )
   ];
@@ -70,13 +78,6 @@ class _MainPageContent extends StatelessWidget {
           child: SingleChildScrollView(
             child: Wrap(
               children: const [
-                TasksWidget(),
-                TasksWidget(),
-                TasksWidget(),
-                TasksWidget(),
-                TasksWidget(),
-                TasksWidget(),
-                TasksWidget(),
                 TasksWidget(),
               ],
             ),

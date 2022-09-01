@@ -1,7 +1,7 @@
 import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
 import 'package:flutter/material.dart';
 
-import 'ref_enum_dialog_widget.dart';
+import '../../pages/enum_dialog/enum_dialog_page.dart';
 
 class RefEnumFieldWidget extends StatelessWidget {
   final RefEnum? refEnum;
@@ -29,9 +29,8 @@ class RefEnumFieldWidget extends StatelessWidget {
             builder: (context) => SimpleDialog(
               title: Text(title),
               children: [
-                RefEnumDialogWidget(
+                EnumDialogPage(
                   refEnum: refEnum,
-                  titleDialog: titleDialog,
                   type: type,
                 ),
               ],

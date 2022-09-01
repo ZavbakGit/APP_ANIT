@@ -15,11 +15,10 @@ class CatalogSearchDialogBloc
     on<EvChangeSearchStr>(_changeSearchStr);
     on<EvSearchDebounce>(_searchDebounce);
     on<EvSearch>(_search);
-    on<EvPressedCatalog>(_pressedCatalog);
+    on<EvPressedItem>(_pressedCatalog);
   }
 
   late String? searchStr;
-  late List<RefCatalog> list;
 
   final Repository repository;
   final String type;
@@ -81,7 +80,7 @@ class CatalogSearchDialogBloc
   }
 
   FutureOr<void> _pressedCatalog(
-    EvPressedCatalog event,
+    EvPressedItem event,
     Emitter<SearchDialogState> emit,
   ) {
     addSr(SearchDialogSR.exit(event.catalog));

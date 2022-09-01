@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 ThemeData themeLight() => ThemeData(
       useMaterial3: true,
-      primaryColor: Color(0xFF4259A9),
+      primaryColor: const Color(0xFF4259A9),
       backgroundColor: Colors.white,
       canvasColor: const Color(0xffF2F2F2),
       scaffoldBackgroundColor: const Color(0xfff0f0f0),

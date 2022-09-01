@@ -1,5 +1,5 @@
 import 'package:app_anit/core/extencion/date_extencion.dart';
-import 'package:app_anit/core/presentation/widgets_design/page_widget.dart';
+import 'package:app_anit/core/presentation/widgets_design/custom_page_widget.dart';
 import 'package:app_anit/domain/models/task_extention.dart';
 import 'package:app_anit/presenter/pages/task/task_page_bloc.dart';
 import 'package:app_anit/presenter/pages/task/task_page_bloc_models.dart';
@@ -10,14 +10,14 @@ import 'package:intl/intl.dart';
 
 import '../../../app/injection_container.dart';
 import '../../../arch/sr_bloc/sr_bloc_builder.dart';
-import '../../../core/presentation/widgets_design/base_snackbar.dart';
-import '../../../core/presentation/widgets_design/confirm_dialog.dart';
-import '../../../core/presentation/widgets_design/empty_page.dart';
-import '../../../core/presentation/widgets_design/error_page.dart';
-import '../../../core/presentation/widgets_design/text_field.dart';
-import '../../widgets/catalogs/ref_catalog_dialog_widget.dart';
+import '../../../core/presentation/widgets_design/custom_base_snackbar.dart';
+import '../../../core/presentation/widgets_design/dialogs/confirm_dialog.dart';
+import '../../../core/presentation/widgets_design/custom_empty_page.dart';
+import '../../../core/presentation/widgets_design/custom_error_page.dart';
+import '../../../core/presentation/widgets_design/custom_text_fields.dart';
 import '../../widgets/catalogs/ref_catalog_field_widget.dart';
 import '../../widgets/enums/ref_enum_field_widget.dart';
+import '../search_catalog/catalog_search_dialod_page.dart';
 
 class TaskPage extends StatelessWidget {
   final String? guid;
@@ -47,7 +47,7 @@ class TaskPage extends StatelessWidget {
               userIsController: state.userIsController,
             ),
             empty: (state) => const CustomEmptyPage(),
-            error: (state) => ErrorPage(
+            error: (state) => CustomErrorPage(
               message: state.message,
               onClick: () =>
                   context.read<TaskPageBloc>().add(const TaskPageEvent.load()),
@@ -59,7 +59,7 @@ class TaskPage extends StatelessWidget {
   void _onSingleResult(BuildContext context, TaskPageSR sr) {
     sr.when(
         showSnackBar: (message) =>
-            BaseSnackbar.show(context: context, text: message),
+            CustomBaseSnackbar.show(context: context, text: message),
         exit: (isModified) {
           Navigator.of(context).pop(isModified);
         },
@@ -68,9 +68,9 @@ class TaskPage extends StatelessWidget {
           Navigator.push<RefCatalog>(
             context,
             MaterialPageRoute(
-              builder: (context) => RefCatalogDialogWidget(
+              builder: (context) => const CatalogSearchDialogPage(
                 type: 'Пользователи',
-                titleDialog: 'Ответственный',
+                title: 'Ответственный',
               ),
             ),
           ).then((val) {
@@ -302,9 +302,9 @@ class PannelChippWraperWidget extends StatelessWidget {
             Navigator.push<RefCatalog>(
               context,
               MaterialPageRoute(
-                builder: (context) => RefCatalogDialogWidget(
+                builder: (context) => const CatalogSearchDialogPage(
                   type: 'Пользователи',
-                  titleDialog: 'Пользователи',
+                  title: 'Пользователи',
                 ),
               ),
             ).then((value) {

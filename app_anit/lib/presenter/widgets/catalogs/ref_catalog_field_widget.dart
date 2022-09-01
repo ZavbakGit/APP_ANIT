@@ -1,8 +1,7 @@
-import 'package:app_anit/presenter/widgets/catalogs/ref_catalog_dialog_widget.dart';
 import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
 import 'package:flutter/material.dart';
 
-import '../../disign_system/saherd/ui_helpers.dart';
+import '../../disign_system/ui_helpers.dart';
 import '../../pages/search_catalog/catalog_search_dialod_page.dart';
 
 class RefCatalogFieldWidget extends StatelessWidget {

@@ -535,7 +535,7 @@ mixin _$SearchDialogEvent {
     required TResult Function() init,
     required TResult Function() searchDebounce,
     required TResult Function() search,
-    required TResult Function(RefCatalog catalog) pressedCatalog,
+    required TResult Function(RefCatalog catalog) pressedItem,
     required TResult Function(String search) changeSearchStr,
   }) =>
       throw _privateConstructorUsedError;
@@ -544,7 +544,7 @@ mixin _$SearchDialogEvent {
     TResult Function()? init,
     TResult Function()? searchDebounce,
     TResult Function()? search,
-    TResult Function(RefCatalog catalog)? pressedCatalog,
+    TResult Function(RefCatalog catalog)? pressedItem,
     TResult Function(String search)? changeSearchStr,
   }) =>
       throw _privateConstructorUsedError;
@@ -553,7 +553,7 @@ mixin _$SearchDialogEvent {
     TResult Function()? init,
     TResult Function()? searchDebounce,
     TResult Function()? search,
-    TResult Function(RefCatalog catalog)? pressedCatalog,
+    TResult Function(RefCatalog catalog)? pressedItem,
     TResult Function(String search)? changeSearchStr,
     required TResult orElse(),
   }) =>
@@ -563,7 +563,7 @@ mixin _$SearchDialogEvent {
     required TResult Function(EvInit value) init,
     required TResult Function(EvSearchDebounce value) searchDebounce,
     required TResult Function(EvSearch value) search,
-    required TResult Function(EvPressedCatalog value) pressedCatalog,
+    required TResult Function(EvPressedItem value) pressedItem,
     required TResult Function(EvChangeSearchStr value) changeSearchStr,
   }) =>
       throw _privateConstructorUsedError;
@@ -572,7 +572,7 @@ mixin _$SearchDialogEvent {
     TResult Function(EvInit value)? init,
     TResult Function(EvSearchDebounce value)? searchDebounce,
     TResult Function(EvSearch value)? search,
-    TResult Function(EvPressedCatalog value)? pressedCatalog,
+    TResult Function(EvPressedItem value)? pressedItem,
     TResult Function(EvChangeSearchStr value)? changeSearchStr,
   }) =>
       throw _privateConstructorUsedError;
@@ -581,7 +581,7 @@ mixin _$SearchDialogEvent {
     TResult Function(EvInit value)? init,
     TResult Function(EvSearchDebounce value)? searchDebounce,
     TResult Function(EvSearch value)? search,
-    TResult Function(EvPressedCatalog value)? pressedCatalog,
+    TResult Function(EvPressedItem value)? pressedItem,
     TResult Function(EvChangeSearchStr value)? changeSearchStr,
     required TResult orElse(),
   }) =>
@@ -646,7 +646,7 @@ class _$EvInit implements EvInit {
     required TResult Function() init,
     required TResult Function() searchDebounce,
     required TResult Function() search,
-    required TResult Function(RefCatalog catalog) pressedCatalog,
+    required TResult Function(RefCatalog catalog) pressedItem,
     required TResult Function(String search) changeSearchStr,
   }) {
     return init();
@@ -658,7 +658,7 @@ class _$EvInit implements EvInit {
     TResult Function()? init,
     TResult Function()? searchDebounce,
     TResult Function()? search,
-    TResult Function(RefCatalog catalog)? pressedCatalog,
+    TResult Function(RefCatalog catalog)? pressedItem,
     TResult Function(String search)? changeSearchStr,
   }) {
     return init?.call();
@@ -670,7 +670,7 @@ class _$EvInit implements EvInit {
     TResult Function()? init,
     TResult Function()? searchDebounce,
     TResult Function()? search,
-    TResult Function(RefCatalog catalog)? pressedCatalog,
+    TResult Function(RefCatalog catalog)? pressedItem,
     TResult Function(String search)? changeSearchStr,
     required TResult orElse(),
   }) {
@@ -686,7 +686,7 @@ class _$EvInit implements EvInit {
     required TResult Function(EvInit value) init,
     required TResult Function(EvSearchDebounce value) searchDebounce,
     required TResult Function(EvSearch value) search,
-    required TResult Function(EvPressedCatalog value) pressedCatalog,
+    required TResult Function(EvPressedItem value) pressedItem,
     required TResult Function(EvChangeSearchStr value) changeSearchStr,
   }) {
     return init(this);
@@ -698,7 +698,7 @@ class _$EvInit implements EvInit {
     TResult Function(EvInit value)? init,
     TResult Function(EvSearchDebounce value)? searchDebounce,
     TResult Function(EvSearch value)? search,
-    TResult Function(EvPressedCatalog value)? pressedCatalog,
+    TResult Function(EvPressedItem value)? pressedItem,
     TResult Function(EvChangeSearchStr value)? changeSearchStr,
   }) {
     return init?.call(this);
@@ -710,7 +710,7 @@ class _$EvInit implements EvInit {
     TResult Function(EvInit value)? init,
     TResult Function(EvSearchDebounce value)? searchDebounce,
     TResult Function(EvSearch value)? search,
-    TResult Function(EvPressedCatalog value)? pressedCatalog,
+    TResult Function(EvPressedItem value)? pressedItem,
     TResult Function(EvChangeSearchStr value)? changeSearchStr,
     required TResult orElse(),
   }) {
@@ -769,7 +769,7 @@ class _$EvSearchDebounce implements EvSearchDebounce {
     required TResult Function() init,
     required TResult Function() searchDebounce,
     required TResult Function() search,
-    required TResult Function(RefCatalog catalog) pressedCatalog,
+    required TResult Function(RefCatalog catalog) pressedItem,
     required TResult Function(String search) changeSearchStr,
   }) {
     return searchDebounce();
@@ -781,7 +781,7 @@ class _$EvSearchDebounce implements EvSearchDebounce {
     TResult Function()? init,
     TResult Function()? searchDebounce,
     TResult Function()? search,
-    TResult Function(RefCatalog catalog)? pressedCatalog,
+    TResult Function(RefCatalog catalog)? pressedItem,
     TResult Function(String search)? changeSearchStr,
   }) {
     return searchDebounce?.call();
@@ -793,7 +793,7 @@ class _$EvSearchDebounce implements EvSearchDebounce {
     TResult Function()? init,
     TResult Function()? searchDebounce,
     TResult Function()? search,
-    TResult Function(RefCatalog catalog)? pressedCatalog,
+    TResult Function(RefCatalog catalog)? pressedItem,
     TResult Function(String search)? changeSearchStr,
     required TResult orElse(),
   }) {
@@ -809,7 +809,7 @@ class _$EvSearchDebounce implements EvSearchDebounce {
     required TResult Function(EvInit value) init,
     required TResult Function(EvSearchDebounce value) searchDebounce,
     required TResult Function(EvSearch value) search,
-    required TResult Function(EvPressedCatalog value) pressedCatalog,
+    required TResult Function(EvPressedItem value) pressedItem,
     required TResult Function(EvChangeSearchStr value) changeSearchStr,
   }) {
     return searchDebounce(this);
@@ -821,7 +821,7 @@ class _$EvSearchDebounce implements EvSearchDebounce {
     TResult Function(EvInit value)? init,
     TResult Function(EvSearchDebounce value)? searchDebounce,
     TResult Function(EvSearch value)? search,
-    TResult Function(EvPressedCatalog value)? pressedCatalog,
+    TResult Function(EvPressedItem value)? pressedItem,
     TResult Function(EvChangeSearchStr value)? changeSearchStr,
   }) {
     return searchDebounce?.call(this);
@@ -833,7 +833,7 @@ class _$EvSearchDebounce implements EvSearchDebounce {
     TResult Function(EvInit value)? init,
     TResult Function(EvSearchDebounce value)? searchDebounce,
     TResult Function(EvSearch value)? search,
-    TResult Function(EvPressedCatalog value)? pressedCatalog,
+    TResult Function(EvPressedItem value)? pressedItem,
     TResult Function(EvChangeSearchStr value)? changeSearchStr,
     required TResult orElse(),
   }) {
@@ -891,7 +891,7 @@ class _$EvSearch implements EvSearch {
     required TResult Function() init,
     required TResult Function() searchDebounce,
     required TResult Function() search,
-    required TResult Function(RefCatalog catalog) pressedCatalog,
+    required TResult Function(RefCatalog catalog) pressedItem,
     required TResult Function(String search) changeSearchStr,
   }) {
     return search();
@@ -903,7 +903,7 @@ class _$EvSearch implements EvSearch {
     TResult Function()? init,
     TResult Function()? searchDebounce,
     TResult Function()? search,
-    TResult Function(RefCatalog catalog)? pressedCatalog,
+    TResult Function(RefCatalog catalog)? pressedItem,
     TResult Function(String search)? changeSearchStr,
   }) {
     return search?.call();
@@ -915,7 +915,7 @@ class _$EvSearch implements EvSearch {
     TResult Function()? init,
     TResult Function()? searchDebounce,
     TResult Function()? search,
-    TResult Function(RefCatalog catalog)? pressedCatalog,
+    TResult Function(RefCatalog catalog)? pressedItem,
     TResult Function(String search)? changeSearchStr,
     required TResult orElse(),
   }) {
@@ -931,7 +931,7 @@ class _$EvSearch implements EvSearch {
     required TResult Function(EvInit value) init,
     required TResult Function(EvSearchDebounce value) searchDebounce,
     required TResult Function(EvSearch value) search,
-    required TResult Function(EvPressedCatalog value) pressedCatalog,
+    required TResult Function(EvPressedItem value) pressedItem,
     required TResult Function(EvChangeSearchStr value) changeSearchStr,
   }) {
     return search(this);
@@ -943,7 +943,7 @@ class _$EvSearch implements EvSearch {
     TResult Function(EvInit value)? init,
     TResult Function(EvSearchDebounce value)? searchDebounce,
     TResult Function(EvSearch value)? search,
-    TResult Function(EvPressedCatalog value)? pressedCatalog,
+    TResult Function(EvPressedItem value)? pressedItem,
     TResult Function(EvChangeSearchStr value)? changeSearchStr,
   }) {
     return search?.call(this);
@@ -955,7 +955,7 @@ class _$EvSearch implements EvSearch {
     TResult Function(EvInit value)? init,
     TResult Function(EvSearchDebounce value)? searchDebounce,
     TResult Function(EvSearch value)? search,
-    TResult Function(EvPressedCatalog value)? pressedCatalog,
+    TResult Function(EvPressedItem value)? pressedItem,
     TResult Function(EvChangeSearchStr value)? changeSearchStr,
     required TResult orElse(),
   }) {
@@ -971,29 +971,29 @@ abstract class EvSearch implements SearchDialogEvent {
 }
 
 /// @nodoc
-abstract class _$$EvPressedCatalogCopyWith<$Res> {
-  factory _$$EvPressedCatalogCopyWith(
-          _$EvPressedCatalog value, $Res Function(_$EvPressedCatalog) then) =
-      __$$EvPressedCatalogCopyWithImpl<$Res>;
+abstract class _$$EvPressedItemCopyWith<$Res> {
+  factory _$$EvPressedItemCopyWith(
+          _$EvPressedItem value, $Res Function(_$EvPressedItem) then) =
+      __$$EvPressedItemCopyWithImpl<$Res>;
   $Res call({RefCatalog catalog});
 }
 
 /// @nodoc
-class __$$EvPressedCatalogCopyWithImpl<$Res>
+class __$$EvPressedItemCopyWithImpl<$Res>
     extends _$SearchDialogEventCopyWithImpl<$Res>
-    implements _$$EvPressedCatalogCopyWith<$Res> {
-  __$$EvPressedCatalogCopyWithImpl(
-      _$EvPressedCatalog _value, $Res Function(_$EvPressedCatalog) _then)
-      : super(_value, (v) => _then(v as _$EvPressedCatalog));
+    implements _$$EvPressedItemCopyWith<$Res> {
+  __$$EvPressedItemCopyWithImpl(
+      _$EvPressedItem _value, $Res Function(_$EvPressedItem) _then)
+      : super(_value, (v) => _then(v as _$EvPressedItem));
 
   @override
-  _$EvPressedCatalog get _value => super._value as _$EvPressedCatalog;
+  _$EvPressedItem get _value => super._value as _$EvPressedItem;
 
   @override
   $Res call({
     Object? catalog = freezed,
   }) {
-    return _then(_$EvPressedCatalog(
+    return _then(_$EvPressedItem(
       catalog == freezed
           ? _value.catalog
           : catalog // ignore: cast_nullable_to_non_nullable
@@ -1004,22 +1004,22 @@ class __$$EvPressedCatalogCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EvPressedCatalog implements EvPressedCatalog {
-  const _$EvPressedCatalog(this.catalog);
+class _$EvPressedItem implements EvPressedItem {
+  const _$EvPressedItem(this.catalog);
 
   @override
   final RefCatalog catalog;
 
   @override
   String toString() {
-    return 'SearchDialogEvent.pressedCatalog(catalog: $catalog)';
+    return 'SearchDialogEvent.pressedItem(catalog: $catalog)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EvPressedCatalog &&
+            other is _$EvPressedItem &&
             const DeepCollectionEquality().equals(other.catalog, catalog));
   }
 
@@ -1029,8 +1029,8 @@ class _$EvPressedCatalog implements EvPressedCatalog {
 
   @JsonKey(ignore: true)
   @override
-  _$$EvPressedCatalogCopyWith<_$EvPressedCatalog> get copyWith =>
-      __$$EvPressedCatalogCopyWithImpl<_$EvPressedCatalog>(this, _$identity);
+  _$$EvPressedItemCopyWith<_$EvPressedItem> get copyWith =>
+      __$$EvPressedItemCopyWithImpl<_$EvPressedItem>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1038,10 +1038,10 @@ class _$EvPressedCatalog implements EvPressedCatalog {
     required TResult Function() init,
     required TResult Function() searchDebounce,
     required TResult Function() search,
-    required TResult Function(RefCatalog catalog) pressedCatalog,
+    required TResult Function(RefCatalog catalog) pressedItem,
     required TResult Function(String search) changeSearchStr,
   }) {
-    return pressedCatalog(catalog);
+    return pressedItem(catalog);
   }
 
   @override
@@ -1050,10 +1050,10 @@ class _$EvPressedCatalog implements EvPressedCatalog {
     TResult Function()? init,
     TResult Function()? searchDebounce,
     TResult Function()? search,
-    TResult Function(RefCatalog catalog)? pressedCatalog,
+    TResult Function(RefCatalog catalog)? pressedItem,
     TResult Function(String search)? changeSearchStr,
   }) {
-    return pressedCatalog?.call(catalog);
+    return pressedItem?.call(catalog);
   }
 
   @override
@@ -1062,12 +1062,12 @@ class _$EvPressedCatalog implements EvPressedCatalog {
     TResult Function()? init,
     TResult Function()? searchDebounce,
     TResult Function()? search,
-    TResult Function(RefCatalog catalog)? pressedCatalog,
+    TResult Function(RefCatalog catalog)? pressedItem,
     TResult Function(String search)? changeSearchStr,
     required TResult orElse(),
   }) {
-    if (pressedCatalog != null) {
-      return pressedCatalog(catalog);
+    if (pressedItem != null) {
+      return pressedItem(catalog);
     }
     return orElse();
   }
@@ -1078,10 +1078,10 @@ class _$EvPressedCatalog implements EvPressedCatalog {
     required TResult Function(EvInit value) init,
     required TResult Function(EvSearchDebounce value) searchDebounce,
     required TResult Function(EvSearch value) search,
-    required TResult Function(EvPressedCatalog value) pressedCatalog,
+    required TResult Function(EvPressedItem value) pressedItem,
     required TResult Function(EvChangeSearchStr value) changeSearchStr,
   }) {
-    return pressedCatalog(this);
+    return pressedItem(this);
   }
 
   @override
@@ -1090,10 +1090,10 @@ class _$EvPressedCatalog implements EvPressedCatalog {
     TResult Function(EvInit value)? init,
     TResult Function(EvSearchDebounce value)? searchDebounce,
     TResult Function(EvSearch value)? search,
-    TResult Function(EvPressedCatalog value)? pressedCatalog,
+    TResult Function(EvPressedItem value)? pressedItem,
     TResult Function(EvChangeSearchStr value)? changeSearchStr,
   }) {
-    return pressedCatalog?.call(this);
+    return pressedItem?.call(this);
   }
 
   @override
@@ -1102,23 +1102,23 @@ class _$EvPressedCatalog implements EvPressedCatalog {
     TResult Function(EvInit value)? init,
     TResult Function(EvSearchDebounce value)? searchDebounce,
     TResult Function(EvSearch value)? search,
-    TResult Function(EvPressedCatalog value)? pressedCatalog,
+    TResult Function(EvPressedItem value)? pressedItem,
     TResult Function(EvChangeSearchStr value)? changeSearchStr,
     required TResult orElse(),
   }) {
-    if (pressedCatalog != null) {
-      return pressedCatalog(this);
+    if (pressedItem != null) {
+      return pressedItem(this);
     }
     return orElse();
   }
 }
 
-abstract class EvPressedCatalog implements SearchDialogEvent {
-  const factory EvPressedCatalog(final RefCatalog catalog) = _$EvPressedCatalog;
+abstract class EvPressedItem implements SearchDialogEvent {
+  const factory EvPressedItem(final RefCatalog catalog) = _$EvPressedItem;
 
   RefCatalog get catalog;
   @JsonKey(ignore: true)
-  _$$EvPressedCatalogCopyWith<_$EvPressedCatalog> get copyWith =>
+  _$$EvPressedItemCopyWith<_$EvPressedItem> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1190,7 +1190,7 @@ class _$EvChangeSearchStr implements EvChangeSearchStr {
     required TResult Function() init,
     required TResult Function() searchDebounce,
     required TResult Function() search,
-    required TResult Function(RefCatalog catalog) pressedCatalog,
+    required TResult Function(RefCatalog catalog) pressedItem,
     required TResult Function(String search) changeSearchStr,
   }) {
     return changeSearchStr(this.search);
@@ -1202,7 +1202,7 @@ class _$EvChangeSearchStr implements EvChangeSearchStr {
     TResult Function()? init,
     TResult Function()? searchDebounce,
     TResult Function()? search,
-    TResult Function(RefCatalog catalog)? pressedCatalog,
+    TResult Function(RefCatalog catalog)? pressedItem,
     TResult Function(String search)? changeSearchStr,
   }) {
     return changeSearchStr?.call(this.search);
@@ -1214,7 +1214,7 @@ class _$EvChangeSearchStr implements EvChangeSearchStr {
     TResult Function()? init,
     TResult Function()? searchDebounce,
     TResult Function()? search,
-    TResult Function(RefCatalog catalog)? pressedCatalog,
+    TResult Function(RefCatalog catalog)? pressedItem,
     TResult Function(String search)? changeSearchStr,
     required TResult orElse(),
   }) {
@@ -1230,7 +1230,7 @@ class _$EvChangeSearchStr implements EvChangeSearchStr {
     required TResult Function(EvInit value) init,
     required TResult Function(EvSearchDebounce value) searchDebounce,
     required TResult Function(EvSearch value) search,
-    required TResult Function(EvPressedCatalog value) pressedCatalog,
+    required TResult Function(EvPressedItem value) pressedItem,
     required TResult Function(EvChangeSearchStr value) changeSearchStr,
   }) {
     return changeSearchStr(this);
@@ -1242,7 +1242,7 @@ class _$EvChangeSearchStr implements EvChangeSearchStr {
     TResult Function(EvInit value)? init,
     TResult Function(EvSearchDebounce value)? searchDebounce,
     TResult Function(EvSearch value)? search,
-    TResult Function(EvPressedCatalog value)? pressedCatalog,
+    TResult Function(EvPressedItem value)? pressedItem,
     TResult Function(EvChangeSearchStr value)? changeSearchStr,
   }) {
     return changeSearchStr?.call(this);
@@ -1254,7 +1254,7 @@ class _$EvChangeSearchStr implements EvChangeSearchStr {
     TResult Function(EvInit value)? init,
     TResult Function(EvSearchDebounce value)? searchDebounce,
     TResult Function(EvSearch value)? search,
-    TResult Function(EvPressedCatalog value)? pressedCatalog,
+    TResult Function(EvPressedItem value)? pressedItem,
     TResult Function(EvChangeSearchStr value)? changeSearchStr,
     required TResult orElse(),
   }) {

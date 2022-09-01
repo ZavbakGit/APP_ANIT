@@ -5,10 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../app/injection_container.dart';
 import '../../../arch/sr_bloc/sr_bloc_builder.dart';
-import '../../../core/presentation/widgets_design/base_snackbar.dart';
-import '../../../core/presentation/widgets_design/empty_page.dart';
-import '../../../core/presentation/widgets_design/error_page.dart';
-import '../../../core/presentation/widgets_design/page_widget.dart';
+import '../../../core/presentation/widgets_design/custom_base_snackbar.dart';
+import '../../../core/presentation/widgets_design/custom_empty_page.dart';
+import '../../../core/presentation/widgets_design/custom_error_page.dart';
+import '../../../core/presentation/widgets_design/custom_page_widget.dart';
 import 'catalog_search_dialod_bloc.dart';
 
 class CatalogSearchDialogPage extends StatelessWidget {
@@ -36,7 +36,7 @@ class CatalogSearchDialogPage extends StatelessWidget {
                 isLoadingList: state.isLoadingList,
                 searchStr: state.searchStr),
             empty: (state) => const CustomEmptyPage(),
-            error: (state) => ErrorPage(
+            error: (state) => CustomErrorPage(
                   message: state.message,
                   onClick: () => context
                       .read<CatalogSearchDialogBloc>()
@@ -50,7 +50,7 @@ class CatalogSearchDialogPage extends StatelessWidget {
     sr.when(
       exit: (value) => Navigator.of(context).pop(value),
       showSnackBar: (message) =>
-          BaseSnackbar.show(context: context, text: message),
+          CustomBaseSnackbar.show(context: context, text: message),
     );
   }
 }
@@ -113,7 +113,7 @@ class BodyWidget extends StatelessWidget {
           child: ListTile(
             onTap: () => context
                 .read<CatalogSearchDialogBloc>()
-                .add(SearchDialogEvent.pressedCatalog(list[index])),
+                .add(SearchDialogEvent.pressedItem(list[index])),
             title: Text(list[index].name ?? ''),
             subtitle: Text(list[index].code ?? ''),
           ),

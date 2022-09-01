@@ -24,8 +24,8 @@ class SearchDialogEvent with _$SearchDialogEvent {
   const factory SearchDialogEvent.init() = EvInit;
   const factory SearchDialogEvent.searchDebounce() = EvSearchDebounce;
   const factory SearchDialogEvent.search() = EvSearch;
-  const factory SearchDialogEvent.pressedCatalog(RefCatalog catalog) =
-      EvPressedCatalog;
+  const factory SearchDialogEvent.pressedItem(RefCatalog catalog) =
+      EvPressedItem;
   const factory SearchDialogEvent.changeSearchStr(String search) =
       EvChangeSearchStr;
 }

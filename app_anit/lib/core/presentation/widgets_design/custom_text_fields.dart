@@ -1,23 +1,5 @@
 import 'package:flutter/material.dart';
 
-class CustomCatalogField extends StatelessWidget {
-  final String title;
-  final String name;
-  const CustomCatalogField({
-    Key? key,
-    required this.title,
-    required this.name,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(title),
-      subtitle: Text(name),
-    );
-  }
-}
-
 //Использую для логин
 class CustomTextFormWidget extends StatelessWidget {
   final TextEditingController? controller;

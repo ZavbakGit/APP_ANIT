@@ -5,12 +5,12 @@ import 'package:go_router/go_router.dart';
 
 import '../../../app/injection_container.dart';
 import '../../../arch/sr_bloc/sr_bloc_builder.dart';
-import '../../../core/presentation/widgets_design/base_snackbar.dart';
-import '../../../core/presentation/widgets_design/empty_page.dart';
-import '../../../core/presentation/widgets_design/page_widget.dart';
-import '../../../core/presentation/widgets_design/progres_widget.dart';
-import '../../../core/presentation/widgets_design/text_field.dart';
-import '../../disign_system/saherd/ui_helpers.dart';
+import '../../../core/presentation/widgets_design/custom_base_snackbar.dart';
+import '../../../core/presentation/widgets_design/custom_empty_page.dart';
+import '../../../core/presentation/widgets_design/custom_page_widget.dart';
+import '../../../core/presentation/widgets_design/custom_progres_widgets.dart';
+import '../../../core/presentation/widgets_design/custom_text_fields.dart';
+import '../../disign_system/ui_helpers.dart';
 import 'login_page_bloc.dart';
 
 class LoginPage extends StatelessWidget {
@@ -45,7 +45,7 @@ class LoginPage extends StatelessWidget {
     sr.when(
       exit: () => context.go('/'),
       showSnackBar: (message) =>
-          BaseSnackbar.show(context: context, text: message),
+          CustomBaseSnackbar.show(context: context, text: message),
     );
   }
 }

@@ -1,5 +1,5 @@
 import 'package:app_anit/core/extencion/date_extencion.dart';
-import 'package:app_anit/core/presentation/widgets_design/error_page.dart';
+import 'package:app_anit/core/presentation/widgets_design/custom_error_page.dart';
 import 'package:app_anit/presenter/pages/tasks_user/tasks_user_bloc.dart';
 import 'package:app_anit/presenter/pages/tasks_user/tasks_user_models.dart';
 import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
@@ -8,10 +8,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../app/injection_container.dart';
 import '../../../arch/sr_bloc/sr_bloc_builder.dart';
-import '../../../core/presentation/widgets_design/base_snackbar.dart';
-import '../../../core/presentation/widgets_design/empty_page.dart';
-import '../../../core/presentation/widgets_design/page_widget.dart';
-import '../../../core/presentation/widgets_design/progres_widget.dart';
+import '../../../core/presentation/widgets_design/custom_base_snackbar.dart';
+import '../../../core/presentation/widgets_design/custom_empty_page.dart';
+import '../../../core/presentation/widgets_design/custom_page_widget.dart';
+import '../../../core/presentation/widgets_design/custom_progres_widgets.dart';
 import '../task/task_page.dart';
 
 class TasksUserPage extends StatelessWidget {
@@ -33,7 +33,7 @@ class TasksUserPage extends StatelessWidget {
               title: value.title,
               isLoading: value.isLoading,
             ),
-            error: (value) => ErrorPage(
+            error: (value) => CustomErrorPage(
                 message: value.message,
                 onClick: () => context
                     .read<TasksUserBlok>()
@@ -48,7 +48,7 @@ class TasksUserPage extends StatelessWidget {
     sr.when(
         exit: () {},
         showSnackBar: (message) =>
-            BaseSnackbar.show(context: context, text: message),
+            CustomBaseSnackbar.show(context: context, text: message),
         openTask: (guid) {
           Navigator.push<bool>(
             context,
