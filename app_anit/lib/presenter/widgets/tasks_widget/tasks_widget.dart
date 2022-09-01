@@ -1,4 +1,4 @@
-import 'package:app_anit/core/presentation/widgets_design/custom_progres_widgets.dart';
+import 'package:app_anit/presenter/disign_system/widgets_design/custom_progres_widgets.dart';
 import 'package:app_anit/presenter/widgets/tasks_widget/tasks_widget_bloc.dart';
 import 'package:app_anit/presenter/widgets/tasks_widget/tasks_widget_models.dart';
 import 'package:flutter/material.dart';

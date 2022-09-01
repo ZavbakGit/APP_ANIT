@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../presenter/disign_system/ui_helpers.dart';
+import '../ui_helpers.dart';
 
 class CustomErrorWidget extends StatelessWidget {
   const CustomErrorWidget({

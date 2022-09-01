@@ -16,6 +16,10 @@ class TasksUserBlok
   final List<TaskItem> tasks = [];
   final List<TaskItem> controlledTasks = [];
 
+  late RefCatalog curentUser;
+
+  bool get isCurentUser => curentUser.guid == appModel.remoteConfig!.user.guid!;
+
   late Timer? _timer;
 
   TasksUserBlok({
@@ -26,14 +30,18 @@ class TasksUserBlok
     on<EvRefresh>(_refresh);
     on<EvOnTapItem>(_onTapItem);
     on<EvOnTapFab>(_onTapFab);
+    on<EvOnTapFilter>(_onTapFilter);
+    on<EvOnChangeUser>(_onChangeUser);
+    on<EvOnTapFilterOff>(_onTapFilterOff);
   }
 
   FutureOr<void> _init(
     EvInit event,
     Emitter<TasksUserState> emit,
   ) {
+    curentUser = appModel.remoteConfig!.user;
     add(const TasksUserEvent.refresh());
-    _timer = Timer.periodic(const Duration(seconds: 30), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 15), (timer) {
       add(const TasksUserEvent.refresh());
     });
   }
@@ -49,14 +57,13 @@ class TasksUserBlok
     Emitter<TasksUserState> emit,
   ) async {
     emit(TasksUserState.data(
-      title: appModel.remoteConfig?.user.name ?? '',
-      isLoading: true,
-      tasks: tasks,
-      controlledTasks: controlledTasks,
-    ));
+        title: curentUser.name!,
+        isLoading: true,
+        tasks: tasks,
+        controlledTasks: controlledTasks,
+        isCurentUser: isCurentUser));
 
-    final either =
-        await repository.tasksUserGet(appModel.remoteConfig!.user.guid!);
+    final either = await repository.tasksUserGet(curentUser.guid!);
 
     tasks.clear();
     controlledTasks.clear();
@@ -71,11 +78,11 @@ class TasksUserBlok
       );
 
       emit(TasksUserState.data(
-        isLoading: false,
-        title: appModel.remoteConfig?.user.name ?? '',
-        tasks: tasks,
-        controlledTasks: controlledTasks,
-      ));
+          isLoading: false,
+          title: curentUser.name!,
+          tasks: tasks,
+          controlledTasks: controlledTasks,
+          isCurentUser: isCurentUser));
     });
   }
 
@@ -91,5 +98,28 @@ class TasksUserBlok
     Emitter<TasksUserState> emit,
   ) {
     addSr(const TasksUserSR.openNewTask());
+  }
+
+  FutureOr<void> _onTapFilter(
+    EvOnTapFilter event,
+    Emitter<TasksUserState> emit,
+  ) {
+    addSr(const TasksUserSR.openChooseUserDialog());
+  }
+
+  FutureOr<void> _onChangeUser(
+    EvOnChangeUser event,
+    Emitter<TasksUserState> emit,
+  ) {
+    curentUser = event.user;
+    add(const EvRefresh());
+  }
+
+  FutureOr<void> _onTapFilterOff(
+    EvOnTapFilterOff event,
+    Emitter<TasksUserState> emit,
+  ) {
+    curentUser = appModel.remoteConfig!.user;
+    add(const EvRefresh());
   }
 }

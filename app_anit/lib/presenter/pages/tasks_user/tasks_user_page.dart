@@ -1,5 +1,5 @@
 import 'package:app_anit/core/extencion/date_extencion.dart';
-import 'package:app_anit/core/presentation/widgets_design/custom_error_page.dart';
+import 'package:app_anit/presenter/disign_system/widgets_design/custom_error_page.dart';
 import 'package:app_anit/presenter/pages/tasks_user/tasks_user_bloc.dart';
 import 'package:app_anit/presenter/pages/tasks_user/tasks_user_models.dart';
 import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
@@ -8,10 +8,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../app/injection_container.dart';
 import '../../../arch/sr_bloc/sr_bloc_builder.dart';
-import '../../../core/presentation/widgets_design/custom_base_snackbar.dart';
-import '../../../core/presentation/widgets_design/custom_empty_page.dart';
-import '../../../core/presentation/widgets_design/custom_page_widget.dart';
-import '../../../core/presentation/widgets_design/custom_progres_widgets.dart';
+import '../../disign_system/widgets_design/custom_base_snackbar.dart';
+import '../../disign_system/widgets_design/custom_empty_page.dart';
+import '../../disign_system/widgets_design/custom_page_widget.dart';
+import '../../disign_system/widgets_design/custom_progres_widgets.dart';
+import '../../disign_system/widgets_design/dialogs/show_dialog_choice_catalog.dart';
 import '../task/task_page.dart';
 
 class TasksUserPage extends StatelessWidget {
@@ -32,6 +33,7 @@ class TasksUserPage extends StatelessWidget {
               controlledTasks: value.controlledTasks,
               title: value.title,
               isLoading: value.isLoading,
+              isCurentUser: value.isCurentUser,
             ),
             error: (value) => CustomErrorPage(
                 message: value.message,
@@ -46,6 +48,14 @@ class TasksUserPage extends StatelessWidget {
 
   void _onSingleResult(BuildContext context, TasksUserSR sr) {
     sr.when(
+        openChooseUserDialog: () => showDialogChoiceCatalog(
+              context: context,
+              title: 'Ответственный',
+              type: 'Пользователи',
+              choice: (refCatalog) => context
+                  .read<TasksUserBlok>()
+                  .add(TasksUserEvent.onChangeUser(refCatalog)),
+            ),
         exit: () {},
         showSnackBar: (message) =>
             CustomBaseSnackbar.show(context: context, text: message),
@@ -89,6 +99,7 @@ class _PageContent extends StatefulWidget {
   final List<TaskItem> controlledTasks;
   final bool isLoading;
   final String title;
+  final bool isCurentUser;
 
   const _PageContent({
     Key? key,
@@ -96,6 +107,7 @@ class _PageContent extends StatefulWidget {
     required this.controlledTasks,
     required this.isLoading,
     required this.title,
+    required this.isCurentUser,
   }) : super(key: key);
 
   @override
@@ -116,20 +128,27 @@ class _PageContentState extends State<_PageContent>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          children: [
-            Text(widget.title),
-            if (widget.isLoading)
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: SizedBox(
-                  height: 24,
-                  width: 24,
-                  child: CustomCircularProgressIndicator(),
-                ),
-              ),
-          ],
-        ),
+        actions: <Widget>[
+          if (widget.isCurentUser)
+            IconButton(
+              icon: const Icon(Icons.filter_alt),
+              onPressed: () async {
+                context
+                    .read<TasksUserBlok>()
+                    .add(const TasksUserEvent.onTapFilter());
+              },
+            ),
+          if (!widget.isCurentUser)
+            IconButton(
+              icon: const Icon(Icons.filter_alt_off),
+              onPressed: () async {
+                context
+                    .read<TasksUserBlok>()
+                    .add(const TasksUserEvent.onTapFilterOff());
+              },
+            ),
+        ],
+        title: Text(widget.title),
         bottom: TabBar(
           controller: _tabController,
           tabs: [
@@ -180,17 +199,28 @@ class TaskListWidget extends StatelessWidget {
       onRefresh: () async {
         context.read<TasksUserBlok>().add(const TasksUserEvent.refresh());
       },
-      child: CustomPageWidget(
-        child: ListView.builder(
-          physics: const BouncingScrollPhysics(
-              parent: AlwaysScrollableScrollPhysics()),
-          scrollDirection: Axis.vertical,
-          //shrinkWrap: true,
-          itemBuilder: (BuildContext context, int index) {
-            return TaskItemWidget(item: list[index]);
-          },
-          itemCount: list.length,
-        ),
+      child: Column(
+        children: [
+          if (isLoading)
+            const SizedBox(
+                height: 8,
+                child: Center(child: CustomLinearProgressIndicator())),
+          if (!isLoading) const SizedBox(height: 8),
+          Expanded(
+            child: CustomPageWidget(
+              child: ListView.builder(
+                physics: const BouncingScrollPhysics(
+                    parent: AlwaysScrollableScrollPhysics()),
+                scrollDirection: Axis.vertical,
+                //shrinkWrap: true,
+                itemBuilder: (BuildContext context, int index) {
+                  return TaskItemWidget(item: list[index]);
+                },
+                itemCount: list.length,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

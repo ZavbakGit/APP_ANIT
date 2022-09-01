@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../app/injection_container.dart';
 import '../../../arch/sr_bloc/sr_bloc_builder.dart';
-import '../../../core/presentation/widgets_design/custom_empty_widget.dart';
-import '../../../core/presentation/widgets_design/custom_error_widget.dart';
+import '../../disign_system/widgets_design/custom_empty_widget.dart';
+import '../../disign_system/widgets_design/custom_error_widget.dart';
 import 'enum_dialog_bloc.dart';
 import 'enum_dialog_models.dart';
 

@@ -5,11 +5,11 @@ import 'package:go_router/go_router.dart';
 
 import '../../../app/injection_container.dart';
 import '../../../arch/sr_bloc/sr_bloc_builder.dart';
-import '../../../core/presentation/widgets_design/custom_base_snackbar.dart';
-import '../../../core/presentation/widgets_design/custom_empty_page.dart';
-import '../../../core/presentation/widgets_design/custom_page_widget.dart';
-import '../../../core/presentation/widgets_design/custom_progres_widgets.dart';
-import '../../../core/presentation/widgets_design/custom_text_fields.dart';
+import '../../disign_system/widgets_design/custom_base_snackbar.dart';
+import '../../disign_system/widgets_design/custom_empty_page.dart';
+import '../../disign_system/widgets_design/custom_page_widget.dart';
+import '../../disign_system/widgets_design/custom_progres_widgets.dart';
+import '../../disign_system/widgets_design/custom_text_fields.dart';
 import '../../disign_system/ui_helpers.dart';
 import 'login_page_bloc.dart';
 

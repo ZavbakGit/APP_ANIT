@@ -1,4 +1,4 @@
-import 'package:app_anit/core/presentation/widgets_design/custom_page_widget.dart';
+import 'package:app_anit/presenter/disign_system/widgets_design/custom_page_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'custom_error_widget.dart';

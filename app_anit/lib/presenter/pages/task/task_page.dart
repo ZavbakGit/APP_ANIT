@@ -1,5 +1,5 @@
 import 'package:app_anit/core/extencion/date_extencion.dart';
-import 'package:app_anit/core/presentation/widgets_design/custom_page_widget.dart';
+import 'package:app_anit/presenter/disign_system/widgets_design/custom_page_widget.dart';
 import 'package:app_anit/domain/models/task_extention.dart';
 import 'package:app_anit/presenter/pages/task/task_page_bloc.dart';
 import 'package:app_anit/presenter/pages/task/task_page_bloc_models.dart';
@@ -10,11 +10,12 @@ import 'package:intl/intl.dart';
 
 import '../../../app/injection_container.dart';
 import '../../../arch/sr_bloc/sr_bloc_builder.dart';
-import '../../../core/presentation/widgets_design/custom_base_snackbar.dart';
-import '../../../core/presentation/widgets_design/dialogs/confirm_dialog.dart';
-import '../../../core/presentation/widgets_design/custom_empty_page.dart';
-import '../../../core/presentation/widgets_design/custom_error_page.dart';
-import '../../../core/presentation/widgets_design/custom_text_fields.dart';
+import '../../disign_system/widgets_design/custom_base_snackbar.dart';
+import '../../disign_system/widgets_design/dialogs/confirm_dialog.dart';
+import '../../disign_system/widgets_design/custom_empty_page.dart';
+import '../../disign_system/widgets_design/custom_error_page.dart';
+import '../../disign_system/widgets_design/custom_text_fields.dart';
+import '../../disign_system/widgets_design/dialogs/show_dialog_choice_catalog.dart';
 import '../../widgets/catalogs/ref_catalog_field_widget.dart';
 import '../../widgets/enums/ref_enum_field_widget.dart';
 import '../search_catalog/catalog_search_dialod_page.dart';
@@ -65,21 +66,14 @@ class TaskPage extends StatelessWidget {
         },
         openSaveDialog: () {},
         chooseAnResponsible: () {
-          Navigator.push<RefCatalog>(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const CatalogSearchDialogPage(
-                type: 'Пользователи',
-                title: 'Ответственный',
-              ),
-            ),
-          ).then((val) {
-            if (val != null) {
-              context
-                  .read<TaskPageBloc>()
-                  .add(TaskPageEvent.changeResponsible(val));
-            }
-          });
+          showDialogChoiceCatalog(
+            context: context,
+            title: 'Ответственный',
+            type: 'Пользователи',
+            choice: (refCatalog) => context
+                .read<TaskPageBloc>()
+                .add(TaskPageEvent.changeResponsible(refCatalog)),
+          );
         },
         showSaveDialog: () => showConfirmDialog(
               context: context,
@@ -295,7 +289,10 @@ class PannelChippWraperWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text('$title $count'),
+        Text(
+          '$title $count',
+          style: Theme.of(context).textTheme.labelLarge,
+        ),
         IconButton(
           icon: const Icon(Icons.add),
           onPressed: () {

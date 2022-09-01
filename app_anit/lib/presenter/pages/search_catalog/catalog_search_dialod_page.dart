@@ -5,10 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../app/injection_container.dart';
 import '../../../arch/sr_bloc/sr_bloc_builder.dart';
-import '../../../core/presentation/widgets_design/custom_base_snackbar.dart';
-import '../../../core/presentation/widgets_design/custom_empty_page.dart';
-import '../../../core/presentation/widgets_design/custom_error_page.dart';
-import '../../../core/presentation/widgets_design/custom_page_widget.dart';
+import '../../disign_system/widgets_design/custom_base_snackbar.dart';
+import '../../disign_system/widgets_design/custom_empty_page.dart';
+import '../../disign_system/widgets_design/custom_error_page.dart';
+import '../../disign_system/widgets_design/custom_page_widget.dart';
 import 'catalog_search_dialod_bloc.dart';
 
 class CatalogSearchDialogPage extends StatelessWidget {

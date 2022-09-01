@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class EnumChoiseDialog extends StatelessWidget {
+class EnumChoiceDialog extends StatelessWidget {
   final List<String> list;
   final int groupValue;
 
-  const EnumChoiseDialog({
+  const EnumChoiceDialog({
     Key? key,
     required this.list,
     required this.groupValue,
