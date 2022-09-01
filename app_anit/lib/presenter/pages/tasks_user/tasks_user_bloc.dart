@@ -79,7 +79,6 @@ class TasksUserBlok
     }, (list) {
       list.sort((a, b) {
         final aNeedAccept = a.needAccept(curentUser);
-        final bNeedAccept = a.needAccept(curentUser);
 
         if (aNeedAccept) {
           return -1;
