@@ -10,6 +10,7 @@ class TasksUserState with _$TasksUserState {
     required String title,
     required List<TaskItem> tasks,
     required List<TaskItem> controlledTasks,
+    required RefCatalog appUser,
   }) = _StData;
 
   const factory TasksUserState.empty() = _StEmpty;
@@ -25,6 +26,11 @@ class TasksUserEvent with _$TasksUserEvent {
   const factory TasksUserEvent.onTapFilter() = EvOnTapFilter;
   const factory TasksUserEvent.onChangeUser(RefCatalog user) = EvOnChangeUser;
   const factory TasksUserEvent.onTapFilterOff() = EvOnTapFilterOff;
+  const factory TasksUserEvent.onAcceptTask(String guidTask) = EvOnAcceptTask;
+  const factory TasksUserEvent.onSetControlDoneTask(String guidTask) =
+      EvOnSetControlDoneTask;
+  const factory TasksUserEvent.onCompleteTask(String guidTask) =
+      EvOnCompleteTask;
 }
 
 @freezed

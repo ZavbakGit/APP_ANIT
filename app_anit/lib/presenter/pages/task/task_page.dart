@@ -106,7 +106,9 @@ class _PageContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final FocusNode focusNode = FocusNode();
-
+    if ((task.guid ?? '').isEmpty && task.title!.isEmpty) {
+      focusNode.requestFocus();
+    }
     if (_textController.text != (task.title)) {
       _textController.text = task.title ?? '';
     }

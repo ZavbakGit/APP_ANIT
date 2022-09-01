@@ -1,7 +1,9 @@
 import 'dart:async';
 
+import 'package:app_anit/domain/models/task_item_extention.dart';
 import 'package:app_anit/presenter/pages/tasks_user/tasks_user_models.dart';
 import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../arch/sr_bloc/sr_bloc.dart';
@@ -33,6 +35,9 @@ class TasksUserBlok
     on<EvOnTapFilter>(_onTapFilter);
     on<EvOnChangeUser>(_onChangeUser);
     on<EvOnTapFilterOff>(_onTapFilterOff);
+    on<EvOnAcceptTask>(_onAcceptTask);
+    on<EvOnCompleteTask>(_onCompleteTask);
+    on<EvOnSetControlDoneTask>(_onSetControlDoneTask);
   }
 
   FutureOr<void> _init(
@@ -61,7 +66,8 @@ class TasksUserBlok
         isLoading: true,
         tasks: tasks,
         controlledTasks: controlledTasks,
-        isCurentUser: isCurentUser));
+        isCurentUser: isCurentUser,
+        appUser: appModel.remoteConfig!.user));
 
     final either = await repository.tasksUserGet(curentUser.guid!);
 
@@ -71,8 +77,21 @@ class TasksUserBlok
     either.fold((fail) {
       emit(TasksUserState.error(message: 'Ошибка: ${fail.error}'));
     }, (list) {
-      tasks.addAll(list
-          .where((element) => element.isResponsible! || element.isAssistants!));
+      list.sort((a, b) {
+        final aNeedAccept = a.needAccept(curentUser);
+        final bNeedAccept = a.needAccept(curentUser);
+
+        if (aNeedAccept) {
+          return -1;
+        } else {
+          return 1;
+        }
+      });
+      tasks.addAll(
+        list.where(
+            (element) => element.isResponsible! || element.isAssistants!),
+      );
+
       controlledTasks.addAll(
         list.where((element) => element.isControllers!),
       );
@@ -82,7 +101,8 @@ class TasksUserBlok
           title: curentUser.name!,
           tasks: tasks,
           controlledTasks: controlledTasks,
-          isCurentUser: isCurentUser));
+          isCurentUser: isCurentUser,
+          appUser: appModel.remoteConfig!.user));
     });
   }
 
@@ -121,5 +141,60 @@ class TasksUserBlok
   ) {
     curentUser = appModel.remoteConfig!.user;
     add(const EvRefresh());
+  }
+
+  FutureOr<void> _onAcceptTask(
+    EvOnAcceptTask event,
+    Emitter<TasksUserState> emit,
+  ) async {
+    final either = (await (await repository.getTaskByGuid(event.guidTask))
+            .map((task) => task.copyWith(
+                condition: RefEnum(
+                    index: 1, name: 'Принято', type: 'АН_СостоянияСобытия')))
+            .traverseFuture((task) => repository.saveTask(task: task)))
+        .flatMap(id);
+
+    either.fold((fail) {
+      emit(TasksUserState.error(message: 'Ошибка: ${fail.error}'));
+      add(const EvRefresh());
+    }, (task) {
+      add(const EvRefresh());
+    });
+  }
+
+  FutureOr<void> _onCompleteTask(
+    EvOnCompleteTask event,
+    Emitter<TasksUserState> emit,
+  ) async {
+    final either = (await (await repository.getTaskByGuid(event.guidTask))
+            .map((task) => task.copyWith(
+                condition: RefEnum(
+                    index: 4, name: 'Принято', type: 'АН_СостоянияСобытия')))
+            .traverseFuture((task) => repository.saveTask(task: task)))
+        .flatMap(id);
+
+    either.fold((fail) {
+      emit(TasksUserState.error(message: 'Ошибка: ${fail.error}'));
+      add(const EvRefresh());
+    }, (task) {
+      add(const EvRefresh());
+    });
+  }
+
+  FutureOr<void> _onSetControlDoneTask(
+    EvOnSetControlDoneTask event,
+    Emitter<TasksUserState> emit,
+  ) async {
+    final either = (await (await repository.getTaskByGuid(event.guidTask))
+            .map((task) => task.copyWith(dateControl: DateTime.now()))
+            .traverseFuture((task) => repository.saveTask(task: task)))
+        .flatMap(id);
+
+    either.fold((fail) {
+      emit(TasksUserState.error(message: 'Ошибка: ${fail.error}'));
+      add(const EvRefresh());
+    }, (task) {
+      add(const EvRefresh());
+    });
   }
 }

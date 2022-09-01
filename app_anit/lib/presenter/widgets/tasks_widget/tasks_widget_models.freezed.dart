@@ -18,21 +18,27 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$TasksWidgetState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int countTask, int countControlleredTask) data,
+    required TResult Function(
+            int countTask, int countControlleredTask, int countNeedAccept)
+        data,
     required TResult Function() empty,
     required TResult Function() error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int countTask, int countControlleredTask)? data,
+    TResult Function(
+            int countTask, int countControlleredTask, int countNeedAccept)?
+        data,
     TResult Function()? empty,
     TResult Function()? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int countTask, int countControlleredTask)? data,
+    TResult Function(
+            int countTask, int countControlleredTask, int countNeedAccept)?
+        data,
     TResult Function()? empty,
     TResult Function()? error,
     required TResult orElse(),
@@ -84,7 +90,7 @@ abstract class _$$TasksWidgetStateDataCopyWith<$Res> {
   factory _$$TasksWidgetStateDataCopyWith(_$TasksWidgetStateData value,
           $Res Function(_$TasksWidgetStateData) then) =
       __$$TasksWidgetStateDataCopyWithImpl<$Res>;
-  $Res call({int countTask, int countControlleredTask});
+  $Res call({int countTask, int countControlleredTask, int countNeedAccept});
 }
 
 /// @nodoc
@@ -102,6 +108,7 @@ class __$$TasksWidgetStateDataCopyWithImpl<$Res>
   $Res call({
     Object? countTask = freezed,
     Object? countControlleredTask = freezed,
+    Object? countNeedAccept = freezed,
   }) {
     return _then(_$TasksWidgetStateData(
       countTask: countTask == freezed
@@ -112,6 +119,10 @@ class __$$TasksWidgetStateDataCopyWithImpl<$Res>
           ? _value.countControlleredTask
           : countControlleredTask // ignore: cast_nullable_to_non_nullable
               as int,
+      countNeedAccept: countNeedAccept == freezed
+          ? _value.countNeedAccept
+          : countNeedAccept // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -120,17 +131,21 @@ class __$$TasksWidgetStateDataCopyWithImpl<$Res>
 
 class _$TasksWidgetStateData extends TasksWidgetStateData {
   const _$TasksWidgetStateData(
-      {required this.countTask, required this.countControlleredTask})
+      {required this.countTask,
+      required this.countControlleredTask,
+      required this.countNeedAccept})
       : super._();
 
   @override
   final int countTask;
   @override
   final int countControlleredTask;
+  @override
+  final int countNeedAccept;
 
   @override
   String toString() {
-    return 'TasksWidgetState.data(countTask: $countTask, countControlleredTask: $countControlleredTask)';
+    return 'TasksWidgetState.data(countTask: $countTask, countControlleredTask: $countControlleredTask, countNeedAccept: $countNeedAccept)';
   }
 
   @override
@@ -140,14 +155,17 @@ class _$TasksWidgetStateData extends TasksWidgetStateData {
             other is _$TasksWidgetStateData &&
             const DeepCollectionEquality().equals(other.countTask, countTask) &&
             const DeepCollectionEquality()
-                .equals(other.countControlleredTask, countControlleredTask));
+                .equals(other.countControlleredTask, countControlleredTask) &&
+            const DeepCollectionEquality()
+                .equals(other.countNeedAccept, countNeedAccept));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(countTask),
-      const DeepCollectionEquality().hash(countControlleredTask));
+      const DeepCollectionEquality().hash(countControlleredTask),
+      const DeepCollectionEquality().hash(countNeedAccept));
 
   @JsonKey(ignore: true)
   @override
@@ -158,33 +176,39 @@ class _$TasksWidgetStateData extends TasksWidgetStateData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int countTask, int countControlleredTask) data,
+    required TResult Function(
+            int countTask, int countControlleredTask, int countNeedAccept)
+        data,
     required TResult Function() empty,
     required TResult Function() error,
   }) {
-    return data(countTask, countControlleredTask);
+    return data(countTask, countControlleredTask, countNeedAccept);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int countTask, int countControlleredTask)? data,
+    TResult Function(
+            int countTask, int countControlleredTask, int countNeedAccept)?
+        data,
     TResult Function()? empty,
     TResult Function()? error,
   }) {
-    return data?.call(countTask, countControlleredTask);
+    return data?.call(countTask, countControlleredTask, countNeedAccept);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int countTask, int countControlleredTask)? data,
+    TResult Function(
+            int countTask, int countControlleredTask, int countNeedAccept)?
+        data,
     TResult Function()? empty,
     TResult Function()? error,
     required TResult orElse(),
   }) {
     if (data != null) {
-      return data(countTask, countControlleredTask);
+      return data(countTask, countControlleredTask, countNeedAccept);
     }
     return orElse();
   }
@@ -227,11 +251,13 @@ class _$TasksWidgetStateData extends TasksWidgetStateData {
 abstract class TasksWidgetStateData extends TasksWidgetState {
   const factory TasksWidgetStateData(
       {required final int countTask,
-      required final int countControlleredTask}) = _$TasksWidgetStateData;
+      required final int countControlleredTask,
+      required final int countNeedAccept}) = _$TasksWidgetStateData;
   const TasksWidgetStateData._() : super._();
 
   int get countTask;
   int get countControlleredTask;
+  int get countNeedAccept;
   @JsonKey(ignore: true)
   _$$TasksWidgetStateDataCopyWith<_$TasksWidgetStateData> get copyWith =>
       throw _privateConstructorUsedError;
@@ -275,7 +301,9 @@ class _$_Empty extends _Empty {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int countTask, int countControlleredTask) data,
+    required TResult Function(
+            int countTask, int countControlleredTask, int countNeedAccept)
+        data,
     required TResult Function() empty,
     required TResult Function() error,
   }) {
@@ -285,7 +313,9 @@ class _$_Empty extends _Empty {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int countTask, int countControlleredTask)? data,
+    TResult Function(
+            int countTask, int countControlleredTask, int countNeedAccept)?
+        data,
     TResult Function()? empty,
     TResult Function()? error,
   }) {
@@ -295,7 +325,9 @@ class _$_Empty extends _Empty {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int countTask, int countControlleredTask)? data,
+    TResult Function(
+            int countTask, int countControlleredTask, int countNeedAccept)?
+        data,
     TResult Function()? empty,
     TResult Function()? error,
     required TResult orElse(),
@@ -384,7 +416,9 @@ class _$_Error extends _Error {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int countTask, int countControlleredTask) data,
+    required TResult Function(
+            int countTask, int countControlleredTask, int countNeedAccept)
+        data,
     required TResult Function() empty,
     required TResult Function() error,
   }) {
@@ -394,7 +428,9 @@ class _$_Error extends _Error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int countTask, int countControlleredTask)? data,
+    TResult Function(
+            int countTask, int countControlleredTask, int countNeedAccept)?
+        data,
     TResult Function()? empty,
     TResult Function()? error,
   }) {
@@ -404,7 +440,9 @@ class _$_Error extends _Error {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int countTask, int countControlleredTask)? data,
+    TResult Function(
+            int countTask, int countControlleredTask, int countNeedAccept)?
+        data,
     TResult Function()? empty,
     TResult Function()? error,
     required TResult orElse(),

@@ -10,6 +10,7 @@ class TasksWidgetState with _$TasksWidgetState {
   const factory TasksWidgetState.data({
     required int countTask,
     required int countControlleredTask,
+    required int countNeedAccept,
   }) = TasksWidgetStateData;
 
   const factory TasksWidgetState.empty() = _Empty;

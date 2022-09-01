@@ -18,8 +18,13 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$TasksUserState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool isCurentUser, bool isLoading, String title,
-            List<TaskItem> tasks, List<TaskItem> controlledTasks)
+    required TResult Function(
+            bool isCurentUser,
+            bool isLoading,
+            String title,
+            List<TaskItem> tasks,
+            List<TaskItem> controlledTasks,
+            RefCatalog appUser)
         data,
     required TResult Function() empty,
     required TResult Function(String? message) error,
@@ -27,8 +32,13 @@ mixin _$TasksUserState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(bool isCurentUser, bool isLoading, String title,
-            List<TaskItem> tasks, List<TaskItem> controlledTasks)?
+    TResult Function(
+            bool isCurentUser,
+            bool isLoading,
+            String title,
+            List<TaskItem> tasks,
+            List<TaskItem> controlledTasks,
+            RefCatalog appUser)?
         data,
     TResult Function()? empty,
     TResult Function(String? message)? error,
@@ -36,8 +46,13 @@ mixin _$TasksUserState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isCurentUser, bool isLoading, String title,
-            List<TaskItem> tasks, List<TaskItem> controlledTasks)?
+    TResult Function(
+            bool isCurentUser,
+            bool isLoading,
+            String title,
+            List<TaskItem> tasks,
+            List<TaskItem> controlledTasks,
+            RefCatalog appUser)?
         data,
     TResult Function()? empty,
     TResult Function(String? message)? error,
@@ -94,7 +109,8 @@ abstract class _$$_StDataCopyWith<$Res> {
       bool isLoading,
       String title,
       List<TaskItem> tasks,
-      List<TaskItem> controlledTasks});
+      List<TaskItem> controlledTasks,
+      RefCatalog appUser});
 }
 
 /// @nodoc
@@ -113,6 +129,7 @@ class __$$_StDataCopyWithImpl<$Res> extends _$TasksUserStateCopyWithImpl<$Res>
     Object? title = freezed,
     Object? tasks = freezed,
     Object? controlledTasks = freezed,
+    Object? appUser = freezed,
   }) {
     return _then(_$_StData(
       isCurentUser: isCurentUser == freezed
@@ -135,6 +152,10 @@ class __$$_StDataCopyWithImpl<$Res> extends _$TasksUserStateCopyWithImpl<$Res>
           ? _value._controlledTasks
           : controlledTasks // ignore: cast_nullable_to_non_nullable
               as List<TaskItem>,
+      appUser: appUser == freezed
+          ? _value.appUser
+          : appUser // ignore: cast_nullable_to_non_nullable
+              as RefCatalog,
     ));
   }
 }
@@ -147,7 +168,8 @@ class _$_StData implements _StData {
       required this.isLoading,
       required this.title,
       required final List<TaskItem> tasks,
-      required final List<TaskItem> controlledTasks})
+      required final List<TaskItem> controlledTasks,
+      required this.appUser})
       : _tasks = tasks,
         _controlledTasks = controlledTasks;
 
@@ -172,8 +194,11 @@ class _$_StData implements _StData {
   }
 
   @override
+  final RefCatalog appUser;
+
+  @override
   String toString() {
-    return 'TasksUserState.data(isCurentUser: $isCurentUser, isLoading: $isLoading, title: $title, tasks: $tasks, controlledTasks: $controlledTasks)';
+    return 'TasksUserState.data(isCurentUser: $isCurentUser, isLoading: $isLoading, title: $title, tasks: $tasks, controlledTasks: $controlledTasks, appUser: $appUser)';
   }
 
   @override
@@ -187,7 +212,8 @@ class _$_StData implements _StData {
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality().equals(other._tasks, _tasks) &&
             const DeepCollectionEquality()
-                .equals(other._controlledTasks, _controlledTasks));
+                .equals(other._controlledTasks, _controlledTasks) &&
+            const DeepCollectionEquality().equals(other.appUser, appUser));
   }
 
   @override
@@ -197,7 +223,8 @@ class _$_StData implements _StData {
       const DeepCollectionEquality().hash(isLoading),
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(_tasks),
-      const DeepCollectionEquality().hash(_controlledTasks));
+      const DeepCollectionEquality().hash(_controlledTasks),
+      const DeepCollectionEquality().hash(appUser));
 
   @JsonKey(ignore: true)
   @override
@@ -207,39 +234,57 @@ class _$_StData implements _StData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool isCurentUser, bool isLoading, String title,
-            List<TaskItem> tasks, List<TaskItem> controlledTasks)
+    required TResult Function(
+            bool isCurentUser,
+            bool isLoading,
+            String title,
+            List<TaskItem> tasks,
+            List<TaskItem> controlledTasks,
+            RefCatalog appUser)
         data,
     required TResult Function() empty,
     required TResult Function(String? message) error,
   }) {
-    return data(isCurentUser, isLoading, title, tasks, controlledTasks);
+    return data(
+        isCurentUser, isLoading, title, tasks, controlledTasks, appUser);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(bool isCurentUser, bool isLoading, String title,
-            List<TaskItem> tasks, List<TaskItem> controlledTasks)?
+    TResult Function(
+            bool isCurentUser,
+            bool isLoading,
+            String title,
+            List<TaskItem> tasks,
+            List<TaskItem> controlledTasks,
+            RefCatalog appUser)?
         data,
     TResult Function()? empty,
     TResult Function(String? message)? error,
   }) {
-    return data?.call(isCurentUser, isLoading, title, tasks, controlledTasks);
+    return data?.call(
+        isCurentUser, isLoading, title, tasks, controlledTasks, appUser);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isCurentUser, bool isLoading, String title,
-            List<TaskItem> tasks, List<TaskItem> controlledTasks)?
+    TResult Function(
+            bool isCurentUser,
+            bool isLoading,
+            String title,
+            List<TaskItem> tasks,
+            List<TaskItem> controlledTasks,
+            RefCatalog appUser)?
         data,
     TResult Function()? empty,
     TResult Function(String? message)? error,
     required TResult orElse(),
   }) {
     if (data != null) {
-      return data(isCurentUser, isLoading, title, tasks, controlledTasks);
+      return data(
+          isCurentUser, isLoading, title, tasks, controlledTasks, appUser);
     }
     return orElse();
   }
@@ -285,13 +330,15 @@ abstract class _StData implements TasksUserState {
       required final bool isLoading,
       required final String title,
       required final List<TaskItem> tasks,
-      required final List<TaskItem> controlledTasks}) = _$_StData;
+      required final List<TaskItem> controlledTasks,
+      required final RefCatalog appUser}) = _$_StData;
 
   bool get isCurentUser;
   bool get isLoading;
   String get title;
   List<TaskItem> get tasks;
   List<TaskItem> get controlledTasks;
+  RefCatalog get appUser;
   @JsonKey(ignore: true)
   _$$_StDataCopyWith<_$_StData> get copyWith =>
       throw _privateConstructorUsedError;
@@ -336,8 +383,13 @@ class _$_StEmpty implements _StEmpty {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool isCurentUser, bool isLoading, String title,
-            List<TaskItem> tasks, List<TaskItem> controlledTasks)
+    required TResult Function(
+            bool isCurentUser,
+            bool isLoading,
+            String title,
+            List<TaskItem> tasks,
+            List<TaskItem> controlledTasks,
+            RefCatalog appUser)
         data,
     required TResult Function() empty,
     required TResult Function(String? message) error,
@@ -348,8 +400,13 @@ class _$_StEmpty implements _StEmpty {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(bool isCurentUser, bool isLoading, String title,
-            List<TaskItem> tasks, List<TaskItem> controlledTasks)?
+    TResult Function(
+            bool isCurentUser,
+            bool isLoading,
+            String title,
+            List<TaskItem> tasks,
+            List<TaskItem> controlledTasks,
+            RefCatalog appUser)?
         data,
     TResult Function()? empty,
     TResult Function(String? message)? error,
@@ -360,8 +417,13 @@ class _$_StEmpty implements _StEmpty {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isCurentUser, bool isLoading, String title,
-            List<TaskItem> tasks, List<TaskItem> controlledTasks)?
+    TResult Function(
+            bool isCurentUser,
+            bool isLoading,
+            String title,
+            List<TaskItem> tasks,
+            List<TaskItem> controlledTasks,
+            RefCatalog appUser)?
         data,
     TResult Function()? empty,
     TResult Function(String? message)? error,
@@ -475,8 +537,13 @@ class _$_StError implements _StError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool isCurentUser, bool isLoading, String title,
-            List<TaskItem> tasks, List<TaskItem> controlledTasks)
+    required TResult Function(
+            bool isCurentUser,
+            bool isLoading,
+            String title,
+            List<TaskItem> tasks,
+            List<TaskItem> controlledTasks,
+            RefCatalog appUser)
         data,
     required TResult Function() empty,
     required TResult Function(String? message) error,
@@ -487,8 +554,13 @@ class _$_StError implements _StError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(bool isCurentUser, bool isLoading, String title,
-            List<TaskItem> tasks, List<TaskItem> controlledTasks)?
+    TResult Function(
+            bool isCurentUser,
+            bool isLoading,
+            String title,
+            List<TaskItem> tasks,
+            List<TaskItem> controlledTasks,
+            RefCatalog appUser)?
         data,
     TResult Function()? empty,
     TResult Function(String? message)? error,
@@ -499,8 +571,13 @@ class _$_StError implements _StError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isCurentUser, bool isLoading, String title,
-            List<TaskItem> tasks, List<TaskItem> controlledTasks)?
+    TResult Function(
+            bool isCurentUser,
+            bool isLoading,
+            String title,
+            List<TaskItem> tasks,
+            List<TaskItem> controlledTasks,
+            RefCatalog appUser)?
         data,
     TResult Function()? empty,
     TResult Function(String? message)? error,
@@ -567,6 +644,9 @@ mixin _$TasksUserEvent {
     required TResult Function() onTapFilter,
     required TResult Function(RefCatalog user) onChangeUser,
     required TResult Function() onTapFilterOff,
+    required TResult Function(String guidTask) onAcceptTask,
+    required TResult Function(String guidTask) onSetControlDoneTask,
+    required TResult Function(String guidTask) onCompleteTask,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -578,6 +658,9 @@ mixin _$TasksUserEvent {
     TResult Function()? onTapFilter,
     TResult Function(RefCatalog user)? onChangeUser,
     TResult Function()? onTapFilterOff,
+    TResult Function(String guidTask)? onAcceptTask,
+    TResult Function(String guidTask)? onSetControlDoneTask,
+    TResult Function(String guidTask)? onCompleteTask,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -589,6 +672,9 @@ mixin _$TasksUserEvent {
     TResult Function()? onTapFilter,
     TResult Function(RefCatalog user)? onChangeUser,
     TResult Function()? onTapFilterOff,
+    TResult Function(String guidTask)? onAcceptTask,
+    TResult Function(String guidTask)? onSetControlDoneTask,
+    TResult Function(String guidTask)? onCompleteTask,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -601,6 +687,10 @@ mixin _$TasksUserEvent {
     required TResult Function(EvOnTapFilter value) onTapFilter,
     required TResult Function(EvOnChangeUser value) onChangeUser,
     required TResult Function(EvOnTapFilterOff value) onTapFilterOff,
+    required TResult Function(EvOnAcceptTask value) onAcceptTask,
+    required TResult Function(EvOnSetControlDoneTask value)
+        onSetControlDoneTask,
+    required TResult Function(EvOnCompleteTask value) onCompleteTask,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -612,6 +702,9 @@ mixin _$TasksUserEvent {
     TResult Function(EvOnTapFilter value)? onTapFilter,
     TResult Function(EvOnChangeUser value)? onChangeUser,
     TResult Function(EvOnTapFilterOff value)? onTapFilterOff,
+    TResult Function(EvOnAcceptTask value)? onAcceptTask,
+    TResult Function(EvOnSetControlDoneTask value)? onSetControlDoneTask,
+    TResult Function(EvOnCompleteTask value)? onCompleteTask,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -623,6 +716,9 @@ mixin _$TasksUserEvent {
     TResult Function(EvOnTapFilter value)? onTapFilter,
     TResult Function(EvOnChangeUser value)? onChangeUser,
     TResult Function(EvOnTapFilterOff value)? onTapFilterOff,
+    TResult Function(EvOnAcceptTask value)? onAcceptTask,
+    TResult Function(EvOnSetControlDoneTask value)? onSetControlDoneTask,
+    TResult Function(EvOnCompleteTask value)? onCompleteTask,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -690,6 +786,9 @@ class _$EvInit implements EvInit {
     required TResult Function() onTapFilter,
     required TResult Function(RefCatalog user) onChangeUser,
     required TResult Function() onTapFilterOff,
+    required TResult Function(String guidTask) onAcceptTask,
+    required TResult Function(String guidTask) onSetControlDoneTask,
+    required TResult Function(String guidTask) onCompleteTask,
   }) {
     return init();
   }
@@ -704,6 +803,9 @@ class _$EvInit implements EvInit {
     TResult Function()? onTapFilter,
     TResult Function(RefCatalog user)? onChangeUser,
     TResult Function()? onTapFilterOff,
+    TResult Function(String guidTask)? onAcceptTask,
+    TResult Function(String guidTask)? onSetControlDoneTask,
+    TResult Function(String guidTask)? onCompleteTask,
   }) {
     return init?.call();
   }
@@ -718,6 +820,9 @@ class _$EvInit implements EvInit {
     TResult Function()? onTapFilter,
     TResult Function(RefCatalog user)? onChangeUser,
     TResult Function()? onTapFilterOff,
+    TResult Function(String guidTask)? onAcceptTask,
+    TResult Function(String guidTask)? onSetControlDoneTask,
+    TResult Function(String guidTask)? onCompleteTask,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -736,6 +841,10 @@ class _$EvInit implements EvInit {
     required TResult Function(EvOnTapFilter value) onTapFilter,
     required TResult Function(EvOnChangeUser value) onChangeUser,
     required TResult Function(EvOnTapFilterOff value) onTapFilterOff,
+    required TResult Function(EvOnAcceptTask value) onAcceptTask,
+    required TResult Function(EvOnSetControlDoneTask value)
+        onSetControlDoneTask,
+    required TResult Function(EvOnCompleteTask value) onCompleteTask,
   }) {
     return init(this);
   }
@@ -750,6 +859,9 @@ class _$EvInit implements EvInit {
     TResult Function(EvOnTapFilter value)? onTapFilter,
     TResult Function(EvOnChangeUser value)? onChangeUser,
     TResult Function(EvOnTapFilterOff value)? onTapFilterOff,
+    TResult Function(EvOnAcceptTask value)? onAcceptTask,
+    TResult Function(EvOnSetControlDoneTask value)? onSetControlDoneTask,
+    TResult Function(EvOnCompleteTask value)? onCompleteTask,
   }) {
     return init?.call(this);
   }
@@ -764,6 +876,9 @@ class _$EvInit implements EvInit {
     TResult Function(EvOnTapFilter value)? onTapFilter,
     TResult Function(EvOnChangeUser value)? onChangeUser,
     TResult Function(EvOnTapFilterOff value)? onTapFilterOff,
+    TResult Function(EvOnAcceptTask value)? onAcceptTask,
+    TResult Function(EvOnSetControlDoneTask value)? onSetControlDoneTask,
+    TResult Function(EvOnCompleteTask value)? onCompleteTask,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -824,6 +939,9 @@ class _$EvRefresh implements EvRefresh {
     required TResult Function() onTapFilter,
     required TResult Function(RefCatalog user) onChangeUser,
     required TResult Function() onTapFilterOff,
+    required TResult Function(String guidTask) onAcceptTask,
+    required TResult Function(String guidTask) onSetControlDoneTask,
+    required TResult Function(String guidTask) onCompleteTask,
   }) {
     return refresh();
   }
@@ -838,6 +956,9 @@ class _$EvRefresh implements EvRefresh {
     TResult Function()? onTapFilter,
     TResult Function(RefCatalog user)? onChangeUser,
     TResult Function()? onTapFilterOff,
+    TResult Function(String guidTask)? onAcceptTask,
+    TResult Function(String guidTask)? onSetControlDoneTask,
+    TResult Function(String guidTask)? onCompleteTask,
   }) {
     return refresh?.call();
   }
@@ -852,6 +973,9 @@ class _$EvRefresh implements EvRefresh {
     TResult Function()? onTapFilter,
     TResult Function(RefCatalog user)? onChangeUser,
     TResult Function()? onTapFilterOff,
+    TResult Function(String guidTask)? onAcceptTask,
+    TResult Function(String guidTask)? onSetControlDoneTask,
+    TResult Function(String guidTask)? onCompleteTask,
     required TResult orElse(),
   }) {
     if (refresh != null) {
@@ -870,6 +994,10 @@ class _$EvRefresh implements EvRefresh {
     required TResult Function(EvOnTapFilter value) onTapFilter,
     required TResult Function(EvOnChangeUser value) onChangeUser,
     required TResult Function(EvOnTapFilterOff value) onTapFilterOff,
+    required TResult Function(EvOnAcceptTask value) onAcceptTask,
+    required TResult Function(EvOnSetControlDoneTask value)
+        onSetControlDoneTask,
+    required TResult Function(EvOnCompleteTask value) onCompleteTask,
   }) {
     return refresh(this);
   }
@@ -884,6 +1012,9 @@ class _$EvRefresh implements EvRefresh {
     TResult Function(EvOnTapFilter value)? onTapFilter,
     TResult Function(EvOnChangeUser value)? onChangeUser,
     TResult Function(EvOnTapFilterOff value)? onTapFilterOff,
+    TResult Function(EvOnAcceptTask value)? onAcceptTask,
+    TResult Function(EvOnSetControlDoneTask value)? onSetControlDoneTask,
+    TResult Function(EvOnCompleteTask value)? onCompleteTask,
   }) {
     return refresh?.call(this);
   }
@@ -898,6 +1029,9 @@ class _$EvRefresh implements EvRefresh {
     TResult Function(EvOnTapFilter value)? onTapFilter,
     TResult Function(EvOnChangeUser value)? onChangeUser,
     TResult Function(EvOnTapFilterOff value)? onTapFilterOff,
+    TResult Function(EvOnAcceptTask value)? onAcceptTask,
+    TResult Function(EvOnSetControlDoneTask value)? onSetControlDoneTask,
+    TResult Function(EvOnCompleteTask value)? onCompleteTask,
     required TResult orElse(),
   }) {
     if (refresh != null) {
@@ -983,6 +1117,9 @@ class _$EvOnTapItem implements EvOnTapItem {
     required TResult Function() onTapFilter,
     required TResult Function(RefCatalog user) onChangeUser,
     required TResult Function() onTapFilterOff,
+    required TResult Function(String guidTask) onAcceptTask,
+    required TResult Function(String guidTask) onSetControlDoneTask,
+    required TResult Function(String guidTask) onCompleteTask,
   }) {
     return onTapItem(guid);
   }
@@ -997,6 +1134,9 @@ class _$EvOnTapItem implements EvOnTapItem {
     TResult Function()? onTapFilter,
     TResult Function(RefCatalog user)? onChangeUser,
     TResult Function()? onTapFilterOff,
+    TResult Function(String guidTask)? onAcceptTask,
+    TResult Function(String guidTask)? onSetControlDoneTask,
+    TResult Function(String guidTask)? onCompleteTask,
   }) {
     return onTapItem?.call(guid);
   }
@@ -1011,6 +1151,9 @@ class _$EvOnTapItem implements EvOnTapItem {
     TResult Function()? onTapFilter,
     TResult Function(RefCatalog user)? onChangeUser,
     TResult Function()? onTapFilterOff,
+    TResult Function(String guidTask)? onAcceptTask,
+    TResult Function(String guidTask)? onSetControlDoneTask,
+    TResult Function(String guidTask)? onCompleteTask,
     required TResult orElse(),
   }) {
     if (onTapItem != null) {
@@ -1029,6 +1172,10 @@ class _$EvOnTapItem implements EvOnTapItem {
     required TResult Function(EvOnTapFilter value) onTapFilter,
     required TResult Function(EvOnChangeUser value) onChangeUser,
     required TResult Function(EvOnTapFilterOff value) onTapFilterOff,
+    required TResult Function(EvOnAcceptTask value) onAcceptTask,
+    required TResult Function(EvOnSetControlDoneTask value)
+        onSetControlDoneTask,
+    required TResult Function(EvOnCompleteTask value) onCompleteTask,
   }) {
     return onTapItem(this);
   }
@@ -1043,6 +1190,9 @@ class _$EvOnTapItem implements EvOnTapItem {
     TResult Function(EvOnTapFilter value)? onTapFilter,
     TResult Function(EvOnChangeUser value)? onChangeUser,
     TResult Function(EvOnTapFilterOff value)? onTapFilterOff,
+    TResult Function(EvOnAcceptTask value)? onAcceptTask,
+    TResult Function(EvOnSetControlDoneTask value)? onSetControlDoneTask,
+    TResult Function(EvOnCompleteTask value)? onCompleteTask,
   }) {
     return onTapItem?.call(this);
   }
@@ -1057,6 +1207,9 @@ class _$EvOnTapItem implements EvOnTapItem {
     TResult Function(EvOnTapFilter value)? onTapFilter,
     TResult Function(EvOnChangeUser value)? onChangeUser,
     TResult Function(EvOnTapFilterOff value)? onTapFilterOff,
+    TResult Function(EvOnAcceptTask value)? onAcceptTask,
+    TResult Function(EvOnSetControlDoneTask value)? onSetControlDoneTask,
+    TResult Function(EvOnCompleteTask value)? onCompleteTask,
     required TResult orElse(),
   }) {
     if (onTapItem != null) {
@@ -1123,6 +1276,9 @@ class _$EvOnTapFab implements EvOnTapFab {
     required TResult Function() onTapFilter,
     required TResult Function(RefCatalog user) onChangeUser,
     required TResult Function() onTapFilterOff,
+    required TResult Function(String guidTask) onAcceptTask,
+    required TResult Function(String guidTask) onSetControlDoneTask,
+    required TResult Function(String guidTask) onCompleteTask,
   }) {
     return onTapFab();
   }
@@ -1137,6 +1293,9 @@ class _$EvOnTapFab implements EvOnTapFab {
     TResult Function()? onTapFilter,
     TResult Function(RefCatalog user)? onChangeUser,
     TResult Function()? onTapFilterOff,
+    TResult Function(String guidTask)? onAcceptTask,
+    TResult Function(String guidTask)? onSetControlDoneTask,
+    TResult Function(String guidTask)? onCompleteTask,
   }) {
     return onTapFab?.call();
   }
@@ -1151,6 +1310,9 @@ class _$EvOnTapFab implements EvOnTapFab {
     TResult Function()? onTapFilter,
     TResult Function(RefCatalog user)? onChangeUser,
     TResult Function()? onTapFilterOff,
+    TResult Function(String guidTask)? onAcceptTask,
+    TResult Function(String guidTask)? onSetControlDoneTask,
+    TResult Function(String guidTask)? onCompleteTask,
     required TResult orElse(),
   }) {
     if (onTapFab != null) {
@@ -1169,6 +1331,10 @@ class _$EvOnTapFab implements EvOnTapFab {
     required TResult Function(EvOnTapFilter value) onTapFilter,
     required TResult Function(EvOnChangeUser value) onChangeUser,
     required TResult Function(EvOnTapFilterOff value) onTapFilterOff,
+    required TResult Function(EvOnAcceptTask value) onAcceptTask,
+    required TResult Function(EvOnSetControlDoneTask value)
+        onSetControlDoneTask,
+    required TResult Function(EvOnCompleteTask value) onCompleteTask,
   }) {
     return onTapFab(this);
   }
@@ -1183,6 +1349,9 @@ class _$EvOnTapFab implements EvOnTapFab {
     TResult Function(EvOnTapFilter value)? onTapFilter,
     TResult Function(EvOnChangeUser value)? onChangeUser,
     TResult Function(EvOnTapFilterOff value)? onTapFilterOff,
+    TResult Function(EvOnAcceptTask value)? onAcceptTask,
+    TResult Function(EvOnSetControlDoneTask value)? onSetControlDoneTask,
+    TResult Function(EvOnCompleteTask value)? onCompleteTask,
   }) {
     return onTapFab?.call(this);
   }
@@ -1197,6 +1366,9 @@ class _$EvOnTapFab implements EvOnTapFab {
     TResult Function(EvOnTapFilter value)? onTapFilter,
     TResult Function(EvOnChangeUser value)? onChangeUser,
     TResult Function(EvOnTapFilterOff value)? onTapFilterOff,
+    TResult Function(EvOnAcceptTask value)? onAcceptTask,
+    TResult Function(EvOnSetControlDoneTask value)? onSetControlDoneTask,
+    TResult Function(EvOnCompleteTask value)? onCompleteTask,
     required TResult orElse(),
   }) {
     if (onTapFab != null) {
@@ -1258,6 +1430,9 @@ class _$EvOnTapFilter implements EvOnTapFilter {
     required TResult Function() onTapFilter,
     required TResult Function(RefCatalog user) onChangeUser,
     required TResult Function() onTapFilterOff,
+    required TResult Function(String guidTask) onAcceptTask,
+    required TResult Function(String guidTask) onSetControlDoneTask,
+    required TResult Function(String guidTask) onCompleteTask,
   }) {
     return onTapFilter();
   }
@@ -1272,6 +1447,9 @@ class _$EvOnTapFilter implements EvOnTapFilter {
     TResult Function()? onTapFilter,
     TResult Function(RefCatalog user)? onChangeUser,
     TResult Function()? onTapFilterOff,
+    TResult Function(String guidTask)? onAcceptTask,
+    TResult Function(String guidTask)? onSetControlDoneTask,
+    TResult Function(String guidTask)? onCompleteTask,
   }) {
     return onTapFilter?.call();
   }
@@ -1286,6 +1464,9 @@ class _$EvOnTapFilter implements EvOnTapFilter {
     TResult Function()? onTapFilter,
     TResult Function(RefCatalog user)? onChangeUser,
     TResult Function()? onTapFilterOff,
+    TResult Function(String guidTask)? onAcceptTask,
+    TResult Function(String guidTask)? onSetControlDoneTask,
+    TResult Function(String guidTask)? onCompleteTask,
     required TResult orElse(),
   }) {
     if (onTapFilter != null) {
@@ -1304,6 +1485,10 @@ class _$EvOnTapFilter implements EvOnTapFilter {
     required TResult Function(EvOnTapFilter value) onTapFilter,
     required TResult Function(EvOnChangeUser value) onChangeUser,
     required TResult Function(EvOnTapFilterOff value) onTapFilterOff,
+    required TResult Function(EvOnAcceptTask value) onAcceptTask,
+    required TResult Function(EvOnSetControlDoneTask value)
+        onSetControlDoneTask,
+    required TResult Function(EvOnCompleteTask value) onCompleteTask,
   }) {
     return onTapFilter(this);
   }
@@ -1318,6 +1503,9 @@ class _$EvOnTapFilter implements EvOnTapFilter {
     TResult Function(EvOnTapFilter value)? onTapFilter,
     TResult Function(EvOnChangeUser value)? onChangeUser,
     TResult Function(EvOnTapFilterOff value)? onTapFilterOff,
+    TResult Function(EvOnAcceptTask value)? onAcceptTask,
+    TResult Function(EvOnSetControlDoneTask value)? onSetControlDoneTask,
+    TResult Function(EvOnCompleteTask value)? onCompleteTask,
   }) {
     return onTapFilter?.call(this);
   }
@@ -1332,6 +1520,9 @@ class _$EvOnTapFilter implements EvOnTapFilter {
     TResult Function(EvOnTapFilter value)? onTapFilter,
     TResult Function(EvOnChangeUser value)? onChangeUser,
     TResult Function(EvOnTapFilterOff value)? onTapFilterOff,
+    TResult Function(EvOnAcceptTask value)? onAcceptTask,
+    TResult Function(EvOnSetControlDoneTask value)? onSetControlDoneTask,
+    TResult Function(EvOnCompleteTask value)? onCompleteTask,
     required TResult orElse(),
   }) {
     if (onTapFilter != null) {
@@ -1417,6 +1608,9 @@ class _$EvOnChangeUser implements EvOnChangeUser {
     required TResult Function() onTapFilter,
     required TResult Function(RefCatalog user) onChangeUser,
     required TResult Function() onTapFilterOff,
+    required TResult Function(String guidTask) onAcceptTask,
+    required TResult Function(String guidTask) onSetControlDoneTask,
+    required TResult Function(String guidTask) onCompleteTask,
   }) {
     return onChangeUser(user);
   }
@@ -1431,6 +1625,9 @@ class _$EvOnChangeUser implements EvOnChangeUser {
     TResult Function()? onTapFilter,
     TResult Function(RefCatalog user)? onChangeUser,
     TResult Function()? onTapFilterOff,
+    TResult Function(String guidTask)? onAcceptTask,
+    TResult Function(String guidTask)? onSetControlDoneTask,
+    TResult Function(String guidTask)? onCompleteTask,
   }) {
     return onChangeUser?.call(user);
   }
@@ -1445,6 +1642,9 @@ class _$EvOnChangeUser implements EvOnChangeUser {
     TResult Function()? onTapFilter,
     TResult Function(RefCatalog user)? onChangeUser,
     TResult Function()? onTapFilterOff,
+    TResult Function(String guidTask)? onAcceptTask,
+    TResult Function(String guidTask)? onSetControlDoneTask,
+    TResult Function(String guidTask)? onCompleteTask,
     required TResult orElse(),
   }) {
     if (onChangeUser != null) {
@@ -1463,6 +1663,10 @@ class _$EvOnChangeUser implements EvOnChangeUser {
     required TResult Function(EvOnTapFilter value) onTapFilter,
     required TResult Function(EvOnChangeUser value) onChangeUser,
     required TResult Function(EvOnTapFilterOff value) onTapFilterOff,
+    required TResult Function(EvOnAcceptTask value) onAcceptTask,
+    required TResult Function(EvOnSetControlDoneTask value)
+        onSetControlDoneTask,
+    required TResult Function(EvOnCompleteTask value) onCompleteTask,
   }) {
     return onChangeUser(this);
   }
@@ -1477,6 +1681,9 @@ class _$EvOnChangeUser implements EvOnChangeUser {
     TResult Function(EvOnTapFilter value)? onTapFilter,
     TResult Function(EvOnChangeUser value)? onChangeUser,
     TResult Function(EvOnTapFilterOff value)? onTapFilterOff,
+    TResult Function(EvOnAcceptTask value)? onAcceptTask,
+    TResult Function(EvOnSetControlDoneTask value)? onSetControlDoneTask,
+    TResult Function(EvOnCompleteTask value)? onCompleteTask,
   }) {
     return onChangeUser?.call(this);
   }
@@ -1491,6 +1698,9 @@ class _$EvOnChangeUser implements EvOnChangeUser {
     TResult Function(EvOnTapFilter value)? onTapFilter,
     TResult Function(EvOnChangeUser value)? onChangeUser,
     TResult Function(EvOnTapFilterOff value)? onTapFilterOff,
+    TResult Function(EvOnAcceptTask value)? onAcceptTask,
+    TResult Function(EvOnSetControlDoneTask value)? onSetControlDoneTask,
+    TResult Function(EvOnCompleteTask value)? onCompleteTask,
     required TResult orElse(),
   }) {
     if (onChangeUser != null) {
@@ -1557,6 +1767,9 @@ class _$EvOnTapFilterOff implements EvOnTapFilterOff {
     required TResult Function() onTapFilter,
     required TResult Function(RefCatalog user) onChangeUser,
     required TResult Function() onTapFilterOff,
+    required TResult Function(String guidTask) onAcceptTask,
+    required TResult Function(String guidTask) onSetControlDoneTask,
+    required TResult Function(String guidTask) onCompleteTask,
   }) {
     return onTapFilterOff();
   }
@@ -1571,6 +1784,9 @@ class _$EvOnTapFilterOff implements EvOnTapFilterOff {
     TResult Function()? onTapFilter,
     TResult Function(RefCatalog user)? onChangeUser,
     TResult Function()? onTapFilterOff,
+    TResult Function(String guidTask)? onAcceptTask,
+    TResult Function(String guidTask)? onSetControlDoneTask,
+    TResult Function(String guidTask)? onCompleteTask,
   }) {
     return onTapFilterOff?.call();
   }
@@ -1585,6 +1801,9 @@ class _$EvOnTapFilterOff implements EvOnTapFilterOff {
     TResult Function()? onTapFilter,
     TResult Function(RefCatalog user)? onChangeUser,
     TResult Function()? onTapFilterOff,
+    TResult Function(String guidTask)? onAcceptTask,
+    TResult Function(String guidTask)? onSetControlDoneTask,
+    TResult Function(String guidTask)? onCompleteTask,
     required TResult orElse(),
   }) {
     if (onTapFilterOff != null) {
@@ -1603,6 +1822,10 @@ class _$EvOnTapFilterOff implements EvOnTapFilterOff {
     required TResult Function(EvOnTapFilter value) onTapFilter,
     required TResult Function(EvOnChangeUser value) onChangeUser,
     required TResult Function(EvOnTapFilterOff value) onTapFilterOff,
+    required TResult Function(EvOnAcceptTask value) onAcceptTask,
+    required TResult Function(EvOnSetControlDoneTask value)
+        onSetControlDoneTask,
+    required TResult Function(EvOnCompleteTask value) onCompleteTask,
   }) {
     return onTapFilterOff(this);
   }
@@ -1617,6 +1840,9 @@ class _$EvOnTapFilterOff implements EvOnTapFilterOff {
     TResult Function(EvOnTapFilter value)? onTapFilter,
     TResult Function(EvOnChangeUser value)? onChangeUser,
     TResult Function(EvOnTapFilterOff value)? onTapFilterOff,
+    TResult Function(EvOnAcceptTask value)? onAcceptTask,
+    TResult Function(EvOnSetControlDoneTask value)? onSetControlDoneTask,
+    TResult Function(EvOnCompleteTask value)? onCompleteTask,
   }) {
     return onTapFilterOff?.call(this);
   }
@@ -1631,6 +1857,9 @@ class _$EvOnTapFilterOff implements EvOnTapFilterOff {
     TResult Function(EvOnTapFilter value)? onTapFilter,
     TResult Function(EvOnChangeUser value)? onChangeUser,
     TResult Function(EvOnTapFilterOff value)? onTapFilterOff,
+    TResult Function(EvOnAcceptTask value)? onAcceptTask,
+    TResult Function(EvOnSetControlDoneTask value)? onSetControlDoneTask,
+    TResult Function(EvOnCompleteTask value)? onCompleteTask,
     required TResult orElse(),
   }) {
     if (onTapFilterOff != null) {
@@ -1642,6 +1871,558 @@ class _$EvOnTapFilterOff implements EvOnTapFilterOff {
 
 abstract class EvOnTapFilterOff implements TasksUserEvent {
   const factory EvOnTapFilterOff() = _$EvOnTapFilterOff;
+}
+
+/// @nodoc
+abstract class _$$EvOnAcceptTaskCopyWith<$Res> {
+  factory _$$EvOnAcceptTaskCopyWith(
+          _$EvOnAcceptTask value, $Res Function(_$EvOnAcceptTask) then) =
+      __$$EvOnAcceptTaskCopyWithImpl<$Res>;
+  $Res call({String guidTask});
+}
+
+/// @nodoc
+class __$$EvOnAcceptTaskCopyWithImpl<$Res>
+    extends _$TasksUserEventCopyWithImpl<$Res>
+    implements _$$EvOnAcceptTaskCopyWith<$Res> {
+  __$$EvOnAcceptTaskCopyWithImpl(
+      _$EvOnAcceptTask _value, $Res Function(_$EvOnAcceptTask) _then)
+      : super(_value, (v) => _then(v as _$EvOnAcceptTask));
+
+  @override
+  _$EvOnAcceptTask get _value => super._value as _$EvOnAcceptTask;
+
+  @override
+  $Res call({
+    Object? guidTask = freezed,
+  }) {
+    return _then(_$EvOnAcceptTask(
+      guidTask == freezed
+          ? _value.guidTask
+          : guidTask // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$EvOnAcceptTask implements EvOnAcceptTask {
+  const _$EvOnAcceptTask(this.guidTask);
+
+  @override
+  final String guidTask;
+
+  @override
+  String toString() {
+    return 'TasksUserEvent.onAcceptTask(guidTask: $guidTask)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EvOnAcceptTask &&
+            const DeepCollectionEquality().equals(other.guidTask, guidTask));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(guidTask));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$EvOnAcceptTaskCopyWith<_$EvOnAcceptTask> get copyWith =>
+      __$$EvOnAcceptTaskCopyWithImpl<_$EvOnAcceptTask>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() refresh,
+    required TResult Function(String guid) onTapItem,
+    required TResult Function() onTapFab,
+    required TResult Function() onTapFilter,
+    required TResult Function(RefCatalog user) onChangeUser,
+    required TResult Function() onTapFilterOff,
+    required TResult Function(String guidTask) onAcceptTask,
+    required TResult Function(String guidTask) onSetControlDoneTask,
+    required TResult Function(String guidTask) onCompleteTask,
+  }) {
+    return onAcceptTask(guidTask);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? refresh,
+    TResult Function(String guid)? onTapItem,
+    TResult Function()? onTapFab,
+    TResult Function()? onTapFilter,
+    TResult Function(RefCatalog user)? onChangeUser,
+    TResult Function()? onTapFilterOff,
+    TResult Function(String guidTask)? onAcceptTask,
+    TResult Function(String guidTask)? onSetControlDoneTask,
+    TResult Function(String guidTask)? onCompleteTask,
+  }) {
+    return onAcceptTask?.call(guidTask);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? refresh,
+    TResult Function(String guid)? onTapItem,
+    TResult Function()? onTapFab,
+    TResult Function()? onTapFilter,
+    TResult Function(RefCatalog user)? onChangeUser,
+    TResult Function()? onTapFilterOff,
+    TResult Function(String guidTask)? onAcceptTask,
+    TResult Function(String guidTask)? onSetControlDoneTask,
+    TResult Function(String guidTask)? onCompleteTask,
+    required TResult orElse(),
+  }) {
+    if (onAcceptTask != null) {
+      return onAcceptTask(guidTask);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EvInit value) init,
+    required TResult Function(EvRefresh value) refresh,
+    required TResult Function(EvOnTapItem value) onTapItem,
+    required TResult Function(EvOnTapFab value) onTapFab,
+    required TResult Function(EvOnTapFilter value) onTapFilter,
+    required TResult Function(EvOnChangeUser value) onChangeUser,
+    required TResult Function(EvOnTapFilterOff value) onTapFilterOff,
+    required TResult Function(EvOnAcceptTask value) onAcceptTask,
+    required TResult Function(EvOnSetControlDoneTask value)
+        onSetControlDoneTask,
+    required TResult Function(EvOnCompleteTask value) onCompleteTask,
+  }) {
+    return onAcceptTask(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(EvInit value)? init,
+    TResult Function(EvRefresh value)? refresh,
+    TResult Function(EvOnTapItem value)? onTapItem,
+    TResult Function(EvOnTapFab value)? onTapFab,
+    TResult Function(EvOnTapFilter value)? onTapFilter,
+    TResult Function(EvOnChangeUser value)? onChangeUser,
+    TResult Function(EvOnTapFilterOff value)? onTapFilterOff,
+    TResult Function(EvOnAcceptTask value)? onAcceptTask,
+    TResult Function(EvOnSetControlDoneTask value)? onSetControlDoneTask,
+    TResult Function(EvOnCompleteTask value)? onCompleteTask,
+  }) {
+    return onAcceptTask?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EvInit value)? init,
+    TResult Function(EvRefresh value)? refresh,
+    TResult Function(EvOnTapItem value)? onTapItem,
+    TResult Function(EvOnTapFab value)? onTapFab,
+    TResult Function(EvOnTapFilter value)? onTapFilter,
+    TResult Function(EvOnChangeUser value)? onChangeUser,
+    TResult Function(EvOnTapFilterOff value)? onTapFilterOff,
+    TResult Function(EvOnAcceptTask value)? onAcceptTask,
+    TResult Function(EvOnSetControlDoneTask value)? onSetControlDoneTask,
+    TResult Function(EvOnCompleteTask value)? onCompleteTask,
+    required TResult orElse(),
+  }) {
+    if (onAcceptTask != null) {
+      return onAcceptTask(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EvOnAcceptTask implements TasksUserEvent {
+  const factory EvOnAcceptTask(final String guidTask) = _$EvOnAcceptTask;
+
+  String get guidTask;
+  @JsonKey(ignore: true)
+  _$$EvOnAcceptTaskCopyWith<_$EvOnAcceptTask> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$EvOnSetControlDoneTaskCopyWith<$Res> {
+  factory _$$EvOnSetControlDoneTaskCopyWith(_$EvOnSetControlDoneTask value,
+          $Res Function(_$EvOnSetControlDoneTask) then) =
+      __$$EvOnSetControlDoneTaskCopyWithImpl<$Res>;
+  $Res call({String guidTask});
+}
+
+/// @nodoc
+class __$$EvOnSetControlDoneTaskCopyWithImpl<$Res>
+    extends _$TasksUserEventCopyWithImpl<$Res>
+    implements _$$EvOnSetControlDoneTaskCopyWith<$Res> {
+  __$$EvOnSetControlDoneTaskCopyWithImpl(_$EvOnSetControlDoneTask _value,
+      $Res Function(_$EvOnSetControlDoneTask) _then)
+      : super(_value, (v) => _then(v as _$EvOnSetControlDoneTask));
+
+  @override
+  _$EvOnSetControlDoneTask get _value =>
+      super._value as _$EvOnSetControlDoneTask;
+
+  @override
+  $Res call({
+    Object? guidTask = freezed,
+  }) {
+    return _then(_$EvOnSetControlDoneTask(
+      guidTask == freezed
+          ? _value.guidTask
+          : guidTask // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$EvOnSetControlDoneTask implements EvOnSetControlDoneTask {
+  const _$EvOnSetControlDoneTask(this.guidTask);
+
+  @override
+  final String guidTask;
+
+  @override
+  String toString() {
+    return 'TasksUserEvent.onSetControlDoneTask(guidTask: $guidTask)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EvOnSetControlDoneTask &&
+            const DeepCollectionEquality().equals(other.guidTask, guidTask));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(guidTask));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$EvOnSetControlDoneTaskCopyWith<_$EvOnSetControlDoneTask> get copyWith =>
+      __$$EvOnSetControlDoneTaskCopyWithImpl<_$EvOnSetControlDoneTask>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() refresh,
+    required TResult Function(String guid) onTapItem,
+    required TResult Function() onTapFab,
+    required TResult Function() onTapFilter,
+    required TResult Function(RefCatalog user) onChangeUser,
+    required TResult Function() onTapFilterOff,
+    required TResult Function(String guidTask) onAcceptTask,
+    required TResult Function(String guidTask) onSetControlDoneTask,
+    required TResult Function(String guidTask) onCompleteTask,
+  }) {
+    return onSetControlDoneTask(guidTask);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? refresh,
+    TResult Function(String guid)? onTapItem,
+    TResult Function()? onTapFab,
+    TResult Function()? onTapFilter,
+    TResult Function(RefCatalog user)? onChangeUser,
+    TResult Function()? onTapFilterOff,
+    TResult Function(String guidTask)? onAcceptTask,
+    TResult Function(String guidTask)? onSetControlDoneTask,
+    TResult Function(String guidTask)? onCompleteTask,
+  }) {
+    return onSetControlDoneTask?.call(guidTask);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? refresh,
+    TResult Function(String guid)? onTapItem,
+    TResult Function()? onTapFab,
+    TResult Function()? onTapFilter,
+    TResult Function(RefCatalog user)? onChangeUser,
+    TResult Function()? onTapFilterOff,
+    TResult Function(String guidTask)? onAcceptTask,
+    TResult Function(String guidTask)? onSetControlDoneTask,
+    TResult Function(String guidTask)? onCompleteTask,
+    required TResult orElse(),
+  }) {
+    if (onSetControlDoneTask != null) {
+      return onSetControlDoneTask(guidTask);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EvInit value) init,
+    required TResult Function(EvRefresh value) refresh,
+    required TResult Function(EvOnTapItem value) onTapItem,
+    required TResult Function(EvOnTapFab value) onTapFab,
+    required TResult Function(EvOnTapFilter value) onTapFilter,
+    required TResult Function(EvOnChangeUser value) onChangeUser,
+    required TResult Function(EvOnTapFilterOff value) onTapFilterOff,
+    required TResult Function(EvOnAcceptTask value) onAcceptTask,
+    required TResult Function(EvOnSetControlDoneTask value)
+        onSetControlDoneTask,
+    required TResult Function(EvOnCompleteTask value) onCompleteTask,
+  }) {
+    return onSetControlDoneTask(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(EvInit value)? init,
+    TResult Function(EvRefresh value)? refresh,
+    TResult Function(EvOnTapItem value)? onTapItem,
+    TResult Function(EvOnTapFab value)? onTapFab,
+    TResult Function(EvOnTapFilter value)? onTapFilter,
+    TResult Function(EvOnChangeUser value)? onChangeUser,
+    TResult Function(EvOnTapFilterOff value)? onTapFilterOff,
+    TResult Function(EvOnAcceptTask value)? onAcceptTask,
+    TResult Function(EvOnSetControlDoneTask value)? onSetControlDoneTask,
+    TResult Function(EvOnCompleteTask value)? onCompleteTask,
+  }) {
+    return onSetControlDoneTask?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EvInit value)? init,
+    TResult Function(EvRefresh value)? refresh,
+    TResult Function(EvOnTapItem value)? onTapItem,
+    TResult Function(EvOnTapFab value)? onTapFab,
+    TResult Function(EvOnTapFilter value)? onTapFilter,
+    TResult Function(EvOnChangeUser value)? onChangeUser,
+    TResult Function(EvOnTapFilterOff value)? onTapFilterOff,
+    TResult Function(EvOnAcceptTask value)? onAcceptTask,
+    TResult Function(EvOnSetControlDoneTask value)? onSetControlDoneTask,
+    TResult Function(EvOnCompleteTask value)? onCompleteTask,
+    required TResult orElse(),
+  }) {
+    if (onSetControlDoneTask != null) {
+      return onSetControlDoneTask(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EvOnSetControlDoneTask implements TasksUserEvent {
+  const factory EvOnSetControlDoneTask(final String guidTask) =
+      _$EvOnSetControlDoneTask;
+
+  String get guidTask;
+  @JsonKey(ignore: true)
+  _$$EvOnSetControlDoneTaskCopyWith<_$EvOnSetControlDoneTask> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$EvOnCompleteTaskCopyWith<$Res> {
+  factory _$$EvOnCompleteTaskCopyWith(
+          _$EvOnCompleteTask value, $Res Function(_$EvOnCompleteTask) then) =
+      __$$EvOnCompleteTaskCopyWithImpl<$Res>;
+  $Res call({String guidTask});
+}
+
+/// @nodoc
+class __$$EvOnCompleteTaskCopyWithImpl<$Res>
+    extends _$TasksUserEventCopyWithImpl<$Res>
+    implements _$$EvOnCompleteTaskCopyWith<$Res> {
+  __$$EvOnCompleteTaskCopyWithImpl(
+      _$EvOnCompleteTask _value, $Res Function(_$EvOnCompleteTask) _then)
+      : super(_value, (v) => _then(v as _$EvOnCompleteTask));
+
+  @override
+  _$EvOnCompleteTask get _value => super._value as _$EvOnCompleteTask;
+
+  @override
+  $Res call({
+    Object? guidTask = freezed,
+  }) {
+    return _then(_$EvOnCompleteTask(
+      guidTask == freezed
+          ? _value.guidTask
+          : guidTask // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$EvOnCompleteTask implements EvOnCompleteTask {
+  const _$EvOnCompleteTask(this.guidTask);
+
+  @override
+  final String guidTask;
+
+  @override
+  String toString() {
+    return 'TasksUserEvent.onCompleteTask(guidTask: $guidTask)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EvOnCompleteTask &&
+            const DeepCollectionEquality().equals(other.guidTask, guidTask));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(guidTask));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$EvOnCompleteTaskCopyWith<_$EvOnCompleteTask> get copyWith =>
+      __$$EvOnCompleteTaskCopyWithImpl<_$EvOnCompleteTask>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() refresh,
+    required TResult Function(String guid) onTapItem,
+    required TResult Function() onTapFab,
+    required TResult Function() onTapFilter,
+    required TResult Function(RefCatalog user) onChangeUser,
+    required TResult Function() onTapFilterOff,
+    required TResult Function(String guidTask) onAcceptTask,
+    required TResult Function(String guidTask) onSetControlDoneTask,
+    required TResult Function(String guidTask) onCompleteTask,
+  }) {
+    return onCompleteTask(guidTask);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? refresh,
+    TResult Function(String guid)? onTapItem,
+    TResult Function()? onTapFab,
+    TResult Function()? onTapFilter,
+    TResult Function(RefCatalog user)? onChangeUser,
+    TResult Function()? onTapFilterOff,
+    TResult Function(String guidTask)? onAcceptTask,
+    TResult Function(String guidTask)? onSetControlDoneTask,
+    TResult Function(String guidTask)? onCompleteTask,
+  }) {
+    return onCompleteTask?.call(guidTask);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? refresh,
+    TResult Function(String guid)? onTapItem,
+    TResult Function()? onTapFab,
+    TResult Function()? onTapFilter,
+    TResult Function(RefCatalog user)? onChangeUser,
+    TResult Function()? onTapFilterOff,
+    TResult Function(String guidTask)? onAcceptTask,
+    TResult Function(String guidTask)? onSetControlDoneTask,
+    TResult Function(String guidTask)? onCompleteTask,
+    required TResult orElse(),
+  }) {
+    if (onCompleteTask != null) {
+      return onCompleteTask(guidTask);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EvInit value) init,
+    required TResult Function(EvRefresh value) refresh,
+    required TResult Function(EvOnTapItem value) onTapItem,
+    required TResult Function(EvOnTapFab value) onTapFab,
+    required TResult Function(EvOnTapFilter value) onTapFilter,
+    required TResult Function(EvOnChangeUser value) onChangeUser,
+    required TResult Function(EvOnTapFilterOff value) onTapFilterOff,
+    required TResult Function(EvOnAcceptTask value) onAcceptTask,
+    required TResult Function(EvOnSetControlDoneTask value)
+        onSetControlDoneTask,
+    required TResult Function(EvOnCompleteTask value) onCompleteTask,
+  }) {
+    return onCompleteTask(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(EvInit value)? init,
+    TResult Function(EvRefresh value)? refresh,
+    TResult Function(EvOnTapItem value)? onTapItem,
+    TResult Function(EvOnTapFab value)? onTapFab,
+    TResult Function(EvOnTapFilter value)? onTapFilter,
+    TResult Function(EvOnChangeUser value)? onChangeUser,
+    TResult Function(EvOnTapFilterOff value)? onTapFilterOff,
+    TResult Function(EvOnAcceptTask value)? onAcceptTask,
+    TResult Function(EvOnSetControlDoneTask value)? onSetControlDoneTask,
+    TResult Function(EvOnCompleteTask value)? onCompleteTask,
+  }) {
+    return onCompleteTask?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EvInit value)? init,
+    TResult Function(EvRefresh value)? refresh,
+    TResult Function(EvOnTapItem value)? onTapItem,
+    TResult Function(EvOnTapFab value)? onTapFab,
+    TResult Function(EvOnTapFilter value)? onTapFilter,
+    TResult Function(EvOnChangeUser value)? onChangeUser,
+    TResult Function(EvOnTapFilterOff value)? onTapFilterOff,
+    TResult Function(EvOnAcceptTask value)? onAcceptTask,
+    TResult Function(EvOnSetControlDoneTask value)? onSetControlDoneTask,
+    TResult Function(EvOnCompleteTask value)? onCompleteTask,
+    required TResult orElse(),
+  }) {
+    if (onCompleteTask != null) {
+      return onCompleteTask(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EvOnCompleteTask implements TasksUserEvent {
+  const factory EvOnCompleteTask(final String guidTask) = _$EvOnCompleteTask;
+
+  String get guidTask;
+  @JsonKey(ignore: true)
+  _$$EvOnCompleteTaskCopyWith<_$EvOnCompleteTask> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

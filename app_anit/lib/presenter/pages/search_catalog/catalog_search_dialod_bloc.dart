@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../arch/sr_bloc/sr_bloc.dart';

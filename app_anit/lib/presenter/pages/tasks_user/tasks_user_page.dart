@@ -1,4 +1,5 @@
 import 'package:app_anit/core/extencion/date_extencion.dart';
+import 'package:app_anit/domain/models/task_item_extention.dart';
 import 'package:app_anit/presenter/disign_system/widgets_design/custom_error_page.dart';
 import 'package:app_anit/presenter/pages/tasks_user/tasks_user_bloc.dart';
 import 'package:app_anit/presenter/pages/tasks_user/tasks_user_models.dart';
@@ -34,6 +35,7 @@ class TasksUserPage extends StatelessWidget {
               title: value.title,
               isLoading: value.isLoading,
               isCurentUser: value.isCurentUser,
+              appUser: value.appUser,
             ),
             error: (value) => CustomErrorPage(
                 message: value.message,
@@ -100,6 +102,7 @@ class _PageContent extends StatefulWidget {
   final bool isLoading;
   final String title;
   final bool isCurentUser;
+  final RefCatalog appUser;
 
   const _PageContent({
     Key? key,
@@ -108,6 +111,7 @@ class _PageContent extends StatefulWidget {
     required this.isLoading,
     required this.title,
     required this.isCurentUser,
+    required this.appUser,
   }) : super(key: key);
 
   @override
@@ -173,10 +177,14 @@ class _PageContentState extends State<_PageContent>
           TaskListWidget(
             list: widget.tasks,
             isLoading: widget.isLoading,
+            appUser: widget.appUser,
+            isControlledTasks: false,
           ),
           TaskListWidget(
             list: widget.controlledTasks,
             isLoading: widget.isLoading,
+            appUser: widget.appUser,
+            isControlledTasks: true,
           )
         ],
       ),
@@ -187,10 +195,14 @@ class _PageContentState extends State<_PageContent>
 class TaskListWidget extends StatelessWidget {
   final List<TaskItem> list;
   final bool isLoading;
+  final RefCatalog appUser;
+  final bool isControlledTasks;
   const TaskListWidget({
     Key? key,
     required this.list,
     required this.isLoading,
+    required this.appUser,
+    required this.isControlledTasks,
   }) : super(key: key);
 
   @override
@@ -214,7 +226,11 @@ class TaskListWidget extends StatelessWidget {
                 scrollDirection: Axis.vertical,
                 //shrinkWrap: true,
                 itemBuilder: (BuildContext context, int index) {
-                  return TaskItemWidget(item: list[index]);
+                  return TaskItemWidget(
+                    item: list[index],
+                    appUser: appUser,
+                    isControlledTasks: isControlledTasks,
+                  );
                 },
                 itemCount: list.length,
               ),
@@ -228,10 +244,14 @@ class TaskListWidget extends StatelessWidget {
 
 class TaskItemWidget extends StatelessWidget {
   final TaskItem item;
+  final RefCatalog appUser;
+  final bool isControlledTasks;
 
   const TaskItemWidget({
     Key? key,
     required this.item,
+    required this.appUser,
+    required this.isControlledTasks,
   }) : super(key: key);
 
   @override
@@ -239,6 +259,44 @@ class TaskItemWidget extends StatelessWidget {
     final textStyleTitle = item.condition!.name == 'Завершено'
         ? const TextStyle(decoration: TextDecoration.lineThrough)
         : null;
+
+    Widget? getLeading() {
+      if (item.needAccept(appUser)) {
+        return IconButton(
+          icon: const Icon(Icons.notifications_active),
+          onPressed: () async {
+            if (!isControlledTasks) {
+              context
+                  .read<TasksUserBlok>()
+                  .add(TasksUserEvent.onAcceptTask(item.guid!));
+            } else {}
+          },
+        );
+      }
+
+      return null;
+    }
+
+    Widget? getTrailing() {
+      if (!item.needAccept(appUser)) {
+        return IconButton(
+          icon: const Icon(Icons.check),
+          onPressed: () async {
+            if (isControlledTasks) {
+              context
+                  .read<TasksUserBlok>()
+                  .add(TasksUserEvent.onSetControlDoneTask(item.guid!));
+            } else {
+              context
+                  .read<TasksUserBlok>()
+                  .add(TasksUserEvent.onCompleteTask(item.guid!));
+            }
+          },
+        );
+      }
+
+      return null;
+    }
 
     return Card(
       child: ListTile(
@@ -249,6 +307,8 @@ class TaskItemWidget extends StatelessWidget {
           item.title ?? '',
           style: textStyleTitle,
         ),
+        leading: getLeading(),
+        trailing: getTrailing(),
         subtitle: Row(
           children: [
             Expanded(

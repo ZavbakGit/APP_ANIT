@@ -42,6 +42,7 @@ class TasksWidget extends StatelessWidget {
                         Expanded(
                           flex: 10,
                           child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
                                 'Задачи',
@@ -51,6 +52,21 @@ class TasksWidget extends StatelessWidget {
                                 '${state.data.countTask}/${state.data.countControlleredTask}',
                                 style: Theme.of(context).textTheme.bodyLarge,
                               ),
+                              if (state.countNeedAccept > 0)
+                                Expanded(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        '${state.data.countNeedAccept}',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyLarge,
+                                      ),
+                                      const Icon(Icons.notifications_active),
+                                    ],
+                                  ),
+                                ),
                             ],
                           ),
                         ),

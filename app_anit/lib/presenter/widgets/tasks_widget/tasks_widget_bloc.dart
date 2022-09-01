@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:app_anit/domain/models/task_item_extention.dart';
 import 'package:app_anit/presenter/widgets/tasks_widget/tasks_widget_models.dart';
 import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,6 +28,8 @@ class TasksWidgetBloc
     on<TasksWidgetOpenAddTaskController>(_addTaskController);
   }
 
+  late RefCatalog curentUser;
+
   @override
   Future<void> close() {
     _timer?.cancel();
@@ -37,6 +40,7 @@ class TasksWidgetBloc
     TasksWidgetInit event,
     Emitter<TasksWidgetState> emit,
   ) async {
+    curentUser = appModel.remoteConfig!.user;
     _timer = Timer.periodic(const Duration(seconds: 30), (timer) {
       add(const TasksWidgetRefresh());
     });
@@ -49,8 +53,7 @@ class TasksWidgetBloc
   ) async {
     emit(const TasksWidgetState.empty());
 
-    final either =
-        await repository.tasksUserGet(appModel.remoteConfig!.user.guid!);
+    final either = await repository.tasksUserGet(curentUser.guid!);
 
     either.fold((fail) {
       emit(const TasksWidgetState.error());
@@ -62,8 +65,13 @@ class TasksWidgetBloc
       final countControllers =
           list.where((element) => element.isControllers!).length;
 
+      final countNeedAccept =
+          list.where((element) => element.needAccept(curentUser)).length;
+
       emit(TasksWidgetState.data(
-          countTask: countTask, countControlleredTask: countControllers));
+          countTask: countTask,
+          countControlleredTask: countControllers,
+          countNeedAccept: countNeedAccept));
     });
   }
 
