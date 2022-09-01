@@ -507,7 +507,10 @@ mixin _$TaskPageEvent {
     required TResult Function() init,
     required TResult Function() load,
     required TResult Function() exit,
-    required TResult Function() save,
+    required TResult Function() pressedSave,
+    required TResult Function() confirmedSave,
+    required TResult Function() notConfirmedSave,
+    required TResult Function() presBack,
     required TResult Function(String val) changeTitle,
     required TResult Function(RefCatalog val) changePartner,
     required TResult Function(RefCatalog val) changeResponsible,
@@ -528,7 +531,10 @@ mixin _$TaskPageEvent {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? exit,
-    TResult Function()? save,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
     TResult Function(String val)? changeTitle,
     TResult Function(RefCatalog val)? changePartner,
     TResult Function(RefCatalog val)? changeResponsible,
@@ -549,7 +555,10 @@ mixin _$TaskPageEvent {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? exit,
-    TResult Function()? save,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
     TResult Function(String val)? changeTitle,
     TResult Function(RefCatalog val)? changePartner,
     TResult Function(RefCatalog val)? changeResponsible,
@@ -571,7 +580,11 @@ mixin _$TaskPageEvent {
     required TResult Function(TaskPageEventInit value) init,
     required TResult Function(TaskPageEventLoad value) load,
     required TResult Function(TaskPageEventExit value) exit,
-    required TResult Function(TaskPageEventSave value) save,
+    required TResult Function(TaskPageEventPressedSave value) pressedSave,
+    required TResult Function(TaskPageEventConfirmedSave value) confirmedSave,
+    required TResult Function(TaskPageEventNotConfirmedSave value)
+        notConfirmedSave,
+    required TResult Function(TaskPageEventPressedBack value) presBack,
     required TResult Function(TaskPageEventChangeTitle value) changeTitle,
     required TResult Function(TaskPageEventChangePartner value) changePartner,
     required TResult Function(TaskPageEventChangeResponsible value)
@@ -596,7 +609,10 @@ mixin _$TaskPageEvent {
     TResult Function(TaskPageEventInit value)? init,
     TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
-    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
     TResult Function(TaskPageEventChangePartner value)? changePartner,
     TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
@@ -617,7 +633,10 @@ mixin _$TaskPageEvent {
     TResult Function(TaskPageEventInit value)? init,
     TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
-    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
     TResult Function(TaskPageEventChangePartner value)? changePartner,
     TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
@@ -697,7 +716,10 @@ class _$TaskPageEventInit implements TaskPageEventInit {
     required TResult Function() init,
     required TResult Function() load,
     required TResult Function() exit,
-    required TResult Function() save,
+    required TResult Function() pressedSave,
+    required TResult Function() confirmedSave,
+    required TResult Function() notConfirmedSave,
+    required TResult Function() presBack,
     required TResult Function(String val) changeTitle,
     required TResult Function(RefCatalog val) changePartner,
     required TResult Function(RefCatalog val) changeResponsible,
@@ -721,7 +743,10 @@ class _$TaskPageEventInit implements TaskPageEventInit {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? exit,
-    TResult Function()? save,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
     TResult Function(String val)? changeTitle,
     TResult Function(RefCatalog val)? changePartner,
     TResult Function(RefCatalog val)? changeResponsible,
@@ -745,7 +770,10 @@ class _$TaskPageEventInit implements TaskPageEventInit {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? exit,
-    TResult Function()? save,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
     TResult Function(String val)? changeTitle,
     TResult Function(RefCatalog val)? changePartner,
     TResult Function(RefCatalog val)? changeResponsible,
@@ -773,7 +801,11 @@ class _$TaskPageEventInit implements TaskPageEventInit {
     required TResult Function(TaskPageEventInit value) init,
     required TResult Function(TaskPageEventLoad value) load,
     required TResult Function(TaskPageEventExit value) exit,
-    required TResult Function(TaskPageEventSave value) save,
+    required TResult Function(TaskPageEventPressedSave value) pressedSave,
+    required TResult Function(TaskPageEventConfirmedSave value) confirmedSave,
+    required TResult Function(TaskPageEventNotConfirmedSave value)
+        notConfirmedSave,
+    required TResult Function(TaskPageEventPressedBack value) presBack,
     required TResult Function(TaskPageEventChangeTitle value) changeTitle,
     required TResult Function(TaskPageEventChangePartner value) changePartner,
     required TResult Function(TaskPageEventChangeResponsible value)
@@ -801,7 +833,10 @@ class _$TaskPageEventInit implements TaskPageEventInit {
     TResult Function(TaskPageEventInit value)? init,
     TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
-    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
     TResult Function(TaskPageEventChangePartner value)? changePartner,
     TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
@@ -825,7 +860,10 @@ class _$TaskPageEventInit implements TaskPageEventInit {
     TResult Function(TaskPageEventInit value)? init,
     TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
-    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
     TResult Function(TaskPageEventChangePartner value)? changePartner,
     TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
@@ -896,7 +934,10 @@ class _$TaskPageEventLoad implements TaskPageEventLoad {
     required TResult Function() init,
     required TResult Function() load,
     required TResult Function() exit,
-    required TResult Function() save,
+    required TResult Function() pressedSave,
+    required TResult Function() confirmedSave,
+    required TResult Function() notConfirmedSave,
+    required TResult Function() presBack,
     required TResult Function(String val) changeTitle,
     required TResult Function(RefCatalog val) changePartner,
     required TResult Function(RefCatalog val) changeResponsible,
@@ -920,7 +961,10 @@ class _$TaskPageEventLoad implements TaskPageEventLoad {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? exit,
-    TResult Function()? save,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
     TResult Function(String val)? changeTitle,
     TResult Function(RefCatalog val)? changePartner,
     TResult Function(RefCatalog val)? changeResponsible,
@@ -944,7 +988,10 @@ class _$TaskPageEventLoad implements TaskPageEventLoad {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? exit,
-    TResult Function()? save,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
     TResult Function(String val)? changeTitle,
     TResult Function(RefCatalog val)? changePartner,
     TResult Function(RefCatalog val)? changeResponsible,
@@ -972,7 +1019,11 @@ class _$TaskPageEventLoad implements TaskPageEventLoad {
     required TResult Function(TaskPageEventInit value) init,
     required TResult Function(TaskPageEventLoad value) load,
     required TResult Function(TaskPageEventExit value) exit,
-    required TResult Function(TaskPageEventSave value) save,
+    required TResult Function(TaskPageEventPressedSave value) pressedSave,
+    required TResult Function(TaskPageEventConfirmedSave value) confirmedSave,
+    required TResult Function(TaskPageEventNotConfirmedSave value)
+        notConfirmedSave,
+    required TResult Function(TaskPageEventPressedBack value) presBack,
     required TResult Function(TaskPageEventChangeTitle value) changeTitle,
     required TResult Function(TaskPageEventChangePartner value) changePartner,
     required TResult Function(TaskPageEventChangeResponsible value)
@@ -1000,7 +1051,10 @@ class _$TaskPageEventLoad implements TaskPageEventLoad {
     TResult Function(TaskPageEventInit value)? init,
     TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
-    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
     TResult Function(TaskPageEventChangePartner value)? changePartner,
     TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
@@ -1024,7 +1078,10 @@ class _$TaskPageEventLoad implements TaskPageEventLoad {
     TResult Function(TaskPageEventInit value)? init,
     TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
-    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
     TResult Function(TaskPageEventChangePartner value)? changePartner,
     TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
@@ -1095,7 +1152,10 @@ class _$TaskPageEventExit implements TaskPageEventExit {
     required TResult Function() init,
     required TResult Function() load,
     required TResult Function() exit,
-    required TResult Function() save,
+    required TResult Function() pressedSave,
+    required TResult Function() confirmedSave,
+    required TResult Function() notConfirmedSave,
+    required TResult Function() presBack,
     required TResult Function(String val) changeTitle,
     required TResult Function(RefCatalog val) changePartner,
     required TResult Function(RefCatalog val) changeResponsible,
@@ -1119,7 +1179,10 @@ class _$TaskPageEventExit implements TaskPageEventExit {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? exit,
-    TResult Function()? save,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
     TResult Function(String val)? changeTitle,
     TResult Function(RefCatalog val)? changePartner,
     TResult Function(RefCatalog val)? changeResponsible,
@@ -1143,7 +1206,10 @@ class _$TaskPageEventExit implements TaskPageEventExit {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? exit,
-    TResult Function()? save,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
     TResult Function(String val)? changeTitle,
     TResult Function(RefCatalog val)? changePartner,
     TResult Function(RefCatalog val)? changeResponsible,
@@ -1171,7 +1237,11 @@ class _$TaskPageEventExit implements TaskPageEventExit {
     required TResult Function(TaskPageEventInit value) init,
     required TResult Function(TaskPageEventLoad value) load,
     required TResult Function(TaskPageEventExit value) exit,
-    required TResult Function(TaskPageEventSave value) save,
+    required TResult Function(TaskPageEventPressedSave value) pressedSave,
+    required TResult Function(TaskPageEventConfirmedSave value) confirmedSave,
+    required TResult Function(TaskPageEventNotConfirmedSave value)
+        notConfirmedSave,
+    required TResult Function(TaskPageEventPressedBack value) presBack,
     required TResult Function(TaskPageEventChangeTitle value) changeTitle,
     required TResult Function(TaskPageEventChangePartner value) changePartner,
     required TResult Function(TaskPageEventChangeResponsible value)
@@ -1199,7 +1269,10 @@ class _$TaskPageEventExit implements TaskPageEventExit {
     TResult Function(TaskPageEventInit value)? init,
     TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
-    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
     TResult Function(TaskPageEventChangePartner value)? changePartner,
     TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
@@ -1223,7 +1296,10 @@ class _$TaskPageEventExit implements TaskPageEventExit {
     TResult Function(TaskPageEventInit value)? init,
     TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
-    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
     TResult Function(TaskPageEventChangePartner value)? changePartner,
     TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
@@ -1251,38 +1327,40 @@ abstract class TaskPageEventExit implements TaskPageEvent {
 }
 
 /// @nodoc
-abstract class _$$TaskPageEventSaveCopyWith<$Res> {
-  factory _$$TaskPageEventSaveCopyWith(
-          _$TaskPageEventSave value, $Res Function(_$TaskPageEventSave) then) =
-      __$$TaskPageEventSaveCopyWithImpl<$Res>;
+abstract class _$$TaskPageEventPressedSaveCopyWith<$Res> {
+  factory _$$TaskPageEventPressedSaveCopyWith(_$TaskPageEventPressedSave value,
+          $Res Function(_$TaskPageEventPressedSave) then) =
+      __$$TaskPageEventPressedSaveCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$TaskPageEventSaveCopyWithImpl<$Res>
+class __$$TaskPageEventPressedSaveCopyWithImpl<$Res>
     extends _$TaskPageEventCopyWithImpl<$Res>
-    implements _$$TaskPageEventSaveCopyWith<$Res> {
-  __$$TaskPageEventSaveCopyWithImpl(
-      _$TaskPageEventSave _value, $Res Function(_$TaskPageEventSave) _then)
-      : super(_value, (v) => _then(v as _$TaskPageEventSave));
+    implements _$$TaskPageEventPressedSaveCopyWith<$Res> {
+  __$$TaskPageEventPressedSaveCopyWithImpl(_$TaskPageEventPressedSave _value,
+      $Res Function(_$TaskPageEventPressedSave) _then)
+      : super(_value, (v) => _then(v as _$TaskPageEventPressedSave));
 
   @override
-  _$TaskPageEventSave get _value => super._value as _$TaskPageEventSave;
+  _$TaskPageEventPressedSave get _value =>
+      super._value as _$TaskPageEventPressedSave;
 }
 
 /// @nodoc
 
-class _$TaskPageEventSave implements TaskPageEventSave {
-  const _$TaskPageEventSave();
+class _$TaskPageEventPressedSave implements TaskPageEventPressedSave {
+  const _$TaskPageEventPressedSave();
 
   @override
   String toString() {
-    return 'TaskPageEvent.save()';
+    return 'TaskPageEvent.pressedSave()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$TaskPageEventSave);
+        (other.runtimeType == runtimeType &&
+            other is _$TaskPageEventPressedSave);
   }
 
   @override
@@ -1294,7 +1372,10 @@ class _$TaskPageEventSave implements TaskPageEventSave {
     required TResult Function() init,
     required TResult Function() load,
     required TResult Function() exit,
-    required TResult Function() save,
+    required TResult Function() pressedSave,
+    required TResult Function() confirmedSave,
+    required TResult Function() notConfirmedSave,
+    required TResult Function() presBack,
     required TResult Function(String val) changeTitle,
     required TResult Function(RefCatalog val) changePartner,
     required TResult Function(RefCatalog val) changeResponsible,
@@ -1309,7 +1390,7 @@ class _$TaskPageEventSave implements TaskPageEventSave {
     required TResult Function() setControl,
     required TResult Function(bool val) saveDialogResult,
   }) {
-    return save();
+    return pressedSave();
   }
 
   @override
@@ -1318,7 +1399,10 @@ class _$TaskPageEventSave implements TaskPageEventSave {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? exit,
-    TResult Function()? save,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
     TResult Function(String val)? changeTitle,
     TResult Function(RefCatalog val)? changePartner,
     TResult Function(RefCatalog val)? changeResponsible,
@@ -1333,7 +1417,7 @@ class _$TaskPageEventSave implements TaskPageEventSave {
     TResult Function()? setControl,
     TResult Function(bool val)? saveDialogResult,
   }) {
-    return save?.call();
+    return pressedSave?.call();
   }
 
   @override
@@ -1342,7 +1426,10 @@ class _$TaskPageEventSave implements TaskPageEventSave {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? exit,
-    TResult Function()? save,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
     TResult Function(String val)? changeTitle,
     TResult Function(RefCatalog val)? changePartner,
     TResult Function(RefCatalog val)? changeResponsible,
@@ -1358,8 +1445,8 @@ class _$TaskPageEventSave implements TaskPageEventSave {
     TResult Function(bool val)? saveDialogResult,
     required TResult orElse(),
   }) {
-    if (save != null) {
-      return save();
+    if (pressedSave != null) {
+      return pressedSave();
     }
     return orElse();
   }
@@ -1370,7 +1457,11 @@ class _$TaskPageEventSave implements TaskPageEventSave {
     required TResult Function(TaskPageEventInit value) init,
     required TResult Function(TaskPageEventLoad value) load,
     required TResult Function(TaskPageEventExit value) exit,
-    required TResult Function(TaskPageEventSave value) save,
+    required TResult Function(TaskPageEventPressedSave value) pressedSave,
+    required TResult Function(TaskPageEventConfirmedSave value) confirmedSave,
+    required TResult Function(TaskPageEventNotConfirmedSave value)
+        notConfirmedSave,
+    required TResult Function(TaskPageEventPressedBack value) presBack,
     required TResult Function(TaskPageEventChangeTitle value) changeTitle,
     required TResult Function(TaskPageEventChangePartner value) changePartner,
     required TResult Function(TaskPageEventChangeResponsible value)
@@ -1389,7 +1480,7 @@ class _$TaskPageEventSave implements TaskPageEventSave {
     required TResult Function(TaskPageEventSaveDialogResult value)
         saveDialogResult,
   }) {
-    return save(this);
+    return pressedSave(this);
   }
 
   @override
@@ -1398,7 +1489,10 @@ class _$TaskPageEventSave implements TaskPageEventSave {
     TResult Function(TaskPageEventInit value)? init,
     TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
-    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
     TResult Function(TaskPageEventChangePartner value)? changePartner,
     TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
@@ -1413,7 +1507,7 @@ class _$TaskPageEventSave implements TaskPageEventSave {
     TResult Function(TaskPageEventSetControl value)? setControl,
     TResult Function(TaskPageEventSaveDialogResult value)? saveDialogResult,
   }) {
-    return save?.call(this);
+    return pressedSave?.call(this);
   }
 
   @override
@@ -1422,7 +1516,10 @@ class _$TaskPageEventSave implements TaskPageEventSave {
     TResult Function(TaskPageEventInit value)? init,
     TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
-    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
     TResult Function(TaskPageEventChangePartner value)? changePartner,
     TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
@@ -1438,15 +1535,680 @@ class _$TaskPageEventSave implements TaskPageEventSave {
     TResult Function(TaskPageEventSaveDialogResult value)? saveDialogResult,
     required TResult orElse(),
   }) {
-    if (save != null) {
-      return save(this);
+    if (pressedSave != null) {
+      return pressedSave(this);
     }
     return orElse();
   }
 }
 
-abstract class TaskPageEventSave implements TaskPageEvent {
-  const factory TaskPageEventSave() = _$TaskPageEventSave;
+abstract class TaskPageEventPressedSave implements TaskPageEvent {
+  const factory TaskPageEventPressedSave() = _$TaskPageEventPressedSave;
+}
+
+/// @nodoc
+abstract class _$$TaskPageEventConfirmedSaveCopyWith<$Res> {
+  factory _$$TaskPageEventConfirmedSaveCopyWith(
+          _$TaskPageEventConfirmedSave value,
+          $Res Function(_$TaskPageEventConfirmedSave) then) =
+      __$$TaskPageEventConfirmedSaveCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$TaskPageEventConfirmedSaveCopyWithImpl<$Res>
+    extends _$TaskPageEventCopyWithImpl<$Res>
+    implements _$$TaskPageEventConfirmedSaveCopyWith<$Res> {
+  __$$TaskPageEventConfirmedSaveCopyWithImpl(
+      _$TaskPageEventConfirmedSave _value,
+      $Res Function(_$TaskPageEventConfirmedSave) _then)
+      : super(_value, (v) => _then(v as _$TaskPageEventConfirmedSave));
+
+  @override
+  _$TaskPageEventConfirmedSave get _value =>
+      super._value as _$TaskPageEventConfirmedSave;
+}
+
+/// @nodoc
+
+class _$TaskPageEventConfirmedSave implements TaskPageEventConfirmedSave {
+  const _$TaskPageEventConfirmedSave();
+
+  @override
+  String toString() {
+    return 'TaskPageEvent.confirmedSave()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$TaskPageEventConfirmedSave);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() load,
+    required TResult Function() exit,
+    required TResult Function() pressedSave,
+    required TResult Function() confirmedSave,
+    required TResult Function() notConfirmedSave,
+    required TResult Function() presBack,
+    required TResult Function(String val) changeTitle,
+    required TResult Function(RefCatalog val) changePartner,
+    required TResult Function(RefCatalog val) changeResponsible,
+    required TResult Function(RefCatalog val) changeProducer,
+    required TResult Function(RefEnum val) changeCondition,
+    required TResult Function(RefEnum val) changeImportance,
+    required TResult Function(RefCatalog val) dellController,
+    required TResult Function(RefCatalog val) dellAssistant,
+    required TResult Function(RefCatalog val) addController,
+    required TResult Function(RefCatalog val) addAssitant,
+    required TResult Function() setControlDone,
+    required TResult Function() setControl,
+    required TResult Function(bool val) saveDialogResult,
+  }) {
+    return confirmedSave();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? load,
+    TResult Function()? exit,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
+    TResult Function(String val)? changeTitle,
+    TResult Function(RefCatalog val)? changePartner,
+    TResult Function(RefCatalog val)? changeResponsible,
+    TResult Function(RefCatalog val)? changeProducer,
+    TResult Function(RefEnum val)? changeCondition,
+    TResult Function(RefEnum val)? changeImportance,
+    TResult Function(RefCatalog val)? dellController,
+    TResult Function(RefCatalog val)? dellAssistant,
+    TResult Function(RefCatalog val)? addController,
+    TResult Function(RefCatalog val)? addAssitant,
+    TResult Function()? setControlDone,
+    TResult Function()? setControl,
+    TResult Function(bool val)? saveDialogResult,
+  }) {
+    return confirmedSave?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? load,
+    TResult Function()? exit,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
+    TResult Function(String val)? changeTitle,
+    TResult Function(RefCatalog val)? changePartner,
+    TResult Function(RefCatalog val)? changeResponsible,
+    TResult Function(RefCatalog val)? changeProducer,
+    TResult Function(RefEnum val)? changeCondition,
+    TResult Function(RefEnum val)? changeImportance,
+    TResult Function(RefCatalog val)? dellController,
+    TResult Function(RefCatalog val)? dellAssistant,
+    TResult Function(RefCatalog val)? addController,
+    TResult Function(RefCatalog val)? addAssitant,
+    TResult Function()? setControlDone,
+    TResult Function()? setControl,
+    TResult Function(bool val)? saveDialogResult,
+    required TResult orElse(),
+  }) {
+    if (confirmedSave != null) {
+      return confirmedSave();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(TaskPageEventInit value) init,
+    required TResult Function(TaskPageEventLoad value) load,
+    required TResult Function(TaskPageEventExit value) exit,
+    required TResult Function(TaskPageEventPressedSave value) pressedSave,
+    required TResult Function(TaskPageEventConfirmedSave value) confirmedSave,
+    required TResult Function(TaskPageEventNotConfirmedSave value)
+        notConfirmedSave,
+    required TResult Function(TaskPageEventPressedBack value) presBack,
+    required TResult Function(TaskPageEventChangeTitle value) changeTitle,
+    required TResult Function(TaskPageEventChangePartner value) changePartner,
+    required TResult Function(TaskPageEventChangeResponsible value)
+        changeResponsible,
+    required TResult Function(TaskPageEventChangeProducer value) changeProducer,
+    required TResult Function(TaskPageEventChangeCondition value)
+        changeCondition,
+    required TResult Function(TaskPageEventChangeImportance value)
+        changeImportance,
+    required TResult Function(TaskPageEventDellController value) dellController,
+    required TResult Function(TaskPageEventDellAssistant value) dellAssistant,
+    required TResult Function(TaskPageEventAddController value) addController,
+    required TResult Function(TaskPageEventAddAssitant value) addAssitant,
+    required TResult Function(TaskPageEventSetControlDone value) setControlDone,
+    required TResult Function(TaskPageEventSetControl value) setControl,
+    required TResult Function(TaskPageEventSaveDialogResult value)
+        saveDialogResult,
+  }) {
+    return confirmedSave(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
+    TResult Function(TaskPageEventExit value)? exit,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
+    TResult Function(TaskPageEventChangeTitle value)? changeTitle,
+    TResult Function(TaskPageEventChangePartner value)? changePartner,
+    TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
+    TResult Function(TaskPageEventChangeProducer value)? changeProducer,
+    TResult Function(TaskPageEventChangeCondition value)? changeCondition,
+    TResult Function(TaskPageEventChangeImportance value)? changeImportance,
+    TResult Function(TaskPageEventDellController value)? dellController,
+    TResult Function(TaskPageEventDellAssistant value)? dellAssistant,
+    TResult Function(TaskPageEventAddController value)? addController,
+    TResult Function(TaskPageEventAddAssitant value)? addAssitant,
+    TResult Function(TaskPageEventSetControlDone value)? setControlDone,
+    TResult Function(TaskPageEventSetControl value)? setControl,
+    TResult Function(TaskPageEventSaveDialogResult value)? saveDialogResult,
+  }) {
+    return confirmedSave?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
+    TResult Function(TaskPageEventExit value)? exit,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
+    TResult Function(TaskPageEventChangeTitle value)? changeTitle,
+    TResult Function(TaskPageEventChangePartner value)? changePartner,
+    TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
+    TResult Function(TaskPageEventChangeProducer value)? changeProducer,
+    TResult Function(TaskPageEventChangeCondition value)? changeCondition,
+    TResult Function(TaskPageEventChangeImportance value)? changeImportance,
+    TResult Function(TaskPageEventDellController value)? dellController,
+    TResult Function(TaskPageEventDellAssistant value)? dellAssistant,
+    TResult Function(TaskPageEventAddController value)? addController,
+    TResult Function(TaskPageEventAddAssitant value)? addAssitant,
+    TResult Function(TaskPageEventSetControlDone value)? setControlDone,
+    TResult Function(TaskPageEventSetControl value)? setControl,
+    TResult Function(TaskPageEventSaveDialogResult value)? saveDialogResult,
+    required TResult orElse(),
+  }) {
+    if (confirmedSave != null) {
+      return confirmedSave(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class TaskPageEventConfirmedSave implements TaskPageEvent {
+  const factory TaskPageEventConfirmedSave() = _$TaskPageEventConfirmedSave;
+}
+
+/// @nodoc
+abstract class _$$TaskPageEventNotConfirmedSaveCopyWith<$Res> {
+  factory _$$TaskPageEventNotConfirmedSaveCopyWith(
+          _$TaskPageEventNotConfirmedSave value,
+          $Res Function(_$TaskPageEventNotConfirmedSave) then) =
+      __$$TaskPageEventNotConfirmedSaveCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$TaskPageEventNotConfirmedSaveCopyWithImpl<$Res>
+    extends _$TaskPageEventCopyWithImpl<$Res>
+    implements _$$TaskPageEventNotConfirmedSaveCopyWith<$Res> {
+  __$$TaskPageEventNotConfirmedSaveCopyWithImpl(
+      _$TaskPageEventNotConfirmedSave _value,
+      $Res Function(_$TaskPageEventNotConfirmedSave) _then)
+      : super(_value, (v) => _then(v as _$TaskPageEventNotConfirmedSave));
+
+  @override
+  _$TaskPageEventNotConfirmedSave get _value =>
+      super._value as _$TaskPageEventNotConfirmedSave;
+}
+
+/// @nodoc
+
+class _$TaskPageEventNotConfirmedSave implements TaskPageEventNotConfirmedSave {
+  const _$TaskPageEventNotConfirmedSave();
+
+  @override
+  String toString() {
+    return 'TaskPageEvent.notConfirmedSave()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$TaskPageEventNotConfirmedSave);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() load,
+    required TResult Function() exit,
+    required TResult Function() pressedSave,
+    required TResult Function() confirmedSave,
+    required TResult Function() notConfirmedSave,
+    required TResult Function() presBack,
+    required TResult Function(String val) changeTitle,
+    required TResult Function(RefCatalog val) changePartner,
+    required TResult Function(RefCatalog val) changeResponsible,
+    required TResult Function(RefCatalog val) changeProducer,
+    required TResult Function(RefEnum val) changeCondition,
+    required TResult Function(RefEnum val) changeImportance,
+    required TResult Function(RefCatalog val) dellController,
+    required TResult Function(RefCatalog val) dellAssistant,
+    required TResult Function(RefCatalog val) addController,
+    required TResult Function(RefCatalog val) addAssitant,
+    required TResult Function() setControlDone,
+    required TResult Function() setControl,
+    required TResult Function(bool val) saveDialogResult,
+  }) {
+    return notConfirmedSave();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? load,
+    TResult Function()? exit,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
+    TResult Function(String val)? changeTitle,
+    TResult Function(RefCatalog val)? changePartner,
+    TResult Function(RefCatalog val)? changeResponsible,
+    TResult Function(RefCatalog val)? changeProducer,
+    TResult Function(RefEnum val)? changeCondition,
+    TResult Function(RefEnum val)? changeImportance,
+    TResult Function(RefCatalog val)? dellController,
+    TResult Function(RefCatalog val)? dellAssistant,
+    TResult Function(RefCatalog val)? addController,
+    TResult Function(RefCatalog val)? addAssitant,
+    TResult Function()? setControlDone,
+    TResult Function()? setControl,
+    TResult Function(bool val)? saveDialogResult,
+  }) {
+    return notConfirmedSave?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? load,
+    TResult Function()? exit,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
+    TResult Function(String val)? changeTitle,
+    TResult Function(RefCatalog val)? changePartner,
+    TResult Function(RefCatalog val)? changeResponsible,
+    TResult Function(RefCatalog val)? changeProducer,
+    TResult Function(RefEnum val)? changeCondition,
+    TResult Function(RefEnum val)? changeImportance,
+    TResult Function(RefCatalog val)? dellController,
+    TResult Function(RefCatalog val)? dellAssistant,
+    TResult Function(RefCatalog val)? addController,
+    TResult Function(RefCatalog val)? addAssitant,
+    TResult Function()? setControlDone,
+    TResult Function()? setControl,
+    TResult Function(bool val)? saveDialogResult,
+    required TResult orElse(),
+  }) {
+    if (notConfirmedSave != null) {
+      return notConfirmedSave();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(TaskPageEventInit value) init,
+    required TResult Function(TaskPageEventLoad value) load,
+    required TResult Function(TaskPageEventExit value) exit,
+    required TResult Function(TaskPageEventPressedSave value) pressedSave,
+    required TResult Function(TaskPageEventConfirmedSave value) confirmedSave,
+    required TResult Function(TaskPageEventNotConfirmedSave value)
+        notConfirmedSave,
+    required TResult Function(TaskPageEventPressedBack value) presBack,
+    required TResult Function(TaskPageEventChangeTitle value) changeTitle,
+    required TResult Function(TaskPageEventChangePartner value) changePartner,
+    required TResult Function(TaskPageEventChangeResponsible value)
+        changeResponsible,
+    required TResult Function(TaskPageEventChangeProducer value) changeProducer,
+    required TResult Function(TaskPageEventChangeCondition value)
+        changeCondition,
+    required TResult Function(TaskPageEventChangeImportance value)
+        changeImportance,
+    required TResult Function(TaskPageEventDellController value) dellController,
+    required TResult Function(TaskPageEventDellAssistant value) dellAssistant,
+    required TResult Function(TaskPageEventAddController value) addController,
+    required TResult Function(TaskPageEventAddAssitant value) addAssitant,
+    required TResult Function(TaskPageEventSetControlDone value) setControlDone,
+    required TResult Function(TaskPageEventSetControl value) setControl,
+    required TResult Function(TaskPageEventSaveDialogResult value)
+        saveDialogResult,
+  }) {
+    return notConfirmedSave(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
+    TResult Function(TaskPageEventExit value)? exit,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
+    TResult Function(TaskPageEventChangeTitle value)? changeTitle,
+    TResult Function(TaskPageEventChangePartner value)? changePartner,
+    TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
+    TResult Function(TaskPageEventChangeProducer value)? changeProducer,
+    TResult Function(TaskPageEventChangeCondition value)? changeCondition,
+    TResult Function(TaskPageEventChangeImportance value)? changeImportance,
+    TResult Function(TaskPageEventDellController value)? dellController,
+    TResult Function(TaskPageEventDellAssistant value)? dellAssistant,
+    TResult Function(TaskPageEventAddController value)? addController,
+    TResult Function(TaskPageEventAddAssitant value)? addAssitant,
+    TResult Function(TaskPageEventSetControlDone value)? setControlDone,
+    TResult Function(TaskPageEventSetControl value)? setControl,
+    TResult Function(TaskPageEventSaveDialogResult value)? saveDialogResult,
+  }) {
+    return notConfirmedSave?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
+    TResult Function(TaskPageEventExit value)? exit,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
+    TResult Function(TaskPageEventChangeTitle value)? changeTitle,
+    TResult Function(TaskPageEventChangePartner value)? changePartner,
+    TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
+    TResult Function(TaskPageEventChangeProducer value)? changeProducer,
+    TResult Function(TaskPageEventChangeCondition value)? changeCondition,
+    TResult Function(TaskPageEventChangeImportance value)? changeImportance,
+    TResult Function(TaskPageEventDellController value)? dellController,
+    TResult Function(TaskPageEventDellAssistant value)? dellAssistant,
+    TResult Function(TaskPageEventAddController value)? addController,
+    TResult Function(TaskPageEventAddAssitant value)? addAssitant,
+    TResult Function(TaskPageEventSetControlDone value)? setControlDone,
+    TResult Function(TaskPageEventSetControl value)? setControl,
+    TResult Function(TaskPageEventSaveDialogResult value)? saveDialogResult,
+    required TResult orElse(),
+  }) {
+    if (notConfirmedSave != null) {
+      return notConfirmedSave(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class TaskPageEventNotConfirmedSave implements TaskPageEvent {
+  const factory TaskPageEventNotConfirmedSave() =
+      _$TaskPageEventNotConfirmedSave;
+}
+
+/// @nodoc
+abstract class _$$TaskPageEventPressedBackCopyWith<$Res> {
+  factory _$$TaskPageEventPressedBackCopyWith(_$TaskPageEventPressedBack value,
+          $Res Function(_$TaskPageEventPressedBack) then) =
+      __$$TaskPageEventPressedBackCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$TaskPageEventPressedBackCopyWithImpl<$Res>
+    extends _$TaskPageEventCopyWithImpl<$Res>
+    implements _$$TaskPageEventPressedBackCopyWith<$Res> {
+  __$$TaskPageEventPressedBackCopyWithImpl(_$TaskPageEventPressedBack _value,
+      $Res Function(_$TaskPageEventPressedBack) _then)
+      : super(_value, (v) => _then(v as _$TaskPageEventPressedBack));
+
+  @override
+  _$TaskPageEventPressedBack get _value =>
+      super._value as _$TaskPageEventPressedBack;
+}
+
+/// @nodoc
+
+class _$TaskPageEventPressedBack implements TaskPageEventPressedBack {
+  const _$TaskPageEventPressedBack();
+
+  @override
+  String toString() {
+    return 'TaskPageEvent.presBack()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$TaskPageEventPressedBack);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() load,
+    required TResult Function() exit,
+    required TResult Function() pressedSave,
+    required TResult Function() confirmedSave,
+    required TResult Function() notConfirmedSave,
+    required TResult Function() presBack,
+    required TResult Function(String val) changeTitle,
+    required TResult Function(RefCatalog val) changePartner,
+    required TResult Function(RefCatalog val) changeResponsible,
+    required TResult Function(RefCatalog val) changeProducer,
+    required TResult Function(RefEnum val) changeCondition,
+    required TResult Function(RefEnum val) changeImportance,
+    required TResult Function(RefCatalog val) dellController,
+    required TResult Function(RefCatalog val) dellAssistant,
+    required TResult Function(RefCatalog val) addController,
+    required TResult Function(RefCatalog val) addAssitant,
+    required TResult Function() setControlDone,
+    required TResult Function() setControl,
+    required TResult Function(bool val) saveDialogResult,
+  }) {
+    return presBack();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? load,
+    TResult Function()? exit,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
+    TResult Function(String val)? changeTitle,
+    TResult Function(RefCatalog val)? changePartner,
+    TResult Function(RefCatalog val)? changeResponsible,
+    TResult Function(RefCatalog val)? changeProducer,
+    TResult Function(RefEnum val)? changeCondition,
+    TResult Function(RefEnum val)? changeImportance,
+    TResult Function(RefCatalog val)? dellController,
+    TResult Function(RefCatalog val)? dellAssistant,
+    TResult Function(RefCatalog val)? addController,
+    TResult Function(RefCatalog val)? addAssitant,
+    TResult Function()? setControlDone,
+    TResult Function()? setControl,
+    TResult Function(bool val)? saveDialogResult,
+  }) {
+    return presBack?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? load,
+    TResult Function()? exit,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
+    TResult Function(String val)? changeTitle,
+    TResult Function(RefCatalog val)? changePartner,
+    TResult Function(RefCatalog val)? changeResponsible,
+    TResult Function(RefCatalog val)? changeProducer,
+    TResult Function(RefEnum val)? changeCondition,
+    TResult Function(RefEnum val)? changeImportance,
+    TResult Function(RefCatalog val)? dellController,
+    TResult Function(RefCatalog val)? dellAssistant,
+    TResult Function(RefCatalog val)? addController,
+    TResult Function(RefCatalog val)? addAssitant,
+    TResult Function()? setControlDone,
+    TResult Function()? setControl,
+    TResult Function(bool val)? saveDialogResult,
+    required TResult orElse(),
+  }) {
+    if (presBack != null) {
+      return presBack();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(TaskPageEventInit value) init,
+    required TResult Function(TaskPageEventLoad value) load,
+    required TResult Function(TaskPageEventExit value) exit,
+    required TResult Function(TaskPageEventPressedSave value) pressedSave,
+    required TResult Function(TaskPageEventConfirmedSave value) confirmedSave,
+    required TResult Function(TaskPageEventNotConfirmedSave value)
+        notConfirmedSave,
+    required TResult Function(TaskPageEventPressedBack value) presBack,
+    required TResult Function(TaskPageEventChangeTitle value) changeTitle,
+    required TResult Function(TaskPageEventChangePartner value) changePartner,
+    required TResult Function(TaskPageEventChangeResponsible value)
+        changeResponsible,
+    required TResult Function(TaskPageEventChangeProducer value) changeProducer,
+    required TResult Function(TaskPageEventChangeCondition value)
+        changeCondition,
+    required TResult Function(TaskPageEventChangeImportance value)
+        changeImportance,
+    required TResult Function(TaskPageEventDellController value) dellController,
+    required TResult Function(TaskPageEventDellAssistant value) dellAssistant,
+    required TResult Function(TaskPageEventAddController value) addController,
+    required TResult Function(TaskPageEventAddAssitant value) addAssitant,
+    required TResult Function(TaskPageEventSetControlDone value) setControlDone,
+    required TResult Function(TaskPageEventSetControl value) setControl,
+    required TResult Function(TaskPageEventSaveDialogResult value)
+        saveDialogResult,
+  }) {
+    return presBack(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
+    TResult Function(TaskPageEventExit value)? exit,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
+    TResult Function(TaskPageEventChangeTitle value)? changeTitle,
+    TResult Function(TaskPageEventChangePartner value)? changePartner,
+    TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
+    TResult Function(TaskPageEventChangeProducer value)? changeProducer,
+    TResult Function(TaskPageEventChangeCondition value)? changeCondition,
+    TResult Function(TaskPageEventChangeImportance value)? changeImportance,
+    TResult Function(TaskPageEventDellController value)? dellController,
+    TResult Function(TaskPageEventDellAssistant value)? dellAssistant,
+    TResult Function(TaskPageEventAddController value)? addController,
+    TResult Function(TaskPageEventAddAssitant value)? addAssitant,
+    TResult Function(TaskPageEventSetControlDone value)? setControlDone,
+    TResult Function(TaskPageEventSetControl value)? setControl,
+    TResult Function(TaskPageEventSaveDialogResult value)? saveDialogResult,
+  }) {
+    return presBack?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(TaskPageEventInit value)? init,
+    TResult Function(TaskPageEventLoad value)? load,
+    TResult Function(TaskPageEventExit value)? exit,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
+    TResult Function(TaskPageEventChangeTitle value)? changeTitle,
+    TResult Function(TaskPageEventChangePartner value)? changePartner,
+    TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
+    TResult Function(TaskPageEventChangeProducer value)? changeProducer,
+    TResult Function(TaskPageEventChangeCondition value)? changeCondition,
+    TResult Function(TaskPageEventChangeImportance value)? changeImportance,
+    TResult Function(TaskPageEventDellController value)? dellController,
+    TResult Function(TaskPageEventDellAssistant value)? dellAssistant,
+    TResult Function(TaskPageEventAddController value)? addController,
+    TResult Function(TaskPageEventAddAssitant value)? addAssitant,
+    TResult Function(TaskPageEventSetControlDone value)? setControlDone,
+    TResult Function(TaskPageEventSetControl value)? setControl,
+    TResult Function(TaskPageEventSaveDialogResult value)? saveDialogResult,
+    required TResult orElse(),
+  }) {
+    if (presBack != null) {
+      return presBack(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class TaskPageEventPressedBack implements TaskPageEvent {
+  const factory TaskPageEventPressedBack() = _$TaskPageEventPressedBack;
 }
 
 /// @nodoc
@@ -1520,7 +2282,10 @@ class _$TaskPageEventChangeTitle implements TaskPageEventChangeTitle {
     required TResult Function() init,
     required TResult Function() load,
     required TResult Function() exit,
-    required TResult Function() save,
+    required TResult Function() pressedSave,
+    required TResult Function() confirmedSave,
+    required TResult Function() notConfirmedSave,
+    required TResult Function() presBack,
     required TResult Function(String val) changeTitle,
     required TResult Function(RefCatalog val) changePartner,
     required TResult Function(RefCatalog val) changeResponsible,
@@ -1544,7 +2309,10 @@ class _$TaskPageEventChangeTitle implements TaskPageEventChangeTitle {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? exit,
-    TResult Function()? save,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
     TResult Function(String val)? changeTitle,
     TResult Function(RefCatalog val)? changePartner,
     TResult Function(RefCatalog val)? changeResponsible,
@@ -1568,7 +2336,10 @@ class _$TaskPageEventChangeTitle implements TaskPageEventChangeTitle {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? exit,
-    TResult Function()? save,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
     TResult Function(String val)? changeTitle,
     TResult Function(RefCatalog val)? changePartner,
     TResult Function(RefCatalog val)? changeResponsible,
@@ -1596,7 +2367,11 @@ class _$TaskPageEventChangeTitle implements TaskPageEventChangeTitle {
     required TResult Function(TaskPageEventInit value) init,
     required TResult Function(TaskPageEventLoad value) load,
     required TResult Function(TaskPageEventExit value) exit,
-    required TResult Function(TaskPageEventSave value) save,
+    required TResult Function(TaskPageEventPressedSave value) pressedSave,
+    required TResult Function(TaskPageEventConfirmedSave value) confirmedSave,
+    required TResult Function(TaskPageEventNotConfirmedSave value)
+        notConfirmedSave,
+    required TResult Function(TaskPageEventPressedBack value) presBack,
     required TResult Function(TaskPageEventChangeTitle value) changeTitle,
     required TResult Function(TaskPageEventChangePartner value) changePartner,
     required TResult Function(TaskPageEventChangeResponsible value)
@@ -1624,7 +2399,10 @@ class _$TaskPageEventChangeTitle implements TaskPageEventChangeTitle {
     TResult Function(TaskPageEventInit value)? init,
     TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
-    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
     TResult Function(TaskPageEventChangePartner value)? changePartner,
     TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
@@ -1648,7 +2426,10 @@ class _$TaskPageEventChangeTitle implements TaskPageEventChangeTitle {
     TResult Function(TaskPageEventInit value)? init,
     TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
-    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
     TResult Function(TaskPageEventChangePartner value)? changePartner,
     TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
@@ -1753,7 +2534,10 @@ class _$TaskPageEventChangePartner implements TaskPageEventChangePartner {
     required TResult Function() init,
     required TResult Function() load,
     required TResult Function() exit,
-    required TResult Function() save,
+    required TResult Function() pressedSave,
+    required TResult Function() confirmedSave,
+    required TResult Function() notConfirmedSave,
+    required TResult Function() presBack,
     required TResult Function(String val) changeTitle,
     required TResult Function(RefCatalog val) changePartner,
     required TResult Function(RefCatalog val) changeResponsible,
@@ -1777,7 +2561,10 @@ class _$TaskPageEventChangePartner implements TaskPageEventChangePartner {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? exit,
-    TResult Function()? save,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
     TResult Function(String val)? changeTitle,
     TResult Function(RefCatalog val)? changePartner,
     TResult Function(RefCatalog val)? changeResponsible,
@@ -1801,7 +2588,10 @@ class _$TaskPageEventChangePartner implements TaskPageEventChangePartner {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? exit,
-    TResult Function()? save,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
     TResult Function(String val)? changeTitle,
     TResult Function(RefCatalog val)? changePartner,
     TResult Function(RefCatalog val)? changeResponsible,
@@ -1829,7 +2619,11 @@ class _$TaskPageEventChangePartner implements TaskPageEventChangePartner {
     required TResult Function(TaskPageEventInit value) init,
     required TResult Function(TaskPageEventLoad value) load,
     required TResult Function(TaskPageEventExit value) exit,
-    required TResult Function(TaskPageEventSave value) save,
+    required TResult Function(TaskPageEventPressedSave value) pressedSave,
+    required TResult Function(TaskPageEventConfirmedSave value) confirmedSave,
+    required TResult Function(TaskPageEventNotConfirmedSave value)
+        notConfirmedSave,
+    required TResult Function(TaskPageEventPressedBack value) presBack,
     required TResult Function(TaskPageEventChangeTitle value) changeTitle,
     required TResult Function(TaskPageEventChangePartner value) changePartner,
     required TResult Function(TaskPageEventChangeResponsible value)
@@ -1857,7 +2651,10 @@ class _$TaskPageEventChangePartner implements TaskPageEventChangePartner {
     TResult Function(TaskPageEventInit value)? init,
     TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
-    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
     TResult Function(TaskPageEventChangePartner value)? changePartner,
     TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
@@ -1881,7 +2678,10 @@ class _$TaskPageEventChangePartner implements TaskPageEventChangePartner {
     TResult Function(TaskPageEventInit value)? init,
     TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
-    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
     TResult Function(TaskPageEventChangePartner value)? changePartner,
     TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
@@ -1987,7 +2787,10 @@ class _$TaskPageEventChangeResponsible
     required TResult Function() init,
     required TResult Function() load,
     required TResult Function() exit,
-    required TResult Function() save,
+    required TResult Function() pressedSave,
+    required TResult Function() confirmedSave,
+    required TResult Function() notConfirmedSave,
+    required TResult Function() presBack,
     required TResult Function(String val) changeTitle,
     required TResult Function(RefCatalog val) changePartner,
     required TResult Function(RefCatalog val) changeResponsible,
@@ -2011,7 +2814,10 @@ class _$TaskPageEventChangeResponsible
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? exit,
-    TResult Function()? save,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
     TResult Function(String val)? changeTitle,
     TResult Function(RefCatalog val)? changePartner,
     TResult Function(RefCatalog val)? changeResponsible,
@@ -2035,7 +2841,10 @@ class _$TaskPageEventChangeResponsible
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? exit,
-    TResult Function()? save,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
     TResult Function(String val)? changeTitle,
     TResult Function(RefCatalog val)? changePartner,
     TResult Function(RefCatalog val)? changeResponsible,
@@ -2063,7 +2872,11 @@ class _$TaskPageEventChangeResponsible
     required TResult Function(TaskPageEventInit value) init,
     required TResult Function(TaskPageEventLoad value) load,
     required TResult Function(TaskPageEventExit value) exit,
-    required TResult Function(TaskPageEventSave value) save,
+    required TResult Function(TaskPageEventPressedSave value) pressedSave,
+    required TResult Function(TaskPageEventConfirmedSave value) confirmedSave,
+    required TResult Function(TaskPageEventNotConfirmedSave value)
+        notConfirmedSave,
+    required TResult Function(TaskPageEventPressedBack value) presBack,
     required TResult Function(TaskPageEventChangeTitle value) changeTitle,
     required TResult Function(TaskPageEventChangePartner value) changePartner,
     required TResult Function(TaskPageEventChangeResponsible value)
@@ -2091,7 +2904,10 @@ class _$TaskPageEventChangeResponsible
     TResult Function(TaskPageEventInit value)? init,
     TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
-    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
     TResult Function(TaskPageEventChangePartner value)? changePartner,
     TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
@@ -2115,7 +2931,10 @@ class _$TaskPageEventChangeResponsible
     TResult Function(TaskPageEventInit value)? init,
     TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
-    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
     TResult Function(TaskPageEventChangePartner value)? changePartner,
     TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
@@ -2220,7 +3039,10 @@ class _$TaskPageEventChangeProducer implements TaskPageEventChangeProducer {
     required TResult Function() init,
     required TResult Function() load,
     required TResult Function() exit,
-    required TResult Function() save,
+    required TResult Function() pressedSave,
+    required TResult Function() confirmedSave,
+    required TResult Function() notConfirmedSave,
+    required TResult Function() presBack,
     required TResult Function(String val) changeTitle,
     required TResult Function(RefCatalog val) changePartner,
     required TResult Function(RefCatalog val) changeResponsible,
@@ -2244,7 +3066,10 @@ class _$TaskPageEventChangeProducer implements TaskPageEventChangeProducer {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? exit,
-    TResult Function()? save,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
     TResult Function(String val)? changeTitle,
     TResult Function(RefCatalog val)? changePartner,
     TResult Function(RefCatalog val)? changeResponsible,
@@ -2268,7 +3093,10 @@ class _$TaskPageEventChangeProducer implements TaskPageEventChangeProducer {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? exit,
-    TResult Function()? save,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
     TResult Function(String val)? changeTitle,
     TResult Function(RefCatalog val)? changePartner,
     TResult Function(RefCatalog val)? changeResponsible,
@@ -2296,7 +3124,11 @@ class _$TaskPageEventChangeProducer implements TaskPageEventChangeProducer {
     required TResult Function(TaskPageEventInit value) init,
     required TResult Function(TaskPageEventLoad value) load,
     required TResult Function(TaskPageEventExit value) exit,
-    required TResult Function(TaskPageEventSave value) save,
+    required TResult Function(TaskPageEventPressedSave value) pressedSave,
+    required TResult Function(TaskPageEventConfirmedSave value) confirmedSave,
+    required TResult Function(TaskPageEventNotConfirmedSave value)
+        notConfirmedSave,
+    required TResult Function(TaskPageEventPressedBack value) presBack,
     required TResult Function(TaskPageEventChangeTitle value) changeTitle,
     required TResult Function(TaskPageEventChangePartner value) changePartner,
     required TResult Function(TaskPageEventChangeResponsible value)
@@ -2324,7 +3156,10 @@ class _$TaskPageEventChangeProducer implements TaskPageEventChangeProducer {
     TResult Function(TaskPageEventInit value)? init,
     TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
-    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
     TResult Function(TaskPageEventChangePartner value)? changePartner,
     TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
@@ -2348,7 +3183,10 @@ class _$TaskPageEventChangeProducer implements TaskPageEventChangeProducer {
     TResult Function(TaskPageEventInit value)? init,
     TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
-    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
     TResult Function(TaskPageEventChangePartner value)? changePartner,
     TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
@@ -2453,7 +3291,10 @@ class _$TaskPageEventChangeCondition implements TaskPageEventChangeCondition {
     required TResult Function() init,
     required TResult Function() load,
     required TResult Function() exit,
-    required TResult Function() save,
+    required TResult Function() pressedSave,
+    required TResult Function() confirmedSave,
+    required TResult Function() notConfirmedSave,
+    required TResult Function() presBack,
     required TResult Function(String val) changeTitle,
     required TResult Function(RefCatalog val) changePartner,
     required TResult Function(RefCatalog val) changeResponsible,
@@ -2477,7 +3318,10 @@ class _$TaskPageEventChangeCondition implements TaskPageEventChangeCondition {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? exit,
-    TResult Function()? save,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
     TResult Function(String val)? changeTitle,
     TResult Function(RefCatalog val)? changePartner,
     TResult Function(RefCatalog val)? changeResponsible,
@@ -2501,7 +3345,10 @@ class _$TaskPageEventChangeCondition implements TaskPageEventChangeCondition {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? exit,
-    TResult Function()? save,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
     TResult Function(String val)? changeTitle,
     TResult Function(RefCatalog val)? changePartner,
     TResult Function(RefCatalog val)? changeResponsible,
@@ -2529,7 +3376,11 @@ class _$TaskPageEventChangeCondition implements TaskPageEventChangeCondition {
     required TResult Function(TaskPageEventInit value) init,
     required TResult Function(TaskPageEventLoad value) load,
     required TResult Function(TaskPageEventExit value) exit,
-    required TResult Function(TaskPageEventSave value) save,
+    required TResult Function(TaskPageEventPressedSave value) pressedSave,
+    required TResult Function(TaskPageEventConfirmedSave value) confirmedSave,
+    required TResult Function(TaskPageEventNotConfirmedSave value)
+        notConfirmedSave,
+    required TResult Function(TaskPageEventPressedBack value) presBack,
     required TResult Function(TaskPageEventChangeTitle value) changeTitle,
     required TResult Function(TaskPageEventChangePartner value) changePartner,
     required TResult Function(TaskPageEventChangeResponsible value)
@@ -2557,7 +3408,10 @@ class _$TaskPageEventChangeCondition implements TaskPageEventChangeCondition {
     TResult Function(TaskPageEventInit value)? init,
     TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
-    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
     TResult Function(TaskPageEventChangePartner value)? changePartner,
     TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
@@ -2581,7 +3435,10 @@ class _$TaskPageEventChangeCondition implements TaskPageEventChangeCondition {
     TResult Function(TaskPageEventInit value)? init,
     TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
-    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
     TResult Function(TaskPageEventChangePartner value)? changePartner,
     TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
@@ -2686,7 +3543,10 @@ class _$TaskPageEventChangeImportance implements TaskPageEventChangeImportance {
     required TResult Function() init,
     required TResult Function() load,
     required TResult Function() exit,
-    required TResult Function() save,
+    required TResult Function() pressedSave,
+    required TResult Function() confirmedSave,
+    required TResult Function() notConfirmedSave,
+    required TResult Function() presBack,
     required TResult Function(String val) changeTitle,
     required TResult Function(RefCatalog val) changePartner,
     required TResult Function(RefCatalog val) changeResponsible,
@@ -2710,7 +3570,10 @@ class _$TaskPageEventChangeImportance implements TaskPageEventChangeImportance {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? exit,
-    TResult Function()? save,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
     TResult Function(String val)? changeTitle,
     TResult Function(RefCatalog val)? changePartner,
     TResult Function(RefCatalog val)? changeResponsible,
@@ -2734,7 +3597,10 @@ class _$TaskPageEventChangeImportance implements TaskPageEventChangeImportance {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? exit,
-    TResult Function()? save,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
     TResult Function(String val)? changeTitle,
     TResult Function(RefCatalog val)? changePartner,
     TResult Function(RefCatalog val)? changeResponsible,
@@ -2762,7 +3628,11 @@ class _$TaskPageEventChangeImportance implements TaskPageEventChangeImportance {
     required TResult Function(TaskPageEventInit value) init,
     required TResult Function(TaskPageEventLoad value) load,
     required TResult Function(TaskPageEventExit value) exit,
-    required TResult Function(TaskPageEventSave value) save,
+    required TResult Function(TaskPageEventPressedSave value) pressedSave,
+    required TResult Function(TaskPageEventConfirmedSave value) confirmedSave,
+    required TResult Function(TaskPageEventNotConfirmedSave value)
+        notConfirmedSave,
+    required TResult Function(TaskPageEventPressedBack value) presBack,
     required TResult Function(TaskPageEventChangeTitle value) changeTitle,
     required TResult Function(TaskPageEventChangePartner value) changePartner,
     required TResult Function(TaskPageEventChangeResponsible value)
@@ -2790,7 +3660,10 @@ class _$TaskPageEventChangeImportance implements TaskPageEventChangeImportance {
     TResult Function(TaskPageEventInit value)? init,
     TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
-    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
     TResult Function(TaskPageEventChangePartner value)? changePartner,
     TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
@@ -2814,7 +3687,10 @@ class _$TaskPageEventChangeImportance implements TaskPageEventChangeImportance {
     TResult Function(TaskPageEventInit value)? init,
     TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
-    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
     TResult Function(TaskPageEventChangePartner value)? changePartner,
     TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
@@ -2919,7 +3795,10 @@ class _$TaskPageEventDellController implements TaskPageEventDellController {
     required TResult Function() init,
     required TResult Function() load,
     required TResult Function() exit,
-    required TResult Function() save,
+    required TResult Function() pressedSave,
+    required TResult Function() confirmedSave,
+    required TResult Function() notConfirmedSave,
+    required TResult Function() presBack,
     required TResult Function(String val) changeTitle,
     required TResult Function(RefCatalog val) changePartner,
     required TResult Function(RefCatalog val) changeResponsible,
@@ -2943,7 +3822,10 @@ class _$TaskPageEventDellController implements TaskPageEventDellController {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? exit,
-    TResult Function()? save,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
     TResult Function(String val)? changeTitle,
     TResult Function(RefCatalog val)? changePartner,
     TResult Function(RefCatalog val)? changeResponsible,
@@ -2967,7 +3849,10 @@ class _$TaskPageEventDellController implements TaskPageEventDellController {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? exit,
-    TResult Function()? save,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
     TResult Function(String val)? changeTitle,
     TResult Function(RefCatalog val)? changePartner,
     TResult Function(RefCatalog val)? changeResponsible,
@@ -2995,7 +3880,11 @@ class _$TaskPageEventDellController implements TaskPageEventDellController {
     required TResult Function(TaskPageEventInit value) init,
     required TResult Function(TaskPageEventLoad value) load,
     required TResult Function(TaskPageEventExit value) exit,
-    required TResult Function(TaskPageEventSave value) save,
+    required TResult Function(TaskPageEventPressedSave value) pressedSave,
+    required TResult Function(TaskPageEventConfirmedSave value) confirmedSave,
+    required TResult Function(TaskPageEventNotConfirmedSave value)
+        notConfirmedSave,
+    required TResult Function(TaskPageEventPressedBack value) presBack,
     required TResult Function(TaskPageEventChangeTitle value) changeTitle,
     required TResult Function(TaskPageEventChangePartner value) changePartner,
     required TResult Function(TaskPageEventChangeResponsible value)
@@ -3023,7 +3912,10 @@ class _$TaskPageEventDellController implements TaskPageEventDellController {
     TResult Function(TaskPageEventInit value)? init,
     TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
-    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
     TResult Function(TaskPageEventChangePartner value)? changePartner,
     TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
@@ -3047,7 +3939,10 @@ class _$TaskPageEventDellController implements TaskPageEventDellController {
     TResult Function(TaskPageEventInit value)? init,
     TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
-    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
     TResult Function(TaskPageEventChangePartner value)? changePartner,
     TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
@@ -3152,7 +4047,10 @@ class _$TaskPageEventDellAssistant implements TaskPageEventDellAssistant {
     required TResult Function() init,
     required TResult Function() load,
     required TResult Function() exit,
-    required TResult Function() save,
+    required TResult Function() pressedSave,
+    required TResult Function() confirmedSave,
+    required TResult Function() notConfirmedSave,
+    required TResult Function() presBack,
     required TResult Function(String val) changeTitle,
     required TResult Function(RefCatalog val) changePartner,
     required TResult Function(RefCatalog val) changeResponsible,
@@ -3176,7 +4074,10 @@ class _$TaskPageEventDellAssistant implements TaskPageEventDellAssistant {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? exit,
-    TResult Function()? save,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
     TResult Function(String val)? changeTitle,
     TResult Function(RefCatalog val)? changePartner,
     TResult Function(RefCatalog val)? changeResponsible,
@@ -3200,7 +4101,10 @@ class _$TaskPageEventDellAssistant implements TaskPageEventDellAssistant {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? exit,
-    TResult Function()? save,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
     TResult Function(String val)? changeTitle,
     TResult Function(RefCatalog val)? changePartner,
     TResult Function(RefCatalog val)? changeResponsible,
@@ -3228,7 +4132,11 @@ class _$TaskPageEventDellAssistant implements TaskPageEventDellAssistant {
     required TResult Function(TaskPageEventInit value) init,
     required TResult Function(TaskPageEventLoad value) load,
     required TResult Function(TaskPageEventExit value) exit,
-    required TResult Function(TaskPageEventSave value) save,
+    required TResult Function(TaskPageEventPressedSave value) pressedSave,
+    required TResult Function(TaskPageEventConfirmedSave value) confirmedSave,
+    required TResult Function(TaskPageEventNotConfirmedSave value)
+        notConfirmedSave,
+    required TResult Function(TaskPageEventPressedBack value) presBack,
     required TResult Function(TaskPageEventChangeTitle value) changeTitle,
     required TResult Function(TaskPageEventChangePartner value) changePartner,
     required TResult Function(TaskPageEventChangeResponsible value)
@@ -3256,7 +4164,10 @@ class _$TaskPageEventDellAssistant implements TaskPageEventDellAssistant {
     TResult Function(TaskPageEventInit value)? init,
     TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
-    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
     TResult Function(TaskPageEventChangePartner value)? changePartner,
     TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
@@ -3280,7 +4191,10 @@ class _$TaskPageEventDellAssistant implements TaskPageEventDellAssistant {
     TResult Function(TaskPageEventInit value)? init,
     TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
-    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
     TResult Function(TaskPageEventChangePartner value)? changePartner,
     TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
@@ -3385,7 +4299,10 @@ class _$TaskPageEventAddController implements TaskPageEventAddController {
     required TResult Function() init,
     required TResult Function() load,
     required TResult Function() exit,
-    required TResult Function() save,
+    required TResult Function() pressedSave,
+    required TResult Function() confirmedSave,
+    required TResult Function() notConfirmedSave,
+    required TResult Function() presBack,
     required TResult Function(String val) changeTitle,
     required TResult Function(RefCatalog val) changePartner,
     required TResult Function(RefCatalog val) changeResponsible,
@@ -3409,7 +4326,10 @@ class _$TaskPageEventAddController implements TaskPageEventAddController {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? exit,
-    TResult Function()? save,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
     TResult Function(String val)? changeTitle,
     TResult Function(RefCatalog val)? changePartner,
     TResult Function(RefCatalog val)? changeResponsible,
@@ -3433,7 +4353,10 @@ class _$TaskPageEventAddController implements TaskPageEventAddController {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? exit,
-    TResult Function()? save,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
     TResult Function(String val)? changeTitle,
     TResult Function(RefCatalog val)? changePartner,
     TResult Function(RefCatalog val)? changeResponsible,
@@ -3461,7 +4384,11 @@ class _$TaskPageEventAddController implements TaskPageEventAddController {
     required TResult Function(TaskPageEventInit value) init,
     required TResult Function(TaskPageEventLoad value) load,
     required TResult Function(TaskPageEventExit value) exit,
-    required TResult Function(TaskPageEventSave value) save,
+    required TResult Function(TaskPageEventPressedSave value) pressedSave,
+    required TResult Function(TaskPageEventConfirmedSave value) confirmedSave,
+    required TResult Function(TaskPageEventNotConfirmedSave value)
+        notConfirmedSave,
+    required TResult Function(TaskPageEventPressedBack value) presBack,
     required TResult Function(TaskPageEventChangeTitle value) changeTitle,
     required TResult Function(TaskPageEventChangePartner value) changePartner,
     required TResult Function(TaskPageEventChangeResponsible value)
@@ -3489,7 +4416,10 @@ class _$TaskPageEventAddController implements TaskPageEventAddController {
     TResult Function(TaskPageEventInit value)? init,
     TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
-    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
     TResult Function(TaskPageEventChangePartner value)? changePartner,
     TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
@@ -3513,7 +4443,10 @@ class _$TaskPageEventAddController implements TaskPageEventAddController {
     TResult Function(TaskPageEventInit value)? init,
     TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
-    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
     TResult Function(TaskPageEventChangePartner value)? changePartner,
     TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
@@ -3617,7 +4550,10 @@ class _$TaskPageEventAddAssitant implements TaskPageEventAddAssitant {
     required TResult Function() init,
     required TResult Function() load,
     required TResult Function() exit,
-    required TResult Function() save,
+    required TResult Function() pressedSave,
+    required TResult Function() confirmedSave,
+    required TResult Function() notConfirmedSave,
+    required TResult Function() presBack,
     required TResult Function(String val) changeTitle,
     required TResult Function(RefCatalog val) changePartner,
     required TResult Function(RefCatalog val) changeResponsible,
@@ -3641,7 +4577,10 @@ class _$TaskPageEventAddAssitant implements TaskPageEventAddAssitant {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? exit,
-    TResult Function()? save,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
     TResult Function(String val)? changeTitle,
     TResult Function(RefCatalog val)? changePartner,
     TResult Function(RefCatalog val)? changeResponsible,
@@ -3665,7 +4604,10 @@ class _$TaskPageEventAddAssitant implements TaskPageEventAddAssitant {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? exit,
-    TResult Function()? save,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
     TResult Function(String val)? changeTitle,
     TResult Function(RefCatalog val)? changePartner,
     TResult Function(RefCatalog val)? changeResponsible,
@@ -3693,7 +4635,11 @@ class _$TaskPageEventAddAssitant implements TaskPageEventAddAssitant {
     required TResult Function(TaskPageEventInit value) init,
     required TResult Function(TaskPageEventLoad value) load,
     required TResult Function(TaskPageEventExit value) exit,
-    required TResult Function(TaskPageEventSave value) save,
+    required TResult Function(TaskPageEventPressedSave value) pressedSave,
+    required TResult Function(TaskPageEventConfirmedSave value) confirmedSave,
+    required TResult Function(TaskPageEventNotConfirmedSave value)
+        notConfirmedSave,
+    required TResult Function(TaskPageEventPressedBack value) presBack,
     required TResult Function(TaskPageEventChangeTitle value) changeTitle,
     required TResult Function(TaskPageEventChangePartner value) changePartner,
     required TResult Function(TaskPageEventChangeResponsible value)
@@ -3721,7 +4667,10 @@ class _$TaskPageEventAddAssitant implements TaskPageEventAddAssitant {
     TResult Function(TaskPageEventInit value)? init,
     TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
-    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
     TResult Function(TaskPageEventChangePartner value)? changePartner,
     TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
@@ -3745,7 +4694,10 @@ class _$TaskPageEventAddAssitant implements TaskPageEventAddAssitant {
     TResult Function(TaskPageEventInit value)? init,
     TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
-    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
     TResult Function(TaskPageEventChangePartner value)? changePartner,
     TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
@@ -3826,7 +4778,10 @@ class _$TaskPageEventSetControlDone implements TaskPageEventSetControlDone {
     required TResult Function() init,
     required TResult Function() load,
     required TResult Function() exit,
-    required TResult Function() save,
+    required TResult Function() pressedSave,
+    required TResult Function() confirmedSave,
+    required TResult Function() notConfirmedSave,
+    required TResult Function() presBack,
     required TResult Function(String val) changeTitle,
     required TResult Function(RefCatalog val) changePartner,
     required TResult Function(RefCatalog val) changeResponsible,
@@ -3850,7 +4805,10 @@ class _$TaskPageEventSetControlDone implements TaskPageEventSetControlDone {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? exit,
-    TResult Function()? save,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
     TResult Function(String val)? changeTitle,
     TResult Function(RefCatalog val)? changePartner,
     TResult Function(RefCatalog val)? changeResponsible,
@@ -3874,7 +4832,10 @@ class _$TaskPageEventSetControlDone implements TaskPageEventSetControlDone {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? exit,
-    TResult Function()? save,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
     TResult Function(String val)? changeTitle,
     TResult Function(RefCatalog val)? changePartner,
     TResult Function(RefCatalog val)? changeResponsible,
@@ -3902,7 +4863,11 @@ class _$TaskPageEventSetControlDone implements TaskPageEventSetControlDone {
     required TResult Function(TaskPageEventInit value) init,
     required TResult Function(TaskPageEventLoad value) load,
     required TResult Function(TaskPageEventExit value) exit,
-    required TResult Function(TaskPageEventSave value) save,
+    required TResult Function(TaskPageEventPressedSave value) pressedSave,
+    required TResult Function(TaskPageEventConfirmedSave value) confirmedSave,
+    required TResult Function(TaskPageEventNotConfirmedSave value)
+        notConfirmedSave,
+    required TResult Function(TaskPageEventPressedBack value) presBack,
     required TResult Function(TaskPageEventChangeTitle value) changeTitle,
     required TResult Function(TaskPageEventChangePartner value) changePartner,
     required TResult Function(TaskPageEventChangeResponsible value)
@@ -3930,7 +4895,10 @@ class _$TaskPageEventSetControlDone implements TaskPageEventSetControlDone {
     TResult Function(TaskPageEventInit value)? init,
     TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
-    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
     TResult Function(TaskPageEventChangePartner value)? changePartner,
     TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
@@ -3954,7 +4922,10 @@ class _$TaskPageEventSetControlDone implements TaskPageEventSetControlDone {
     TResult Function(TaskPageEventInit value)? init,
     TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
-    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
     TResult Function(TaskPageEventChangePartner value)? changePartner,
     TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
@@ -4027,7 +4998,10 @@ class _$TaskPageEventSetControl implements TaskPageEventSetControl {
     required TResult Function() init,
     required TResult Function() load,
     required TResult Function() exit,
-    required TResult Function() save,
+    required TResult Function() pressedSave,
+    required TResult Function() confirmedSave,
+    required TResult Function() notConfirmedSave,
+    required TResult Function() presBack,
     required TResult Function(String val) changeTitle,
     required TResult Function(RefCatalog val) changePartner,
     required TResult Function(RefCatalog val) changeResponsible,
@@ -4051,7 +5025,10 @@ class _$TaskPageEventSetControl implements TaskPageEventSetControl {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? exit,
-    TResult Function()? save,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
     TResult Function(String val)? changeTitle,
     TResult Function(RefCatalog val)? changePartner,
     TResult Function(RefCatalog val)? changeResponsible,
@@ -4075,7 +5052,10 @@ class _$TaskPageEventSetControl implements TaskPageEventSetControl {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? exit,
-    TResult Function()? save,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
     TResult Function(String val)? changeTitle,
     TResult Function(RefCatalog val)? changePartner,
     TResult Function(RefCatalog val)? changeResponsible,
@@ -4103,7 +5083,11 @@ class _$TaskPageEventSetControl implements TaskPageEventSetControl {
     required TResult Function(TaskPageEventInit value) init,
     required TResult Function(TaskPageEventLoad value) load,
     required TResult Function(TaskPageEventExit value) exit,
-    required TResult Function(TaskPageEventSave value) save,
+    required TResult Function(TaskPageEventPressedSave value) pressedSave,
+    required TResult Function(TaskPageEventConfirmedSave value) confirmedSave,
+    required TResult Function(TaskPageEventNotConfirmedSave value)
+        notConfirmedSave,
+    required TResult Function(TaskPageEventPressedBack value) presBack,
     required TResult Function(TaskPageEventChangeTitle value) changeTitle,
     required TResult Function(TaskPageEventChangePartner value) changePartner,
     required TResult Function(TaskPageEventChangeResponsible value)
@@ -4131,7 +5115,10 @@ class _$TaskPageEventSetControl implements TaskPageEventSetControl {
     TResult Function(TaskPageEventInit value)? init,
     TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
-    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
     TResult Function(TaskPageEventChangePartner value)? changePartner,
     TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
@@ -4155,7 +5142,10 @@ class _$TaskPageEventSetControl implements TaskPageEventSetControl {
     TResult Function(TaskPageEventInit value)? init,
     TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
-    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
     TResult Function(TaskPageEventChangePartner value)? changePartner,
     TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
@@ -4254,7 +5244,10 @@ class _$TaskPageEventSaveDialogResult implements TaskPageEventSaveDialogResult {
     required TResult Function() init,
     required TResult Function() load,
     required TResult Function() exit,
-    required TResult Function() save,
+    required TResult Function() pressedSave,
+    required TResult Function() confirmedSave,
+    required TResult Function() notConfirmedSave,
+    required TResult Function() presBack,
     required TResult Function(String val) changeTitle,
     required TResult Function(RefCatalog val) changePartner,
     required TResult Function(RefCatalog val) changeResponsible,
@@ -4278,7 +5271,10 @@ class _$TaskPageEventSaveDialogResult implements TaskPageEventSaveDialogResult {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? exit,
-    TResult Function()? save,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
     TResult Function(String val)? changeTitle,
     TResult Function(RefCatalog val)? changePartner,
     TResult Function(RefCatalog val)? changeResponsible,
@@ -4302,7 +5298,10 @@ class _$TaskPageEventSaveDialogResult implements TaskPageEventSaveDialogResult {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? exit,
-    TResult Function()? save,
+    TResult Function()? pressedSave,
+    TResult Function()? confirmedSave,
+    TResult Function()? notConfirmedSave,
+    TResult Function()? presBack,
     TResult Function(String val)? changeTitle,
     TResult Function(RefCatalog val)? changePartner,
     TResult Function(RefCatalog val)? changeResponsible,
@@ -4330,7 +5329,11 @@ class _$TaskPageEventSaveDialogResult implements TaskPageEventSaveDialogResult {
     required TResult Function(TaskPageEventInit value) init,
     required TResult Function(TaskPageEventLoad value) load,
     required TResult Function(TaskPageEventExit value) exit,
-    required TResult Function(TaskPageEventSave value) save,
+    required TResult Function(TaskPageEventPressedSave value) pressedSave,
+    required TResult Function(TaskPageEventConfirmedSave value) confirmedSave,
+    required TResult Function(TaskPageEventNotConfirmedSave value)
+        notConfirmedSave,
+    required TResult Function(TaskPageEventPressedBack value) presBack,
     required TResult Function(TaskPageEventChangeTitle value) changeTitle,
     required TResult Function(TaskPageEventChangePartner value) changePartner,
     required TResult Function(TaskPageEventChangeResponsible value)
@@ -4358,7 +5361,10 @@ class _$TaskPageEventSaveDialogResult implements TaskPageEventSaveDialogResult {
     TResult Function(TaskPageEventInit value)? init,
     TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
-    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
     TResult Function(TaskPageEventChangePartner value)? changePartner,
     TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
@@ -4382,7 +5388,10 @@ class _$TaskPageEventSaveDialogResult implements TaskPageEventSaveDialogResult {
     TResult Function(TaskPageEventInit value)? init,
     TResult Function(TaskPageEventLoad value)? load,
     TResult Function(TaskPageEventExit value)? exit,
-    TResult Function(TaskPageEventSave value)? save,
+    TResult Function(TaskPageEventPressedSave value)? pressedSave,
+    TResult Function(TaskPageEventConfirmedSave value)? confirmedSave,
+    TResult Function(TaskPageEventNotConfirmedSave value)? notConfirmedSave,
+    TResult Function(TaskPageEventPressedBack value)? presBack,
     TResult Function(TaskPageEventChangeTitle value)? changeTitle,
     TResult Function(TaskPageEventChangePartner value)? changePartner,
     TResult Function(TaskPageEventChangeResponsible value)? changeResponsible,
@@ -4419,23 +5428,29 @@ abstract class TaskPageEventSaveDialogResult implements TaskPageEvent {
 mixin _$TaskPageSR {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() exit,
+    required TResult Function(bool isModified) exit,
     required TResult Function() openSaveDialog,
     required TResult Function() chooseAnResponsible,
+    required TResult Function(String message) showSnackBar,
+    required TResult Function() showSaveDialog,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? exit,
+    TResult Function(bool isModified)? exit,
     TResult Function()? openSaveDialog,
     TResult Function()? chooseAnResponsible,
+    TResult Function(String message)? showSnackBar,
+    TResult Function()? showSaveDialog,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? exit,
+    TResult Function(bool isModified)? exit,
     TResult Function()? openSaveDialog,
     TResult Function()? chooseAnResponsible,
+    TResult Function(String message)? showSnackBar,
+    TResult Function()? showSaveDialog,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -4444,6 +5459,8 @@ mixin _$TaskPageSR {
     required TResult Function(_SrExit value) exit,
     required TResult Function(_SrOpenSaveDialog value) openSaveDialog,
     required TResult Function(_SrChoiseOfResponsible value) chooseAnResponsible,
+    required TResult Function(_SrShowSnackBar value) showSnackBar,
+    required TResult Function(_SrShowSaveDialog value) showSaveDialog,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -4451,6 +5468,8 @@ mixin _$TaskPageSR {
     TResult Function(_SrExit value)? exit,
     TResult Function(_SrOpenSaveDialog value)? openSaveDialog,
     TResult Function(_SrChoiseOfResponsible value)? chooseAnResponsible,
+    TResult Function(_SrShowSnackBar value)? showSnackBar,
+    TResult Function(_SrShowSaveDialog value)? showSaveDialog,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -4458,6 +5477,8 @@ mixin _$TaskPageSR {
     TResult Function(_SrExit value)? exit,
     TResult Function(_SrOpenSaveDialog value)? openSaveDialog,
     TResult Function(_SrChoiseOfResponsible value)? chooseAnResponsible,
+    TResult Function(_SrShowSnackBar value)? showSnackBar,
+    TResult Function(_SrShowSaveDialog value)? showSaveDialog,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -4483,6 +5504,7 @@ class _$TaskPageSRCopyWithImpl<$Res> implements $TaskPageSRCopyWith<$Res> {
 abstract class _$$_SrExitCopyWith<$Res> {
   factory _$$_SrExitCopyWith(_$_SrExit value, $Res Function(_$_SrExit) then) =
       __$$_SrExitCopyWithImpl<$Res>;
+  $Res call({bool isModified});
 }
 
 /// @nodoc
@@ -4493,57 +5515,87 @@ class __$$_SrExitCopyWithImpl<$Res> extends _$TaskPageSRCopyWithImpl<$Res>
 
   @override
   _$_SrExit get _value => super._value as _$_SrExit;
+
+  @override
+  $Res call({
+    Object? isModified = freezed,
+  }) {
+    return _then(_$_SrExit(
+      isModified == freezed
+          ? _value.isModified
+          : isModified // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_SrExit implements _SrExit {
-  const _$_SrExit();
+  const _$_SrExit(this.isModified);
+
+  @override
+  final bool isModified;
 
   @override
   String toString() {
-    return 'TaskPageSR.exit()';
+    return 'TaskPageSR.exit(isModified: $isModified)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_SrExit);
+        (other.runtimeType == runtimeType &&
+            other is _$_SrExit &&
+            const DeepCollectionEquality()
+                .equals(other.isModified, isModified));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(isModified));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_SrExitCopyWith<_$_SrExit> get copyWith =>
+      __$$_SrExitCopyWithImpl<_$_SrExit>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() exit,
+    required TResult Function(bool isModified) exit,
     required TResult Function() openSaveDialog,
     required TResult Function() chooseAnResponsible,
+    required TResult Function(String message) showSnackBar,
+    required TResult Function() showSaveDialog,
   }) {
-    return exit();
+    return exit(isModified);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? exit,
+    TResult Function(bool isModified)? exit,
     TResult Function()? openSaveDialog,
     TResult Function()? chooseAnResponsible,
+    TResult Function(String message)? showSnackBar,
+    TResult Function()? showSaveDialog,
   }) {
-    return exit?.call();
+    return exit?.call(isModified);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? exit,
+    TResult Function(bool isModified)? exit,
     TResult Function()? openSaveDialog,
     TResult Function()? chooseAnResponsible,
+    TResult Function(String message)? showSnackBar,
+    TResult Function()? showSaveDialog,
     required TResult orElse(),
   }) {
     if (exit != null) {
-      return exit();
+      return exit(isModified);
     }
     return orElse();
   }
@@ -4554,6 +5606,8 @@ class _$_SrExit implements _SrExit {
     required TResult Function(_SrExit value) exit,
     required TResult Function(_SrOpenSaveDialog value) openSaveDialog,
     required TResult Function(_SrChoiseOfResponsible value) chooseAnResponsible,
+    required TResult Function(_SrShowSnackBar value) showSnackBar,
+    required TResult Function(_SrShowSaveDialog value) showSaveDialog,
   }) {
     return exit(this);
   }
@@ -4564,6 +5618,8 @@ class _$_SrExit implements _SrExit {
     TResult Function(_SrExit value)? exit,
     TResult Function(_SrOpenSaveDialog value)? openSaveDialog,
     TResult Function(_SrChoiseOfResponsible value)? chooseAnResponsible,
+    TResult Function(_SrShowSnackBar value)? showSnackBar,
+    TResult Function(_SrShowSaveDialog value)? showSaveDialog,
   }) {
     return exit?.call(this);
   }
@@ -4574,6 +5630,8 @@ class _$_SrExit implements _SrExit {
     TResult Function(_SrExit value)? exit,
     TResult Function(_SrOpenSaveDialog value)? openSaveDialog,
     TResult Function(_SrChoiseOfResponsible value)? chooseAnResponsible,
+    TResult Function(_SrShowSnackBar value)? showSnackBar,
+    TResult Function(_SrShowSaveDialog value)? showSaveDialog,
     required TResult orElse(),
   }) {
     if (exit != null) {
@@ -4584,7 +5642,12 @@ class _$_SrExit implements _SrExit {
 }
 
 abstract class _SrExit implements TaskPageSR {
-  const factory _SrExit() = _$_SrExit;
+  const factory _SrExit(final bool isModified) = _$_SrExit;
+
+  bool get isModified;
+  @JsonKey(ignore: true)
+  _$$_SrExitCopyWith<_$_SrExit> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -4628,9 +5691,11 @@ class _$_SrOpenSaveDialog implements _SrOpenSaveDialog {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() exit,
+    required TResult Function(bool isModified) exit,
     required TResult Function() openSaveDialog,
     required TResult Function() chooseAnResponsible,
+    required TResult Function(String message) showSnackBar,
+    required TResult Function() showSaveDialog,
   }) {
     return openSaveDialog();
   }
@@ -4638,9 +5703,11 @@ class _$_SrOpenSaveDialog implements _SrOpenSaveDialog {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? exit,
+    TResult Function(bool isModified)? exit,
     TResult Function()? openSaveDialog,
     TResult Function()? chooseAnResponsible,
+    TResult Function(String message)? showSnackBar,
+    TResult Function()? showSaveDialog,
   }) {
     return openSaveDialog?.call();
   }
@@ -4648,9 +5715,11 @@ class _$_SrOpenSaveDialog implements _SrOpenSaveDialog {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? exit,
+    TResult Function(bool isModified)? exit,
     TResult Function()? openSaveDialog,
     TResult Function()? chooseAnResponsible,
+    TResult Function(String message)? showSnackBar,
+    TResult Function()? showSaveDialog,
     required TResult orElse(),
   }) {
     if (openSaveDialog != null) {
@@ -4665,6 +5734,8 @@ class _$_SrOpenSaveDialog implements _SrOpenSaveDialog {
     required TResult Function(_SrExit value) exit,
     required TResult Function(_SrOpenSaveDialog value) openSaveDialog,
     required TResult Function(_SrChoiseOfResponsible value) chooseAnResponsible,
+    required TResult Function(_SrShowSnackBar value) showSnackBar,
+    required TResult Function(_SrShowSaveDialog value) showSaveDialog,
   }) {
     return openSaveDialog(this);
   }
@@ -4675,6 +5746,8 @@ class _$_SrOpenSaveDialog implements _SrOpenSaveDialog {
     TResult Function(_SrExit value)? exit,
     TResult Function(_SrOpenSaveDialog value)? openSaveDialog,
     TResult Function(_SrChoiseOfResponsible value)? chooseAnResponsible,
+    TResult Function(_SrShowSnackBar value)? showSnackBar,
+    TResult Function(_SrShowSaveDialog value)? showSaveDialog,
   }) {
     return openSaveDialog?.call(this);
   }
@@ -4685,6 +5758,8 @@ class _$_SrOpenSaveDialog implements _SrOpenSaveDialog {
     TResult Function(_SrExit value)? exit,
     TResult Function(_SrOpenSaveDialog value)? openSaveDialog,
     TResult Function(_SrChoiseOfResponsible value)? chooseAnResponsible,
+    TResult Function(_SrShowSnackBar value)? showSnackBar,
+    TResult Function(_SrShowSaveDialog value)? showSaveDialog,
     required TResult orElse(),
   }) {
     if (openSaveDialog != null) {
@@ -4740,9 +5815,11 @@ class _$_SrChoiseOfResponsible implements _SrChoiseOfResponsible {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() exit,
+    required TResult Function(bool isModified) exit,
     required TResult Function() openSaveDialog,
     required TResult Function() chooseAnResponsible,
+    required TResult Function(String message) showSnackBar,
+    required TResult Function() showSaveDialog,
   }) {
     return chooseAnResponsible();
   }
@@ -4750,9 +5827,11 @@ class _$_SrChoiseOfResponsible implements _SrChoiseOfResponsible {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? exit,
+    TResult Function(bool isModified)? exit,
     TResult Function()? openSaveDialog,
     TResult Function()? chooseAnResponsible,
+    TResult Function(String message)? showSnackBar,
+    TResult Function()? showSaveDialog,
   }) {
     return chooseAnResponsible?.call();
   }
@@ -4760,9 +5839,11 @@ class _$_SrChoiseOfResponsible implements _SrChoiseOfResponsible {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? exit,
+    TResult Function(bool isModified)? exit,
     TResult Function()? openSaveDialog,
     TResult Function()? chooseAnResponsible,
+    TResult Function(String message)? showSnackBar,
+    TResult Function()? showSaveDialog,
     required TResult orElse(),
   }) {
     if (chooseAnResponsible != null) {
@@ -4777,6 +5858,8 @@ class _$_SrChoiseOfResponsible implements _SrChoiseOfResponsible {
     required TResult Function(_SrExit value) exit,
     required TResult Function(_SrOpenSaveDialog value) openSaveDialog,
     required TResult Function(_SrChoiseOfResponsible value) chooseAnResponsible,
+    required TResult Function(_SrShowSnackBar value) showSnackBar,
+    required TResult Function(_SrShowSaveDialog value) showSaveDialog,
   }) {
     return chooseAnResponsible(this);
   }
@@ -4787,6 +5870,8 @@ class _$_SrChoiseOfResponsible implements _SrChoiseOfResponsible {
     TResult Function(_SrExit value)? exit,
     TResult Function(_SrOpenSaveDialog value)? openSaveDialog,
     TResult Function(_SrChoiseOfResponsible value)? chooseAnResponsible,
+    TResult Function(_SrShowSnackBar value)? showSnackBar,
+    TResult Function(_SrShowSaveDialog value)? showSaveDialog,
   }) {
     return chooseAnResponsible?.call(this);
   }
@@ -4797,6 +5882,8 @@ class _$_SrChoiseOfResponsible implements _SrChoiseOfResponsible {
     TResult Function(_SrExit value)? exit,
     TResult Function(_SrOpenSaveDialog value)? openSaveDialog,
     TResult Function(_SrChoiseOfResponsible value)? chooseAnResponsible,
+    TResult Function(_SrShowSnackBar value)? showSnackBar,
+    TResult Function(_SrShowSaveDialog value)? showSaveDialog,
     required TResult orElse(),
   }) {
     if (chooseAnResponsible != null) {
@@ -4808,4 +5895,279 @@ class _$_SrChoiseOfResponsible implements _SrChoiseOfResponsible {
 
 abstract class _SrChoiseOfResponsible implements TaskPageSR {
   const factory _SrChoiseOfResponsible() = _$_SrChoiseOfResponsible;
+}
+
+/// @nodoc
+abstract class _$$_SrShowSnackBarCopyWith<$Res> {
+  factory _$$_SrShowSnackBarCopyWith(
+          _$_SrShowSnackBar value, $Res Function(_$_SrShowSnackBar) then) =
+      __$$_SrShowSnackBarCopyWithImpl<$Res>;
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$_SrShowSnackBarCopyWithImpl<$Res>
+    extends _$TaskPageSRCopyWithImpl<$Res>
+    implements _$$_SrShowSnackBarCopyWith<$Res> {
+  __$$_SrShowSnackBarCopyWithImpl(
+      _$_SrShowSnackBar _value, $Res Function(_$_SrShowSnackBar) _then)
+      : super(_value, (v) => _then(v as _$_SrShowSnackBar));
+
+  @override
+  _$_SrShowSnackBar get _value => super._value as _$_SrShowSnackBar;
+
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_$_SrShowSnackBar(
+      message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_SrShowSnackBar implements _SrShowSnackBar {
+  const _$_SrShowSnackBar(this.message);
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'TaskPageSR.showSnackBar(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SrShowSnackBar &&
+            const DeepCollectionEquality().equals(other.message, message));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_SrShowSnackBarCopyWith<_$_SrShowSnackBar> get copyWith =>
+      __$$_SrShowSnackBarCopyWithImpl<_$_SrShowSnackBar>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool isModified) exit,
+    required TResult Function() openSaveDialog,
+    required TResult Function() chooseAnResponsible,
+    required TResult Function(String message) showSnackBar,
+    required TResult Function() showSaveDialog,
+  }) {
+    return showSnackBar(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(bool isModified)? exit,
+    TResult Function()? openSaveDialog,
+    TResult Function()? chooseAnResponsible,
+    TResult Function(String message)? showSnackBar,
+    TResult Function()? showSaveDialog,
+  }) {
+    return showSnackBar?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool isModified)? exit,
+    TResult Function()? openSaveDialog,
+    TResult Function()? chooseAnResponsible,
+    TResult Function(String message)? showSnackBar,
+    TResult Function()? showSaveDialog,
+    required TResult orElse(),
+  }) {
+    if (showSnackBar != null) {
+      return showSnackBar(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SrExit value) exit,
+    required TResult Function(_SrOpenSaveDialog value) openSaveDialog,
+    required TResult Function(_SrChoiseOfResponsible value) chooseAnResponsible,
+    required TResult Function(_SrShowSnackBar value) showSnackBar,
+    required TResult Function(_SrShowSaveDialog value) showSaveDialog,
+  }) {
+    return showSnackBar(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_SrExit value)? exit,
+    TResult Function(_SrOpenSaveDialog value)? openSaveDialog,
+    TResult Function(_SrChoiseOfResponsible value)? chooseAnResponsible,
+    TResult Function(_SrShowSnackBar value)? showSnackBar,
+    TResult Function(_SrShowSaveDialog value)? showSaveDialog,
+  }) {
+    return showSnackBar?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SrExit value)? exit,
+    TResult Function(_SrOpenSaveDialog value)? openSaveDialog,
+    TResult Function(_SrChoiseOfResponsible value)? chooseAnResponsible,
+    TResult Function(_SrShowSnackBar value)? showSnackBar,
+    TResult Function(_SrShowSaveDialog value)? showSaveDialog,
+    required TResult orElse(),
+  }) {
+    if (showSnackBar != null) {
+      return showSnackBar(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SrShowSnackBar implements TaskPageSR {
+  const factory _SrShowSnackBar(final String message) = _$_SrShowSnackBar;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$$_SrShowSnackBarCopyWith<_$_SrShowSnackBar> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_SrShowSaveDialogCopyWith<$Res> {
+  factory _$$_SrShowSaveDialogCopyWith(
+          _$_SrShowSaveDialog value, $Res Function(_$_SrShowSaveDialog) then) =
+      __$$_SrShowSaveDialogCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_SrShowSaveDialogCopyWithImpl<$Res>
+    extends _$TaskPageSRCopyWithImpl<$Res>
+    implements _$$_SrShowSaveDialogCopyWith<$Res> {
+  __$$_SrShowSaveDialogCopyWithImpl(
+      _$_SrShowSaveDialog _value, $Res Function(_$_SrShowSaveDialog) _then)
+      : super(_value, (v) => _then(v as _$_SrShowSaveDialog));
+
+  @override
+  _$_SrShowSaveDialog get _value => super._value as _$_SrShowSaveDialog;
+}
+
+/// @nodoc
+
+class _$_SrShowSaveDialog implements _SrShowSaveDialog {
+  const _$_SrShowSaveDialog();
+
+  @override
+  String toString() {
+    return 'TaskPageSR.showSaveDialog()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_SrShowSaveDialog);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool isModified) exit,
+    required TResult Function() openSaveDialog,
+    required TResult Function() chooseAnResponsible,
+    required TResult Function(String message) showSnackBar,
+    required TResult Function() showSaveDialog,
+  }) {
+    return showSaveDialog();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(bool isModified)? exit,
+    TResult Function()? openSaveDialog,
+    TResult Function()? chooseAnResponsible,
+    TResult Function(String message)? showSnackBar,
+    TResult Function()? showSaveDialog,
+  }) {
+    return showSaveDialog?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool isModified)? exit,
+    TResult Function()? openSaveDialog,
+    TResult Function()? chooseAnResponsible,
+    TResult Function(String message)? showSnackBar,
+    TResult Function()? showSaveDialog,
+    required TResult orElse(),
+  }) {
+    if (showSaveDialog != null) {
+      return showSaveDialog();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SrExit value) exit,
+    required TResult Function(_SrOpenSaveDialog value) openSaveDialog,
+    required TResult Function(_SrChoiseOfResponsible value) chooseAnResponsible,
+    required TResult Function(_SrShowSnackBar value) showSnackBar,
+    required TResult Function(_SrShowSaveDialog value) showSaveDialog,
+  }) {
+    return showSaveDialog(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_SrExit value)? exit,
+    TResult Function(_SrOpenSaveDialog value)? openSaveDialog,
+    TResult Function(_SrChoiseOfResponsible value)? chooseAnResponsible,
+    TResult Function(_SrShowSnackBar value)? showSnackBar,
+    TResult Function(_SrShowSaveDialog value)? showSaveDialog,
+  }) {
+    return showSaveDialog?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SrExit value)? exit,
+    TResult Function(_SrOpenSaveDialog value)? openSaveDialog,
+    TResult Function(_SrChoiseOfResponsible value)? chooseAnResponsible,
+    TResult Function(_SrShowSnackBar value)? showSnackBar,
+    TResult Function(_SrShowSaveDialog value)? showSaveDialog,
+    required TResult orElse(),
+  }) {
+    if (showSaveDialog != null) {
+      return showSaveDialog(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SrShowSaveDialog implements TaskPageSR {
+  const factory _SrShowSaveDialog() = _$_SrShowSaveDialog;
 }

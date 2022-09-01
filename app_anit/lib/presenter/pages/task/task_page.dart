@@ -10,6 +10,8 @@ import 'package:intl/intl.dart';
 
 import '../../../app/injection_container.dart';
 import '../../../arch/sr_bloc/sr_bloc_builder.dart';
+import '../../../core/presentation/widgets_design/base_snackbar.dart';
+import '../../../core/presentation/widgets_design/confirm_dialog.dart';
 import '../../../core/presentation/widgets_design/empty_page.dart';
 import '../../../core/presentation/widgets_design/error_page.dart';
 import '../../../core/presentation/widgets_design/text_field.dart';
@@ -56,7 +58,11 @@ class TaskPage extends StatelessWidget {
 
   void _onSingleResult(BuildContext context, TaskPageSR sr) {
     sr.when(
-        exit: () {},
+        showSnackBar: (message) =>
+            BaseSnackbar.show(context: context, text: message),
+        exit: (isModified) {
+          Navigator.of(context).pop(isModified);
+        },
         openSaveDialog: () {},
         chooseAnResponsible: () {
           Navigator.push<RefCatalog>(
@@ -74,7 +80,16 @@ class TaskPage extends StatelessWidget {
                   .add(TaskPageEvent.changeResponsible(val));
             }
           });
-        });
+        },
+        showSaveDialog: () => showConfirmDialog(
+              context: context,
+              confirmed: () => context
+                  .read<TaskPageBloc>()
+                  .add(const TaskPageEvent.confirmedSave()),
+              notConfirmed: () => context
+                  .read<TaskPageBloc>()
+                  .add(const TaskPageEvent.notConfirmedSave()),
+            ));
   }
 }
 
@@ -102,150 +117,158 @@ class _PageContent extends StatelessWidget {
       _textController.text = task.title ?? '';
     }
 
-    return Listener(
-      onPointerDown: (event) {
-        FocusManager.instance.primaryFocus?.unfocus();
+    return WillPopScope(
+      onWillPop: () async {
+        context.read<TaskPageBloc>().add(const TaskPageEvent.presBack());
+        return false;
       },
-      child: Scaffold(
-        appBar: AppBar(title: Text(title), actions: [
-          if (isModified &&
-              task.partner != null &&
-              task.responsible != null &&
-              task.title!.isNotEmpty)
-            IconButton(
-              onPressed: () {
-                context.read<TaskPageBloc>().add(const TaskPageEvent.save());
-              },
-              icon: const Icon(Icons.check),
-            ),
-        ]),
-        body: CustomPageWidget(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  CustomEditTextField(
-                    focusNode: focusNode,
-                    title: 'Описание',
-                    errorText:
-                        _textController.text.isEmpty ? 'Не заполнено' : null,
-                    controller: _textController,
-                    onChanged: (value) {
-                      context
-                          .read<TaskPageBloc>()
-                          .add(TaskPageEvent.changeTitle(value));
-                    },
-                  ),
-                  const Divider(),
-                  RefCatalogFieldWidget(
-                    refCatalog: task.partner,
-                    title: 'Клиент',
-                    type: 'Партнеры',
-                    errorTitle: task.partner == null ? 'Не заполнено' : null,
-                    onChoice: (val) {
-                      context
-                          .read<TaskPageBloc>()
-                          .add(TaskPageEvent.changePartner(val));
-                    },
-                  ),
-                  RefCatalogFieldWidget(
-                    refCatalog: task.responsible,
-                    title: 'Ответственный',
-                    errorTitle:
-                        task.responsible == null ? 'Не заполнено' : null,
-                    type: 'Пользователи',
-                    onChoice: (val) {
-                      context
-                          .read<TaskPageBloc>()
-                          .add(TaskPageEvent.changeResponsible(val));
-                    },
-                  ),
-                  RefCatalogFieldWidget(
-                    refCatalog: task.producer,
-                    title: 'Постановщик',
-                    type: 'Пользователи',
-                    onChoice: (val) {
-                      context
-                          .read<TaskPageBloc>()
-                          .add(TaskPageEvent.changeProducer(val));
-                    },
-                  ),
-                  const Divider(),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: RefEnumFieldWidget(
-                          title: 'Состояние',
-                          refEnum: task.condition!,
-                          type: 'АН_СостоянияСобытия',
-                          titleDialog: 'Состояние',
-                          onChoice: (val) {
-                            context
-                                .read<TaskPageBloc>()
-                                .add(TaskPageEvent.changeCondition(val));
-                          },
+      child: Listener(
+        onPointerDown: (event) {
+          FocusManager.instance.primaryFocus?.unfocus();
+        },
+        child: Scaffold(
+          appBar: AppBar(title: Text(title), actions: [
+            if (isModified &&
+                task.partner != null &&
+                task.responsible != null &&
+                task.title!.isNotEmpty)
+              IconButton(
+                onPressed: () {
+                  context
+                      .read<TaskPageBloc>()
+                      .add(const TaskPageEvent.pressedSave());
+                },
+                icon: const Icon(Icons.check),
+              ),
+          ]),
+          body: CustomPageWidget(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    CustomEditTextField(
+                      focusNode: focusNode,
+                      title: 'Описание',
+                      errorText:
+                          _textController.text.isEmpty ? 'Не заполнено' : null,
+                      controller: _textController,
+                      onChanged: (value) {
+                        context
+                            .read<TaskPageBloc>()
+                            .add(TaskPageEvent.changeTitle(value));
+                      },
+                    ),
+                    const Divider(),
+                    RefCatalogFieldWidget(
+                      refCatalog: task.partner,
+                      title: 'Клиент',
+                      type: 'Партнеры',
+                      errorTitle: task.partner == null ? 'Не заполнено' : null,
+                      onChoice: (val) {
+                        context
+                            .read<TaskPageBloc>()
+                            .add(TaskPageEvent.changePartner(val));
+                      },
+                    ),
+                    RefCatalogFieldWidget(
+                      refCatalog: task.responsible,
+                      title: 'Ответственный',
+                      errorTitle:
+                          task.responsible == null ? 'Не заполнено' : null,
+                      type: 'Пользователи',
+                      onChoice: (val) {
+                        context
+                            .read<TaskPageBloc>()
+                            .add(TaskPageEvent.changeResponsible(val));
+                      },
+                    ),
+                    RefCatalogFieldWidget(
+                      refCatalog: task.producer,
+                      title: 'Постановщик',
+                      type: 'Пользователи',
+                      onChoice: (val) {
+                        context
+                            .read<TaskPageBloc>()
+                            .add(TaskPageEvent.changeProducer(val));
+                      },
+                    ),
+                    const Divider(),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: RefEnumFieldWidget(
+                            title: 'Состояние',
+                            refEnum: task.condition!,
+                            type: 'АН_СостоянияСобытия',
+                            titleDialog: 'Состояние',
+                            onChoice: (val) {
+                              context
+                                  .read<TaskPageBloc>()
+                                  .add(TaskPageEvent.changeCondition(val));
+                            },
+                          ),
                         ),
-                      ),
-                      Expanded(
-                        child: RefEnumFieldWidget(
-                          title: 'Важность',
-                          refEnum: task.importance!,
-                          type: 'ВариантыВажностиЗадачи',
-                          titleDialog: 'Важность',
-                          onChoice: (val) {
-                            context
-                                .read<TaskPageBloc>()
-                                .add(TaskPageEvent.changeImportance(val));
-                          },
+                        Expanded(
+                          child: RefEnumFieldWidget(
+                            title: 'Важность',
+                            refEnum: task.importance!,
+                            type: 'ВариантыВажностиЗадачи',
+                            titleDialog: 'Важность',
+                            onChoice: (val) {
+                              context
+                                  .read<TaskPageBloc>()
+                                  .add(TaskPageEvent.changeImportance(val));
+                            },
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  const Divider(),
-                  Row(
-                    children: [
-                      PannelChippWraperWidget(
-                        list: task.controllers ?? [],
-                        title: 'Контролеры',
-                        onAdd: (catalog) => context
-                            .read<TaskPageBloc>()
-                            .add(TaskPageEvent.addController(catalog)),
-                      ),
-                      SetControlWidget(
-                        dateControl: task.dateControl,
-                        needShowControlCheck: task.needShowControlCheck,
-                        setControl: () => context
-                            .read<TaskPageBloc>()
-                            .add(const TaskPageEvent.setControl()),
-                        setControlDone: () => context
-                            .read<TaskPageBloc>()
-                            .add(const TaskPageEvent.setControlDone()),
-                        userIsController: userIsController,
-                      ),
-                    ],
-                  ),
-                  ChippWraperWidget(
-                    list: task.controllers ?? [],
-                    onDell: (catalog) => context
-                        .read<TaskPageBloc>()
-                        .add(TaskPageEvent.dellController(catalog)),
-                  ),
-                  const Divider(),
-                  PannelChippWraperWidget(
-                    list: task.assistants ?? [],
-                    title: 'Соисполнители',
-                    onAdd: (catalog) => context
-                        .read<TaskPageBloc>()
-                        .add(TaskPageEvent.addAssitant(catalog)),
-                  ),
-                  ChippWraperWidget(
-                    list: task.assistants ?? [],
-                    onDell: (catalog) => context
-                        .read<TaskPageBloc>()
-                        .add(TaskPageEvent.dellAssistant(catalog)),
-                  ),
-                ],
+                      ],
+                    ),
+                    const Divider(),
+                    Row(
+                      children: [
+                        PannelChippWraperWidget(
+                          list: task.controllers ?? [],
+                          title: 'Контролеры',
+                          onAdd: (catalog) => context
+                              .read<TaskPageBloc>()
+                              .add(TaskPageEvent.addController(catalog)),
+                        ),
+                        SetControlWidget(
+                          dateControl: task.dateControl,
+                          needShowControlCheck: task.needShowControlCheck,
+                          setControl: () => context
+                              .read<TaskPageBloc>()
+                              .add(const TaskPageEvent.setControl()),
+                          setControlDone: () => context
+                              .read<TaskPageBloc>()
+                              .add(const TaskPageEvent.setControlDone()),
+                          userIsController: userIsController,
+                        ),
+                      ],
+                    ),
+                    ChippWraperWidget(
+                      list: task.controllers ?? [],
+                      onDell: (catalog) => context
+                          .read<TaskPageBloc>()
+                          .add(TaskPageEvent.dellController(catalog)),
+                    ),
+                    const Divider(),
+                    PannelChippWraperWidget(
+                      list: task.assistants ?? [],
+                      title: 'Соисполнители',
+                      onAdd: (catalog) => context
+                          .read<TaskPageBloc>()
+                          .add(TaskPageEvent.addAssitant(catalog)),
+                    ),
+                    ChippWraperWidget(
+                      list: task.assistants ?? [],
+                      onDell: (catalog) => context
+                          .read<TaskPageBloc>()
+                          .add(TaskPageEvent.dellAssistant(catalog)),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

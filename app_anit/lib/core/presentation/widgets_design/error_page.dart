@@ -18,24 +18,24 @@ class ErrorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomPageWidget(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text('Ошибка', style: Theme.of(context).textTheme.displaySmall),
-              verticalSpaceLarge,
-              if (message != null)
-                Text(message!,
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyMedium
-                        ?.copyWith(color: Theme.of(context).colorScheme.error)),
-              verticalSpaceRegular,
-              if (onClick != null)
-                ElevatedButton(onPressed: onClick, child: Text(buttonTitle)),
-            ],
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text('Ошибка', style: Theme.of(context).textTheme.displaySmall),
+                verticalSpaceLarge,
+                if (message != null)
+                  Text(message!,
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: Theme.of(context).colorScheme.error)),
+                verticalSpaceRegular,
+                if (onClick != null)
+                  ElevatedButton(onPressed: onClick, child: Text(buttonTitle)),
+              ],
+            ),
           ),
         ),
       ),

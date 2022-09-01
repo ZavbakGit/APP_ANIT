@@ -23,7 +23,11 @@ class TaskPageEvent with _$TaskPageEvent {
   const factory TaskPageEvent.init() = TaskPageEventInit;
   const factory TaskPageEvent.load() = TaskPageEventLoad;
   const factory TaskPageEvent.exit() = TaskPageEventExit;
-  const factory TaskPageEvent.save() = TaskPageEventSave;
+  const factory TaskPageEvent.pressedSave() = TaskPageEventPressedSave;
+  const factory TaskPageEvent.confirmedSave() = TaskPageEventConfirmedSave;
+  const factory TaskPageEvent.notConfirmedSave() =
+      TaskPageEventNotConfirmedSave;
+  const factory TaskPageEvent.presBack() = TaskPageEventPressedBack;
   const factory TaskPageEvent.changeTitle(String val) =
       TaskPageEventChangeTitle;
   const factory TaskPageEvent.changePartner(RefCatalog val) =
@@ -52,7 +56,9 @@ class TaskPageEvent with _$TaskPageEvent {
 
 @freezed
 class TaskPageSR with _$TaskPageSR {
-  const factory TaskPageSR.exit() = _SrExit;
+  const factory TaskPageSR.exit(bool isModified) = _SrExit;
   const factory TaskPageSR.openSaveDialog() = _SrOpenSaveDialog;
   const factory TaskPageSR.chooseAnResponsible() = _SrChoiseOfResponsible;
+  const factory TaskPageSR.showSnackBar(String message) = _SrShowSnackBar;
+  const factory TaskPageSR.showSaveDialog() = _SrShowSaveDialog;
 }

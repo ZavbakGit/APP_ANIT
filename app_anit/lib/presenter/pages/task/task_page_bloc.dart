@@ -39,6 +39,10 @@ class TaskPageBloc extends SrBloc<TaskPageEvent, TaskPageState, TaskPageSR> {
     on<TaskPageEventInit>(_init);
     on<TaskPageEventExit>(_exit);
     on<TaskPageEventLoad>(_load);
+    on<TaskPageEventConfirmedSave>(_confirmedSave);
+    on<TaskPageEventNotConfirmedSave>(_notConfirmedSave);
+    on<TaskPageEventPressedSave>(_pressedSave);
+    on<TaskPageEventPressedBack>(_pressedBack);
     on<TaskPageEventChangeTitle>(_changeTask);
     on<TaskPageEventChangePartner>(_changeTask);
     on<TaskPageEventChangeResponsible>(_changeTask);
@@ -166,5 +170,77 @@ class TaskPageBloc extends SrBloc<TaskPageEvent, TaskPageState, TaskPageSR> {
         task: task,
         isModified: isModified,
         userIsController: task.userIsController(appModel.remoteConfig!.user)));
+  }
+
+  bool _checkTask() {
+    bool check = true;
+
+    if (task.partner == null) {
+      addSr(const TaskPageSR.showSnackBar('Партнер не заполнен!'));
+      check = false;
+    }
+
+    if (task.title == null || task.title!.isEmpty) {
+      addSr(const TaskPageSR.showSnackBar('Описание не заполнено!'));
+      check = false;
+    }
+
+    if (task.responsible == null) {
+      addSr(const TaskPageSR.showSnackBar('Ответственный не заполнен!'));
+      check = false;
+    }
+
+    if (task.producer == null) {
+      addSr(const TaskPageSR.showSnackBar('Постановщик не заполнен!'));
+      check = false;
+    }
+
+    return check;
+  }
+
+  _save() async {
+    if (_checkTask()) {
+      // ignore: invalid_use_of_visible_for_testing_member
+      emit(const TaskPageState.empty());
+      final either = await repository.saveTask(task: task);
+
+      either.fold((fail) {
+        addSr(TaskPageSR.showSnackBar('Ошибка: ${fail.error}'));
+      }, (result) {
+        addSr(TaskPageSR.exit(isModified));
+      });
+    }
+  }
+
+  FutureOr<void> _pressedSave(
+    TaskPageEventPressedSave event,
+    Emitter<TaskPageState> emit,
+  ) async {
+    _save();
+  }
+
+  FutureOr<void> _pressedBack(
+    TaskPageEventPressedBack event,
+    Emitter<TaskPageState> emit,
+  ) {
+    if (!isModified) {
+      addSr(TaskPageSR.exit(isModified));
+    } else {
+      addSr(const TaskPageSR.showSaveDialog());
+    }
+  }
+
+  FutureOr<void> _confirmedSave(
+    TaskPageEventConfirmedSave event,
+    Emitter<TaskPageState> emit,
+  ) {
+    _save();
+  }
+
+  FutureOr<void> _notConfirmedSave(
+    TaskPageEventNotConfirmedSave event,
+    Emitter<TaskPageState> emit,
+  ) {
+    addSr(TaskPageSR.exit(isModified));
   }
 }

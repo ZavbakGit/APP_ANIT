@@ -9,7 +9,6 @@ import '../../../arch/sr_bloc/sr_bloc_builder.dart';
 import '../../disign_system/saherd/ui_helpers.dart';
 import '../../pages/task/task_page.dart';
 import '../../pages/tasks_user/tasks_user_page.dart';
-import '../../pages/tasks_user_old/tasks_page_old.dart';
 
 class TasksWidget extends StatelessWidget {
   const TasksWidget({Key? key}) : super(key: key);

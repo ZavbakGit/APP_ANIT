@@ -2,6 +2,9 @@ import 'package:app_anit/presenter/widgets/catalogs/ref_catalog_dialog_widget.da
 import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
 import 'package:flutter/material.dart';
 
+import '../../disign_system/saherd/ui_helpers.dart';
+import '../../pages/search_catalog/catalog_search_dialod_page.dart';
+
 class RefCatalogFieldWidget extends StatelessWidget {
   final String type;
   final RefCatalog? refCatalog;
@@ -26,9 +29,9 @@ class RefCatalogFieldWidget extends StatelessWidget {
           Navigator.push<RefCatalog>(
             context,
             MaterialPageRoute(
-              builder: (context) => RefCatalogDialogWidget(
+              builder: (context) => CatalogSearchDialogPage(
                 type: type,
-                titleDialog: title,
+                title: title,
               ),
             ),
           ).then((value) {
@@ -42,13 +45,17 @@ class RefCatalogFieldWidget extends StatelessWidget {
         title: Row(
           children: [
             Expanded(child: Text(title)),
-            const SizedBox(
-              width: 8,
-            ),
+            verticalSpaceRegular,
             if (errorTitle != null)
               Expanded(
-                  child: Text(errorTitle!,
-                      style: TextStyle(color: Colors.red[300]))),
+                child: Text(
+                  errorTitle!,
+                  style: Theme.of(context)
+                      .textTheme
+                      .labelMedium!
+                      .copyWith(color: Theme.of(context).colorScheme.error),
+                ),
+              ),
           ],
         ),
         subtitle: Text(refCatalog?.name ?? ''),
