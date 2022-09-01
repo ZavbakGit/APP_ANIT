@@ -7,6 +7,7 @@ extension ExtTaskItem on TaskItem {
         return true;
       }
     }
+
     return false;
   }
 }
