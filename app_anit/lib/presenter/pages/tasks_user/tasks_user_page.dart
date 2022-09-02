@@ -171,22 +171,24 @@ class _PageContentState extends State<_PageContent>
           context.read<TasksUserBlok>().add(const TasksUserEvent.onTapFab());
         },
       ),
-      body: TabBarView(
-        controller: _tabController,
-        children: [
-          TaskListWidget(
-            list: widget.tasks,
-            isLoading: widget.isLoading,
-            appUser: widget.appUser,
-            isControlledTasks: false,
-          ),
-          TaskListWidget(
-            list: widget.controlledTasks,
-            isLoading: widget.isLoading,
-            appUser: widget.appUser,
-            isControlledTasks: true,
-          )
-        ],
+      body: CustomPageWidget(
+        child: TabBarView(
+          controller: _tabController,
+          children: [
+            TaskListWidget(
+              list: widget.tasks,
+              isLoading: widget.isLoading,
+              appUser: widget.appUser,
+              isControlledTasks: false,
+            ),
+            TaskListWidget(
+              list: widget.controlledTasks,
+              isLoading: widget.isLoading,
+              appUser: widget.appUser,
+              isControlledTasks: true,
+            )
+          ],
+        ),
       ),
     );
   }
@@ -219,21 +221,19 @@ class TaskListWidget extends StatelessWidget {
                 child: Center(child: CustomLinearProgressIndicator())),
           if (!isLoading) const SizedBox(height: 8),
           Expanded(
-            child: CustomPageWidget(
-              child: ListView.builder(
-                physics: const BouncingScrollPhysics(
-                    parent: AlwaysScrollableScrollPhysics()),
-                scrollDirection: Axis.vertical,
-                //shrinkWrap: true,
-                itemBuilder: (BuildContext context, int index) {
-                  return TaskItemWidget(
-                    item: list[index],
-                    appUser: appUser,
-                    isControlledTasks: isControlledTasks,
-                  );
-                },
-                itemCount: list.length,
-              ),
+            child: ListView.builder(
+              physics: const BouncingScrollPhysics(
+                  parent: AlwaysScrollableScrollPhysics()),
+              scrollDirection: Axis.vertical,
+              //shrinkWrap: true,
+              itemBuilder: (BuildContext context, int index) {
+                return TaskItemWidget(
+                  item: list[index],
+                  appUser: appUser,
+                  isControlledTasks: isControlledTasks,
+                );
+              },
+              itemCount: list.length,
             ),
           ),
         ],

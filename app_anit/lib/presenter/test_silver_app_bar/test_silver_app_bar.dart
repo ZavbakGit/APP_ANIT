@@ -128,6 +128,8 @@ class _TestSilverAppBarState extends State<_PageContent1>
     _tabController = TabController(length: 2, vsync: this);
   }
 
+  //https://www.youtube.com/watch?v=xzPXqQ-Pe2g
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -137,12 +139,17 @@ class _TestSilverAppBarState extends State<_PageContent1>
           context.read<TasksUserBlok>().add(const TasksUserEvent.onTapFab());
         },
       ),
-      body: DefaultTabController(
-        length: 2,
+      body: CustomPageWidget(
         child: NestedScrollView(
+          floatHeaderSlivers: true,
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
               SliverAppBar(
+                floating: true,
+                title: Text(widget.title),
+                //expandedHeight: 58,
+                //pinned: false,
+                snap: true,
                 actions: <Widget>[
                   if (widget.isCurentUser)
                     IconButton(
@@ -163,10 +170,6 @@ class _TestSilverAppBarState extends State<_PageContent1>
                       },
                     ),
                 ],
-                title: Text(widget.title),
-                expandedHeight: 0,
-                floating: false,
-                pinned: false,
               ),
               SliverPersistentHeader(
                 floating: true,
@@ -186,24 +189,22 @@ class _TestSilverAppBarState extends State<_PageContent1>
               ),
             ];
           },
-          body: CustomPageWidget(
-            child: TabBarView(
-              controller: _tabController,
-              children: [
-                TaskListWidget(
-                  list: widget.tasks,
-                  isLoading: widget.isLoading,
-                  appUser: widget.appUser,
-                  isControlledTasks: false,
-                ),
-                TaskListWidget(
-                  list: widget.controlledTasks,
-                  isLoading: widget.isLoading,
-                  appUser: widget.appUser,
-                  isControlledTasks: true,
-                )
-              ],
-            ),
+          body: TabBarView(
+            controller: _tabController,
+            children: [
+              TaskListWidget(
+                list: widget.tasks,
+                isLoading: widget.isLoading,
+                appUser: widget.appUser,
+                isControlledTasks: false,
+              ),
+              TaskListWidget(
+                list: widget.controlledTasks,
+                isLoading: widget.isLoading,
+                appUser: widget.appUser,
+                isControlledTasks: true,
+              )
+            ],
           ),
         ),
       ),
