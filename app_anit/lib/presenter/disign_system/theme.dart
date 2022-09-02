@@ -2,28 +2,11 @@ import 'package:flutter/material.dart';
 
 ThemeData themeLight() => ThemeData(
       useMaterial3: true,
-      primaryColor: const Color(0xFF4259A9),
-      backgroundColor: Colors.white,
-      canvasColor: const Color(0xffF2F2F2),
-      scaffoldBackgroundColor: const Color(0xfff0f0f0),
-      colorScheme: const ColorScheme(
-        primary: Color(0xFF4259A9),
-        background: Color(0xffF2F2F2),
-        onBackground: Colors.black,
-        error: Colors.red,
-        onPrimary: Colors.white,
-        onError: Colors.white,
-        surface: Colors.white, //Color(0xffF2F2F2),
-        brightness: Brightness.light,
-        onSurface: Colors.black,
-        onSecondary: Colors.white,
-        secondary: Color(0xFFBA1A1A),
-        //Colors.white,
-      ),
-      tabBarTheme: const TabBarTheme(labelColor: Colors.black),
+      colorScheme: lightColorScheme,
+      tabBarTheme: const TabBarTheme(labelColor: Color(0xFFFFFFFF)),
       appBarTheme: const AppBarTheme(
-        backgroundColor: Color(0xffF2F2F2),
-        titleTextStyle: TextStyle(color: Colors.black),
+        backgroundColor: Color.fromARGB(255, 92, 107, 185),
+        titleTextStyle: TextStyle(color: Color(0xFFFFFFFF)),
       ),
     );
 

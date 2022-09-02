@@ -52,6 +52,13 @@ List<Widget> _getPopupMenu() {
             context.push('/design_system');
           },
         ),
+        PopupMenuItem(
+          value: 2,
+          child: const Text("Test silver app bar"),
+          onTap: () {
+            context.push('/test_silver_app_bar');
+          },
+        ),
       ],
     )
   ];

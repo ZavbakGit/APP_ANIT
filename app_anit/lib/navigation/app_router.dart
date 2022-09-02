@@ -6,6 +6,7 @@ import '../presenter/pages/design_system/test_design_system_page.dart';
 import '../presenter/pages/login/login_page.dart';
 import '../presenter/pages/task/task_page.dart';
 import '../presenter/pages/tasks_user/tasks_user_page.dart';
+import '../presenter/test_silver_app_bar/test_silver_app_bar.dart';
 
 class AppRouter {
   final RouterNotifier routerNotifier;
@@ -34,6 +35,11 @@ class AppRouter {
         name: "design_systen",
         path: "/design_system",
         builder: (context, _) => const TestDesignSystemPage(),
+      ),
+      GoRoute(
+        name: "test_silver_app_bar",
+        path: "/test_silver_app_bar",
+        builder: (context, _) => TasksUserPage1(),
       ),
       GoRoute(
         name: "login",
