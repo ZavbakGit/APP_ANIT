@@ -176,14 +176,9 @@ class _TestSilverAppBarState extends State<_PageContent>
                 TabBar(
                   controller: _tabController,
                   tabs: [
+                    Tab(child: Text('Делаю ${widget.tasks.length}')),
                     Tab(
-                        child: Text(
-                      'Делаю ${widget.tasks.length}',
-                    )),
-                    Tab(
-                      child: Text(
-                        'Контроль ${widget.controlledTasks.length}',
-                      ),
+                      child: Text('Контроль ${widget.controlledTasks.length}'),
                     ),
                   ],
                 ),
@@ -220,9 +215,9 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   final TabBar _tabBar;
 
   @override
-  double get minExtent => _tabBar.preferredSize.height;
+  double get minExtent => _tabBar.preferredSize.height + 8;
   @override
-  double get maxExtent => _tabBar.preferredSize.height;
+  double get maxExtent => _tabBar.preferredSize.height + 8;
 
   @override
   Widget build(

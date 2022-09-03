@@ -29,7 +29,6 @@ class LoginPageBloc
       (fail) {
         emit(const LoginPageState.data(
             login: '', password: '', isLoading: false));
-        addSr(LoginPageSR.showSnackBar('Ошибка: ${fail.error}'));
       },
       (none) {
         if (appModel.autoLogin) {
