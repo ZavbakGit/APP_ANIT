@@ -86,6 +86,13 @@ class _MainPageContent extends StatelessWidget {
             child: Wrap(
               children: const [
                 TasksWidget(),
+                TasksWidget(),
+                TasksWidget(),
+                TasksWidget(),
+                TasksWidget(),
+                TasksWidget(),
+                TasksWidget(),
+                TasksWidget(),
               ],
             ),
           ),

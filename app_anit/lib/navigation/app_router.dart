@@ -39,7 +39,7 @@ class AppRouter {
       GoRoute(
         name: "test_silver_app_bar",
         path: "/test_silver_app_bar",
-        builder: (context, _) => TasksUserPage1(),
+        builder: (context, _) => TasksUserPage(),
       ),
       GoRoute(
         name: "login",

@@ -1,6 +1,5 @@
 import 'package:app_anit/core/extencion/date_extencion.dart';
 import 'package:app_anit/domain/models/task_item_extention.dart';
-import 'package:app_anit/presenter/disign_system/widgets_design/custom_error_page.dart';
 import 'package:app_anit/presenter/pages/tasks_user/tasks_user_bloc.dart';
 import 'package:app_anit/presenter/pages/tasks_user/tasks_user_models.dart';
 import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
@@ -11,6 +10,7 @@ import '../../../app/injection_container.dart';
 import '../../../arch/sr_bloc/sr_bloc_builder.dart';
 import '../../disign_system/widgets_design/custom_base_snackbar.dart';
 import '../../disign_system/widgets_design/custom_empty_page.dart';
+import '../../disign_system/widgets_design/custom_error_page.dart';
 import '../../disign_system/widgets_design/custom_page_widget.dart';
 import '../../disign_system/widgets_design/custom_progres_widgets.dart';
 import '../../disign_system/widgets_design/dialogs/show_dialog_choice_catalog.dart';
@@ -115,10 +115,10 @@ class _PageContent extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<_PageContent> createState() => _PageContentState();
+  State<_PageContent> createState() => _TestSilverAppBarState();
 }
 
-class _PageContentState extends State<_PageContent>
+class _TestSilverAppBarState extends State<_PageContent>
     with TickerProviderStateMixin {
   late TabController _tabController;
 
@@ -128,51 +128,71 @@ class _PageContentState extends State<_PageContent>
     _tabController = TabController(length: 2, vsync: this);
   }
 
+  //https://www.youtube.com/watch?v=xzPXqQ-Pe2g
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: <Widget>[
-          if (widget.isCurentUser)
-            IconButton(
-              icon: const Icon(Icons.filter_alt),
-              onPressed: () async {
-                context
-                    .read<TasksUserBlok>()
-                    .add(const TasksUserEvent.onTapFilter());
-              },
-            ),
-          if (!widget.isCurentUser)
-            IconButton(
-              icon: const Icon(Icons.filter_alt_off),
-              onPressed: () async {
-                context
-                    .read<TasksUserBlok>()
-                    .add(const TasksUserEvent.onTapFilterOff());
-              },
-            ),
-        ],
-        title: Text(widget.title),
-        bottom: TabBar(
-          controller: _tabController,
-          tabs: [
-            Tab(
-              child: Text('Делаю ${widget.tasks.length}'),
-            ),
-            Tab(
-              child: Text('Контроль ${widget.controlledTasks.length}'),
-            ),
-          ],
-        ),
-      ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () {
           context.read<TasksUserBlok>().add(const TasksUserEvent.onTapFab());
         },
       ),
-      body: CustomPageWidget(
-        child: TabBarView(
+      body: NestedScrollView(
+        floatHeaderSlivers: true,
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          return <Widget>[
+            SliverAppBar(
+              floating: true,
+              title: Text(widget.title),
+              //expandedHeight: 58,
+              //pinned: false,
+              snap: true,
+              actions: <Widget>[
+                if (widget.isCurentUser)
+                  IconButton(
+                    icon: const Icon(Icons.filter_alt),
+                    onPressed: () async {
+                      context
+                          .read<TasksUserBlok>()
+                          .add(const TasksUserEvent.onTapFilter());
+                    },
+                  ),
+                if (!widget.isCurentUser)
+                  IconButton(
+                    icon: const Icon(Icons.filter_alt_off),
+                    onPressed: () async {
+                      context
+                          .read<TasksUserBlok>()
+                          .add(const TasksUserEvent.onTapFilterOff());
+                    },
+                  ),
+              ],
+            ),
+            SliverPersistentHeader(
+              floating: true,
+              delegate: _SliverAppBarDelegate(
+                TabBar(
+                  controller: _tabController,
+                  tabs: [
+                    Tab(
+                        child: Text(
+                      'Делаю ${widget.tasks.length}',
+                    )),
+                    Tab(
+                      child: Text(
+                        'Контроль ${widget.controlledTasks.length}',
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              pinned: true,
+            ),
+          ];
+        },
+        body: TabBarView(
           controller: _tabController,
           children: [
             TaskListWidget(
@@ -191,6 +211,31 @@ class _PageContentState extends State<_PageContent>
         ),
       ),
     );
+  }
+}
+
+class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
+  _SliverAppBarDelegate(this._tabBar);
+
+  final TabBar _tabBar;
+
+  @override
+  double get minExtent => _tabBar.preferredSize.height;
+  @override
+  double get maxExtent => _tabBar.preferredSize.height;
+
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return Container(
+      color: Theme.of(context).appBarTheme.backgroundColor,
+      child: CustomPageWidget(child: _tabBar),
+    );
+  }
+
+  @override
+  bool shouldRebuild(_SliverAppBarDelegate oldDelegate) {
+    return true;
   }
 }
 
@@ -222,10 +267,11 @@ class TaskListWidget extends StatelessWidget {
           if (!isLoading) const SizedBox(height: 8),
           Expanded(
             child: ListView.builder(
+              padding: EdgeInsets.zero,
               physics: const BouncingScrollPhysics(
                   parent: AlwaysScrollableScrollPhysics()),
               scrollDirection: Axis.vertical,
-              //shrinkWrap: true,
+              shrinkWrap: true,
               itemBuilder: (BuildContext context, int index) {
                 return TaskItemWidget(
                   item: list[index],

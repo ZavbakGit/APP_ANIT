@@ -16,6 +16,8 @@ const Widget verticalSpaceLarge = SizedBox(height: 32.0);
 
 double screenWidth(BuildContext context) => MediaQuery.of(context).size.width;
 double screenHeight(BuildContext context) => MediaQuery.of(context).size.height;
+bool orientationLandscape(BuildContext context) =>
+    MediaQuery.of(context).orientation == Orientation.landscape;
 
 double screenHeightPercentage(BuildContext context, {double percentage = 1}) =>
     screenHeight(context) * percentage;

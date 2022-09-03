@@ -15,6 +15,14 @@ class TasksWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double? heightWidget() {
+      if (orientationLandscape(context)) {
+        return screenHeight(context) / 2;
+      } else {
+        return screenHeight(context) / 4;
+      }
+    }
+
     return BlocProvider<TasksWidgetBloc>(
       create: (context) => TasksWidgetBloc(appModel: sl(), repository: sl())
         ..add(const TasksWidgetEvent.init()),
@@ -32,7 +40,7 @@ class TasksWidget extends StatelessWidget {
                 ),
               ),
               child: SizedBox(
-                height: screenHeight(context) / 4,
+                height: heightWidget(),
                 width: screenWidth(context) / 2 - 16,
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),

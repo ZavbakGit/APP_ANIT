@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 ThemeData themeLight() => ThemeData(
       useMaterial3: true,
       colorScheme: lightColorScheme,
-      tabBarTheme: const TabBarTheme(labelColor: Color(0xFFFFFFFF)),
+      // tabBarTheme: const TabBarTheme(
+      //   labelColor: Color(0xFFFFFFFF),
+      // ),
       appBarTheme: const AppBarTheme(
-        backgroundColor: Color.fromARGB(255, 92, 107, 185),
+        backgroundColor: Color.fromARGB(255, 149, 153, 170),
         titleTextStyle: TextStyle(color: Color(0xFFFFFFFF)),
       ),
     );

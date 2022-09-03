@@ -139,73 +139,75 @@ class _TestSilverAppBarState extends State<_PageContent1>
           context.read<TasksUserBlok>().add(const TasksUserEvent.onTapFab());
         },
       ),
-      body: CustomPageWidget(
-        child: NestedScrollView(
-          floatHeaderSlivers: true,
-          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-            return <Widget>[
-              SliverAppBar(
-                floating: true,
-                title: Text(widget.title),
-                //expandedHeight: 58,
-                //pinned: false,
-                snap: true,
-                actions: <Widget>[
-                  if (widget.isCurentUser)
-                    IconButton(
-                      icon: const Icon(Icons.filter_alt),
-                      onPressed: () async {
-                        context
-                            .read<TasksUserBlok>()
-                            .add(const TasksUserEvent.onTapFilter());
-                      },
-                    ),
-                  if (!widget.isCurentUser)
-                    IconButton(
-                      icon: const Icon(Icons.filter_alt_off),
-                      onPressed: () async {
-                        context
-                            .read<TasksUserBlok>()
-                            .add(const TasksUserEvent.onTapFilterOff());
-                      },
-                    ),
-                ],
-              ),
-              SliverPersistentHeader(
-                floating: true,
-                delegate: _SliverAppBarDelegate(
-                  TabBar(
-                    controller: _tabController,
-                    labelColor: Theme.of(context).appBarTheme.surfaceTintColor,
-                    unselectedLabelColor:
-                        Theme.of(context).appBarTheme.foregroundColor,
-                    tabs: const [
-                      Tab(text: "Делаю"),
-                      Tab(text: "Контроль"),
-                    ],
+      body: NestedScrollView(
+        floatHeaderSlivers: true,
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          return <Widget>[
+            SliverAppBar(
+              floating: true,
+              title: Text(widget.title),
+              //expandedHeight: 58,
+              //pinned: false,
+              snap: true,
+              actions: <Widget>[
+                if (widget.isCurentUser)
+                  IconButton(
+                    icon: const Icon(Icons.filter_alt),
+                    onPressed: () async {
+                      context
+                          .read<TasksUserBlok>()
+                          .add(const TasksUserEvent.onTapFilter());
+                    },
                   ),
+                if (!widget.isCurentUser)
+                  IconButton(
+                    icon: const Icon(Icons.filter_alt_off),
+                    onPressed: () async {
+                      context
+                          .read<TasksUserBlok>()
+                          .add(const TasksUserEvent.onTapFilterOff());
+                    },
+                  ),
+              ],
+            ),
+            SliverPersistentHeader(
+              floating: true,
+              delegate: _SliverAppBarDelegate(
+                TabBar(
+                  controller: _tabController,
+                  tabs: [
+                    Tab(
+                        child: Text(
+                      'Делаю ${widget.tasks.length}',
+                    )),
+                    Tab(
+                      child: Text(
+                        'Контроль ${widget.controlledTasks.length}',
+                      ),
+                    ),
+                  ],
                 ),
-                pinned: true,
               ),
-            ];
-          },
-          body: TabBarView(
-            controller: _tabController,
-            children: [
-              TaskListWidget(
-                list: widget.tasks,
-                isLoading: widget.isLoading,
-                appUser: widget.appUser,
-                isControlledTasks: false,
-              ),
-              TaskListWidget(
-                list: widget.controlledTasks,
-                isLoading: widget.isLoading,
-                appUser: widget.appUser,
-                isControlledTasks: true,
-              )
-            ],
-          ),
+              pinned: true,
+            ),
+          ];
+        },
+        body: TabBarView(
+          controller: _tabController,
+          children: [
+            TaskListWidget(
+              list: widget.tasks,
+              isLoading: widget.isLoading,
+              appUser: widget.appUser,
+              isControlledTasks: false,
+            ),
+            TaskListWidget(
+              list: widget.controlledTasks,
+              isLoading: widget.isLoading,
+              appUser: widget.appUser,
+              isControlledTasks: true,
+            )
+          ],
         ),
       ),
     );
@@ -227,13 +229,13 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
       color: Theme.of(context).appBarTheme.backgroundColor,
-      child: _tabBar,
+      child: CustomPageWidget(child: _tabBar),
     );
   }
 
   @override
   bool shouldRebuild(_SliverAppBarDelegate oldDelegate) {
-    return false;
+    return true;
   }
 }
 
@@ -264,21 +266,20 @@ class TaskListWidget extends StatelessWidget {
                 child: Center(child: CustomLinearProgressIndicator())),
           if (!isLoading) const SizedBox(height: 8),
           Expanded(
-            child: CustomPageWidget(
-              child: ListView.builder(
-                physics: const BouncingScrollPhysics(
-                    parent: AlwaysScrollableScrollPhysics()),
-                scrollDirection: Axis.vertical,
-                //shrinkWrap: true,
-                itemBuilder: (BuildContext context, int index) {
-                  return TaskItemWidget(
-                    item: list[index],
-                    appUser: appUser,
-                    isControlledTasks: isControlledTasks,
-                  );
-                },
-                itemCount: list.length,
-              ),
+            child: ListView.builder(
+              padding: EdgeInsets.zero,
+              physics: const BouncingScrollPhysics(
+                  parent: AlwaysScrollableScrollPhysics()),
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              itemBuilder: (BuildContext context, int index) {
+                return TaskItemWidget(
+                  item: list[index],
+                  appUser: appUser,
+                  isControlledTasks: isControlledTasks,
+                );
+              },
+              itemCount: list.length,
             ),
           ),
         ],

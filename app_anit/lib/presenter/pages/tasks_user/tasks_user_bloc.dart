@@ -46,7 +46,7 @@ class TasksUserBlok
   ) {
     curentUser = appModel.remoteConfig!.user;
     add(const TasksUserEvent.refresh());
-    _timer = Timer.periodic(const Duration(seconds: 15), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 30), (timer) {
       add(const TasksUserEvent.refresh());
     });
   }
