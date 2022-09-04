@@ -24,3 +24,17 @@ firebase login --reauth  //Перелогинемся
 flutterfire configure
 
 И только потом появятся firebase_options.dart
+
+
+C:\flutter\packages\flutter_tools\gradle\flutter.gradle
+
+ static int compileSdkVersion = 33
+
+    /** Sets the minSdkVersion used by default in Flutter app projects. */
+    static int minSdkVersion = 19
+
+    /** Sets the targetSdkVersion used by default in Flutter app projects. */
+    static int targetSdkVersion = 33
+
+
+    Хотя надобыло в прооекте поменять
