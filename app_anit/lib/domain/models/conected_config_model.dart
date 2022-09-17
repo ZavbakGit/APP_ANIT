@@ -4,9 +4,10 @@ class ConnectedConfigModel {
   final String login;
   final String password;
   final String? token;
+  final String? deviceId;
 
   ConnectedConfigModel(
-      {required this.login, required this.password, this.token});
+      {required this.login, required this.password, this.token, this.deviceId});
 
   String get baseUrl => 'https://khv.799000.ru/erp/hs/oas_api';
 
@@ -16,6 +17,7 @@ class ConnectedConfigModel {
       'login': login,
       'password': password,
       'token': token,
+      'deviceId': deviceId,
     };
   }
 
@@ -24,11 +26,15 @@ class ConnectedConfigModel {
       login: map['login'] ?? '',
       password: map['password'] ?? '',
       token: map['token'] ?? '',
+      deviceId: map['deviceId'] ?? '',
     );
   }
 
   ConnectedConfigModel addToken(String? token) =>
       ConnectedConfigModel(login: login, password: password, token: token);
+
+  ConnectedConfigModel addDeviceId(String? deviceId) => ConnectedConfigModel(
+      login: login, password: password, token: token, deviceId: deviceId);
 
   String toJson() => json.encode(toMap());
 

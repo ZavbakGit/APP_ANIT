@@ -1,6 +1,7 @@
 import 'package:app_anit/presenter/disign_system/widgets_design/custom_progres_widgets.dart';
 import 'package:app_anit/presenter/widgets/tasks_widget/tasks_widget_bloc.dart';
 import 'package:app_anit/presenter/widgets/tasks_widget/tasks_widget_models.dart';
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -61,18 +62,21 @@ class TasksWidget extends StatelessWidget {
                                 style: Theme.of(context).textTheme.bodyLarge,
                               ),
                               if (state.countNeedAccept > 0)
-                                Expanded(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        '${state.data.countNeedAccept}',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyLarge,
-                                      ),
-                                      const Icon(Icons.notifications_active),
-                                    ],
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Badge(
+                                    badgeContent: Text(
+                                      '${state.data.countNeedAccept}',
+                                      style:
+                                          Theme.of(context).textTheme.bodyLarge,
+                                    ),
+                                    toAnimate: true,
+                                    animationDuration:
+                                        const Duration(milliseconds: 1000),
+                                    badgeColor:
+                                        Theme.of(context).colorScheme.primary,
+                                    child:
+                                        const Icon(Icons.notifications_active),
                                   ),
                                 ),
                             ],

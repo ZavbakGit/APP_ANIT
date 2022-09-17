@@ -69,6 +69,10 @@ dependencies:
   firebase_messaging: ^13.0.2
   firebase_core: ^1.22.0
 
+  badges: ^2.0.3
+
+  platform_device_id: ^1.0.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

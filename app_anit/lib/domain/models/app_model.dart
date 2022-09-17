@@ -4,6 +4,7 @@ import 'package:app_anit/domain/repositories/repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
+import 'package:platform_device_id/platform_device_id.dart';
 
 import '../../core/error/failures.dart';
 
@@ -45,9 +46,18 @@ class AppModel extends ChangeNotifier {
       model = model?.addToken(token);
     } finally {}
 
+    String? deviceId = 'Failed to get deviceId.';
+
+    try {
+      deviceId = await PlatformDeviceId.getDeviceId;
+    } finally {
+      model = model?.addDeviceId(deviceId);
+    }
+
     final either = (model == null)
         ? await repository.removeConnectionConfig()
         : await repository.saveConnectionData(model);
+
     return either.map((right) {
       _appData.connectedConfig = model;
       notifyListeners();
