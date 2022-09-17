@@ -315,6 +315,9 @@
           "condition": {
             "$ref": "#/components/schemas/RefEnum"
           },
+          "importance": {
+            "$ref": "#/components/schemas/RefEnum"
+          },
           "partner": {
             "$ref": "#/components/schemas/RefCatalog"
           },

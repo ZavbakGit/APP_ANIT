@@ -294,6 +294,7 @@ class TaskItem {
     this.$number,
     this.title,
     this.condition,
+    this.importance,
     this.partner,
     this.author,
     this.responsible,
@@ -316,6 +317,8 @@ class TaskItem {
   final String? title;
   @JsonKey(name: 'condition', includeIfNull: false)
   final RefEnum? condition;
+  @JsonKey(name: 'importance', includeIfNull: false)
+  final RefEnum? importance;
   @JsonKey(name: 'partner', includeIfNull: false)
   final RefCatalog? partner;
   @JsonKey(name: 'author', includeIfNull: false)
@@ -353,6 +356,9 @@ class TaskItem {
             (identical(other.condition, condition) ||
                 const DeepCollectionEquality()
                     .equals(other.condition, condition)) &&
+            (identical(other.importance, importance) ||
+                const DeepCollectionEquality()
+                    .equals(other.importance, importance)) &&
             (identical(other.partner, partner) ||
                 const DeepCollectionEquality()
                     .equals(other.partner, partner)) &&
@@ -382,6 +388,7 @@ class TaskItem {
       const DeepCollectionEquality().hash($number) ^
       const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(condition) ^
+      const DeepCollectionEquality().hash(importance) ^
       const DeepCollectionEquality().hash(partner) ^
       const DeepCollectionEquality().hash(author) ^
       const DeepCollectionEquality().hash(responsible) ^
@@ -399,6 +406,7 @@ extension $TaskItemExtension on TaskItem {
       String? $number,
       String? title,
       RefEnum? condition,
+      RefEnum? importance,
       RefCatalog? partner,
       RefCatalog? author,
       RefCatalog? responsible,
@@ -412,6 +420,7 @@ extension $TaskItemExtension on TaskItem {
         $number: $number ?? this.$number,
         title: title ?? this.title,
         condition: condition ?? this.condition,
+        importance: importance ?? this.importance,
         partner: partner ?? this.partner,
         author: author ?? this.author,
         responsible: responsible ?? this.responsible,

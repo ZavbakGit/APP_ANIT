@@ -315,6 +315,19 @@ class TaskItemWidget extends StatelessWidget {
         );
       }
 
+      if (item.importance?.index == 0) {
+        return Icon(
+          Icons.priority_high,
+          color: Theme.of(context).colorScheme.primary,
+        );
+      }
+
+      if (item.importance?.index == 2) {
+        return const Icon(
+          Icons.severe_cold,
+        );
+      }
+
       return null;
     }
 

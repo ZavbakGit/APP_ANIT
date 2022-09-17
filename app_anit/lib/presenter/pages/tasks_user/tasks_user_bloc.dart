@@ -86,6 +86,13 @@ class TasksUserBlok
           return 1;
         }
       });
+
+      list.sort(
+        (a, b) {
+          return (a.importance?.index ?? 1).compareTo(b.importance?.index ?? 1);
+        },
+      );
+
       tasks.addAll(
         list.where(
             (element) => element.isResponsible! || element.isAssistants!),

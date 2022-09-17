@@ -79,6 +79,9 @@ TaskItem _$TaskItemFromJson(Map<String, dynamic> json) => TaskItem(
       condition: json['condition'] == null
           ? null
           : RefEnum.fromJson(json['condition'] as Map<String, dynamic>),
+      importance: json['importance'] == null
+          ? null
+          : RefEnum.fromJson(json['importance'] as Map<String, dynamic>),
       partner: json['partner'] == null
           ? null
           : RefCatalog.fromJson(json['partner'] as Map<String, dynamic>),
@@ -110,6 +113,7 @@ Map<String, dynamic> _$TaskItemToJson(TaskItem instance) {
   writeNotNull('number', instance.$number);
   writeNotNull('title', instance.title);
   writeNotNull('condition', instance.condition?.toJson());
+  writeNotNull('importance', instance.importance?.toJson());
   writeNotNull('partner', instance.partner?.toJson());
   writeNotNull('author', instance.author?.toJson());
   writeNotNull('responsible', instance.responsible?.toJson());
