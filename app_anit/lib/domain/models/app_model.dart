@@ -2,6 +2,7 @@ import 'package:app_anit/domain/models/conected_config_model.dart';
 import 'package:app_anit/domain/models/remote_config_model.dart';
 import 'package:app_anit/domain/repositories/repository.dart';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 
 import '../../core/error/failures.dart';
@@ -23,8 +24,10 @@ class AppData {
 
 class AppModel extends ChangeNotifier {
   final Repository repository;
+  final FirebaseMessaging firebaseMessaging;
   AppModel({
     required this.repository,
+    required this.firebaseMessaging,
   });
   final _appData = AppData(autoLogin: true);
 
@@ -37,6 +40,11 @@ class AppModel extends ChangeNotifier {
   Future<Either<Failure, None>> saveConnectionConfig(
     ConnectedConfigModel? model,
   ) async {
+    try {
+      final token = await firebaseMessaging.getToken();
+      model = model?.addToken(token);
+    } finally {}
+
     final either = (model == null)
         ? await repository.removeConnectionConfig()
         : await repository.saveConnectionData(model);

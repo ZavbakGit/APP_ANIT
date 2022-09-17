@@ -65,6 +65,10 @@ dependencies:
 
   google_fonts: ^3.0.1
 
+  cloud_firestore: ^3.4.8
+  firebase_messaging: ^13.0.2
+  firebase_core: ^1.22.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

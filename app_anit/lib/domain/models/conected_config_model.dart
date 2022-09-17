@@ -3,11 +3,10 @@ import 'dart:convert';
 class ConnectedConfigModel {
   final String login;
   final String password;
+  final String? token;
 
-  ConnectedConfigModel({
-    required this.login,
-    required this.password,
-  });
+  ConnectedConfigModel(
+      {required this.login, required this.password, this.token});
 
   String get baseUrl => 'https://khv.799000.ru/erp/hs/oas_api';
 
@@ -16,6 +15,7 @@ class ConnectedConfigModel {
       'baseUrl': baseUrl,
       'login': login,
       'password': password,
+      'token': token,
     };
   }
 
@@ -23,8 +23,12 @@ class ConnectedConfigModel {
     return ConnectedConfigModel(
       login: map['login'] ?? '',
       password: map['password'] ?? '',
+      token: map['token'] ?? '',
     );
   }
+
+  ConnectedConfigModel addToken(String? token) =>
+      ConnectedConfigModel(login: login, password: password, token: token);
 
   String toJson() => json.encode(toMap());
 

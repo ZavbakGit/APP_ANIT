@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -11,9 +12,11 @@ import '../navigation/router_notifire.dart';
 final sl = GetIt.instance;
 
 Future<void> init() async {
+  sl.registerLazySingleton(() => FirebaseMessaging.instance);
   sl.registerLazySingleton<AppRouter>(() => AppRouter(routerNotifier: sl()));
   sl.registerLazySingleton<RouterNotifier>(() => RouterNotifier(sl()));
-  sl.registerLazySingleton<AppModel>(() => AppModel(repository: sl()));
+  sl.registerLazySingleton<AppModel>(
+      () => AppModel(repository: sl(), firebaseMessaging: sl()));
 
   //! Repository
   sl.registerLazySingleton<Repository>(
