@@ -41,7 +41,7 @@ class TasksWidgetBloc
     Emitter<TasksWidgetState> emit,
   ) async {
     curentUser = appModel.remoteConfig!.user;
-    _timer = Timer.periodic(const Duration(seconds: 30), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 60), (timer) {
       add(const TasksWidgetRefresh());
     });
     add(const TasksWidgetRefresh());

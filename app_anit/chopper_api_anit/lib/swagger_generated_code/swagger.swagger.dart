@@ -86,16 +86,22 @@ abstract class Swagger extends ChopperService {
       {@Query('guidUser') required String? guidUser});
 
   ///Login
-  Future<chopper.Response<RemoteConfig>> loginGet() {
+  ///@param token Строка поиска
+  ///@param deviceId Строка поиска
+  Future<chopper.Response<RemoteConfig>> loginGet(
+      {String? token, String? deviceId}) {
     generatedMapping.putIfAbsent(
         RemoteConfig, () => RemoteConfig.fromJsonFactory);
 
-    return _loginGet();
+    return _loginGet(token: token, deviceId: deviceId);
   }
 
   ///Login
+  ///@param token Строка поиска
+  ///@param deviceId Строка поиска
   @Get(path: '/login')
-  Future<chopper.Response<RemoteConfig>> _loginGet();
+  Future<chopper.Response<RemoteConfig>> _loginGet(
+      {@Query('token') String? token, @Query('deviceId') String? deviceId});
 
   ///
   ///@param search Строка поиска

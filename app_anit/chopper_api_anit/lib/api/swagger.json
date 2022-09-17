@@ -126,6 +126,24 @@
         "summary": "Login",
         "description": "При подключении вернёт настройки",
         "operationId": "login",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "query",
+            "description": "Строка поиска",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "deviceId",
+            "in": "query",
+            "description": "Строка поиска",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",

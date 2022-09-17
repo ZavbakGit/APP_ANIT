@@ -47,9 +47,10 @@ class _$Swagger extends Swagger {
   }
 
   @override
-  Future<Response<RemoteConfig>> _loginGet() {
+  Future<Response<RemoteConfig>> _loginGet({String? token, String? deviceId}) {
     final $url = '/login';
-    final $request = Request('GET', $url, client.baseUrl);
+    final $params = <String, dynamic>{'token': token, 'deviceId': deviceId};
+    final $request = Request('GET', $url, client.baseUrl, parameters: $params);
     return client.send<RemoteConfig, RemoteConfig>($request);
   }
 
