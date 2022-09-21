@@ -67,8 +67,8 @@ class RepositoryImpl extends Repository {
   Future<Either<Failure, RemoteConfigModel>> login(
       ConnectedConfigModel model) async {
     try {
-      final response = await swagger!
-          .loginGet(deviceId: model.deviceId, token: model.deviceId);
+      final response =
+          await swagger!.loginGet(deviceId: model.deviceId, token: model.token);
 
       if (response.errorStatusCode) {
         return Left(response.getFailureResponse());

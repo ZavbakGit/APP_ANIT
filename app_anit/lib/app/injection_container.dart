@@ -15,8 +15,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => FirebaseMessaging.instance);
   sl.registerLazySingleton<AppRouter>(() => AppRouter(routerNotifier: sl()));
   sl.registerLazySingleton<RouterNotifier>(() => RouterNotifier(sl()));
-  sl.registerLazySingleton<AppModel>(
-      () => AppModel(repository: sl(), firebaseMessaging: sl()));
+  sl.registerLazySingleton<AppModel>(() => AppModel(repository: sl()));
 
   //! Repository
   sl.registerLazySingleton<Repository>(

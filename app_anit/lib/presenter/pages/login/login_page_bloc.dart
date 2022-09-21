@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:app_anit/presenter/pages/login/login_page_models.dart';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:platform_device_id/platform_device_id.dart';
 
 import '../../../arch/sr_bloc/sr_bloc.dart';
 import '../../../domain/models/app_model.dart';
@@ -10,11 +12,15 @@ import '../../../domain/models/conected_config_model.dart';
 
 class LoginPageBloc
     extends SrBloc<LoginPageEvent, LoginPageState, LoginPageSR> {
-  LoginPageBloc({required this.appModel})
-      : super(const LoginPageState.empty()) {
+  LoginPageBloc({
+    required this.appModel,
+    required this.firebaseMessaging,
+  }) : super(const LoginPageState.empty()) {
     on<EvInit>(_init);
     on<EvLogin>(_login);
   }
+
+  final FirebaseMessaging firebaseMessaging;
 
   final AppModel appModel;
 
@@ -52,9 +58,23 @@ class LoginPageBloc
   ) async {
     emit(const LoginPageState.data(login: '', password: '', isLoading: true));
 
+    String? token;
+
+    try {
+      token = await firebaseMessaging.getToken();
+    } finally {}
+
+    String? deviceId;
+
+    try {
+      deviceId = await PlatformDeviceId.getDeviceId;
+    } finally {}
+
     final connectionConfig = ConnectedConfigModel(
       login: event.login,
       password: event.password,
+      deviceId: deviceId,
+      token: token,
     );
 
     final either =

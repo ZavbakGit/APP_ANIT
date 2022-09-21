@@ -21,7 +21,9 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<LoginPageBloc>(
-      create: (context) => LoginPageBloc(appModel: sl())..add(const EvInit()),
+      create: (context) =>
+          LoginPageBloc(appModel: sl(), firebaseMessaging: sl())
+            ..add(const EvInit()),
       child: SrBlocBuilder<LoginPageBloc, LoginPageState, LoginPageSR>(
         onSR: _onSingleResult,
         builder: (context, state) {
