@@ -18,3 +18,5 @@ samples, guidance on mobile development, and a full API reference.
 flutter packages pub run build_runner build --delete-conflicting-outputs
 
 https://habr.com/ru/company/atisu/blog/597709/
+
+https://waplaysoft.com/kak-opublikovat-prilozhenie-flutter-v-play-store.html
