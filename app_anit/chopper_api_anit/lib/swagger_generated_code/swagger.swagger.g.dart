@@ -13,7 +13,7 @@ Task _$TaskFromJson(Map<String, dynamic> json) => Task(
       dateControl: json['date_control'] == null
           ? null
           : DateTime.parse(json['date_control'] as String),
-      $number: json['number'] as String? ?? '',
+      number: json['number'] as String? ?? '',
       condition: json['condition'] == null
           ? null
           : RefEnum.fromJson(json['condition'] as Map<String, dynamic>),
@@ -55,7 +55,7 @@ Map<String, dynamic> _$TaskToJson(Task instance) {
   writeNotNull('guid', instance.guid);
   writeNotNull('date', instance.date?.toIso8601String());
   writeNotNull('date_control', instance.dateControl?.toIso8601String());
-  writeNotNull('number', instance.$number);
+  writeNotNull('number', instance.number);
   writeNotNull('condition', instance.condition?.toJson());
   writeNotNull('importance', instance.importance?.toJson());
   writeNotNull('title', instance.title);
@@ -74,7 +74,7 @@ TaskItem _$TaskItemFromJson(Map<String, dynamic> json) => TaskItem(
       guid: json['guid'] as String? ?? '',
       date:
           json['date'] == null ? null : DateTime.parse(json['date'] as String),
-      $number: json['number'] as String? ?? '',
+      number: json['number'] as String? ?? '',
       title: json['title'] as String? ?? '',
       condition: json['condition'] == null
           ? null
@@ -110,7 +110,7 @@ Map<String, dynamic> _$TaskItemToJson(TaskItem instance) {
 
   writeNotNull('guid', instance.guid);
   writeNotNull('date', instance.date?.toIso8601String());
-  writeNotNull('number', instance.$number);
+  writeNotNull('number', instance.number);
   writeNotNull('title', instance.title);
   writeNotNull('condition', instance.condition?.toJson());
   writeNotNull('importance', instance.importance?.toJson());

@@ -17,7 +17,7 @@ class LoggerInterceptor implements RequestInterceptor, ResponseInterceptor {
   FutureOr<Request> onRequest(Request request) {
     final String headers =
         request.headers.entries.map((e) => '${e.key}: ${e.value}').join('\n');
-    if (!urlInBlacklist(request.url)) {
+    if (!urlInBlacklist(request.url.path)) {
       logger
           .i('-> ${request.method} ${request.url}\n$headers\n${request.body}');
     }

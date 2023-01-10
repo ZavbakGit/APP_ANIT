@@ -7,6 +7,7 @@ import 'dart:convert';
 import 'package:chopper/chopper.dart';
 
 import 'client_mapping.dart';
+import 'dart:async';
 import 'package:chopper/chopper.dart' as chopper;
 
 part 'swagger.swagger.chopper.dart';
@@ -18,11 +19,12 @@ part 'swagger.swagger.g.dart';
 
 @ChopperApi()
 abstract class Swagger extends ChopperService {
-  static Swagger create(
-      {ChopperClient? client,
-      Authenticator? authenticator,
-      String? baseUrl,
-      Iterable<dynamic>? interceptors}) {
+  static Swagger create({
+    ChopperClient? client,
+    Authenticator? authenticator,
+    Uri? baseUrl,
+    Iterable<dynamic>? interceptors,
+  }) {
     if (client != null) {
       return _$Swagger(client);
     }
@@ -32,7 +34,7 @@ abstract class Swagger extends ChopperService {
         converter: $JsonSerializableConverter(),
         interceptors: interceptors ?? [],
         authenticator: authenticator,
-        baseUrl: baseUrl ?? 'http://');
+        baseUrl: baseUrl ?? Uri.parse('http://'));
     return _$Swagger(newClient);
   }
 
@@ -42,7 +44,10 @@ abstract class Swagger extends ChopperService {
   }
 
   ///
-  @Post(path: '/task')
+  @Post(
+    path: '/task',
+    optionalBody: true,
+  )
   Future<chopper.Response> _taskPost({@Body() required Task? body});
 
   ///
@@ -88,8 +93,10 @@ abstract class Swagger extends ChopperService {
   ///Login
   ///@param token Строка поиска
   ///@param deviceId Строка поиска
-  Future<chopper.Response<RemoteConfig>> loginGet(
-      {String? token, String? deviceId}) {
+  Future<chopper.Response<RemoteConfig>> loginGet({
+    String? token,
+    String? deviceId,
+  }) {
     generatedMapping.putIfAbsent(
         RemoteConfig, () => RemoteConfig.fromJsonFactory);
 
@@ -100,19 +107,22 @@ abstract class Swagger extends ChopperService {
   ///@param token Строка поиска
   ///@param deviceId Строка поиска
   @Get(path: '/login')
-  Future<chopper.Response<RemoteConfig>> _loginGet(
-      {@Query('token') String? token, @Query('deviceId') String? deviceId});
+  Future<chopper.Response<RemoteConfig>> _loginGet({
+    @Query('token') String? token,
+    @Query('deviceId') String? deviceId,
+  });
 
   ///
   ///@param search Строка поиска
   ///@param count Количество
   ///@param offset Cмещение
   ///@param type Тип справочника
-  Future<chopper.Response<List<RefCatalog>>> catalogsTypeSearchGet(
-      {required String? search,
-      required num? count,
-      required num? offset,
-      required String? type}) {
+  Future<chopper.Response<List<RefCatalog>>> catalogsTypeSearchGet({
+    required String? search,
+    required num? count,
+    required num? offset,
+    required String? type,
+  }) {
     generatedMapping.putIfAbsent(RefCatalog, () => RefCatalog.fromJsonFactory);
 
     return _catalogsTypeSearchGet(
@@ -125,11 +135,12 @@ abstract class Swagger extends ChopperService {
   ///@param offset Cмещение
   ///@param type Тип справочника
   @Get(path: '/catalogs/{type}/search')
-  Future<chopper.Response<List<RefCatalog>>> _catalogsTypeSearchGet(
-      {@Query('search') required String? search,
-      @Query('count') required num? count,
-      @Query('offset') required num? offset,
-      @Path('type') required String? type});
+  Future<chopper.Response<List<RefCatalog>>> _catalogsTypeSearchGet({
+    @Query('search') required String? search,
+    @Query('count') required num? count,
+    @Query('offset') required num? offset,
+    @Path('type') required String? type,
+  });
 
   ///
   ///@param name Имя перечисления
@@ -152,7 +163,7 @@ class Task {
     this.guid,
     this.date,
     this.dateControl,
-    this.$number,
+    this.number,
     this.condition,
     this.importance,
     this.title,
@@ -173,7 +184,7 @@ class Task {
   @JsonKey(name: 'date_control', includeIfNull: false)
   final DateTime? dateControl;
   @JsonKey(name: 'number', includeIfNull: false, defaultValue: '')
-  final String? $number;
+  final String? number;
   @JsonKey(name: 'condition', includeIfNull: false)
   final RefEnum? condition;
   @JsonKey(name: 'importance', includeIfNull: false)
@@ -199,9 +210,6 @@ class Task {
   Map<String, dynamic> toJson() => _$TaskToJson(this);
 
   @override
-  String toString() => jsonEncode(this);
-
-  @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is Task &&
@@ -212,9 +220,8 @@ class Task {
             (identical(other.dateControl, dateControl) ||
                 const DeepCollectionEquality()
                     .equals(other.dateControl, dateControl)) &&
-            (identical(other.$number, $number) ||
-                const DeepCollectionEquality()
-                    .equals(other.$number, $number)) &&
+            (identical(other.number, number) ||
+                const DeepCollectionEquality().equals(other.number, number)) &&
             (identical(other.condition, condition) ||
                 const DeepCollectionEquality()
                     .equals(other.condition, condition)) &&
@@ -243,11 +250,14 @@ class Task {
   }
 
   @override
+  String toString() => jsonEncode(this);
+
+  @override
   int get hashCode =>
       const DeepCollectionEquality().hash(guid) ^
       const DeepCollectionEquality().hash(date) ^
       const DeepCollectionEquality().hash(dateControl) ^
-      const DeepCollectionEquality().hash($number) ^
+      const DeepCollectionEquality().hash(number) ^
       const DeepCollectionEquality().hash(condition) ^
       const DeepCollectionEquality().hash(importance) ^
       const DeepCollectionEquality().hash(title) ^
@@ -265,7 +275,7 @@ extension $TaskExtension on Task {
       {String? guid,
       DateTime? date,
       DateTime? dateControl,
-      String? $number,
+      String? number,
       RefEnum? condition,
       RefEnum? importance,
       String? title,
@@ -279,7 +289,7 @@ extension $TaskExtension on Task {
         guid: guid ?? this.guid,
         date: date ?? this.date,
         dateControl: dateControl ?? this.dateControl,
-        $number: $number ?? this.$number,
+        number: number ?? this.number,
         condition: condition ?? this.condition,
         importance: importance ?? this.importance,
         title: title ?? this.title,
@@ -290,6 +300,39 @@ extension $TaskExtension on Task {
         controllers: controllers ?? this.controllers,
         assistants: assistants ?? this.assistants);
   }
+
+  Task copyWithWrapped(
+      {Wrapped<String?>? guid,
+      Wrapped<DateTime?>? date,
+      Wrapped<DateTime?>? dateControl,
+      Wrapped<String?>? number,
+      Wrapped<RefEnum?>? condition,
+      Wrapped<RefEnum?>? importance,
+      Wrapped<String?>? title,
+      Wrapped<RefCatalog?>? partner,
+      Wrapped<RefCatalog?>? author,
+      Wrapped<RefCatalog?>? responsible,
+      Wrapped<RefCatalog?>? producer,
+      Wrapped<List<RefCatalog>?>? controllers,
+      Wrapped<List<RefCatalog>?>? assistants}) {
+    return Task(
+        guid: (guid != null ? guid.value : this.guid),
+        date: (date != null ? date.value : this.date),
+        dateControl:
+            (dateControl != null ? dateControl.value : this.dateControl),
+        number: (number != null ? number.value : this.number),
+        condition: (condition != null ? condition.value : this.condition),
+        importance: (importance != null ? importance.value : this.importance),
+        title: (title != null ? title.value : this.title),
+        partner: (partner != null ? partner.value : this.partner),
+        author: (author != null ? author.value : this.author),
+        responsible:
+            (responsible != null ? responsible.value : this.responsible),
+        producer: (producer != null ? producer.value : this.producer),
+        controllers:
+            (controllers != null ? controllers.value : this.controllers),
+        assistants: (assistants != null ? assistants.value : this.assistants));
+  }
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -297,7 +340,7 @@ class TaskItem {
   TaskItem({
     this.guid,
     this.date,
-    this.$number,
+    this.number,
     this.title,
     this.condition,
     this.importance,
@@ -318,7 +361,7 @@ class TaskItem {
   @JsonKey(name: 'date', includeIfNull: false)
   final DateTime? date;
   @JsonKey(name: 'number', includeIfNull: false, defaultValue: '')
-  final String? $number;
+  final String? number;
   @JsonKey(name: 'title', includeIfNull: false, defaultValue: '')
   final String? title;
   @JsonKey(name: 'condition', includeIfNull: false)
@@ -344,9 +387,6 @@ class TaskItem {
   Map<String, dynamic> toJson() => _$TaskItemToJson(this);
 
   @override
-  String toString() => jsonEncode(this);
-
-  @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is TaskItem &&
@@ -354,9 +394,8 @@ class TaskItem {
                 const DeepCollectionEquality().equals(other.guid, guid)) &&
             (identical(other.date, date) ||
                 const DeepCollectionEquality().equals(other.date, date)) &&
-            (identical(other.$number, $number) ||
-                const DeepCollectionEquality()
-                    .equals(other.$number, $number)) &&
+            (identical(other.number, number) ||
+                const DeepCollectionEquality().equals(other.number, number)) &&
             (identical(other.title, title) ||
                 const DeepCollectionEquality().equals(other.title, title)) &&
             (identical(other.condition, condition) ||
@@ -388,10 +427,13 @@ class TaskItem {
   }
 
   @override
+  String toString() => jsonEncode(this);
+
+  @override
   int get hashCode =>
       const DeepCollectionEquality().hash(guid) ^
       const DeepCollectionEquality().hash(date) ^
-      const DeepCollectionEquality().hash($number) ^
+      const DeepCollectionEquality().hash(number) ^
       const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(condition) ^
       const DeepCollectionEquality().hash(importance) ^
@@ -409,7 +451,7 @@ extension $TaskItemExtension on TaskItem {
   TaskItem copyWith(
       {String? guid,
       DateTime? date,
-      String? $number,
+      String? number,
       String? title,
       RefEnum? condition,
       RefEnum? importance,
@@ -423,7 +465,7 @@ extension $TaskItemExtension on TaskItem {
     return TaskItem(
         guid: guid ?? this.guid,
         date: date ?? this.date,
-        $number: $number ?? this.$number,
+        number: number ?? this.number,
         title: title ?? this.title,
         condition: condition ?? this.condition,
         importance: importance ?? this.importance,
@@ -434,6 +476,40 @@ extension $TaskItemExtension on TaskItem {
         isControllers: isControllers ?? this.isControllers,
         isAssistants: isAssistants ?? this.isAssistants,
         isResponsible: isResponsible ?? this.isResponsible);
+  }
+
+  TaskItem copyWithWrapped(
+      {Wrapped<String?>? guid,
+      Wrapped<DateTime?>? date,
+      Wrapped<String?>? number,
+      Wrapped<String?>? title,
+      Wrapped<RefEnum?>? condition,
+      Wrapped<RefEnum?>? importance,
+      Wrapped<RefCatalog?>? partner,
+      Wrapped<RefCatalog?>? author,
+      Wrapped<RefCatalog?>? responsible,
+      Wrapped<RefCatalog?>? producer,
+      Wrapped<bool?>? isControllers,
+      Wrapped<bool?>? isAssistants,
+      Wrapped<bool?>? isResponsible}) {
+    return TaskItem(
+        guid: (guid != null ? guid.value : this.guid),
+        date: (date != null ? date.value : this.date),
+        number: (number != null ? number.value : this.number),
+        title: (title != null ? title.value : this.title),
+        condition: (condition != null ? condition.value : this.condition),
+        importance: (importance != null ? importance.value : this.importance),
+        partner: (partner != null ? partner.value : this.partner),
+        author: (author != null ? author.value : this.author),
+        responsible:
+            (responsible != null ? responsible.value : this.responsible),
+        producer: (producer != null ? producer.value : this.producer),
+        isControllers:
+            (isControllers != null ? isControllers.value : this.isControllers),
+        isAssistants:
+            (isAssistants != null ? isAssistants.value : this.isAssistants),
+        isResponsible:
+            (isResponsible != null ? isResponsible.value : this.isResponsible));
   }
 }
 
@@ -453,15 +529,15 @@ class RemoteConfig {
   Map<String, dynamic> toJson() => _$RemoteConfigToJson(this);
 
   @override
-  String toString() => jsonEncode(this);
-
-  @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is RemoteConfig &&
             (identical(other.user, user) ||
                 const DeepCollectionEquality().equals(other.user, user)));
   }
+
+  @override
+  String toString() => jsonEncode(this);
 
   @override
   int get hashCode =>
@@ -471,6 +547,10 @@ class RemoteConfig {
 extension $RemoteConfigExtension on RemoteConfig {
   RemoteConfig copyWith({RefCatalog? user}) {
     return RemoteConfig(user: user ?? this.user);
+  }
+
+  RemoteConfig copyWithWrapped({Wrapped<RefCatalog?>? user}) {
+    return RemoteConfig(user: (user != null ? user.value : this.user));
   }
 }
 
@@ -496,9 +576,6 @@ class RefEnum {
   Map<String, dynamic> toJson() => _$RefEnumToJson(this);
 
   @override
-  String toString() => jsonEncode(this);
-
-  @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is RefEnum &&
@@ -509,6 +586,9 @@ class RefEnum {
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)));
   }
+
+  @override
+  String toString() => jsonEncode(this);
 
   @override
   int get hashCode =>
@@ -524,6 +604,14 @@ extension $RefEnumExtension on RefEnum {
         type: type ?? this.type,
         index: index ?? this.index,
         name: name ?? this.name);
+  }
+
+  RefEnum copyWithWrapped(
+      {Wrapped<String?>? type, Wrapped<int?>? index, Wrapped<String?>? name}) {
+    return RefEnum(
+        type: (type != null ? type.value : this.type),
+        index: (index != null ? index.value : this.index),
+        name: (name != null ? name.value : this.name));
   }
 }
 
@@ -552,9 +640,6 @@ class RefCatalog {
   Map<String, dynamic> toJson() => _$RefCatalogToJson(this);
 
   @override
-  String toString() => jsonEncode(this);
-
-  @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is RefCatalog &&
@@ -567,6 +652,9 @@ class RefCatalog {
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)));
   }
+
+  @override
+  String toString() => jsonEncode(this);
 
   @override
   int get hashCode =>
@@ -585,6 +673,18 @@ extension $RefCatalogExtension on RefCatalog {
         type: type ?? this.type,
         code: code ?? this.code,
         name: name ?? this.name);
+  }
+
+  RefCatalog copyWithWrapped(
+      {Wrapped<String?>? guid,
+      Wrapped<String?>? type,
+      Wrapped<String?>? code,
+      Wrapped<String?>? name}) {
+    return RefCatalog(
+        guid: (guid != null ? guid.value : this.guid),
+        type: (type != null ? type.value : this.type),
+        code: (code != null ? code.value : this.code),
+        name: (name != null ? name.value : this.name));
   }
 }
 
@@ -634,15 +734,15 @@ class $CustomJsonDecoder {
 
 class $JsonSerializableConverter extends chopper.JsonConverter {
   @override
-  chopper.Response<ResultType> convertResponse<ResultType, Item>(
-      chopper.Response response) {
+  FutureOr<chopper.Response<ResultType>> convertResponse<ResultType, Item>(
+      chopper.Response response) async {
     if (response.bodyString.isEmpty) {
       // In rare cases, when let's say 204 (no content) is returned -
       // we cannot decode the missing json with the result type specified
       return chopper.Response(response.base, null, error: response.error);
     }
 
-    final jsonRes = super.convertResponse(response);
+    final jsonRes = await super.convertResponse(response);
     return jsonRes.copyWith<ResultType>(
         body: $jsonDecoder.decode<Item>(jsonRes.body) as ResultType);
   }
@@ -661,4 +761,9 @@ String? _dateToJson(DateTime? date) {
   final day = date.day < 10 ? '0${date.day}' : date.day.toString();
 
   return '$year-$month-$day';
+}
+
+class Wrapped<T> {
+  final T value;
+  const Wrapped.value(this.value);
 }

@@ -18,62 +18,103 @@ class _$Swagger extends Swagger {
 
   @override
   Future<Response<dynamic>> _taskPost({required Task? body}) {
-    final $url = '/task';
+    final Uri $url = Uri.parse('/task');
     final $body = body;
-    final $request = Request('POST', $url, client.baseUrl, body: $body);
+    final Request $request = Request(
+      'POST',
+      $url,
+      client.baseUrl,
+      body: $body,
+    );
     return client.send<dynamic, dynamic>($request);
   }
 
   @override
   Future<Response<Task>> _taskGuidGet({required String? guid}) {
-    final $url = '/task/${guid}';
-    final $request = Request('GET', $url, client.baseUrl);
+    final Uri $url = Uri.parse('/task/${guid}');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
     return client.send<Task, Task>($request);
   }
 
   @override
   Future<Response<Task>> _taskNewGet() {
-    final $url = '/task_new';
-    final $request = Request('GET', $url, client.baseUrl);
+    final Uri $url = Uri.parse('/task_new');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
     return client.send<Task, Task>($request);
   }
 
   @override
   Future<Response<List<TaskItem>>> _tasksUserGet({required String? guidUser}) {
-    final $url = '/tasks_user';
-    final $params = <String, dynamic>{'guidUser': guidUser};
-    final $request = Request('GET', $url, client.baseUrl, parameters: $params);
+    final Uri $url = Uri.parse('/tasks_user');
+    final Map<String, dynamic> $params = <String, dynamic>{
+      'guidUser': guidUser
+    };
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+      parameters: $params,
+    );
     return client.send<List<TaskItem>, TaskItem>($request);
   }
 
   @override
-  Future<Response<RemoteConfig>> _loginGet({String? token, String? deviceId}) {
-    final $url = '/login';
-    final $params = <String, dynamic>{'token': token, 'deviceId': deviceId};
-    final $request = Request('GET', $url, client.baseUrl, parameters: $params);
+  Future<Response<RemoteConfig>> _loginGet({
+    String? token,
+    String? deviceId,
+  }) {
+    final Uri $url = Uri.parse('/login');
+    final Map<String, dynamic> $params = <String, dynamic>{
+      'token': token,
+      'deviceId': deviceId,
+    };
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+      parameters: $params,
+    );
     return client.send<RemoteConfig, RemoteConfig>($request);
   }
 
   @override
-  Future<Response<List<RefCatalog>>> _catalogsTypeSearchGet(
-      {required String? search,
-      required num? count,
-      required num? offset,
-      required String? type}) {
-    final $url = '/catalogs/${type}/search';
-    final $params = <String, dynamic>{
+  Future<Response<List<RefCatalog>>> _catalogsTypeSearchGet({
+    required String? search,
+    required num? count,
+    required num? offset,
+    required String? type,
+  }) {
+    final Uri $url = Uri.parse('/catalogs/${type}/search');
+    final Map<String, dynamic> $params = <String, dynamic>{
       'search': search,
       'count': count,
-      'offset': offset
+      'offset': offset,
     };
-    final $request = Request('GET', $url, client.baseUrl, parameters: $params);
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+      parameters: $params,
+    );
     return client.send<List<RefCatalog>, RefCatalog>($request);
   }
 
   @override
   Future<Response<List<RefEnum>>> _enumNameGet({required String? name}) {
-    final $url = '/enum/${name}';
-    final $request = Request('GET', $url, client.baseUrl);
+    final Uri $url = Uri.parse('/enum/${name}');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
     return client.send<List<RefEnum>, RefEnum>($request);
   }
 }

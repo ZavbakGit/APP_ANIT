@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:chopper/chopper.dart' as chopper;
@@ -6,16 +7,19 @@ import '../../remote/api_client.dart';
 
 class CommonJsonSerializableConverter extends chopper.JsonConverter {
   @override
-  chopper.Response<ResultType> convertResponse<ResultType, Item>(
-      chopper.Response response) {
+  FutureOr<chopper.Response<ResultType>> convertResponse<ResultType, Item>(
+      chopper.Response response) async {
     if (response.bodyString.isEmpty) {
+      // In rare cases, when let's say 204 (no content) is returned -
+      // we cannot decode the missing json with the result type specified
       return chopper.Response(response.base, null, error: response.error);
     }
 
-    //Конвертнул в UTF8
     final jsonResUtf8 =
         response.copyWith<String>(body: utf8.decode(response.bodyBytes));
-    final jsonRes = super.convertResponse(jsonResUtf8);
+    final jsonRes = await super.convertResponse(jsonResUtf8);
+
+    //final jsonRes = await super.convertResponse(response);
 
     return jsonRes.copyWith<ResultType>(
         body: ApiClient.commonJsonDecoder.decode<Item>(jsonRes.body)

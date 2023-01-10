@@ -51,15 +51,12 @@ dependencies:
   data_connection_checker_tv: ^0.3.5-nullsafety
   http: ^0.13.4
 
-  chopper: ^4.0.6
+  chopper: ^6.0.0
 
   logger:
 
   freezed_annotation: ^2.1.0
   collection: ^1.16.0
-
-  chopper_api_anit:
-    path: chopper_api_anit
 
   intl: ^0.17.0
 
@@ -73,11 +70,16 @@ dependencies:
 
   platform_device_id: ^1.0.1
 
+  chopper_api_anit:
+    path: chopper_api_anit
+
+  
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  chopper_generator: ^4.0.6
+  
   json_annotation: ^4.5.0
   json_serializable: ^6.2.0
 

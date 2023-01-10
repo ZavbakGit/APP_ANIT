@@ -16,8 +16,8 @@ import '../../disign_system/widgets_design/custom_progres_widgets.dart';
 import '../../disign_system/widgets_design/dialogs/show_dialog_choice_catalog.dart';
 import '../task/task_page.dart';
 
-class TasksUserPage extends StatelessWidget {
-  const TasksUserPage({Key? key}) : super(key: key);
+class TasksUserPageOld extends StatelessWidget {
+  const TasksUserPageOld({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,6 @@ class TasksUserPage extends StatelessWidget {
               isLoading: value.isLoading,
               isCurentUser: value.isCurentUser,
               appUser: value.appUser,
-              curentIndexTab: value.curentIndexTab,
             ),
             error: (value) => CustomErrorPage(
                 message: value.message,
@@ -97,14 +96,13 @@ class TasksUserPage extends StatelessWidget {
   }
 }
 
-class _PageContent extends StatelessWidget {
+class _PageContent extends StatefulWidget {
   final List<TaskItem> tasks;
   final List<TaskItem> controlledTasks;
   final bool isLoading;
   final String title;
   final bool isCurentUser;
   final RefCatalog appUser;
-  final int curentIndexTab;
 
   const _PageContent({
     Key? key,
@@ -114,63 +112,125 @@ class _PageContent extends StatelessWidget {
     required this.title,
     required this.isCurentUser,
     required this.appUser,
-    required this.curentIndexTab,
   }) : super(key: key);
 
   @override
+  State<_PageContent> createState() => _TestSilverAppBarState();
+}
+
+class _TestSilverAppBarState extends State<_PageContent>
+    with TickerProviderStateMixin {
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 2, vsync: this);
+  }
+
+  //https://www.youtube.com/watch?v=xzPXqQ-Pe2g
+
+  @override
   Widget build(BuildContext context) {
-    return CustomPageWidget(
-      child: Scaffold(
-        extendBody: true,
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.add),
-          onPressed: () {
-            context.read<TasksUserBlok>().add(const TasksUserEvent.onTapFab());
-          },
-        ),
-        appBar: AppBar(
-          title: Text(title),
-          actions: <Widget>[
-            if (isCurentUser)
-              IconButton(
-                icon: const Icon(Icons.filter_alt),
-                onPressed: () async {
-                  context
-                      .read<TasksUserBlok>()
-                      .add(const TasksUserEvent.onTapFilter());
-                },
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () {
+          context.read<TasksUserBlok>().add(const TasksUserEvent.onTapFab());
+        },
+      ),
+      body: NestedScrollView(
+        floatHeaderSlivers: true,
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          return <Widget>[
+            SliverAppBar(
+              floating: true,
+              title: Text(widget.title),
+              //expandedHeight: 58,
+              //pinned: false,
+              snap: true,
+              actions: <Widget>[
+                if (widget.isCurentUser)
+                  IconButton(
+                    icon: const Icon(Icons.filter_alt),
+                    onPressed: () async {
+                      context
+                          .read<TasksUserBlok>()
+                          .add(const TasksUserEvent.onTapFilter());
+                    },
+                  ),
+                if (!widget.isCurentUser)
+                  IconButton(
+                    icon: const Icon(Icons.filter_alt_off),
+                    onPressed: () async {
+                      context
+                          .read<TasksUserBlok>()
+                          .add(const TasksUserEvent.onTapFilterOff());
+                    },
+                  ),
+              ],
+            ),
+            SliverPersistentHeader(
+              floating: true,
+              delegate: _SliverAppBarDelegate(
+                TabBar(
+                  controller: _tabController,
+                  tabs: [
+                    Tab(child: Text('Делаю ${widget.tasks.length}')),
+                    Tab(
+                      child: Text('Контроль ${widget.controlledTasks.length}'),
+                    ),
+                  ],
+                ),
               ),
-            if (!isCurentUser)
-              IconButton(
-                icon: const Icon(Icons.filter_alt_off),
-                onPressed: () async {
-                  context
-                      .read<TasksUserBlok>()
-                      .add(const TasksUserEvent.onTapFilterOff());
-                },
-              ),
+              pinned: true,
+            ),
+          ];
+        },
+        body: TabBarView(
+          controller: _tabController,
+          children: [
+            TaskListWidget(
+              list: widget.tasks,
+              isLoading: widget.isLoading,
+              appUser: widget.appUser,
+              isControlledTasks: false,
+            ),
+            TaskListWidget(
+              list: widget.controlledTasks,
+              isLoading: widget.isLoading,
+              appUser: widget.appUser,
+              isControlledTasks: true,
+            )
           ],
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: curentIndexTab,
-          onTap: (index) async => context
-              .read<TasksUserBlok>()
-              .add(TasksUserEvent.onTapNavBottomBar(index)),
-          items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.done), label: 'Делаю'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.check_circle), label: 'Контроль'),
-          ],
-        ),
-        body: TaskListWidget(
-          list: curentIndexTab == 0 ? tasks : controlledTasks,
-          isLoading: isLoading,
-          appUser: appUser,
-          isControlledTasks: curentIndexTab == 0,
         ),
       ),
     );
+  }
+}
+
+class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
+  _SliverAppBarDelegate(this._tabBar);
+
+  final TabBar _tabBar;
+
+  @override
+  double get minExtent => _tabBar.preferredSize.height + 8;
+  @override
+  double get maxExtent => _tabBar.preferredSize.height + 8;
+
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return Container(
+      color: Theme.of(context).appBarTheme.backgroundColor,
+      child: CustomPageWidget(child: _tabBar),
+    );
+  }
+
+  @override
+  bool shouldRebuild(_SliverAppBarDelegate oldDelegate) {
+    return true;
   }
 }
 

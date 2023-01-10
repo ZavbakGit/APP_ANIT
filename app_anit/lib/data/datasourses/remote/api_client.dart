@@ -34,7 +34,7 @@ class ApiClient {
 
     final client = ChopperClient(
       client: clientHttp,
-      baseUrl: baseUrl,
+      baseUrl: Uri.parse(baseUrl),
       converter: CommonJsonSerializableConverter(),
       interceptors: [
         LoggerInterceptor(),

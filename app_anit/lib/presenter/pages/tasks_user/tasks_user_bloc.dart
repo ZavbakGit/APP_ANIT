@@ -24,12 +24,16 @@ class TasksUserBlok
 
   late Timer? _timer;
 
+  int curentPageBotomBar = 0;
+  bool isLoading = false;
+
   TasksUserBlok({
     required this.appModel,
     required this.repository,
   }) : super(const TasksUserState.empty()) {
     on<EvInit>(_init);
     on<EvRefresh>(_refresh);
+    on<EvReload>(_reload);
     on<EvOnTapItem>(_onTapItem);
     on<EvOnTapFab>(_onTapFab);
     on<EvOnTapFilter>(_onTapFilter);
@@ -38,6 +42,7 @@ class TasksUserBlok
     on<EvOnAcceptTask>(_onAcceptTask);
     on<EvOnCompleteTask>(_onCompleteTask);
     on<EvOnSetControlDoneTask>(_onSetControlDoneTask);
+    on<EvOnTapNavBottomBar>(_onTapNavBottomBar);
   }
 
   FutureOr<void> _init(
@@ -45,9 +50,9 @@ class TasksUserBlok
     Emitter<TasksUserState> emit,
   ) {
     curentUser = appModel.remoteConfig!.user;
-    add(const TasksUserEvent.refresh());
+    add(const TasksUserEvent.reload());
     _timer = Timer.periodic(const Duration(seconds: 30), (timer) {
-      add(const TasksUserEvent.refresh());
+      add(const TasksUserEvent.reload());
     });
   }
 
@@ -61,13 +66,25 @@ class TasksUserBlok
     EvRefresh event,
     Emitter<TasksUserState> emit,
   ) async {
-    emit(TasksUserState.data(
+    emit(
+      TasksUserState.data(
         title: curentUser.name!,
-        isLoading: true,
+        isLoading: isLoading,
         tasks: tasks,
         controlledTasks: controlledTasks,
         isCurentUser: isCurentUser,
-        appUser: appModel.remoteConfig!.user));
+        appUser: appModel.remoteConfig!.user,
+        curentIndexTab: curentPageBotomBar,
+      ),
+    );
+  }
+
+  FutureOr<void> _reload(
+    EvReload event,
+    Emitter<TasksUserState> emit,
+  ) async {
+    isLoading = true;
+    add(const EvRefresh());
 
     final either = await repository.tasksUserGet(curentUser.guid!);
 
@@ -102,13 +119,8 @@ class TasksUserBlok
         list.where((element) => element.isControllers!),
       );
 
-      emit(TasksUserState.data(
-          isLoading: false,
-          title: curentUser.name!,
-          tasks: tasks,
-          controlledTasks: controlledTasks,
-          isCurentUser: isCurentUser,
-          appUser: appModel.remoteConfig!.user));
+      isLoading = false;
+      add(const EvRefresh());
     });
   }
 
@@ -138,7 +150,7 @@ class TasksUserBlok
     Emitter<TasksUserState> emit,
   ) {
     curentUser = event.user;
-    add(const EvRefresh());
+    add(const EvReload());
   }
 
   FutureOr<void> _onTapFilterOff(
@@ -146,7 +158,7 @@ class TasksUserBlok
     Emitter<TasksUserState> emit,
   ) {
     curentUser = appModel.remoteConfig!.user;
-    add(const EvRefresh());
+    add(const EvReload());
   }
 
   FutureOr<void> _onAcceptTask(
@@ -162,9 +174,9 @@ class TasksUserBlok
 
     either.fold((fail) {
       emit(TasksUserState.error(message: 'Ошибка: ${fail.error}'));
-      add(const EvRefresh());
+      add(const EvReload());
     }, (task) {
-      add(const EvRefresh());
+      add(const EvReload());
     });
   }
 
@@ -181,9 +193,9 @@ class TasksUserBlok
 
     either.fold((fail) {
       emit(TasksUserState.error(message: 'Ошибка: ${fail.error}'));
-      add(const EvRefresh());
+      add(const EvReload());
     }, (task) {
-      add(const EvRefresh());
+      add(const EvReload());
     });
   }
 
@@ -198,9 +210,17 @@ class TasksUserBlok
 
     either.fold((fail) {
       emit(TasksUserState.error(message: 'Ошибка: ${fail.error}'));
-      add(const EvRefresh());
+      add(const EvReload());
     }, (task) {
-      add(const EvRefresh());
+      add(const EvReload());
     });
+  }
+
+  FutureOr<void> _onTapNavBottomBar(
+    EvOnTapNavBottomBar event,
+    Emitter<TasksUserState> emit,
+  ) async {
+    curentPageBotomBar = event.index;
+    add(const EvRefresh());
   }
 }

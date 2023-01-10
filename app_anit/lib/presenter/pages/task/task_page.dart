@@ -101,7 +101,7 @@ class _PageContent extends StatelessWidget {
   }) : super(key: key);
 
   String get title =>
-      '${isModified ? '*' : ''}${task.$number} от ${DateFormat('dd.MM.yy HH:mm').format(task.date!)}';
+      '${isModified ? '*' : ''}${task.number} от ${DateFormat('dd.MM.yy HH:mm').format(task.date!)}';
 
   @override
   Widget build(BuildContext context) {

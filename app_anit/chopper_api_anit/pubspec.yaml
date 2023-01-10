@@ -11,10 +11,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-  chopper: ^4.0.6
-  dio: ^4.0.4
-  json_annotation: ^4.5.0
-  json_serializable: ^6.2.0
+  chopper: ^6.0.0
+  json_annotation: ^4.4.0
 
  
   cupertino_icons: ^1.0.2
@@ -25,8 +23,9 @@ dev_dependencies:
   flutter_lints: ^2.0.0
 
   build_runner: ^2.1.7
-  chopper_generator: ^4.0.6
-  swagger_dart_code_generator: ^2.4.6
+  chopper_generator: ^6.0.0
+  json_serializable: ^6.1.4
+  swagger_dart_code_generator: ^2.9.0
 
 
 

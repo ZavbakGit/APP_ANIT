@@ -11,6 +11,7 @@ class TasksUserState with _$TasksUserState {
     required List<TaskItem> tasks,
     required List<TaskItem> controlledTasks,
     required RefCatalog appUser,
+    required int curentIndexTab,
   }) = _StData;
 
   const factory TasksUserState.empty() = _StEmpty;
@@ -20,7 +21,7 @@ class TasksUserState with _$TasksUserState {
 @freezed
 class TasksUserEvent with _$TasksUserEvent {
   const factory TasksUserEvent.init() = EvInit;
-  const factory TasksUserEvent.refresh() = EvRefresh;
+  const factory TasksUserEvent.reload() = EvReload;
   const factory TasksUserEvent.onTapItem(String guid) = EvOnTapItem;
   const factory TasksUserEvent.onTapFab() = EvOnTapFab;
   const factory TasksUserEvent.onTapFilter() = EvOnTapFilter;
@@ -31,6 +32,9 @@ class TasksUserEvent with _$TasksUserEvent {
       EvOnSetControlDoneTask;
   const factory TasksUserEvent.onCompleteTask(String guidTask) =
       EvOnCompleteTask;
+  const factory TasksUserEvent.onTapNavBottomBar(int index) =
+      EvOnTapNavBottomBar;
+  const factory TasksUserEvent.refrech() = EvRefresh;
 }
 
 @freezed
