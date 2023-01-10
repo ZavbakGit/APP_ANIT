@@ -167,7 +167,7 @@ class _PageContent extends StatelessWidget {
           list: curentIndexTab == 0 ? tasks : controlledTasks,
           isLoading: isLoading,
           appUser: appUser,
-          isControlledTasks: curentIndexTab == 0,
+          isControlledTasks: curentIndexTab != 0,
         ),
       ),
     );
