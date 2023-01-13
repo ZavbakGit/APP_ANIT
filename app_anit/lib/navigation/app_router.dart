@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../presenter/pages/design_system/test_design_system_page.dart';
 import '../presenter/pages/login/login_page.dart';
+import '../presenter/pages/room_booking/room_booking_page.dart';
 import '../presenter/pages/task/task_page.dart';
 import '../presenter/pages/tasks_user/tasks_user_page.dart';
 
@@ -46,6 +47,13 @@ class AppRouter {
         builder: (context, state) {
           final guid = state.params['guid'];
           return TaskPage(guid: guid!);
+        },
+      ),
+      GoRoute(
+        name: "room_booking",
+        path: "/room_booking",
+        builder: (context, state) {
+          return const RoomBookingPage();
         },
       ),
     ], // All the routes can be found there
