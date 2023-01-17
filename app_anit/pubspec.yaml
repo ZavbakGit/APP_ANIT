@@ -73,6 +73,8 @@ dependencies:
   chopper_api_anit:
     path: chopper_api_anit
 
+  calendar_view: ^1.0.2
+
   
 
 dev_dependencies:

@@ -8,6 +8,7 @@ import 'package:go_router/go_router.dart';
 import '../../../app/injection_container.dart';
 import '../../../arch/sr_bloc/sr_bloc_builder.dart';
 import '../../disign_system/widgets_design/custom_page_widget.dart';
+import '../../widgets/room_booking_wiget/room_booking_widget.dart';
 import '../../widgets/tasks_widget/tasks_widget.dart';
 
 class MainPage extends StatelessWidget {
@@ -79,6 +80,7 @@ class _MainPageContent extends StatelessWidget {
             child: Wrap(
               children: const [
                 TasksWidget(),
+                RoomBookingWidget(),
               ],
             ),
           ),

@@ -13,6 +13,8 @@ class RoomBookingBlok
   final Repository repository;
 
   bool isLoading = false;
+  ViewCalendarType viewCalendarType =
+      ViewCalendarType.week(day: DateTime.now());
 
   RoomBookingBlok({
     required this.appModel,
@@ -22,6 +24,11 @@ class RoomBookingBlok
     on<EvReload>(_reload);
     on<EvRefresh>(_refresh);
     on<EvExit>(_exit);
+    on<EvOnTapDay>(_onTapDay);
+
+    on<EVOnTapMenuDay>(_onTapMenuDay);
+    on<EVOnTapMenuMonth>(_onTapMenuMonth);
+    on<EVOnTapMenuWeek>(_onTapMenuWeek);
   }
 
   FutureOr<void> _init(
@@ -37,7 +44,7 @@ class RoomBookingBlok
   ) async {
     isLoading = true;
     add(const RoomBookingEvent.refrech());
-    Future.delayed(const Duration(seconds: 1));
+    await Future.delayed(const Duration(seconds: 1));
     add(const RoomBookingEvent.refrech());
     isLoading = false;
   }
@@ -47,7 +54,8 @@ class RoomBookingBlok
     Emitter<RoomBookingState> emit,
   ) async {
     emit(
-      RoomBookingState.data(isLoading: isLoading),
+      RoomBookingState.data(
+          isLoading: isLoading, viewCalendarType: viewCalendarType),
     );
   }
 
@@ -56,5 +64,37 @@ class RoomBookingBlok
     Emitter<RoomBookingState> emit,
   ) {
     addSr(const RoomBookingSR.exit());
+  }
+
+  FutureOr<void> _onTapDay(
+    EvOnTapDay event,
+    Emitter<RoomBookingState> emit,
+  ) async {
+    viewCalendarType = ViewCalendarType.day(day: event.day);
+    add(const RoomBookingEvent.refrech());
+  }
+
+  FutureOr<void> _onTapMenuDay(
+    EVOnTapMenuDay event,
+    Emitter<RoomBookingState> emit,
+  ) {
+    viewCalendarType = ViewCalendarType.day(day: DateTime.now());
+    add(const RoomBookingEvent.refrech());
+  }
+
+  FutureOr<void> _onTapMenuMonth(
+    EVOnTapMenuMonth event,
+    Emitter<RoomBookingState> emit,
+  ) {
+    viewCalendarType = ViewCalendarType.month(day: DateTime.now());
+    add(const RoomBookingEvent.refrech());
+  }
+
+  FutureOr<void> _onTapMenuWeek(
+    EVOnTapMenuWeek event,
+    Emitter<RoomBookingState> emit,
+  ) {
+    viewCalendarType = ViewCalendarType.week(day: DateTime.now());
+    add(const RoomBookingEvent.refrech());
   }
 }
