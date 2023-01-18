@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'room_booking_widget_models.dart';
+part of 'event_calendar_widget_models.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$RoomBookingWidgetState {
+mixin _$EventCalendarWidgetState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool isLoading) data,
@@ -63,20 +63,20 @@ mixin _$RoomBookingWidgetState {
 }
 
 /// @nodoc
-abstract class $RoomBookingWidgetStateCopyWith<$Res> {
-  factory $RoomBookingWidgetStateCopyWith(RoomBookingWidgetState value,
-          $Res Function(RoomBookingWidgetState) then) =
-      _$RoomBookingWidgetStateCopyWithImpl<$Res>;
+abstract class $EventCalendarWidgetStateCopyWith<$Res> {
+  factory $EventCalendarWidgetStateCopyWith(EventCalendarWidgetState value,
+          $Res Function(EventCalendarWidgetState) then) =
+      _$EventCalendarWidgetStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$RoomBookingWidgetStateCopyWithImpl<$Res>
-    implements $RoomBookingWidgetStateCopyWith<$Res> {
-  _$RoomBookingWidgetStateCopyWithImpl(this._value, this._then);
+class _$EventCalendarWidgetStateCopyWithImpl<$Res>
+    implements $EventCalendarWidgetStateCopyWith<$Res> {
+  _$EventCalendarWidgetStateCopyWithImpl(this._value, this._then);
 
-  final RoomBookingWidgetState _value;
+  final EventCalendarWidgetState _value;
   // ignore: unused_field
-  final $Res Function(RoomBookingWidgetState) _then;
+  final $Res Function(EventCalendarWidgetState) _then;
 }
 
 /// @nodoc
@@ -88,7 +88,7 @@ abstract class _$$_StDataCopyWith<$Res> {
 
 /// @nodoc
 class __$$_StDataCopyWithImpl<$Res>
-    extends _$RoomBookingWidgetStateCopyWithImpl<$Res>
+    extends _$EventCalendarWidgetStateCopyWithImpl<$Res>
     implements _$$_StDataCopyWith<$Res> {
   __$$_StDataCopyWithImpl(_$_StData _value, $Res Function(_$_StData) _then)
       : super(_value, (v) => _then(v as _$_StData));
@@ -119,7 +119,7 @@ class _$_StData implements _StData {
 
   @override
   String toString() {
-    return 'RoomBookingWidgetState.data(isLoading: $isLoading)';
+    return 'EventCalendarWidgetState.data(isLoading: $isLoading)';
   }
 
   @override
@@ -208,7 +208,7 @@ class _$_StData implements _StData {
   }
 }
 
-abstract class _StData implements RoomBookingWidgetState {
+abstract class _StData implements EventCalendarWidgetState {
   const factory _StData({required final bool isLoading}) = _$_StData;
 
   bool get isLoading;
@@ -226,7 +226,7 @@ abstract class _$$_StEmptyCopyWith<$Res> {
 
 /// @nodoc
 class __$$_StEmptyCopyWithImpl<$Res>
-    extends _$RoomBookingWidgetStateCopyWithImpl<$Res>
+    extends _$EventCalendarWidgetStateCopyWithImpl<$Res>
     implements _$$_StEmptyCopyWith<$Res> {
   __$$_StEmptyCopyWithImpl(_$_StEmpty _value, $Res Function(_$_StEmpty) _then)
       : super(_value, (v) => _then(v as _$_StEmpty));
@@ -242,7 +242,7 @@ class _$_StEmpty implements _StEmpty {
 
   @override
   String toString() {
-    return 'RoomBookingWidgetState.empty()';
+    return 'EventCalendarWidgetState.empty()';
   }
 
   @override
@@ -323,7 +323,7 @@ class _$_StEmpty implements _StEmpty {
   }
 }
 
-abstract class _StEmpty implements RoomBookingWidgetState {
+abstract class _StEmpty implements EventCalendarWidgetState {
   const factory _StEmpty() = _$_StEmpty;
 }
 
@@ -337,7 +337,7 @@ abstract class _$$_StErrorCopyWith<$Res> {
 
 /// @nodoc
 class __$$_StErrorCopyWithImpl<$Res>
-    extends _$RoomBookingWidgetStateCopyWithImpl<$Res>
+    extends _$EventCalendarWidgetStateCopyWithImpl<$Res>
     implements _$$_StErrorCopyWith<$Res> {
   __$$_StErrorCopyWithImpl(_$_StError _value, $Res Function(_$_StError) _then)
       : super(_value, (v) => _then(v as _$_StError));
@@ -368,7 +368,7 @@ class _$_StError implements _StError {
 
   @override
   String toString() {
-    return 'RoomBookingWidgetState.error(message: $message)';
+    return 'EventCalendarWidgetState.error(message: $message)';
   }
 
   @override
@@ -457,7 +457,7 @@ class _$_StError implements _StError {
   }
 }
 
-abstract class _StError implements RoomBookingWidgetState {
+abstract class _StError implements EventCalendarWidgetState {
   const factory _StError({final String? message}) = _$_StError;
 
   String? get message;
@@ -467,7 +467,7 @@ abstract class _StError implements RoomBookingWidgetState {
 }
 
 /// @nodoc
-mixin _$RoomBookingWidgetEvent {
+mixin _$EventCalendarWidgetEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
@@ -521,20 +521,20 @@ mixin _$RoomBookingWidgetEvent {
 }
 
 /// @nodoc
-abstract class $RoomBookingWidgetEventCopyWith<$Res> {
-  factory $RoomBookingWidgetEventCopyWith(RoomBookingWidgetEvent value,
-          $Res Function(RoomBookingWidgetEvent) then) =
-      _$RoomBookingWidgetEventCopyWithImpl<$Res>;
+abstract class $EventCalendarWidgetEventCopyWith<$Res> {
+  factory $EventCalendarWidgetEventCopyWith(EventCalendarWidgetEvent value,
+          $Res Function(EventCalendarWidgetEvent) then) =
+      _$EventCalendarWidgetEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$RoomBookingWidgetEventCopyWithImpl<$Res>
-    implements $RoomBookingWidgetEventCopyWith<$Res> {
-  _$RoomBookingWidgetEventCopyWithImpl(this._value, this._then);
+class _$EventCalendarWidgetEventCopyWithImpl<$Res>
+    implements $EventCalendarWidgetEventCopyWith<$Res> {
+  _$EventCalendarWidgetEventCopyWithImpl(this._value, this._then);
 
-  final RoomBookingWidgetEvent _value;
+  final EventCalendarWidgetEvent _value;
   // ignore: unused_field
-  final $Res Function(RoomBookingWidgetEvent) _then;
+  final $Res Function(EventCalendarWidgetEvent) _then;
 }
 
 /// @nodoc
@@ -545,7 +545,7 @@ abstract class _$$EvInitCopyWith<$Res> {
 
 /// @nodoc
 class __$$EvInitCopyWithImpl<$Res>
-    extends _$RoomBookingWidgetEventCopyWithImpl<$Res>
+    extends _$EventCalendarWidgetEventCopyWithImpl<$Res>
     implements _$$EvInitCopyWith<$Res> {
   __$$EvInitCopyWithImpl(_$EvInit _value, $Res Function(_$EvInit) _then)
       : super(_value, (v) => _then(v as _$EvInit));
@@ -561,7 +561,7 @@ class _$EvInit implements EvInit {
 
   @override
   String toString() {
-    return 'RoomBookingWidgetEvent.init()';
+    return 'EventCalendarWidgetEvent.init()';
   }
 
   @override
@@ -648,7 +648,7 @@ class _$EvInit implements EvInit {
   }
 }
 
-abstract class EvInit implements RoomBookingWidgetEvent {
+abstract class EvInit implements EventCalendarWidgetEvent {
   const factory EvInit() = _$EvInit;
 }
 
@@ -661,7 +661,7 @@ abstract class _$$EvReloadCopyWith<$Res> {
 
 /// @nodoc
 class __$$EvReloadCopyWithImpl<$Res>
-    extends _$RoomBookingWidgetEventCopyWithImpl<$Res>
+    extends _$EventCalendarWidgetEventCopyWithImpl<$Res>
     implements _$$EvReloadCopyWith<$Res> {
   __$$EvReloadCopyWithImpl(_$EvReload _value, $Res Function(_$EvReload) _then)
       : super(_value, (v) => _then(v as _$EvReload));
@@ -677,7 +677,7 @@ class _$EvReload implements EvReload {
 
   @override
   String toString() {
-    return 'RoomBookingWidgetEvent.reload()';
+    return 'EventCalendarWidgetEvent.reload()';
   }
 
   @override
@@ -764,7 +764,7 @@ class _$EvReload implements EvReload {
   }
 }
 
-abstract class EvReload implements RoomBookingWidgetEvent {
+abstract class EvReload implements EventCalendarWidgetEvent {
   const factory EvReload() = _$EvReload;
 }
 
@@ -777,7 +777,7 @@ abstract class _$$EvRefreshCopyWith<$Res> {
 
 /// @nodoc
 class __$$EvRefreshCopyWithImpl<$Res>
-    extends _$RoomBookingWidgetEventCopyWithImpl<$Res>
+    extends _$EventCalendarWidgetEventCopyWithImpl<$Res>
     implements _$$EvRefreshCopyWith<$Res> {
   __$$EvRefreshCopyWithImpl(
       _$EvRefresh _value, $Res Function(_$EvRefresh) _then)
@@ -794,7 +794,7 @@ class _$EvRefresh implements EvRefresh {
 
   @override
   String toString() {
-    return 'RoomBookingWidgetEvent.refrech()';
+    return 'EventCalendarWidgetEvent.refrech()';
   }
 
   @override
@@ -881,7 +881,7 @@ class _$EvRefresh implements EvRefresh {
   }
 }
 
-abstract class EvRefresh implements RoomBookingWidgetEvent {
+abstract class EvRefresh implements EventCalendarWidgetEvent {
   const factory EvRefresh() = _$EvRefresh;
 }
 
@@ -893,7 +893,7 @@ abstract class _$$EvOnTapCopyWith<$Res> {
 
 /// @nodoc
 class __$$EvOnTapCopyWithImpl<$Res>
-    extends _$RoomBookingWidgetEventCopyWithImpl<$Res>
+    extends _$EventCalendarWidgetEventCopyWithImpl<$Res>
     implements _$$EvOnTapCopyWith<$Res> {
   __$$EvOnTapCopyWithImpl(_$EvOnTap _value, $Res Function(_$EvOnTap) _then)
       : super(_value, (v) => _then(v as _$EvOnTap));
@@ -909,7 +909,7 @@ class _$EvOnTap implements EvOnTap {
 
   @override
   String toString() {
-    return 'RoomBookingWidgetEvent.onTap()';
+    return 'EventCalendarWidgetEvent.onTap()';
   }
 
   @override
@@ -996,96 +996,96 @@ class _$EvOnTap implements EvOnTap {
   }
 }
 
-abstract class EvOnTap implements RoomBookingWidgetEvent {
+abstract class EvOnTap implements EventCalendarWidgetEvent {
   const factory EvOnTap() = _$EvOnTap;
 }
 
 /// @nodoc
-mixin _$RoomBookingWidgetSR {
+mixin _$EventCalendarWidgetSR {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() openRoomBooking,
+    required TResult Function() openEventCalendar,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? openRoomBooking,
+    TResult Function()? openEventCalendar,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? openRoomBooking,
+    TResult Function()? openEventCalendar,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_OpenRoomBooking value) openRoomBooking,
+    required TResult Function(_OpenEventCalendar value) openEventCalendar,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_OpenRoomBooking value)? openRoomBooking,
+    TResult Function(_OpenEventCalendar value)? openEventCalendar,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_OpenRoomBooking value)? openRoomBooking,
+    TResult Function(_OpenEventCalendar value)? openEventCalendar,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $RoomBookingWidgetSRCopyWith<$Res> {
-  factory $RoomBookingWidgetSRCopyWith(
-          RoomBookingWidgetSR value, $Res Function(RoomBookingWidgetSR) then) =
-      _$RoomBookingWidgetSRCopyWithImpl<$Res>;
+abstract class $EventCalendarWidgetSRCopyWith<$Res> {
+  factory $EventCalendarWidgetSRCopyWith(EventCalendarWidgetSR value,
+          $Res Function(EventCalendarWidgetSR) then) =
+      _$EventCalendarWidgetSRCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$RoomBookingWidgetSRCopyWithImpl<$Res>
-    implements $RoomBookingWidgetSRCopyWith<$Res> {
-  _$RoomBookingWidgetSRCopyWithImpl(this._value, this._then);
+class _$EventCalendarWidgetSRCopyWithImpl<$Res>
+    implements $EventCalendarWidgetSRCopyWith<$Res> {
+  _$EventCalendarWidgetSRCopyWithImpl(this._value, this._then);
 
-  final RoomBookingWidgetSR _value;
+  final EventCalendarWidgetSR _value;
   // ignore: unused_field
-  final $Res Function(RoomBookingWidgetSR) _then;
+  final $Res Function(EventCalendarWidgetSR) _then;
 }
 
 /// @nodoc
-abstract class _$$_OpenRoomBookingCopyWith<$Res> {
-  factory _$$_OpenRoomBookingCopyWith(
-          _$_OpenRoomBooking value, $Res Function(_$_OpenRoomBooking) then) =
-      __$$_OpenRoomBookingCopyWithImpl<$Res>;
+abstract class _$$_OpenEventCalendarCopyWith<$Res> {
+  factory _$$_OpenEventCalendarCopyWith(_$_OpenEventCalendar value,
+          $Res Function(_$_OpenEventCalendar) then) =
+      __$$_OpenEventCalendarCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_OpenRoomBookingCopyWithImpl<$Res>
-    extends _$RoomBookingWidgetSRCopyWithImpl<$Res>
-    implements _$$_OpenRoomBookingCopyWith<$Res> {
-  __$$_OpenRoomBookingCopyWithImpl(
-      _$_OpenRoomBooking _value, $Res Function(_$_OpenRoomBooking) _then)
-      : super(_value, (v) => _then(v as _$_OpenRoomBooking));
+class __$$_OpenEventCalendarCopyWithImpl<$Res>
+    extends _$EventCalendarWidgetSRCopyWithImpl<$Res>
+    implements _$$_OpenEventCalendarCopyWith<$Res> {
+  __$$_OpenEventCalendarCopyWithImpl(
+      _$_OpenEventCalendar _value, $Res Function(_$_OpenEventCalendar) _then)
+      : super(_value, (v) => _then(v as _$_OpenEventCalendar));
 
   @override
-  _$_OpenRoomBooking get _value => super._value as _$_OpenRoomBooking;
+  _$_OpenEventCalendar get _value => super._value as _$_OpenEventCalendar;
 }
 
 /// @nodoc
 
-class _$_OpenRoomBooking implements _OpenRoomBooking {
-  const _$_OpenRoomBooking();
+class _$_OpenEventCalendar implements _OpenEventCalendar {
+  const _$_OpenEventCalendar();
 
   @override
   String toString() {
-    return 'RoomBookingWidgetSR.openRoomBooking()';
+    return 'EventCalendarWidgetSR.openEventCalendar()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_OpenRoomBooking);
+        (other.runtimeType == runtimeType && other is _$_OpenEventCalendar);
   }
 
   @override
@@ -1094,27 +1094,27 @@ class _$_OpenRoomBooking implements _OpenRoomBooking {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() openRoomBooking,
+    required TResult Function() openEventCalendar,
   }) {
-    return openRoomBooking();
+    return openEventCalendar();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? openRoomBooking,
+    TResult Function()? openEventCalendar,
   }) {
-    return openRoomBooking?.call();
+    return openEventCalendar?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? openRoomBooking,
+    TResult Function()? openEventCalendar,
     required TResult orElse(),
   }) {
-    if (openRoomBooking != null) {
-      return openRoomBooking();
+    if (openEventCalendar != null) {
+      return openEventCalendar();
     }
     return orElse();
   }
@@ -1122,32 +1122,32 @@ class _$_OpenRoomBooking implements _OpenRoomBooking {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_OpenRoomBooking value) openRoomBooking,
+    required TResult Function(_OpenEventCalendar value) openEventCalendar,
   }) {
-    return openRoomBooking(this);
+    return openEventCalendar(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_OpenRoomBooking value)? openRoomBooking,
+    TResult Function(_OpenEventCalendar value)? openEventCalendar,
   }) {
-    return openRoomBooking?.call(this);
+    return openEventCalendar?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_OpenRoomBooking value)? openRoomBooking,
+    TResult Function(_OpenEventCalendar value)? openEventCalendar,
     required TResult orElse(),
   }) {
-    if (openRoomBooking != null) {
-      return openRoomBooking(this);
+    if (openEventCalendar != null) {
+      return openEventCalendar(this);
     }
     return orElse();
   }
 }
 
-abstract class _OpenRoomBooking implements RoomBookingWidgetSR {
-  const factory _OpenRoomBooking() = _$_OpenRoomBooking;
+abstract class _OpenEventCalendar implements EventCalendarWidgetSR {
+  const factory _OpenEventCalendar() = _$_OpenEventCalendar;
 }

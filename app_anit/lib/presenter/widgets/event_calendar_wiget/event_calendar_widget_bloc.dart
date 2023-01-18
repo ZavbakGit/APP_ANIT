@@ -1,14 +1,14 @@
 import 'dart:async';
 
-import 'package:app_anit/presenter/widgets/room_booking_wiget/room_booking_widget_models.dart';
+import 'package:app_anit/presenter/widgets/event_calendar_wiget/event_calendar_widget_models.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../arch/sr_bloc/sr_bloc.dart';
 import '../../../domain/models/app_model.dart';
 import '../../../domain/repositories/repository.dart';
 
-class RoomBookingWidgetBloc extends SrBloc<RoomBookingWidgetEvent,
-    RoomBookingWidgetState, RoomBookingWidgetSR> {
+class EventCalendarWidgetBloc extends SrBloc<EventCalendarWidgetEvent,
+    EventCalendarWidgetState, EventCalendarWidgetSR> {
   final AppModel appModel;
   final Repository repository;
 
@@ -16,10 +16,10 @@ class RoomBookingWidgetBloc extends SrBloc<RoomBookingWidgetEvent,
 
   bool isLoading = false;
 
-  RoomBookingWidgetBloc({
+  EventCalendarWidgetBloc({
     required this.appModel,
     required this.repository,
-  }) : super(const RoomBookingWidgetState.empty()) {
+  }) : super(const EventCalendarWidgetState.empty()) {
     on<EvInit>(_init);
     on<EvRefresh>(_refresh);
     on<EvReload>(_reload);
@@ -34,20 +34,20 @@ class RoomBookingWidgetBloc extends SrBloc<RoomBookingWidgetEvent,
 
   FutureOr<void> _init(
     EvInit event,
-    Emitter<RoomBookingWidgetState> emit,
+    Emitter<EventCalendarWidgetState> emit,
   ) {
-    add(const RoomBookingWidgetEvent.reload());
+    add(const EventCalendarWidgetEvent.reload());
     _timer = Timer.periodic(const Duration(seconds: 30), (timer) {
-      add(const RoomBookingWidgetEvent.reload());
+      add(const EventCalendarWidgetEvent.reload());
     });
   }
 
   FutureOr<void> _refresh(
     EvRefresh event,
-    Emitter<RoomBookingWidgetState> emit,
+    Emitter<EventCalendarWidgetState> emit,
   ) async {
     emit(
-      RoomBookingWidgetState.data(
+      EventCalendarWidgetState.data(
         isLoading: isLoading,
       ),
     );
@@ -55,7 +55,7 @@ class RoomBookingWidgetBloc extends SrBloc<RoomBookingWidgetEvent,
 
   FutureOr<void> _reload(
     EvReload event,
-    Emitter<RoomBookingWidgetState> emit,
+    Emitter<EventCalendarWidgetState> emit,
   ) async {
     isLoading = true;
     add(const EvRefresh());
@@ -66,8 +66,8 @@ class RoomBookingWidgetBloc extends SrBloc<RoomBookingWidgetEvent,
 
   FutureOr<void> _onTap(
     EvOnTap event,
-    Emitter<RoomBookingWidgetState> emi,
+    Emitter<EventCalendarWidgetState> emi,
   ) async {
-    addSr(const RoomBookingWidgetSR.openRoomBooking());
+    addSr(const EventCalendarWidgetSR.openEventCalendar());
   }
 }

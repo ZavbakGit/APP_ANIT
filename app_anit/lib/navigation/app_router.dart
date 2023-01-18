@@ -1,10 +1,10 @@
 import 'package:app_anit/navigation/router_notifire.dart';
+import 'package:app_anit/presenter/pages/event_calendar/event_calendar_page.dart';
 import 'package:app_anit/presenter/pages/main/main_page.dart';
 import 'package:go_router/go_router.dart';
 
 import '../presenter/pages/design_system/test_design_system_page.dart';
 import '../presenter/pages/login/login_page.dart';
-import '../presenter/pages/room_booking/room_booking_page.dart';
 import '../presenter/pages/task/task_page.dart';
 import '../presenter/pages/tasks_user/tasks_user_page.dart';
 
@@ -53,7 +53,7 @@ class AppRouter {
         name: "room_booking",
         path: "/room_booking",
         builder: (context, state) {
-          return const RoomBookingPage();
+          return const EventCalendarPage();
         },
       ),
     ], // All the routes can be found there

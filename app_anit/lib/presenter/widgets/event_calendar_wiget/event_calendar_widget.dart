@@ -1,6 +1,6 @@
 import 'package:app_anit/presenter/disign_system/widgets_design/custom_progres_widgets.dart';
-import 'package:app_anit/presenter/widgets/room_booking_wiget/room_booking_widget_bloc.dart';
-import 'package:app_anit/presenter/widgets/room_booking_wiget/room_booking_widget_models.dart';
+import 'package:app_anit/presenter/widgets/event_calendar_wiget/event_calendar_widget_bloc.dart';
+import 'package:app_anit/presenter/widgets/event_calendar_wiget/event_calendar_widget_models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -9,10 +9,10 @@ import '../../../arch/sr_bloc/sr_bloc_builder.dart';
 import '../../disign_system/ui_helpers.dart';
 import '../../disign_system/widgets_design/custom_empty_page.dart';
 import '../../disign_system/widgets_design/custom_error_page.dart';
-import '../../pages/room_booking/room_booking_page.dart';
+import '../../pages/event_calendar/event_calendar_page.dart';
 
-class RoomBookingWidget extends StatelessWidget {
-  const RoomBookingWidget({Key? key}) : super(key: key);
+class EventCalendarWidget extends StatelessWidget {
+  const EventCalendarWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,18 +24,18 @@ class RoomBookingWidget extends StatelessWidget {
       }
     }
 
-    return BlocProvider<RoomBookingWidgetBloc>(
+    return BlocProvider<EventCalendarWidgetBloc>(
       create: (context) =>
-          RoomBookingWidgetBloc(appModel: sl(), repository: sl())
-            ..add(const RoomBookingWidgetEvent.init()),
-      child: SrBlocBuilder<RoomBookingWidgetBloc, RoomBookingWidgetState,
-          RoomBookingWidgetSR>(
+          EventCalendarWidgetBloc(appModel: sl(), repository: sl())
+            ..add(const EventCalendarWidgetEvent.init()),
+      child: SrBlocBuilder<EventCalendarWidgetBloc, EventCalendarWidgetState,
+          EventCalendarWidgetSR>(
         onSR: _onSingleResult,
         builder: (context, state) {
           return GestureDetector(
             onTap: () => context
-                .read<RoomBookingWidgetBloc>()
-                .add(const RoomBookingWidgetEvent.onTap()),
+                .read<EventCalendarWidgetBloc>()
+                .add(const EventCalendarWidgetEvent.onTap()),
             child: Card(
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
@@ -55,8 +55,8 @@ class RoomBookingWidget extends StatelessWidget {
                     error: (state) => CustomErrorPage(
                         message: state.message,
                         onClick: () => context
-                            .read<RoomBookingWidgetBloc>()
-                            .add(const RoomBookingWidgetEvent.reload())),
+                            .read<EventCalendarWidgetBloc>()
+                            .add(const EventCalendarWidgetEvent.reload())),
                   ),
                 ),
               ),
@@ -67,16 +67,16 @@ class RoomBookingWidget extends StatelessWidget {
     );
   }
 
-  void _onSingleResult(BuildContext context, RoomBookingWidgetSR sr) {
+  void _onSingleResult(BuildContext context, EventCalendarWidgetSR sr) {
     sr.when(
-      openRoomBooking: () => Navigator.push<bool>(
+      openEventCalendar: () => Navigator.push<bool>(
         context,
         MaterialPageRoute(
-          builder: (context) => const RoomBookingPage(),
+          builder: (context) => const EventCalendarPage(),
         ),
       ).then((value) => context
-          .read<RoomBookingWidgetBloc>()
-          .add(const RoomBookingWidgetEvent.reload())),
+          .read<EventCalendarWidgetBloc>()
+          .add(const EventCalendarWidgetEvent.reload())),
     );
   }
 }
