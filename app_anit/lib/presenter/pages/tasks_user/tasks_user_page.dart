@@ -306,7 +306,9 @@ class TaskItemWidget extends StatelessWidget {
         subtitle: Row(
           children: [
             Expanded(
-              child: Text(item.date!.getStrDateTime()),
+              child: Text(item.date
+                      ?.dateToStringWithFormat(format: "'dd.MM.yy HH:mm'") ??
+                  ""),
             ),
             Expanded(
               child: Text(item.partner?.name ?? ''),

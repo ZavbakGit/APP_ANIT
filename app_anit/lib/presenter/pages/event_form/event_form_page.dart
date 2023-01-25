@@ -3,10 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../app/injection_container.dart';
 import '../../../../arch/sr_bloc/sr_bloc_builder.dart';
+import '../../disign_system/constants.dart';
 import '../../disign_system/widgets_design/custom_empty_page.dart';
 import '../../disign_system/widgets_design/custom_error_page.dart';
 import '../../disign_system/widgets_design/custom_page_widget.dart';
-
+import '../../disign_system/widgets_design/custom_progres_widgets.dart';
+import '../../widgets/dialog/date_time_selector.dart';
 import 'event_form_bloc.dart';
 import 'event_form_models.dart';
 
@@ -63,10 +65,86 @@ class _PageContent extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Evet form'),
         ),
-        body: Center(
-          child: Text(isLoading.toString()),
+        body: FormEvent(
+          isLoading: isLoading,
         ),
       ),
     );
   }
 }
+
+class FormEvent extends StatefulWidget {
+  final bool isLoading;
+
+  const FormEvent({
+    Key? key,
+    required this.isLoading,
+  }) : super(key: key);
+
+  @override
+  State<FormEvent> createState() => _FormEventState();
+}
+
+GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+class _FormEventState extends State<FormEvent> {
+  late DateTime _startDate;
+  DateTime? _startTime;
+
+  late TextEditingController _startDateController;
+
+  late FocusNode _dateNode;
+
+  @override
+  void initState() {
+    super.initState();
+    _dateNode = FocusNode();
+    _startDateController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _dateNode.dispose();
+    _startDateController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (widget.isLoading) {
+      return const Center(child: CustomCircularProgressIndicator());
+    }
+    return Form(
+      key: _formKey,
+      child: ListView(
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: DateTimeSelectorFormField(
+                  controller: _startDateController,
+                  decoration: AppConstants.inputDecoration.copyWith(
+                    labelText: "Начало",
+                  ),
+                  validator: (value) {
+                    if (value == null || value == "") {
+                      return "Выберите время начала";
+                    }
+                    return null;
+                  },
+                  onSave: (date) => _startTime = date,
+                  textStyle: const TextStyle(
+                    fontSize: 17.0,
+                  ),
+                  type: DateTimeSelectionType.time,
+                ),
+              )
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+//https://medium.com/analytics-vidhya/flutter-forms-50b9a8569914

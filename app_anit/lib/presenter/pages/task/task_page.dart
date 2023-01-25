@@ -384,7 +384,10 @@ class SetControlWidget extends StatelessWidget {
     } else {
       return Row(
         children: [
-          if (needShowDate) Text(dateControl!.getStrDateTime()),
+          if (needShowDate)
+            Text(dateControl?.dateToStringWithFormat(
+                    format: "'dd.MM.yy HH:mm'") ??
+                ""),
           if (needShowDate)
             IconButton(
               icon: const Icon(Icons.close),
