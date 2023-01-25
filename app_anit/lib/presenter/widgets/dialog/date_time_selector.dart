@@ -20,6 +20,7 @@ class DateTimeSelectorFormField extends StatefulWidget {
   final TextEditingController controller;
 
   const DateTimeSelectorFormField({
+    super.key,
     this.onSelect,
     this.type,
     this.onSave,

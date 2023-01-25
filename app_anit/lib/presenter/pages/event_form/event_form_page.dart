@@ -8,6 +8,7 @@ import '../../disign_system/widgets_design/custom_empty_page.dart';
 import '../../disign_system/widgets_design/custom_error_page.dart';
 import '../../disign_system/widgets_design/custom_page_widget.dart';
 import '../../disign_system/widgets_design/custom_progres_widgets.dart';
+import '../../disign_system/widgets_design/custom_text_fields.dart';
 import '../../widgets/dialog/date_time_selector.dart';
 import 'event_form_bloc.dart';
 import 'event_form_models.dart';
@@ -92,19 +93,23 @@ class _FormEventState extends State<FormEvent> {
   DateTime? _startTime;
 
   late TextEditingController _startDateController;
+  late TextEditingController _startTimeController;
+  late TextEditingController _titleController;
 
-  late FocusNode _dateNode;
+  late FocusNode _focusNode;
 
   @override
   void initState() {
     super.initState();
-    _dateNode = FocusNode();
+    _focusNode = FocusNode();
+    _startTimeController = TextEditingController();
     _startDateController = TextEditingController();
+    _titleController = TextEditingController();
   }
 
   @override
   void dispose() {
-    _dateNode.dispose();
+    _focusNode.dispose();
     _startDateController.dispose();
     super.dispose();
   }
@@ -118,11 +123,34 @@ class _FormEventState extends State<FormEvent> {
       key: _formKey,
       child: ListView(
         children: [
+          DateTimeSelectorFormField(
+            controller: _startDateController,
+            decoration: AppConstants.inputDecoration.copyWith(
+              labelText: "Start Date",
+            ),
+            validator: (value) {
+              if (value == null || value == "") return "Please select date.";
+
+              return null;
+            },
+            textStyle: const TextStyle(
+              fontSize: 17.0,
+            ),
+            onSave: (date) => _startDate = date,
+            type: DateTimeSelectionType.date,
+          ),
+          CustomEditTextField(
+            focusNode: _focusNode,
+            title: 'Описание',
+            errorText: _titleController.text.isEmpty ? 'Не заполнено' : null,
+            controller: _titleController,
+            onChanged: (value) {},
+          ),
           Row(
             children: [
               Expanded(
                 child: DateTimeSelectorFormField(
-                  controller: _startDateController,
+                  controller: _startTimeController,
                   decoration: AppConstants.inputDecoration.copyWith(
                     labelText: "Начало",
                   ),
