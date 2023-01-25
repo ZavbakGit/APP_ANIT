@@ -9,6 +9,7 @@ import '../../disign_system/widgets_design/custom_error_page.dart';
 import '../../disign_system/widgets_design/custom_page_widget.dart';
 import '../../disign_system/widgets_design/custom_progres_widgets.dart';
 import '../../disign_system/widgets_design/custom_text_fields.dart';
+import '../../widgets/catalogs/ref_catalog_field_widget.dart';
 import '../../widgets/dialog/date_time_selector.dart';
 import 'event_form_bloc.dart';
 import 'event_form_models.dart';
@@ -94,6 +95,7 @@ class _FormEventState extends State<FormEvent> {
 
   late TextEditingController _startDateController;
   late TextEditingController _startTimeController;
+  late TextEditingController _finishTimeController;
   late TextEditingController _titleController;
 
   late FocusNode _focusNode;
@@ -104,6 +106,8 @@ class _FormEventState extends State<FormEvent> {
     _focusNode = FocusNode();
     _startTimeController = TextEditingController();
     _startDateController = TextEditingController();
+    _finishTimeController = TextEditingController();
+
     _titleController = TextEditingController();
   }
 
@@ -123,6 +127,13 @@ class _FormEventState extends State<FormEvent> {
       key: _formKey,
       child: ListView(
         children: [
+          RefCatalogFieldWidget(
+            refCatalog: null,
+            title: 'Ответственный',
+            errorTitle: '' == null ? 'Не заполнено' : null,
+            type: 'Пользователи',
+            onChoice: (val) {},
+          ),
           DateTimeSelectorFormField(
             controller: _startDateController,
             decoration: AppConstants.inputDecoration.copyWith(
@@ -130,7 +141,6 @@ class _FormEventState extends State<FormEvent> {
             ),
             validator: (value) {
               if (value == null || value == "") return "Please select date.";
-
               return null;
             },
             textStyle: const TextStyle(
@@ -157,6 +167,25 @@ class _FormEventState extends State<FormEvent> {
                   validator: (value) {
                     if (value == null || value == "") {
                       return "Выберите время начала";
+                    }
+                    return null;
+                  },
+                  onSave: (date) => _startTime = date,
+                  textStyle: const TextStyle(
+                    fontSize: 17.0,
+                  ),
+                  type: DateTimeSelectionType.time,
+                ),
+              ),
+              Expanded(
+                child: DateTimeSelectorFormField(
+                  controller: _finishTimeController,
+                  decoration: AppConstants.inputDecoration.copyWith(
+                    labelText: "Окончание",
+                  ),
+                  validator: (value) {
+                    if (value == null || value == "") {
+                      return "Выберите время окончания";
                     }
                     return null;
                   },
