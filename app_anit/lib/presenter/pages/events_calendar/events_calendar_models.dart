@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-part 'event_calendar_models.freezed.dart';
+part 'events_calendar_models.freezed.dart';
 
 @freezed
-class EventCalendarState with _$EventCalendarState {
-  const EventCalendarState._();
+class EventsCalendarState with _$EventsCalendarState {
+  const EventsCalendarState._();
 
-  const factory EventCalendarState.data({
+  const factory EventsCalendarState.data({
     required bool isLoading,
     required ViewCalendarType viewCalendarType,
-    required List<EventData> listEventCalendarData,
+    required List<EventsData> listEventCalendarData,
   }) = _StData;
 
-  const factory EventCalendarState.empty() = _StEmpty;
-  const factory EventCalendarState.error({
+  const factory EventsCalendarState.empty() = _StEmpty;
+  const factory EventsCalendarState.error({
     required String message,
   }) = _StError;
 }
 
 @freezed
-class EventData with _$EventData {
-  const EventData._();
-  factory EventData({
+class EventsData with _$EventsData {
+  const EventsData._();
+  factory EventsData({
     required String title,
     String? description,
     @Default(Colors.blue) Color color,
@@ -64,18 +64,21 @@ class ViewCalendarType with _$ViewCalendarType {
 }
 
 @freezed
-class EventCalendarEvent with _$EventCalendarEvent {
-  const factory EventCalendarEvent.init() = EvInit;
-  const factory EventCalendarEvent.reload() = EvReload;
-  const factory EventCalendarEvent.refrech() = EvRefresh;
-  const factory EventCalendarEvent.exit() = EvExit;
-  const factory EventCalendarEvent.onTapDay(DateTime day) = EvOnTapDay;
-  const factory EventCalendarEvent.onChangeViewType(int typeView) =
-      EvOnChangeViewType;
+class EventsCalendarEvent with _$EventsCalendarEvent {
+  const factory EventsCalendarEvent.init() = EvsInit;
+  const factory EventsCalendarEvent.reload() = EvsReload;
+  const factory EventsCalendarEvent.refrech() = EvsRefresh;
+  const factory EventsCalendarEvent.exit() = EvsExit;
+  const factory EventsCalendarEvent.onTapDay(DateTime day) = EvsOnTapDay;
+  const factory EventsCalendarEvent.onChangeViewType(int typeView) =
+      EvsOnChangeViewType;
+  const factory EventsCalendarEvent.onTapHour(DateTime hour) = EvsOnTapHour;
 }
 
 @freezed
-class EventCalendarSR with _$EventCalendarSR {
-  const factory EventCalendarSR.exit() = _SrExit;
-  const factory EventCalendarSR.showSnackBar(String message) = _SrShowSnackBar;
+class EventsCalendarSR with _$EventsCalendarSR {
+  const factory EventsCalendarSR.exit() = _SrExit;
+  const factory EventsCalendarSR.showSnackBar(String message) = _SrShowSnackBar;
+  const factory EventsCalendarSR.openNewTask(DateTime startTime) =
+      _SrOpenNewTask;
 }

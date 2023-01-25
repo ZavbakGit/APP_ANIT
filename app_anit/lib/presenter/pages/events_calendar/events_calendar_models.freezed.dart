@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'event_calendar_models.dart';
+part of 'events_calendar_models.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,11 +15,11 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$EventCalendarState {
+mixin _$EventsCalendarState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool isLoading, ViewCalendarType viewCalendarType,
-            List<EventData> listEventCalendarData)
+            List<EventsData> listEventCalendarData)
         data,
     required TResult Function() empty,
     required TResult Function(String message) error,
@@ -28,7 +28,7 @@ mixin _$EventCalendarState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(bool isLoading, ViewCalendarType viewCalendarType,
-            List<EventData> listEventCalendarData)?
+            List<EventsData> listEventCalendarData)?
         data,
     TResult Function()? empty,
     TResult Function(String message)? error,
@@ -37,7 +37,7 @@ mixin _$EventCalendarState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isLoading, ViewCalendarType viewCalendarType,
-            List<EventData> listEventCalendarData)?
+            List<EventsData> listEventCalendarData)?
         data,
     TResult Function()? empty,
     TResult Function(String message)? error,
@@ -69,20 +69,20 @@ mixin _$EventCalendarState {
 }
 
 /// @nodoc
-abstract class $EventCalendarStateCopyWith<$Res> {
-  factory $EventCalendarStateCopyWith(
-          EventCalendarState value, $Res Function(EventCalendarState) then) =
-      _$EventCalendarStateCopyWithImpl<$Res>;
+abstract class $EventsCalendarStateCopyWith<$Res> {
+  factory $EventsCalendarStateCopyWith(
+          EventsCalendarState value, $Res Function(EventsCalendarState) then) =
+      _$EventsCalendarStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$EventCalendarStateCopyWithImpl<$Res>
-    implements $EventCalendarStateCopyWith<$Res> {
-  _$EventCalendarStateCopyWithImpl(this._value, this._then);
+class _$EventsCalendarStateCopyWithImpl<$Res>
+    implements $EventsCalendarStateCopyWith<$Res> {
+  _$EventsCalendarStateCopyWithImpl(this._value, this._then);
 
-  final EventCalendarState _value;
+  final EventsCalendarState _value;
   // ignore: unused_field
-  final $Res Function(EventCalendarState) _then;
+  final $Res Function(EventsCalendarState) _then;
 }
 
 /// @nodoc
@@ -92,14 +92,14 @@ abstract class _$$_StDataCopyWith<$Res> {
   $Res call(
       {bool isLoading,
       ViewCalendarType viewCalendarType,
-      List<EventData> listEventCalendarData});
+      List<EventsData> listEventCalendarData});
 
   $ViewCalendarTypeCopyWith<$Res> get viewCalendarType;
 }
 
 /// @nodoc
 class __$$_StDataCopyWithImpl<$Res>
-    extends _$EventCalendarStateCopyWithImpl<$Res>
+    extends _$EventsCalendarStateCopyWithImpl<$Res>
     implements _$$_StDataCopyWith<$Res> {
   __$$_StDataCopyWithImpl(_$_StData _value, $Res Function(_$_StData) _then)
       : super(_value, (v) => _then(v as _$_StData));
@@ -125,7 +125,7 @@ class __$$_StDataCopyWithImpl<$Res>
       listEventCalendarData: listEventCalendarData == freezed
           ? _value._listEventCalendarData
           : listEventCalendarData // ignore: cast_nullable_to_non_nullable
-              as List<EventData>,
+              as List<EventsData>,
     ));
   }
 
@@ -143,7 +143,7 @@ class _$_StData extends _StData {
   const _$_StData(
       {required this.isLoading,
       required this.viewCalendarType,
-      required final List<EventData> listEventCalendarData})
+      required final List<EventsData> listEventCalendarData})
       : _listEventCalendarData = listEventCalendarData,
         super._();
 
@@ -151,16 +151,16 @@ class _$_StData extends _StData {
   final bool isLoading;
   @override
   final ViewCalendarType viewCalendarType;
-  final List<EventData> _listEventCalendarData;
+  final List<EventsData> _listEventCalendarData;
   @override
-  List<EventData> get listEventCalendarData {
+  List<EventsData> get listEventCalendarData {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_listEventCalendarData);
   }
 
   @override
   String toString() {
-    return 'EventCalendarState.data(isLoading: $isLoading, viewCalendarType: $viewCalendarType, listEventCalendarData: $listEventCalendarData)';
+    return 'EventsCalendarState.data(isLoading: $isLoading, viewCalendarType: $viewCalendarType, listEventCalendarData: $listEventCalendarData)';
   }
 
   @override
@@ -191,7 +191,7 @@ class _$_StData extends _StData {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool isLoading, ViewCalendarType viewCalendarType,
-            List<EventData> listEventCalendarData)
+            List<EventsData> listEventCalendarData)
         data,
     required TResult Function() empty,
     required TResult Function(String message) error,
@@ -203,7 +203,7 @@ class _$_StData extends _StData {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(bool isLoading, ViewCalendarType viewCalendarType,
-            List<EventData> listEventCalendarData)?
+            List<EventsData> listEventCalendarData)?
         data,
     TResult Function()? empty,
     TResult Function(String message)? error,
@@ -215,7 +215,7 @@ class _$_StData extends _StData {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isLoading, ViewCalendarType viewCalendarType,
-            List<EventData> listEventCalendarData)?
+            List<EventsData> listEventCalendarData)?
         data,
     TResult Function()? empty,
     TResult Function(String message)? error,
@@ -262,16 +262,16 @@ class _$_StData extends _StData {
   }
 }
 
-abstract class _StData extends EventCalendarState {
+abstract class _StData extends EventsCalendarState {
   const factory _StData(
       {required final bool isLoading,
       required final ViewCalendarType viewCalendarType,
-      required final List<EventData> listEventCalendarData}) = _$_StData;
+      required final List<EventsData> listEventCalendarData}) = _$_StData;
   const _StData._() : super._();
 
   bool get isLoading;
   ViewCalendarType get viewCalendarType;
-  List<EventData> get listEventCalendarData;
+  List<EventsData> get listEventCalendarData;
   @JsonKey(ignore: true)
   _$$_StDataCopyWith<_$_StData> get copyWith =>
       throw _privateConstructorUsedError;
@@ -286,7 +286,7 @@ abstract class _$$_StEmptyCopyWith<$Res> {
 
 /// @nodoc
 class __$$_StEmptyCopyWithImpl<$Res>
-    extends _$EventCalendarStateCopyWithImpl<$Res>
+    extends _$EventsCalendarStateCopyWithImpl<$Res>
     implements _$$_StEmptyCopyWith<$Res> {
   __$$_StEmptyCopyWithImpl(_$_StEmpty _value, $Res Function(_$_StEmpty) _then)
       : super(_value, (v) => _then(v as _$_StEmpty));
@@ -302,7 +302,7 @@ class _$_StEmpty extends _StEmpty {
 
   @override
   String toString() {
-    return 'EventCalendarState.empty()';
+    return 'EventsCalendarState.empty()';
   }
 
   @override
@@ -318,7 +318,7 @@ class _$_StEmpty extends _StEmpty {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool isLoading, ViewCalendarType viewCalendarType,
-            List<EventData> listEventCalendarData)
+            List<EventsData> listEventCalendarData)
         data,
     required TResult Function() empty,
     required TResult Function(String message) error,
@@ -330,7 +330,7 @@ class _$_StEmpty extends _StEmpty {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(bool isLoading, ViewCalendarType viewCalendarType,
-            List<EventData> listEventCalendarData)?
+            List<EventsData> listEventCalendarData)?
         data,
     TResult Function()? empty,
     TResult Function(String message)? error,
@@ -342,7 +342,7 @@ class _$_StEmpty extends _StEmpty {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isLoading, ViewCalendarType viewCalendarType,
-            List<EventData> listEventCalendarData)?
+            List<EventsData> listEventCalendarData)?
         data,
     TResult Function()? empty,
     TResult Function(String message)? error,
@@ -389,7 +389,7 @@ class _$_StEmpty extends _StEmpty {
   }
 }
 
-abstract class _StEmpty extends EventCalendarState {
+abstract class _StEmpty extends EventsCalendarState {
   const factory _StEmpty() = _$_StEmpty;
   const _StEmpty._() : super._();
 }
@@ -404,7 +404,7 @@ abstract class _$$_StErrorCopyWith<$Res> {
 
 /// @nodoc
 class __$$_StErrorCopyWithImpl<$Res>
-    extends _$EventCalendarStateCopyWithImpl<$Res>
+    extends _$EventsCalendarStateCopyWithImpl<$Res>
     implements _$$_StErrorCopyWith<$Res> {
   __$$_StErrorCopyWithImpl(_$_StError _value, $Res Function(_$_StError) _then)
       : super(_value, (v) => _then(v as _$_StError));
@@ -435,7 +435,7 @@ class _$_StError extends _StError {
 
   @override
   String toString() {
-    return 'EventCalendarState.error(message: $message)';
+    return 'EventsCalendarState.error(message: $message)';
   }
 
   @override
@@ -459,7 +459,7 @@ class _$_StError extends _StError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool isLoading, ViewCalendarType viewCalendarType,
-            List<EventData> listEventCalendarData)
+            List<EventsData> listEventCalendarData)
         data,
     required TResult Function() empty,
     required TResult Function(String message) error,
@@ -471,7 +471,7 @@ class _$_StError extends _StError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(bool isLoading, ViewCalendarType viewCalendarType,
-            List<EventData> listEventCalendarData)?
+            List<EventsData> listEventCalendarData)?
         data,
     TResult Function()? empty,
     TResult Function(String message)? error,
@@ -483,7 +483,7 @@ class _$_StError extends _StError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isLoading, ViewCalendarType viewCalendarType,
-            List<EventData> listEventCalendarData)?
+            List<EventsData> listEventCalendarData)?
         data,
     TResult Function()? empty,
     TResult Function(String message)? error,
@@ -530,7 +530,7 @@ class _$_StError extends _StError {
   }
 }
 
-abstract class _StError extends EventCalendarState {
+abstract class _StError extends EventsCalendarState {
   const factory _StError({required final String message}) = _$_StError;
   const _StError._() : super._();
 
@@ -541,7 +541,7 @@ abstract class _StError extends EventCalendarState {
 }
 
 /// @nodoc
-mixin _$EventData {
+mixin _$EventsData {
   String get title => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   Color get color => throw _privateConstructorUsedError;
@@ -549,14 +549,15 @@ mixin _$EventData {
   DateTime get endTime => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $EventDataCopyWith<EventData> get copyWith =>
+  $EventsDataCopyWith<EventsData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EventDataCopyWith<$Res> {
-  factory $EventDataCopyWith(EventData value, $Res Function(EventData) then) =
-      _$EventDataCopyWithImpl<$Res>;
+abstract class $EventsDataCopyWith<$Res> {
+  factory $EventsDataCopyWith(
+          EventsData value, $Res Function(EventsData) then) =
+      _$EventsDataCopyWithImpl<$Res>;
   $Res call(
       {String title,
       String? description,
@@ -566,12 +567,12 @@ abstract class $EventDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$EventDataCopyWithImpl<$Res> implements $EventDataCopyWith<$Res> {
-  _$EventDataCopyWithImpl(this._value, this._then);
+class _$EventsDataCopyWithImpl<$Res> implements $EventsDataCopyWith<$Res> {
+  _$EventsDataCopyWithImpl(this._value, this._then);
 
-  final EventData _value;
+  final EventsData _value;
   // ignore: unused_field
-  final $Res Function(EventData) _then;
+  final $Res Function(EventsData) _then;
 
   @override
   $Res call({
@@ -607,7 +608,8 @@ class _$EventDataCopyWithImpl<$Res> implements $EventDataCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_EventDataCopyWith<$Res> implements $EventDataCopyWith<$Res> {
+abstract class _$$_EventDataCopyWith<$Res>
+    implements $EventsDataCopyWith<$Res> {
   factory _$$_EventDataCopyWith(
           _$_EventData value, $Res Function(_$_EventData) then) =
       __$$_EventDataCopyWithImpl<$Res>;
@@ -621,7 +623,7 @@ abstract class _$$_EventDataCopyWith<$Res> implements $EventDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_EventDataCopyWithImpl<$Res> extends _$EventDataCopyWithImpl<$Res>
+class __$$_EventDataCopyWithImpl<$Res> extends _$EventsDataCopyWithImpl<$Res>
     implements _$$_EventDataCopyWith<$Res> {
   __$$_EventDataCopyWithImpl(
       _$_EventData _value, $Res Function(_$_EventData) _then)
@@ -688,7 +690,7 @@ class _$_EventData extends _EventData {
 
   @override
   String toString() {
-    return 'EventData(title: $title, description: $description, color: $color, startTime: $startTime, endTime: $endTime)';
+    return 'EventsData(title: $title, description: $description, color: $color, startTime: $startTime, endTime: $endTime)';
   }
 
   @override
@@ -719,7 +721,7 @@ class _$_EventData extends _EventData {
       __$$_EventDataCopyWithImpl<_$_EventData>(this, _$identity);
 }
 
-abstract class _EventData extends EventData {
+abstract class _EventData extends EventsData {
   factory _EventData(
       {required final String title,
       final String? description,
@@ -1433,7 +1435,7 @@ abstract class _VctList extends ViewCalendarType {
 }
 
 /// @nodoc
-mixin _$EventCalendarEvent {
+mixin _$EventsCalendarEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
@@ -1442,6 +1444,7 @@ mixin _$EventCalendarEvent {
     required TResult Function() exit,
     required TResult Function(DateTime day) onTapDay,
     required TResult Function(int typeView) onChangeViewType,
+    required TResult Function(DateTime hour) onTapHour,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1452,6 +1455,7 @@ mixin _$EventCalendarEvent {
     TResult Function()? exit,
     TResult Function(DateTime day)? onTapDay,
     TResult Function(int typeView)? onChangeViewType,
+    TResult Function(DateTime hour)? onTapHour,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1462,90 +1466,94 @@ mixin _$EventCalendarEvent {
     TResult Function()? exit,
     TResult Function(DateTime day)? onTapDay,
     TResult Function(int typeView)? onChangeViewType,
+    TResult Function(DateTime hour)? onTapHour,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EvInit value) init,
-    required TResult Function(EvReload value) reload,
-    required TResult Function(EvRefresh value) refrech,
-    required TResult Function(EvExit value) exit,
-    required TResult Function(EvOnTapDay value) onTapDay,
-    required TResult Function(EvOnChangeViewType value) onChangeViewType,
+    required TResult Function(EvsInit value) init,
+    required TResult Function(EvsReload value) reload,
+    required TResult Function(EvsRefresh value) refrech,
+    required TResult Function(EvsExit value) exit,
+    required TResult Function(EvsOnTapDay value) onTapDay,
+    required TResult Function(EvsOnChangeViewType value) onChangeViewType,
+    required TResult Function(EvsOnTapHour value) onTapHour,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(EvInit value)? init,
-    TResult Function(EvReload value)? reload,
-    TResult Function(EvRefresh value)? refrech,
-    TResult Function(EvExit value)? exit,
-    TResult Function(EvOnTapDay value)? onTapDay,
-    TResult Function(EvOnChangeViewType value)? onChangeViewType,
+    TResult Function(EvsInit value)? init,
+    TResult Function(EvsReload value)? reload,
+    TResult Function(EvsRefresh value)? refrech,
+    TResult Function(EvsExit value)? exit,
+    TResult Function(EvsOnTapDay value)? onTapDay,
+    TResult Function(EvsOnChangeViewType value)? onChangeViewType,
+    TResult Function(EvsOnTapHour value)? onTapHour,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EvInit value)? init,
-    TResult Function(EvReload value)? reload,
-    TResult Function(EvRefresh value)? refrech,
-    TResult Function(EvExit value)? exit,
-    TResult Function(EvOnTapDay value)? onTapDay,
-    TResult Function(EvOnChangeViewType value)? onChangeViewType,
+    TResult Function(EvsInit value)? init,
+    TResult Function(EvsReload value)? reload,
+    TResult Function(EvsRefresh value)? refrech,
+    TResult Function(EvsExit value)? exit,
+    TResult Function(EvsOnTapDay value)? onTapDay,
+    TResult Function(EvsOnChangeViewType value)? onChangeViewType,
+    TResult Function(EvsOnTapHour value)? onTapHour,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EventCalendarEventCopyWith<$Res> {
-  factory $EventCalendarEventCopyWith(
-          EventCalendarEvent value, $Res Function(EventCalendarEvent) then) =
-      _$EventCalendarEventCopyWithImpl<$Res>;
+abstract class $EventsCalendarEventCopyWith<$Res> {
+  factory $EventsCalendarEventCopyWith(
+          EventsCalendarEvent value, $Res Function(EventsCalendarEvent) then) =
+      _$EventsCalendarEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$EventCalendarEventCopyWithImpl<$Res>
-    implements $EventCalendarEventCopyWith<$Res> {
-  _$EventCalendarEventCopyWithImpl(this._value, this._then);
+class _$EventsCalendarEventCopyWithImpl<$Res>
+    implements $EventsCalendarEventCopyWith<$Res> {
+  _$EventsCalendarEventCopyWithImpl(this._value, this._then);
 
-  final EventCalendarEvent _value;
+  final EventsCalendarEvent _value;
   // ignore: unused_field
-  final $Res Function(EventCalendarEvent) _then;
+  final $Res Function(EventsCalendarEvent) _then;
 }
 
 /// @nodoc
-abstract class _$$EvInitCopyWith<$Res> {
-  factory _$$EvInitCopyWith(_$EvInit value, $Res Function(_$EvInit) then) =
-      __$$EvInitCopyWithImpl<$Res>;
+abstract class _$$EvsInitCopyWith<$Res> {
+  factory _$$EvsInitCopyWith(_$EvsInit value, $Res Function(_$EvsInit) then) =
+      __$$EvsInitCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$EvInitCopyWithImpl<$Res>
-    extends _$EventCalendarEventCopyWithImpl<$Res>
-    implements _$$EvInitCopyWith<$Res> {
-  __$$EvInitCopyWithImpl(_$EvInit _value, $Res Function(_$EvInit) _then)
-      : super(_value, (v) => _then(v as _$EvInit));
+class __$$EvsInitCopyWithImpl<$Res>
+    extends _$EventsCalendarEventCopyWithImpl<$Res>
+    implements _$$EvsInitCopyWith<$Res> {
+  __$$EvsInitCopyWithImpl(_$EvsInit _value, $Res Function(_$EvsInit) _then)
+      : super(_value, (v) => _then(v as _$EvsInit));
 
   @override
-  _$EvInit get _value => super._value as _$EvInit;
+  _$EvsInit get _value => super._value as _$EvsInit;
 }
 
 /// @nodoc
 
-class _$EvInit implements EvInit {
-  const _$EvInit();
+class _$EvsInit implements EvsInit {
+  const _$EvsInit();
 
   @override
   String toString() {
-    return 'EventCalendarEvent.init()';
+    return 'EventsCalendarEvent.init()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$EvInit);
+        (other.runtimeType == runtimeType && other is _$EvsInit);
   }
 
   @override
@@ -1560,6 +1568,7 @@ class _$EvInit implements EvInit {
     required TResult Function() exit,
     required TResult Function(DateTime day) onTapDay,
     required TResult Function(int typeView) onChangeViewType,
+    required TResult Function(DateTime hour) onTapHour,
   }) {
     return init();
   }
@@ -1573,6 +1582,7 @@ class _$EvInit implements EvInit {
     TResult Function()? exit,
     TResult Function(DateTime day)? onTapDay,
     TResult Function(int typeView)? onChangeViewType,
+    TResult Function(DateTime hour)? onTapHour,
   }) {
     return init?.call();
   }
@@ -1586,6 +1596,7 @@ class _$EvInit implements EvInit {
     TResult Function()? exit,
     TResult Function(DateTime day)? onTapDay,
     TResult Function(int typeView)? onChangeViewType,
+    TResult Function(DateTime hour)? onTapHour,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -1597,12 +1608,13 @@ class _$EvInit implements EvInit {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EvInit value) init,
-    required TResult Function(EvReload value) reload,
-    required TResult Function(EvRefresh value) refrech,
-    required TResult Function(EvExit value) exit,
-    required TResult Function(EvOnTapDay value) onTapDay,
-    required TResult Function(EvOnChangeViewType value) onChangeViewType,
+    required TResult Function(EvsInit value) init,
+    required TResult Function(EvsReload value) reload,
+    required TResult Function(EvsRefresh value) refrech,
+    required TResult Function(EvsExit value) exit,
+    required TResult Function(EvsOnTapDay value) onTapDay,
+    required TResult Function(EvsOnChangeViewType value) onChangeViewType,
+    required TResult Function(EvsOnTapHour value) onTapHour,
   }) {
     return init(this);
   }
@@ -1610,12 +1622,13 @@ class _$EvInit implements EvInit {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(EvInit value)? init,
-    TResult Function(EvReload value)? reload,
-    TResult Function(EvRefresh value)? refrech,
-    TResult Function(EvExit value)? exit,
-    TResult Function(EvOnTapDay value)? onTapDay,
-    TResult Function(EvOnChangeViewType value)? onChangeViewType,
+    TResult Function(EvsInit value)? init,
+    TResult Function(EvsReload value)? reload,
+    TResult Function(EvsRefresh value)? refrech,
+    TResult Function(EvsExit value)? exit,
+    TResult Function(EvsOnTapDay value)? onTapDay,
+    TResult Function(EvsOnChangeViewType value)? onChangeViewType,
+    TResult Function(EvsOnTapHour value)? onTapHour,
   }) {
     return init?.call(this);
   }
@@ -1623,12 +1636,13 @@ class _$EvInit implements EvInit {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EvInit value)? init,
-    TResult Function(EvReload value)? reload,
-    TResult Function(EvRefresh value)? refrech,
-    TResult Function(EvExit value)? exit,
-    TResult Function(EvOnTapDay value)? onTapDay,
-    TResult Function(EvOnChangeViewType value)? onChangeViewType,
+    TResult Function(EvsInit value)? init,
+    TResult Function(EvsReload value)? reload,
+    TResult Function(EvsRefresh value)? refrech,
+    TResult Function(EvsExit value)? exit,
+    TResult Function(EvsOnTapDay value)? onTapDay,
+    TResult Function(EvsOnChangeViewType value)? onChangeViewType,
+    TResult Function(EvsOnTapHour value)? onTapHour,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -1638,42 +1652,43 @@ class _$EvInit implements EvInit {
   }
 }
 
-abstract class EvInit implements EventCalendarEvent {
-  const factory EvInit() = _$EvInit;
+abstract class EvsInit implements EventsCalendarEvent {
+  const factory EvsInit() = _$EvsInit;
 }
 
 /// @nodoc
-abstract class _$$EvReloadCopyWith<$Res> {
-  factory _$$EvReloadCopyWith(
-          _$EvReload value, $Res Function(_$EvReload) then) =
-      __$$EvReloadCopyWithImpl<$Res>;
+abstract class _$$EvsReloadCopyWith<$Res> {
+  factory _$$EvsReloadCopyWith(
+          _$EvsReload value, $Res Function(_$EvsReload) then) =
+      __$$EvsReloadCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$EvReloadCopyWithImpl<$Res>
-    extends _$EventCalendarEventCopyWithImpl<$Res>
-    implements _$$EvReloadCopyWith<$Res> {
-  __$$EvReloadCopyWithImpl(_$EvReload _value, $Res Function(_$EvReload) _then)
-      : super(_value, (v) => _then(v as _$EvReload));
+class __$$EvsReloadCopyWithImpl<$Res>
+    extends _$EventsCalendarEventCopyWithImpl<$Res>
+    implements _$$EvsReloadCopyWith<$Res> {
+  __$$EvsReloadCopyWithImpl(
+      _$EvsReload _value, $Res Function(_$EvsReload) _then)
+      : super(_value, (v) => _then(v as _$EvsReload));
 
   @override
-  _$EvReload get _value => super._value as _$EvReload;
+  _$EvsReload get _value => super._value as _$EvsReload;
 }
 
 /// @nodoc
 
-class _$EvReload implements EvReload {
-  const _$EvReload();
+class _$EvsReload implements EvsReload {
+  const _$EvsReload();
 
   @override
   String toString() {
-    return 'EventCalendarEvent.reload()';
+    return 'EventsCalendarEvent.reload()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$EvReload);
+        (other.runtimeType == runtimeType && other is _$EvsReload);
   }
 
   @override
@@ -1688,6 +1703,7 @@ class _$EvReload implements EvReload {
     required TResult Function() exit,
     required TResult Function(DateTime day) onTapDay,
     required TResult Function(int typeView) onChangeViewType,
+    required TResult Function(DateTime hour) onTapHour,
   }) {
     return reload();
   }
@@ -1701,6 +1717,7 @@ class _$EvReload implements EvReload {
     TResult Function()? exit,
     TResult Function(DateTime day)? onTapDay,
     TResult Function(int typeView)? onChangeViewType,
+    TResult Function(DateTime hour)? onTapHour,
   }) {
     return reload?.call();
   }
@@ -1714,6 +1731,7 @@ class _$EvReload implements EvReload {
     TResult Function()? exit,
     TResult Function(DateTime day)? onTapDay,
     TResult Function(int typeView)? onChangeViewType,
+    TResult Function(DateTime hour)? onTapHour,
     required TResult orElse(),
   }) {
     if (reload != null) {
@@ -1725,12 +1743,13 @@ class _$EvReload implements EvReload {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EvInit value) init,
-    required TResult Function(EvReload value) reload,
-    required TResult Function(EvRefresh value) refrech,
-    required TResult Function(EvExit value) exit,
-    required TResult Function(EvOnTapDay value) onTapDay,
-    required TResult Function(EvOnChangeViewType value) onChangeViewType,
+    required TResult Function(EvsInit value) init,
+    required TResult Function(EvsReload value) reload,
+    required TResult Function(EvsRefresh value) refrech,
+    required TResult Function(EvsExit value) exit,
+    required TResult Function(EvsOnTapDay value) onTapDay,
+    required TResult Function(EvsOnChangeViewType value) onChangeViewType,
+    required TResult Function(EvsOnTapHour value) onTapHour,
   }) {
     return reload(this);
   }
@@ -1738,12 +1757,13 @@ class _$EvReload implements EvReload {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(EvInit value)? init,
-    TResult Function(EvReload value)? reload,
-    TResult Function(EvRefresh value)? refrech,
-    TResult Function(EvExit value)? exit,
-    TResult Function(EvOnTapDay value)? onTapDay,
-    TResult Function(EvOnChangeViewType value)? onChangeViewType,
+    TResult Function(EvsInit value)? init,
+    TResult Function(EvsReload value)? reload,
+    TResult Function(EvsRefresh value)? refrech,
+    TResult Function(EvsExit value)? exit,
+    TResult Function(EvsOnTapDay value)? onTapDay,
+    TResult Function(EvsOnChangeViewType value)? onChangeViewType,
+    TResult Function(EvsOnTapHour value)? onTapHour,
   }) {
     return reload?.call(this);
   }
@@ -1751,12 +1771,13 @@ class _$EvReload implements EvReload {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EvInit value)? init,
-    TResult Function(EvReload value)? reload,
-    TResult Function(EvRefresh value)? refrech,
-    TResult Function(EvExit value)? exit,
-    TResult Function(EvOnTapDay value)? onTapDay,
-    TResult Function(EvOnChangeViewType value)? onChangeViewType,
+    TResult Function(EvsInit value)? init,
+    TResult Function(EvsReload value)? reload,
+    TResult Function(EvsRefresh value)? refrech,
+    TResult Function(EvsExit value)? exit,
+    TResult Function(EvsOnTapDay value)? onTapDay,
+    TResult Function(EvsOnChangeViewType value)? onChangeViewType,
+    TResult Function(EvsOnTapHour value)? onTapHour,
     required TResult orElse(),
   }) {
     if (reload != null) {
@@ -1766,43 +1787,43 @@ class _$EvReload implements EvReload {
   }
 }
 
-abstract class EvReload implements EventCalendarEvent {
-  const factory EvReload() = _$EvReload;
+abstract class EvsReload implements EventsCalendarEvent {
+  const factory EvsReload() = _$EvsReload;
 }
 
 /// @nodoc
-abstract class _$$EvRefreshCopyWith<$Res> {
-  factory _$$EvRefreshCopyWith(
-          _$EvRefresh value, $Res Function(_$EvRefresh) then) =
-      __$$EvRefreshCopyWithImpl<$Res>;
+abstract class _$$EvsRefreshCopyWith<$Res> {
+  factory _$$EvsRefreshCopyWith(
+          _$EvsRefresh value, $Res Function(_$EvsRefresh) then) =
+      __$$EvsRefreshCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$EvRefreshCopyWithImpl<$Res>
-    extends _$EventCalendarEventCopyWithImpl<$Res>
-    implements _$$EvRefreshCopyWith<$Res> {
-  __$$EvRefreshCopyWithImpl(
-      _$EvRefresh _value, $Res Function(_$EvRefresh) _then)
-      : super(_value, (v) => _then(v as _$EvRefresh));
+class __$$EvsRefreshCopyWithImpl<$Res>
+    extends _$EventsCalendarEventCopyWithImpl<$Res>
+    implements _$$EvsRefreshCopyWith<$Res> {
+  __$$EvsRefreshCopyWithImpl(
+      _$EvsRefresh _value, $Res Function(_$EvsRefresh) _then)
+      : super(_value, (v) => _then(v as _$EvsRefresh));
 
   @override
-  _$EvRefresh get _value => super._value as _$EvRefresh;
+  _$EvsRefresh get _value => super._value as _$EvsRefresh;
 }
 
 /// @nodoc
 
-class _$EvRefresh implements EvRefresh {
-  const _$EvRefresh();
+class _$EvsRefresh implements EvsRefresh {
+  const _$EvsRefresh();
 
   @override
   String toString() {
-    return 'EventCalendarEvent.refrech()';
+    return 'EventsCalendarEvent.refrech()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$EvRefresh);
+        (other.runtimeType == runtimeType && other is _$EvsRefresh);
   }
 
   @override
@@ -1817,6 +1838,7 @@ class _$EvRefresh implements EvRefresh {
     required TResult Function() exit,
     required TResult Function(DateTime day) onTapDay,
     required TResult Function(int typeView) onChangeViewType,
+    required TResult Function(DateTime hour) onTapHour,
   }) {
     return refrech();
   }
@@ -1830,6 +1852,7 @@ class _$EvRefresh implements EvRefresh {
     TResult Function()? exit,
     TResult Function(DateTime day)? onTapDay,
     TResult Function(int typeView)? onChangeViewType,
+    TResult Function(DateTime hour)? onTapHour,
   }) {
     return refrech?.call();
   }
@@ -1843,6 +1866,7 @@ class _$EvRefresh implements EvRefresh {
     TResult Function()? exit,
     TResult Function(DateTime day)? onTapDay,
     TResult Function(int typeView)? onChangeViewType,
+    TResult Function(DateTime hour)? onTapHour,
     required TResult orElse(),
   }) {
     if (refrech != null) {
@@ -1854,12 +1878,13 @@ class _$EvRefresh implements EvRefresh {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EvInit value) init,
-    required TResult Function(EvReload value) reload,
-    required TResult Function(EvRefresh value) refrech,
-    required TResult Function(EvExit value) exit,
-    required TResult Function(EvOnTapDay value) onTapDay,
-    required TResult Function(EvOnChangeViewType value) onChangeViewType,
+    required TResult Function(EvsInit value) init,
+    required TResult Function(EvsReload value) reload,
+    required TResult Function(EvsRefresh value) refrech,
+    required TResult Function(EvsExit value) exit,
+    required TResult Function(EvsOnTapDay value) onTapDay,
+    required TResult Function(EvsOnChangeViewType value) onChangeViewType,
+    required TResult Function(EvsOnTapHour value) onTapHour,
   }) {
     return refrech(this);
   }
@@ -1867,12 +1892,13 @@ class _$EvRefresh implements EvRefresh {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(EvInit value)? init,
-    TResult Function(EvReload value)? reload,
-    TResult Function(EvRefresh value)? refrech,
-    TResult Function(EvExit value)? exit,
-    TResult Function(EvOnTapDay value)? onTapDay,
-    TResult Function(EvOnChangeViewType value)? onChangeViewType,
+    TResult Function(EvsInit value)? init,
+    TResult Function(EvsReload value)? reload,
+    TResult Function(EvsRefresh value)? refrech,
+    TResult Function(EvsExit value)? exit,
+    TResult Function(EvsOnTapDay value)? onTapDay,
+    TResult Function(EvsOnChangeViewType value)? onChangeViewType,
+    TResult Function(EvsOnTapHour value)? onTapHour,
   }) {
     return refrech?.call(this);
   }
@@ -1880,12 +1906,13 @@ class _$EvRefresh implements EvRefresh {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EvInit value)? init,
-    TResult Function(EvReload value)? reload,
-    TResult Function(EvRefresh value)? refrech,
-    TResult Function(EvExit value)? exit,
-    TResult Function(EvOnTapDay value)? onTapDay,
-    TResult Function(EvOnChangeViewType value)? onChangeViewType,
+    TResult Function(EvsInit value)? init,
+    TResult Function(EvsReload value)? reload,
+    TResult Function(EvsRefresh value)? refrech,
+    TResult Function(EvsExit value)? exit,
+    TResult Function(EvsOnTapDay value)? onTapDay,
+    TResult Function(EvsOnChangeViewType value)? onChangeViewType,
+    TResult Function(EvsOnTapHour value)? onTapHour,
     required TResult orElse(),
   }) {
     if (refrech != null) {
@@ -1895,41 +1922,41 @@ class _$EvRefresh implements EvRefresh {
   }
 }
 
-abstract class EvRefresh implements EventCalendarEvent {
-  const factory EvRefresh() = _$EvRefresh;
+abstract class EvsRefresh implements EventsCalendarEvent {
+  const factory EvsRefresh() = _$EvsRefresh;
 }
 
 /// @nodoc
-abstract class _$$EvExitCopyWith<$Res> {
-  factory _$$EvExitCopyWith(_$EvExit value, $Res Function(_$EvExit) then) =
-      __$$EvExitCopyWithImpl<$Res>;
+abstract class _$$EvsExitCopyWith<$Res> {
+  factory _$$EvsExitCopyWith(_$EvsExit value, $Res Function(_$EvsExit) then) =
+      __$$EvsExitCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$EvExitCopyWithImpl<$Res>
-    extends _$EventCalendarEventCopyWithImpl<$Res>
-    implements _$$EvExitCopyWith<$Res> {
-  __$$EvExitCopyWithImpl(_$EvExit _value, $Res Function(_$EvExit) _then)
-      : super(_value, (v) => _then(v as _$EvExit));
+class __$$EvsExitCopyWithImpl<$Res>
+    extends _$EventsCalendarEventCopyWithImpl<$Res>
+    implements _$$EvsExitCopyWith<$Res> {
+  __$$EvsExitCopyWithImpl(_$EvsExit _value, $Res Function(_$EvsExit) _then)
+      : super(_value, (v) => _then(v as _$EvsExit));
 
   @override
-  _$EvExit get _value => super._value as _$EvExit;
+  _$EvsExit get _value => super._value as _$EvsExit;
 }
 
 /// @nodoc
 
-class _$EvExit implements EvExit {
-  const _$EvExit();
+class _$EvsExit implements EvsExit {
+  const _$EvsExit();
 
   @override
   String toString() {
-    return 'EventCalendarEvent.exit()';
+    return 'EventsCalendarEvent.exit()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$EvExit);
+        (other.runtimeType == runtimeType && other is _$EvsExit);
   }
 
   @override
@@ -1944,6 +1971,7 @@ class _$EvExit implements EvExit {
     required TResult Function() exit,
     required TResult Function(DateTime day) onTapDay,
     required TResult Function(int typeView) onChangeViewType,
+    required TResult Function(DateTime hour) onTapHour,
   }) {
     return exit();
   }
@@ -1957,6 +1985,7 @@ class _$EvExit implements EvExit {
     TResult Function()? exit,
     TResult Function(DateTime day)? onTapDay,
     TResult Function(int typeView)? onChangeViewType,
+    TResult Function(DateTime hour)? onTapHour,
   }) {
     return exit?.call();
   }
@@ -1970,6 +1999,7 @@ class _$EvExit implements EvExit {
     TResult Function()? exit,
     TResult Function(DateTime day)? onTapDay,
     TResult Function(int typeView)? onChangeViewType,
+    TResult Function(DateTime hour)? onTapHour,
     required TResult orElse(),
   }) {
     if (exit != null) {
@@ -1981,12 +2011,13 @@ class _$EvExit implements EvExit {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EvInit value) init,
-    required TResult Function(EvReload value) reload,
-    required TResult Function(EvRefresh value) refrech,
-    required TResult Function(EvExit value) exit,
-    required TResult Function(EvOnTapDay value) onTapDay,
-    required TResult Function(EvOnChangeViewType value) onChangeViewType,
+    required TResult Function(EvsInit value) init,
+    required TResult Function(EvsReload value) reload,
+    required TResult Function(EvsRefresh value) refrech,
+    required TResult Function(EvsExit value) exit,
+    required TResult Function(EvsOnTapDay value) onTapDay,
+    required TResult Function(EvsOnChangeViewType value) onChangeViewType,
+    required TResult Function(EvsOnTapHour value) onTapHour,
   }) {
     return exit(this);
   }
@@ -1994,12 +2025,13 @@ class _$EvExit implements EvExit {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(EvInit value)? init,
-    TResult Function(EvReload value)? reload,
-    TResult Function(EvRefresh value)? refrech,
-    TResult Function(EvExit value)? exit,
-    TResult Function(EvOnTapDay value)? onTapDay,
-    TResult Function(EvOnChangeViewType value)? onChangeViewType,
+    TResult Function(EvsInit value)? init,
+    TResult Function(EvsReload value)? reload,
+    TResult Function(EvsRefresh value)? refrech,
+    TResult Function(EvsExit value)? exit,
+    TResult Function(EvsOnTapDay value)? onTapDay,
+    TResult Function(EvsOnChangeViewType value)? onChangeViewType,
+    TResult Function(EvsOnTapHour value)? onTapHour,
   }) {
     return exit?.call(this);
   }
@@ -2007,12 +2039,13 @@ class _$EvExit implements EvExit {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EvInit value)? init,
-    TResult Function(EvReload value)? reload,
-    TResult Function(EvRefresh value)? refrech,
-    TResult Function(EvExit value)? exit,
-    TResult Function(EvOnTapDay value)? onTapDay,
-    TResult Function(EvOnChangeViewType value)? onChangeViewType,
+    TResult Function(EvsInit value)? init,
+    TResult Function(EvsReload value)? reload,
+    TResult Function(EvsRefresh value)? refrech,
+    TResult Function(EvsExit value)? exit,
+    TResult Function(EvsOnTapDay value)? onTapDay,
+    TResult Function(EvsOnChangeViewType value)? onChangeViewType,
+    TResult Function(EvsOnTapHour value)? onTapHour,
     required TResult orElse(),
   }) {
     if (exit != null) {
@@ -2022,34 +2055,34 @@ class _$EvExit implements EvExit {
   }
 }
 
-abstract class EvExit implements EventCalendarEvent {
-  const factory EvExit() = _$EvExit;
+abstract class EvsExit implements EventsCalendarEvent {
+  const factory EvsExit() = _$EvsExit;
 }
 
 /// @nodoc
-abstract class _$$EvOnTapDayCopyWith<$Res> {
-  factory _$$EvOnTapDayCopyWith(
-          _$EvOnTapDay value, $Res Function(_$EvOnTapDay) then) =
-      __$$EvOnTapDayCopyWithImpl<$Res>;
+abstract class _$$EvsOnTapDayCopyWith<$Res> {
+  factory _$$EvsOnTapDayCopyWith(
+          _$EvsOnTapDay value, $Res Function(_$EvsOnTapDay) then) =
+      __$$EvsOnTapDayCopyWithImpl<$Res>;
   $Res call({DateTime day});
 }
 
 /// @nodoc
-class __$$EvOnTapDayCopyWithImpl<$Res>
-    extends _$EventCalendarEventCopyWithImpl<$Res>
-    implements _$$EvOnTapDayCopyWith<$Res> {
-  __$$EvOnTapDayCopyWithImpl(
-      _$EvOnTapDay _value, $Res Function(_$EvOnTapDay) _then)
-      : super(_value, (v) => _then(v as _$EvOnTapDay));
+class __$$EvsOnTapDayCopyWithImpl<$Res>
+    extends _$EventsCalendarEventCopyWithImpl<$Res>
+    implements _$$EvsOnTapDayCopyWith<$Res> {
+  __$$EvsOnTapDayCopyWithImpl(
+      _$EvsOnTapDay _value, $Res Function(_$EvsOnTapDay) _then)
+      : super(_value, (v) => _then(v as _$EvsOnTapDay));
 
   @override
-  _$EvOnTapDay get _value => super._value as _$EvOnTapDay;
+  _$EvsOnTapDay get _value => super._value as _$EvsOnTapDay;
 
   @override
   $Res call({
     Object? day = freezed,
   }) {
-    return _then(_$EvOnTapDay(
+    return _then(_$EvsOnTapDay(
       day == freezed
           ? _value.day
           : day // ignore: cast_nullable_to_non_nullable
@@ -2060,22 +2093,22 @@ class __$$EvOnTapDayCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EvOnTapDay implements EvOnTapDay {
-  const _$EvOnTapDay(this.day);
+class _$EvsOnTapDay implements EvsOnTapDay {
+  const _$EvsOnTapDay(this.day);
 
   @override
   final DateTime day;
 
   @override
   String toString() {
-    return 'EventCalendarEvent.onTapDay(day: $day)';
+    return 'EventsCalendarEvent.onTapDay(day: $day)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EvOnTapDay &&
+            other is _$EvsOnTapDay &&
             const DeepCollectionEquality().equals(other.day, day));
   }
 
@@ -2085,8 +2118,8 @@ class _$EvOnTapDay implements EvOnTapDay {
 
   @JsonKey(ignore: true)
   @override
-  _$$EvOnTapDayCopyWith<_$EvOnTapDay> get copyWith =>
-      __$$EvOnTapDayCopyWithImpl<_$EvOnTapDay>(this, _$identity);
+  _$$EvsOnTapDayCopyWith<_$EvsOnTapDay> get copyWith =>
+      __$$EvsOnTapDayCopyWithImpl<_$EvsOnTapDay>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2097,6 +2130,7 @@ class _$EvOnTapDay implements EvOnTapDay {
     required TResult Function() exit,
     required TResult Function(DateTime day) onTapDay,
     required TResult Function(int typeView) onChangeViewType,
+    required TResult Function(DateTime hour) onTapHour,
   }) {
     return onTapDay(day);
   }
@@ -2110,6 +2144,7 @@ class _$EvOnTapDay implements EvOnTapDay {
     TResult Function()? exit,
     TResult Function(DateTime day)? onTapDay,
     TResult Function(int typeView)? onChangeViewType,
+    TResult Function(DateTime hour)? onTapHour,
   }) {
     return onTapDay?.call(day);
   }
@@ -2123,6 +2158,7 @@ class _$EvOnTapDay implements EvOnTapDay {
     TResult Function()? exit,
     TResult Function(DateTime day)? onTapDay,
     TResult Function(int typeView)? onChangeViewType,
+    TResult Function(DateTime hour)? onTapHour,
     required TResult orElse(),
   }) {
     if (onTapDay != null) {
@@ -2134,12 +2170,13 @@ class _$EvOnTapDay implements EvOnTapDay {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EvInit value) init,
-    required TResult Function(EvReload value) reload,
-    required TResult Function(EvRefresh value) refrech,
-    required TResult Function(EvExit value) exit,
-    required TResult Function(EvOnTapDay value) onTapDay,
-    required TResult Function(EvOnChangeViewType value) onChangeViewType,
+    required TResult Function(EvsInit value) init,
+    required TResult Function(EvsReload value) reload,
+    required TResult Function(EvsRefresh value) refrech,
+    required TResult Function(EvsExit value) exit,
+    required TResult Function(EvsOnTapDay value) onTapDay,
+    required TResult Function(EvsOnChangeViewType value) onChangeViewType,
+    required TResult Function(EvsOnTapHour value) onTapHour,
   }) {
     return onTapDay(this);
   }
@@ -2147,12 +2184,13 @@ class _$EvOnTapDay implements EvOnTapDay {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(EvInit value)? init,
-    TResult Function(EvReload value)? reload,
-    TResult Function(EvRefresh value)? refrech,
-    TResult Function(EvExit value)? exit,
-    TResult Function(EvOnTapDay value)? onTapDay,
-    TResult Function(EvOnChangeViewType value)? onChangeViewType,
+    TResult Function(EvsInit value)? init,
+    TResult Function(EvsReload value)? reload,
+    TResult Function(EvsRefresh value)? refrech,
+    TResult Function(EvsExit value)? exit,
+    TResult Function(EvsOnTapDay value)? onTapDay,
+    TResult Function(EvsOnChangeViewType value)? onChangeViewType,
+    TResult Function(EvsOnTapHour value)? onTapHour,
   }) {
     return onTapDay?.call(this);
   }
@@ -2160,12 +2198,13 @@ class _$EvOnTapDay implements EvOnTapDay {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EvInit value)? init,
-    TResult Function(EvReload value)? reload,
-    TResult Function(EvRefresh value)? refrech,
-    TResult Function(EvExit value)? exit,
-    TResult Function(EvOnTapDay value)? onTapDay,
-    TResult Function(EvOnChangeViewType value)? onChangeViewType,
+    TResult Function(EvsInit value)? init,
+    TResult Function(EvsReload value)? reload,
+    TResult Function(EvsRefresh value)? refrech,
+    TResult Function(EvsExit value)? exit,
+    TResult Function(EvsOnTapDay value)? onTapDay,
+    TResult Function(EvsOnChangeViewType value)? onChangeViewType,
+    TResult Function(EvsOnTapHour value)? onTapHour,
     required TResult orElse(),
   }) {
     if (onTapDay != null) {
@@ -2175,39 +2214,39 @@ class _$EvOnTapDay implements EvOnTapDay {
   }
 }
 
-abstract class EvOnTapDay implements EventCalendarEvent {
-  const factory EvOnTapDay(final DateTime day) = _$EvOnTapDay;
+abstract class EvsOnTapDay implements EventsCalendarEvent {
+  const factory EvsOnTapDay(final DateTime day) = _$EvsOnTapDay;
 
   DateTime get day;
   @JsonKey(ignore: true)
-  _$$EvOnTapDayCopyWith<_$EvOnTapDay> get copyWith =>
+  _$$EvsOnTapDayCopyWith<_$EvsOnTapDay> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EvOnChangeViewTypeCopyWith<$Res> {
-  factory _$$EvOnChangeViewTypeCopyWith(_$EvOnChangeViewType value,
-          $Res Function(_$EvOnChangeViewType) then) =
-      __$$EvOnChangeViewTypeCopyWithImpl<$Res>;
+abstract class _$$EvsOnChangeViewTypeCopyWith<$Res> {
+  factory _$$EvsOnChangeViewTypeCopyWith(_$EvsOnChangeViewType value,
+          $Res Function(_$EvsOnChangeViewType) then) =
+      __$$EvsOnChangeViewTypeCopyWithImpl<$Res>;
   $Res call({int typeView});
 }
 
 /// @nodoc
-class __$$EvOnChangeViewTypeCopyWithImpl<$Res>
-    extends _$EventCalendarEventCopyWithImpl<$Res>
-    implements _$$EvOnChangeViewTypeCopyWith<$Res> {
-  __$$EvOnChangeViewTypeCopyWithImpl(
-      _$EvOnChangeViewType _value, $Res Function(_$EvOnChangeViewType) _then)
-      : super(_value, (v) => _then(v as _$EvOnChangeViewType));
+class __$$EvsOnChangeViewTypeCopyWithImpl<$Res>
+    extends _$EventsCalendarEventCopyWithImpl<$Res>
+    implements _$$EvsOnChangeViewTypeCopyWith<$Res> {
+  __$$EvsOnChangeViewTypeCopyWithImpl(
+      _$EvsOnChangeViewType _value, $Res Function(_$EvsOnChangeViewType) _then)
+      : super(_value, (v) => _then(v as _$EvsOnChangeViewType));
 
   @override
-  _$EvOnChangeViewType get _value => super._value as _$EvOnChangeViewType;
+  _$EvsOnChangeViewType get _value => super._value as _$EvsOnChangeViewType;
 
   @override
   $Res call({
     Object? typeView = freezed,
   }) {
-    return _then(_$EvOnChangeViewType(
+    return _then(_$EvsOnChangeViewType(
       typeView == freezed
           ? _value.typeView
           : typeView // ignore: cast_nullable_to_non_nullable
@@ -2218,22 +2257,22 @@ class __$$EvOnChangeViewTypeCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EvOnChangeViewType implements EvOnChangeViewType {
-  const _$EvOnChangeViewType(this.typeView);
+class _$EvsOnChangeViewType implements EvsOnChangeViewType {
+  const _$EvsOnChangeViewType(this.typeView);
 
   @override
   final int typeView;
 
   @override
   String toString() {
-    return 'EventCalendarEvent.onChangeViewType(typeView: $typeView)';
+    return 'EventsCalendarEvent.onChangeViewType(typeView: $typeView)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EvOnChangeViewType &&
+            other is _$EvsOnChangeViewType &&
             const DeepCollectionEquality().equals(other.typeView, typeView));
   }
 
@@ -2243,8 +2282,8 @@ class _$EvOnChangeViewType implements EvOnChangeViewType {
 
   @JsonKey(ignore: true)
   @override
-  _$$EvOnChangeViewTypeCopyWith<_$EvOnChangeViewType> get copyWith =>
-      __$$EvOnChangeViewTypeCopyWithImpl<_$EvOnChangeViewType>(
+  _$$EvsOnChangeViewTypeCopyWith<_$EvsOnChangeViewType> get copyWith =>
+      __$$EvsOnChangeViewTypeCopyWithImpl<_$EvsOnChangeViewType>(
           this, _$identity);
 
   @override
@@ -2256,6 +2295,7 @@ class _$EvOnChangeViewType implements EvOnChangeViewType {
     required TResult Function() exit,
     required TResult Function(DateTime day) onTapDay,
     required TResult Function(int typeView) onChangeViewType,
+    required TResult Function(DateTime hour) onTapHour,
   }) {
     return onChangeViewType(typeView);
   }
@@ -2269,6 +2309,7 @@ class _$EvOnChangeViewType implements EvOnChangeViewType {
     TResult Function()? exit,
     TResult Function(DateTime day)? onTapDay,
     TResult Function(int typeView)? onChangeViewType,
+    TResult Function(DateTime hour)? onTapHour,
   }) {
     return onChangeViewType?.call(typeView);
   }
@@ -2282,6 +2323,7 @@ class _$EvOnChangeViewType implements EvOnChangeViewType {
     TResult Function()? exit,
     TResult Function(DateTime day)? onTapDay,
     TResult Function(int typeView)? onChangeViewType,
+    TResult Function(DateTime hour)? onTapHour,
     required TResult orElse(),
   }) {
     if (onChangeViewType != null) {
@@ -2293,12 +2335,13 @@ class _$EvOnChangeViewType implements EvOnChangeViewType {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EvInit value) init,
-    required TResult Function(EvReload value) reload,
-    required TResult Function(EvRefresh value) refrech,
-    required TResult Function(EvExit value) exit,
-    required TResult Function(EvOnTapDay value) onTapDay,
-    required TResult Function(EvOnChangeViewType value) onChangeViewType,
+    required TResult Function(EvsInit value) init,
+    required TResult Function(EvsReload value) reload,
+    required TResult Function(EvsRefresh value) refrech,
+    required TResult Function(EvsExit value) exit,
+    required TResult Function(EvsOnTapDay value) onTapDay,
+    required TResult Function(EvsOnChangeViewType value) onChangeViewType,
+    required TResult Function(EvsOnTapHour value) onTapHour,
   }) {
     return onChangeViewType(this);
   }
@@ -2306,12 +2349,13 @@ class _$EvOnChangeViewType implements EvOnChangeViewType {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(EvInit value)? init,
-    TResult Function(EvReload value)? reload,
-    TResult Function(EvRefresh value)? refrech,
-    TResult Function(EvExit value)? exit,
-    TResult Function(EvOnTapDay value)? onTapDay,
-    TResult Function(EvOnChangeViewType value)? onChangeViewType,
+    TResult Function(EvsInit value)? init,
+    TResult Function(EvsReload value)? reload,
+    TResult Function(EvsRefresh value)? refrech,
+    TResult Function(EvsExit value)? exit,
+    TResult Function(EvsOnTapDay value)? onTapDay,
+    TResult Function(EvsOnChangeViewType value)? onChangeViewType,
+    TResult Function(EvsOnTapHour value)? onTapHour,
   }) {
     return onChangeViewType?.call(this);
   }
@@ -2319,12 +2363,13 @@ class _$EvOnChangeViewType implements EvOnChangeViewType {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EvInit value)? init,
-    TResult Function(EvReload value)? reload,
-    TResult Function(EvRefresh value)? refrech,
-    TResult Function(EvExit value)? exit,
-    TResult Function(EvOnTapDay value)? onTapDay,
-    TResult Function(EvOnChangeViewType value)? onChangeViewType,
+    TResult Function(EvsInit value)? init,
+    TResult Function(EvsReload value)? reload,
+    TResult Function(EvsRefresh value)? refrech,
+    TResult Function(EvsExit value)? exit,
+    TResult Function(EvsOnTapDay value)? onTapDay,
+    TResult Function(EvsOnChangeViewType value)? onChangeViewType,
+    TResult Function(EvsOnTapHour value)? onTapHour,
     required TResult orElse(),
   }) {
     if (onChangeViewType != null) {
@@ -2334,33 +2379,200 @@ class _$EvOnChangeViewType implements EvOnChangeViewType {
   }
 }
 
-abstract class EvOnChangeViewType implements EventCalendarEvent {
-  const factory EvOnChangeViewType(final int typeView) = _$EvOnChangeViewType;
+abstract class EvsOnChangeViewType implements EventsCalendarEvent {
+  const factory EvsOnChangeViewType(final int typeView) = _$EvsOnChangeViewType;
 
   int get typeView;
   @JsonKey(ignore: true)
-  _$$EvOnChangeViewTypeCopyWith<_$EvOnChangeViewType> get copyWith =>
+  _$$EvsOnChangeViewTypeCopyWith<_$EvsOnChangeViewType> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$EventCalendarSR {
+abstract class _$$EvsOnTapHourCopyWith<$Res> {
+  factory _$$EvsOnTapHourCopyWith(
+          _$EvsOnTapHour value, $Res Function(_$EvsOnTapHour) then) =
+      __$$EvsOnTapHourCopyWithImpl<$Res>;
+  $Res call({DateTime hour});
+}
+
+/// @nodoc
+class __$$EvsOnTapHourCopyWithImpl<$Res>
+    extends _$EventsCalendarEventCopyWithImpl<$Res>
+    implements _$$EvsOnTapHourCopyWith<$Res> {
+  __$$EvsOnTapHourCopyWithImpl(
+      _$EvsOnTapHour _value, $Res Function(_$EvsOnTapHour) _then)
+      : super(_value, (v) => _then(v as _$EvsOnTapHour));
+
+  @override
+  _$EvsOnTapHour get _value => super._value as _$EvsOnTapHour;
+
+  @override
+  $Res call({
+    Object? hour = freezed,
+  }) {
+    return _then(_$EvsOnTapHour(
+      hour == freezed
+          ? _value.hour
+          : hour // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$EvsOnTapHour implements EvsOnTapHour {
+  const _$EvsOnTapHour(this.hour);
+
+  @override
+  final DateTime hour;
+
+  @override
+  String toString() {
+    return 'EventsCalendarEvent.onTapHour(hour: $hour)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EvsOnTapHour &&
+            const DeepCollectionEquality().equals(other.hour, hour));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(hour));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$EvsOnTapHourCopyWith<_$EvsOnTapHour> get copyWith =>
+      __$$EvsOnTapHourCopyWithImpl<_$EvsOnTapHour>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() reload,
+    required TResult Function() refrech,
+    required TResult Function() exit,
+    required TResult Function(DateTime day) onTapDay,
+    required TResult Function(int typeView) onChangeViewType,
+    required TResult Function(DateTime hour) onTapHour,
+  }) {
+    return onTapHour(hour);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? reload,
+    TResult Function()? refrech,
+    TResult Function()? exit,
+    TResult Function(DateTime day)? onTapDay,
+    TResult Function(int typeView)? onChangeViewType,
+    TResult Function(DateTime hour)? onTapHour,
+  }) {
+    return onTapHour?.call(hour);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? reload,
+    TResult Function()? refrech,
+    TResult Function()? exit,
+    TResult Function(DateTime day)? onTapDay,
+    TResult Function(int typeView)? onChangeViewType,
+    TResult Function(DateTime hour)? onTapHour,
+    required TResult orElse(),
+  }) {
+    if (onTapHour != null) {
+      return onTapHour(hour);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EvsInit value) init,
+    required TResult Function(EvsReload value) reload,
+    required TResult Function(EvsRefresh value) refrech,
+    required TResult Function(EvsExit value) exit,
+    required TResult Function(EvsOnTapDay value) onTapDay,
+    required TResult Function(EvsOnChangeViewType value) onChangeViewType,
+    required TResult Function(EvsOnTapHour value) onTapHour,
+  }) {
+    return onTapHour(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(EvsInit value)? init,
+    TResult Function(EvsReload value)? reload,
+    TResult Function(EvsRefresh value)? refrech,
+    TResult Function(EvsExit value)? exit,
+    TResult Function(EvsOnTapDay value)? onTapDay,
+    TResult Function(EvsOnChangeViewType value)? onChangeViewType,
+    TResult Function(EvsOnTapHour value)? onTapHour,
+  }) {
+    return onTapHour?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EvsInit value)? init,
+    TResult Function(EvsReload value)? reload,
+    TResult Function(EvsRefresh value)? refrech,
+    TResult Function(EvsExit value)? exit,
+    TResult Function(EvsOnTapDay value)? onTapDay,
+    TResult Function(EvsOnChangeViewType value)? onChangeViewType,
+    TResult Function(EvsOnTapHour value)? onTapHour,
+    required TResult orElse(),
+  }) {
+    if (onTapHour != null) {
+      return onTapHour(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EvsOnTapHour implements EventsCalendarEvent {
+  const factory EvsOnTapHour(final DateTime hour) = _$EvsOnTapHour;
+
+  DateTime get hour;
+  @JsonKey(ignore: true)
+  _$$EvsOnTapHourCopyWith<_$EvsOnTapHour> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$EventsCalendarSR {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() exit,
     required TResult Function(String message) showSnackBar,
+    required TResult Function(DateTime startTime) openNewTask,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? exit,
     TResult Function(String message)? showSnackBar,
+    TResult Function(DateTime startTime)? openNewTask,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? exit,
     TResult Function(String message)? showSnackBar,
+    TResult Function(DateTime startTime)? openNewTask,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -2368,38 +2580,41 @@ mixin _$EventCalendarSR {
   TResult map<TResult extends Object?>({
     required TResult Function(_SrExit value) exit,
     required TResult Function(_SrShowSnackBar value) showSnackBar,
+    required TResult Function(_SrOpenNewTask value) openNewTask,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_SrExit value)? exit,
     TResult Function(_SrShowSnackBar value)? showSnackBar,
+    TResult Function(_SrOpenNewTask value)? openNewTask,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SrExit value)? exit,
     TResult Function(_SrShowSnackBar value)? showSnackBar,
+    TResult Function(_SrOpenNewTask value)? openNewTask,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EventCalendarSRCopyWith<$Res> {
-  factory $EventCalendarSRCopyWith(
-          EventCalendarSR value, $Res Function(EventCalendarSR) then) =
-      _$EventCalendarSRCopyWithImpl<$Res>;
+abstract class $EventsCalendarSRCopyWith<$Res> {
+  factory $EventsCalendarSRCopyWith(
+          EventsCalendarSR value, $Res Function(EventsCalendarSR) then) =
+      _$EventsCalendarSRCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$EventCalendarSRCopyWithImpl<$Res>
-    implements $EventCalendarSRCopyWith<$Res> {
-  _$EventCalendarSRCopyWithImpl(this._value, this._then);
+class _$EventsCalendarSRCopyWithImpl<$Res>
+    implements $EventsCalendarSRCopyWith<$Res> {
+  _$EventsCalendarSRCopyWithImpl(this._value, this._then);
 
-  final EventCalendarSR _value;
+  final EventsCalendarSR _value;
   // ignore: unused_field
-  final $Res Function(EventCalendarSR) _then;
+  final $Res Function(EventsCalendarSR) _then;
 }
 
 /// @nodoc
@@ -2409,7 +2624,7 @@ abstract class _$$_SrExitCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_SrExitCopyWithImpl<$Res> extends _$EventCalendarSRCopyWithImpl<$Res>
+class __$$_SrExitCopyWithImpl<$Res> extends _$EventsCalendarSRCopyWithImpl<$Res>
     implements _$$_SrExitCopyWith<$Res> {
   __$$_SrExitCopyWithImpl(_$_SrExit _value, $Res Function(_$_SrExit) _then)
       : super(_value, (v) => _then(v as _$_SrExit));
@@ -2425,7 +2640,7 @@ class _$_SrExit implements _SrExit {
 
   @override
   String toString() {
-    return 'EventCalendarSR.exit()';
+    return 'EventsCalendarSR.exit()';
   }
 
   @override
@@ -2442,6 +2657,7 @@ class _$_SrExit implements _SrExit {
   TResult when<TResult extends Object?>({
     required TResult Function() exit,
     required TResult Function(String message) showSnackBar,
+    required TResult Function(DateTime startTime) openNewTask,
   }) {
     return exit();
   }
@@ -2451,6 +2667,7 @@ class _$_SrExit implements _SrExit {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? exit,
     TResult Function(String message)? showSnackBar,
+    TResult Function(DateTime startTime)? openNewTask,
   }) {
     return exit?.call();
   }
@@ -2460,6 +2677,7 @@ class _$_SrExit implements _SrExit {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? exit,
     TResult Function(String message)? showSnackBar,
+    TResult Function(DateTime startTime)? openNewTask,
     required TResult orElse(),
   }) {
     if (exit != null) {
@@ -2473,6 +2691,7 @@ class _$_SrExit implements _SrExit {
   TResult map<TResult extends Object?>({
     required TResult Function(_SrExit value) exit,
     required TResult Function(_SrShowSnackBar value) showSnackBar,
+    required TResult Function(_SrOpenNewTask value) openNewTask,
   }) {
     return exit(this);
   }
@@ -2482,6 +2701,7 @@ class _$_SrExit implements _SrExit {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_SrExit value)? exit,
     TResult Function(_SrShowSnackBar value)? showSnackBar,
+    TResult Function(_SrOpenNewTask value)? openNewTask,
   }) {
     return exit?.call(this);
   }
@@ -2491,6 +2711,7 @@ class _$_SrExit implements _SrExit {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SrExit value)? exit,
     TResult Function(_SrShowSnackBar value)? showSnackBar,
+    TResult Function(_SrOpenNewTask value)? openNewTask,
     required TResult orElse(),
   }) {
     if (exit != null) {
@@ -2500,7 +2721,7 @@ class _$_SrExit implements _SrExit {
   }
 }
 
-abstract class _SrExit implements EventCalendarSR {
+abstract class _SrExit implements EventsCalendarSR {
   const factory _SrExit() = _$_SrExit;
 }
 
@@ -2514,7 +2735,7 @@ abstract class _$$_SrShowSnackBarCopyWith<$Res> {
 
 /// @nodoc
 class __$$_SrShowSnackBarCopyWithImpl<$Res>
-    extends _$EventCalendarSRCopyWithImpl<$Res>
+    extends _$EventsCalendarSRCopyWithImpl<$Res>
     implements _$$_SrShowSnackBarCopyWith<$Res> {
   __$$_SrShowSnackBarCopyWithImpl(
       _$_SrShowSnackBar _value, $Res Function(_$_SrShowSnackBar) _then)
@@ -2546,7 +2767,7 @@ class _$_SrShowSnackBar implements _SrShowSnackBar {
 
   @override
   String toString() {
-    return 'EventCalendarSR.showSnackBar(message: $message)';
+    return 'EventsCalendarSR.showSnackBar(message: $message)';
   }
 
   @override
@@ -2571,6 +2792,7 @@ class _$_SrShowSnackBar implements _SrShowSnackBar {
   TResult when<TResult extends Object?>({
     required TResult Function() exit,
     required TResult Function(String message) showSnackBar,
+    required TResult Function(DateTime startTime) openNewTask,
   }) {
     return showSnackBar(message);
   }
@@ -2580,6 +2802,7 @@ class _$_SrShowSnackBar implements _SrShowSnackBar {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? exit,
     TResult Function(String message)? showSnackBar,
+    TResult Function(DateTime startTime)? openNewTask,
   }) {
     return showSnackBar?.call(message);
   }
@@ -2589,6 +2812,7 @@ class _$_SrShowSnackBar implements _SrShowSnackBar {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? exit,
     TResult Function(String message)? showSnackBar,
+    TResult Function(DateTime startTime)? openNewTask,
     required TResult orElse(),
   }) {
     if (showSnackBar != null) {
@@ -2602,6 +2826,7 @@ class _$_SrShowSnackBar implements _SrShowSnackBar {
   TResult map<TResult extends Object?>({
     required TResult Function(_SrExit value) exit,
     required TResult Function(_SrShowSnackBar value) showSnackBar,
+    required TResult Function(_SrOpenNewTask value) openNewTask,
   }) {
     return showSnackBar(this);
   }
@@ -2611,6 +2836,7 @@ class _$_SrShowSnackBar implements _SrShowSnackBar {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_SrExit value)? exit,
     TResult Function(_SrShowSnackBar value)? showSnackBar,
+    TResult Function(_SrOpenNewTask value)? openNewTask,
   }) {
     return showSnackBar?.call(this);
   }
@@ -2620,6 +2846,7 @@ class _$_SrShowSnackBar implements _SrShowSnackBar {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SrExit value)? exit,
     TResult Function(_SrShowSnackBar value)? showSnackBar,
+    TResult Function(_SrOpenNewTask value)? openNewTask,
     required TResult orElse(),
   }) {
     if (showSnackBar != null) {
@@ -2629,11 +2856,151 @@ class _$_SrShowSnackBar implements _SrShowSnackBar {
   }
 }
 
-abstract class _SrShowSnackBar implements EventCalendarSR {
+abstract class _SrShowSnackBar implements EventsCalendarSR {
   const factory _SrShowSnackBar(final String message) = _$_SrShowSnackBar;
 
   String get message;
   @JsonKey(ignore: true)
   _$$_SrShowSnackBarCopyWith<_$_SrShowSnackBar> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_SrOpenNewTaskCopyWith<$Res> {
+  factory _$$_SrOpenNewTaskCopyWith(
+          _$_SrOpenNewTask value, $Res Function(_$_SrOpenNewTask) then) =
+      __$$_SrOpenNewTaskCopyWithImpl<$Res>;
+  $Res call({DateTime startTime});
+}
+
+/// @nodoc
+class __$$_SrOpenNewTaskCopyWithImpl<$Res>
+    extends _$EventsCalendarSRCopyWithImpl<$Res>
+    implements _$$_SrOpenNewTaskCopyWith<$Res> {
+  __$$_SrOpenNewTaskCopyWithImpl(
+      _$_SrOpenNewTask _value, $Res Function(_$_SrOpenNewTask) _then)
+      : super(_value, (v) => _then(v as _$_SrOpenNewTask));
+
+  @override
+  _$_SrOpenNewTask get _value => super._value as _$_SrOpenNewTask;
+
+  @override
+  $Res call({
+    Object? startTime = freezed,
+  }) {
+    return _then(_$_SrOpenNewTask(
+      startTime == freezed
+          ? _value.startTime
+          : startTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_SrOpenNewTask implements _SrOpenNewTask {
+  const _$_SrOpenNewTask(this.startTime);
+
+  @override
+  final DateTime startTime;
+
+  @override
+  String toString() {
+    return 'EventsCalendarSR.openNewTask(startTime: $startTime)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SrOpenNewTask &&
+            const DeepCollectionEquality().equals(other.startTime, startTime));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(startTime));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_SrOpenNewTaskCopyWith<_$_SrOpenNewTask> get copyWith =>
+      __$$_SrOpenNewTaskCopyWithImpl<_$_SrOpenNewTask>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() exit,
+    required TResult Function(String message) showSnackBar,
+    required TResult Function(DateTime startTime) openNewTask,
+  }) {
+    return openNewTask(startTime);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? exit,
+    TResult Function(String message)? showSnackBar,
+    TResult Function(DateTime startTime)? openNewTask,
+  }) {
+    return openNewTask?.call(startTime);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? exit,
+    TResult Function(String message)? showSnackBar,
+    TResult Function(DateTime startTime)? openNewTask,
+    required TResult orElse(),
+  }) {
+    if (openNewTask != null) {
+      return openNewTask(startTime);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SrExit value) exit,
+    required TResult Function(_SrShowSnackBar value) showSnackBar,
+    required TResult Function(_SrOpenNewTask value) openNewTask,
+  }) {
+    return openNewTask(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_SrExit value)? exit,
+    TResult Function(_SrShowSnackBar value)? showSnackBar,
+    TResult Function(_SrOpenNewTask value)? openNewTask,
+  }) {
+    return openNewTask?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SrExit value)? exit,
+    TResult Function(_SrShowSnackBar value)? showSnackBar,
+    TResult Function(_SrOpenNewTask value)? openNewTask,
+    required TResult orElse(),
+  }) {
+    if (openNewTask != null) {
+      return openNewTask(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SrOpenNewTask implements EventsCalendarSR {
+  const factory _SrOpenNewTask(final DateTime startTime) = _$_SrOpenNewTask;
+
+  DateTime get startTime;
+  @JsonKey(ignore: true)
+  _$$_SrOpenNewTaskCopyWith<_$_SrOpenNewTask> get copyWith =>
       throw _privateConstructorUsedError;
 }

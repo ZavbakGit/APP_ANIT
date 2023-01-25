@@ -1,7 +1,6 @@
 import 'package:app_anit/presenter/disign_system/widgets_design/custom_empty_page.dart';
 import 'package:app_anit/presenter/pages/main/main_page_bloc.dart';
 import 'package:app_anit/presenter/pages/main/main_page_bloc_models.dart';
-import 'package:app_anit/presenter/widgets/event_calendar_wiget/event_calendar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -9,6 +8,7 @@ import 'package:go_router/go_router.dart';
 import '../../../app/injection_container.dart';
 import '../../../arch/sr_bloc/sr_bloc_builder.dart';
 import '../../disign_system/widgets_design/custom_page_widget.dart';
+import '../../widgets/events_calendar_wiget/events_calendar_widget.dart';
 import '../../widgets/tasks_widget/tasks_widget.dart';
 
 class MainPage extends StatelessWidget {
@@ -80,7 +80,7 @@ class _MainPageContent extends StatelessWidget {
             child: Wrap(
               children: const [
                 TasksWidget(),
-                EventCalendarWidget(),
+                EventsCalendarWidget(),
               ],
             ),
           ),

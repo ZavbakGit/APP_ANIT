@@ -1,6 +1,7 @@
 import 'package:app_anit/presenter/disign_system/widgets_design/custom_progres_widgets.dart';
-import 'package:app_anit/presenter/widgets/event_calendar_wiget/event_calendar_widget_bloc.dart';
-import 'package:app_anit/presenter/widgets/event_calendar_wiget/event_calendar_widget_models.dart';
+import 'package:app_anit/presenter/widgets/events_calendar_wiget/events_calendar_widget_bloc.dart';
+import 'package:app_anit/presenter/widgets/events_calendar_wiget/events_calendar_widget_models.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -9,10 +10,10 @@ import '../../../arch/sr_bloc/sr_bloc_builder.dart';
 import '../../disign_system/ui_helpers.dart';
 import '../../disign_system/widgets_design/custom_empty_page.dart';
 import '../../disign_system/widgets_design/custom_error_page.dart';
-import '../../pages/event_calendar/event_calendar_page.dart';
+import '../../pages/events_calendar/events_calendar_page.dart';
 
-class EventCalendarWidget extends StatelessWidget {
-  const EventCalendarWidget({Key? key}) : super(key: key);
+class EventsCalendarWidget extends StatelessWidget {
+  const EventsCalendarWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,18 +25,18 @@ class EventCalendarWidget extends StatelessWidget {
       }
     }
 
-    return BlocProvider<EventCalendarWidgetBloc>(
+    return BlocProvider<EventsCalendarWidgetBloc>(
       create: (context) =>
-          EventCalendarWidgetBloc(appModel: sl(), repository: sl())
-            ..add(const EventCalendarWidgetEvent.init()),
-      child: SrBlocBuilder<EventCalendarWidgetBloc, EventCalendarWidgetState,
-          EventCalendarWidgetSR>(
+          EventsCalendarWidgetBloc(appModel: sl(), repository: sl())
+            ..add(const EventsCalendarWidgetEvent.init()),
+      child: SrBlocBuilder<EventsCalendarWidgetBloc, EventsCalendarWidgetState,
+          EventsCalendarWidgetSR>(
         onSR: _onSingleResult,
         builder: (context, state) {
           return GestureDetector(
             onTap: () => context
-                .read<EventCalendarWidgetBloc>()
-                .add(const EventCalendarWidgetEvent.onTap()),
+                .read<EventsCalendarWidgetBloc>()
+                .add(const EventsCalendarWidgetEvent.onTap()),
             child: Card(
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
@@ -55,8 +56,8 @@ class EventCalendarWidget extends StatelessWidget {
                     error: (state) => CustomErrorPage(
                         message: state.message,
                         onClick: () => context
-                            .read<EventCalendarWidgetBloc>()
-                            .add(const EventCalendarWidgetEvent.reload())),
+                            .read<EventsCalendarWidgetBloc>()
+                            .add(const EventsCalendarWidgetEvent.reload())),
                   ),
                 ),
               ),
@@ -67,16 +68,16 @@ class EventCalendarWidget extends StatelessWidget {
     );
   }
 
-  void _onSingleResult(BuildContext context, EventCalendarWidgetSR sr) {
+  void _onSingleResult(BuildContext context, EventsCalendarWidgetSR sr) {
     sr.when(
       openEventCalendar: () => Navigator.push<bool>(
         context,
         MaterialPageRoute(
-          builder: (context) => const EventCalendarPage(),
+          builder: (context) => const EventsCalendarPage(),
         ),
       ).then((value) => context
-          .read<EventCalendarWidgetBloc>()
-          .add(const EventCalendarWidgetEvent.reload())),
+          .read<EventsCalendarWidgetBloc>()
+          .add(const EventsCalendarWidgetEvent.reload())),
     );
   }
 }

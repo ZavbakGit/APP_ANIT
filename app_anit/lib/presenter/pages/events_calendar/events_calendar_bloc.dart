@@ -1,112 +1,120 @@
 import 'dart:async';
 
-import 'package:app_anit/presenter/pages/event_calendar/event_calendar_models.dart';
+import 'package:app_anit/presenter/pages/events_calendar/events_calendar_models.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../arch/sr_bloc/sr_bloc.dart';
 import '../../../../domain/models/app_model.dart';
 import '../../../../domain/repositories/repository.dart';
 
-class EventCalendarBlok
-    extends SrBloc<EventCalendarEvent, EventCalendarState, EventCalendarSR> {
+class EventsCalendarBlok
+    extends SrBloc<EventsCalendarEvent, EventsCalendarState, EventsCalendarSR> {
   final AppModel appModel;
   final Repository repository;
 
   bool isLoading = false;
   ViewCalendarType viewCalendarType =
       ViewCalendarType.week(day: DateTime.now());
-  List<EventData> listEventCalendarData = _defaultList;
+  List<EventsData> listEventsCalendarData = _defaultList;
 
-  EventCalendarBlok({
+  EventsCalendarBlok({
     required this.appModel,
     required this.repository,
-  }) : super(const EventCalendarState.empty()) {
-    on<EvInit>(_init);
-    on<EvReload>(_reload);
-    on<EvRefresh>(_refresh);
-    on<EvExit>(_exit);
-    on<EvOnTapDay>(_onTapDay);
-    on<EvOnChangeViewType>(_onChangeViewType);
+  }) : super(const EventsCalendarState.empty()) {
+    on<EvsInit>(_init);
+    on<EvsReload>(_reload);
+    on<EvsRefresh>(_refresh);
+    on<EvsExit>(_exit);
+    on<EvsOnTapDay>(_onTapDay);
+    on<EvsOnChangeViewType>(_onChangeViewType);
+    on<EvsOnTapHour>(_onTapHour);
   }
 
   FutureOr<void> _init(
-    EvInit event,
-    Emitter<EventCalendarState> emit,
+    EvsInit events,
+    Emitter<EventsCalendarState> emit,
   ) {
-    add(const EventCalendarEvent.reload());
+    add(const EventsCalendarEvent.reload());
   }
 
   FutureOr<void> _reload(
-    EvReload event,
-    Emitter<EventCalendarState> emit,
+    EvsReload events,
+    Emitter<EventsCalendarState> emit,
   ) async {
     isLoading = true;
-    add(const EventCalendarEvent.refrech());
+    add(const EventsCalendarEvent.refrech());
     await Future.delayed(const Duration(seconds: 1));
-    add(const EventCalendarEvent.refrech());
+    add(const EventsCalendarEvent.refrech());
     isLoading = false;
   }
 
   FutureOr<void> _refresh(
-    EvRefresh event,
-    Emitter<EventCalendarState> emit,
+    EvsRefresh events,
+    Emitter<EventsCalendarState> emit,
   ) async {
     emit(
-      EventCalendarState.data(
+      EventsCalendarState.data(
         isLoading: isLoading,
         viewCalendarType: viewCalendarType,
-        listEventCalendarData: listEventCalendarData,
+        listEventCalendarData: listEventsCalendarData,
       ),
     );
   }
 
   FutureOr<void> _exit(
-    EvExit event,
-    Emitter<EventCalendarState> emit,
+    EvsExit events,
+    Emitter<EventsCalendarState> emit,
   ) {
-    addSr(const EventCalendarSR.exit());
+    addSr(const EventsCalendarSR.exit());
   }
 
   FutureOr<void> _onTapDay(
-    EvOnTapDay event,
-    Emitter<EventCalendarState> emit,
+    EvsOnTapDay events,
+    Emitter<EventsCalendarState> emit,
   ) async {
-    viewCalendarType = ViewCalendarType.day(day: event.day);
-    add(const EventCalendarEvent.refrech());
+    viewCalendarType = ViewCalendarType.day(day: events.day);
+    add(const EventsCalendarEvent.refrech());
   }
 
   FutureOr<void> _onChangeViewType(
-    EvOnChangeViewType event,
-    Emitter<EventCalendarState> emit,
+    EvsOnChangeViewType events,
+    Emitter<EventsCalendarState> emit,
   ) async {
     viewCalendarType =
-        ViewCalendarType.getViewCalendarType(event.typeView, DateTime.now());
-    add(const EventCalendarEvent.refrech());
+        ViewCalendarType.getViewCalendarType(events.typeView, DateTime.now());
+    add(const EventsCalendarEvent.refrech());
+  }
+
+  FutureOr<void> _onTapHour(
+    EvsOnTapHour event,
+    Emitter<EventsCalendarState> emit,
+  ) {
+    addSr(EventsCalendarSR.openNewTask(event.hour));
   }
 }
 
 DateTime get _now => DateTime.now();
 
-List<EventData> get _defaultList => [
-      EventData(
+List<EventsData> get _defaultList => [
+      EventsData(
         title: "Project meeting",
         description: "Today is project meeting.",
         startTime: DateTime(_now.year, _now.month, _now.day, 18, 30),
         endTime: DateTime(_now.year, _now.month, _now.day, 22),
       ),
-      EventData(
+      EventsData(
         startTime: DateTime(_now.year, _now.month, _now.day, 18),
         endTime: DateTime(_now.year, _now.month, _now.day, 19),
         title: "Wedding anniversary",
         description: "Attend uncle's wedding anniversary.",
       ),
-      EventData(
+      EventsData(
         startTime: DateTime(_now.year, _now.month, _now.day, 14),
         endTime: DateTime(_now.year, _now.month, _now.day, 17),
         title: "Football Tournament",
         description: "Go to football tournament.",
       ),
-      EventData(
+      EventsData(
         startTime: DateTime(
             _now.add(Duration(days: 3)).year,
             _now.add(Duration(days: 3)).month,
@@ -120,7 +128,7 @@ List<EventData> get _defaultList => [
         title: "Sprint Meeting.",
         description: "Last day of project submission for last year.",
       ),
-      EventData(
+      EventsData(
         startTime: DateTime(
             _now.subtract(Duration(days: 2)).year,
             _now.subtract(Duration(days: 2)).month,
@@ -134,7 +142,7 @@ List<EventData> get _defaultList => [
         title: "Team Meeting",
         description: "Team Meeting",
       ),
-      EventData(
+      EventsData(
         startTime: DateTime(
             _now.subtract(Duration(days: 2)).year,
             _now.subtract(Duration(days: 2)).month,

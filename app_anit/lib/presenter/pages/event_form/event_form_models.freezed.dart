@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'event_calendar_widget_models.dart';
+part of 'event_form_models.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,26 +15,26 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$EventCalendarWidgetState {
+mixin _$EventFormState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool isLoading) data,
     required TResult Function() empty,
-    required TResult Function(String? message) error,
+    required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(bool isLoading)? data,
     TResult Function()? empty,
-    TResult Function(String? message)? error,
+    TResult Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isLoading)? data,
     TResult Function()? empty,
-    TResult Function(String? message)? error,
+    TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -63,20 +63,20 @@ mixin _$EventCalendarWidgetState {
 }
 
 /// @nodoc
-abstract class $EventCalendarWidgetStateCopyWith<$Res> {
-  factory $EventCalendarWidgetStateCopyWith(EventCalendarWidgetState value,
-          $Res Function(EventCalendarWidgetState) then) =
-      _$EventCalendarWidgetStateCopyWithImpl<$Res>;
+abstract class $EventFormStateCopyWith<$Res> {
+  factory $EventFormStateCopyWith(
+          EventFormState value, $Res Function(EventFormState) then) =
+      _$EventFormStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$EventCalendarWidgetStateCopyWithImpl<$Res>
-    implements $EventCalendarWidgetStateCopyWith<$Res> {
-  _$EventCalendarWidgetStateCopyWithImpl(this._value, this._then);
+class _$EventFormStateCopyWithImpl<$Res>
+    implements $EventFormStateCopyWith<$Res> {
+  _$EventFormStateCopyWithImpl(this._value, this._then);
 
-  final EventCalendarWidgetState _value;
+  final EventFormState _value;
   // ignore: unused_field
-  final $Res Function(EventCalendarWidgetState) _then;
+  final $Res Function(EventFormState) _then;
 }
 
 /// @nodoc
@@ -87,8 +87,7 @@ abstract class _$$_StDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_StDataCopyWithImpl<$Res>
-    extends _$EventCalendarWidgetStateCopyWithImpl<$Res>
+class __$$_StDataCopyWithImpl<$Res> extends _$EventFormStateCopyWithImpl<$Res>
     implements _$$_StDataCopyWith<$Res> {
   __$$_StDataCopyWithImpl(_$_StData _value, $Res Function(_$_StData) _then)
       : super(_value, (v) => _then(v as _$_StData));
@@ -111,15 +110,15 @@ class __$$_StDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_StData implements _StData {
-  const _$_StData({required this.isLoading});
+class _$_StData extends _StData {
+  const _$_StData({required this.isLoading}) : super._();
 
   @override
   final bool isLoading;
 
   @override
   String toString() {
-    return 'EventCalendarWidgetState.data(isLoading: $isLoading)';
+    return 'EventFormState.data(isLoading: $isLoading)';
   }
 
   @override
@@ -144,7 +143,7 @@ class _$_StData implements _StData {
   TResult when<TResult extends Object?>({
     required TResult Function(bool isLoading) data,
     required TResult Function() empty,
-    required TResult Function(String? message) error,
+    required TResult Function(String message) error,
   }) {
     return data(isLoading);
   }
@@ -154,7 +153,7 @@ class _$_StData implements _StData {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(bool isLoading)? data,
     TResult Function()? empty,
-    TResult Function(String? message)? error,
+    TResult Function(String message)? error,
   }) {
     return data?.call(isLoading);
   }
@@ -164,7 +163,7 @@ class _$_StData implements _StData {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isLoading)? data,
     TResult Function()? empty,
-    TResult Function(String? message)? error,
+    TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (data != null) {
@@ -208,8 +207,9 @@ class _$_StData implements _StData {
   }
 }
 
-abstract class _StData implements EventCalendarWidgetState {
+abstract class _StData extends EventFormState {
   const factory _StData({required final bool isLoading}) = _$_StData;
+  const _StData._() : super._();
 
   bool get isLoading;
   @JsonKey(ignore: true)
@@ -225,8 +225,7 @@ abstract class _$$_StEmptyCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_StEmptyCopyWithImpl<$Res>
-    extends _$EventCalendarWidgetStateCopyWithImpl<$Res>
+class __$$_StEmptyCopyWithImpl<$Res> extends _$EventFormStateCopyWithImpl<$Res>
     implements _$$_StEmptyCopyWith<$Res> {
   __$$_StEmptyCopyWithImpl(_$_StEmpty _value, $Res Function(_$_StEmpty) _then)
       : super(_value, (v) => _then(v as _$_StEmpty));
@@ -237,12 +236,12 @@ class __$$_StEmptyCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_StEmpty implements _StEmpty {
-  const _$_StEmpty();
+class _$_StEmpty extends _StEmpty {
+  const _$_StEmpty() : super._();
 
   @override
   String toString() {
-    return 'EventCalendarWidgetState.empty()';
+    return 'EventFormState.empty()';
   }
 
   @override
@@ -259,7 +258,7 @@ class _$_StEmpty implements _StEmpty {
   TResult when<TResult extends Object?>({
     required TResult Function(bool isLoading) data,
     required TResult Function() empty,
-    required TResult Function(String? message) error,
+    required TResult Function(String message) error,
   }) {
     return empty();
   }
@@ -269,7 +268,7 @@ class _$_StEmpty implements _StEmpty {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(bool isLoading)? data,
     TResult Function()? empty,
-    TResult Function(String? message)? error,
+    TResult Function(String message)? error,
   }) {
     return empty?.call();
   }
@@ -279,7 +278,7 @@ class _$_StEmpty implements _StEmpty {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isLoading)? data,
     TResult Function()? empty,
-    TResult Function(String? message)? error,
+    TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -323,8 +322,9 @@ class _$_StEmpty implements _StEmpty {
   }
 }
 
-abstract class _StEmpty implements EventCalendarWidgetState {
+abstract class _StEmpty extends EventFormState {
   const factory _StEmpty() = _$_StEmpty;
+  const _StEmpty._() : super._();
 }
 
 /// @nodoc
@@ -332,12 +332,11 @@ abstract class _$$_StErrorCopyWith<$Res> {
   factory _$$_StErrorCopyWith(
           _$_StError value, $Res Function(_$_StError) then) =
       __$$_StErrorCopyWithImpl<$Res>;
-  $Res call({String? message});
+  $Res call({String message});
 }
 
 /// @nodoc
-class __$$_StErrorCopyWithImpl<$Res>
-    extends _$EventCalendarWidgetStateCopyWithImpl<$Res>
+class __$$_StErrorCopyWithImpl<$Res> extends _$EventFormStateCopyWithImpl<$Res>
     implements _$$_StErrorCopyWith<$Res> {
   __$$_StErrorCopyWithImpl(_$_StError _value, $Res Function(_$_StError) _then)
       : super(_value, (v) => _then(v as _$_StError));
@@ -353,22 +352,22 @@ class __$$_StErrorCopyWithImpl<$Res>
       message: message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_StError implements _StError {
-  const _$_StError({this.message});
+class _$_StError extends _StError {
+  const _$_StError({required this.message}) : super._();
 
   @override
-  final String? message;
+  final String message;
 
   @override
   String toString() {
-    return 'EventCalendarWidgetState.error(message: $message)';
+    return 'EventFormState.error(message: $message)';
   }
 
   @override
@@ -393,7 +392,7 @@ class _$_StError implements _StError {
   TResult when<TResult extends Object?>({
     required TResult Function(bool isLoading) data,
     required TResult Function() empty,
-    required TResult Function(String? message) error,
+    required TResult Function(String message) error,
   }) {
     return error(message);
   }
@@ -403,7 +402,7 @@ class _$_StError implements _StError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(bool isLoading)? data,
     TResult Function()? empty,
-    TResult Function(String? message)? error,
+    TResult Function(String message)? error,
   }) {
     return error?.call(message);
   }
@@ -413,7 +412,7 @@ class _$_StError implements _StError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isLoading)? data,
     TResult Function()? empty,
-    TResult Function(String? message)? error,
+    TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -457,23 +456,24 @@ class _$_StError implements _StError {
   }
 }
 
-abstract class _StError implements EventCalendarWidgetState {
-  const factory _StError({final String? message}) = _$_StError;
+abstract class _StError extends EventFormState {
+  const factory _StError({required final String message}) = _$_StError;
+  const _StError._() : super._();
 
-  String? get message;
+  String get message;
   @JsonKey(ignore: true)
   _$$_StErrorCopyWith<_$_StError> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$EventCalendarWidgetEvent {
+mixin _$EventFormEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() reload,
     required TResult Function() refrech,
-    required TResult Function() onTap,
+    required TResult Function() exit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -481,7 +481,7 @@ mixin _$EventCalendarWidgetEvent {
     TResult Function()? init,
     TResult Function()? reload,
     TResult Function()? refrech,
-    TResult Function()? onTap,
+    TResult Function()? exit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -489,7 +489,7 @@ mixin _$EventCalendarWidgetEvent {
     TResult Function()? init,
     TResult Function()? reload,
     TResult Function()? refrech,
-    TResult Function()? onTap,
+    TResult Function()? exit,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -498,7 +498,7 @@ mixin _$EventCalendarWidgetEvent {
     required TResult Function(EvInit value) init,
     required TResult Function(EvReload value) reload,
     required TResult Function(EvRefresh value) refrech,
-    required TResult Function(EvOnTap value) onTap,
+    required TResult Function(EvExit value) exit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -506,7 +506,7 @@ mixin _$EventCalendarWidgetEvent {
     TResult Function(EvInit value)? init,
     TResult Function(EvReload value)? reload,
     TResult Function(EvRefresh value)? refrech,
-    TResult Function(EvOnTap value)? onTap,
+    TResult Function(EvExit value)? exit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -514,27 +514,27 @@ mixin _$EventCalendarWidgetEvent {
     TResult Function(EvInit value)? init,
     TResult Function(EvReload value)? reload,
     TResult Function(EvRefresh value)? refrech,
-    TResult Function(EvOnTap value)? onTap,
+    TResult Function(EvExit value)? exit,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EventCalendarWidgetEventCopyWith<$Res> {
-  factory $EventCalendarWidgetEventCopyWith(EventCalendarWidgetEvent value,
-          $Res Function(EventCalendarWidgetEvent) then) =
-      _$EventCalendarWidgetEventCopyWithImpl<$Res>;
+abstract class $EventFormEventCopyWith<$Res> {
+  factory $EventFormEventCopyWith(
+          EventFormEvent value, $Res Function(EventFormEvent) then) =
+      _$EventFormEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$EventCalendarWidgetEventCopyWithImpl<$Res>
-    implements $EventCalendarWidgetEventCopyWith<$Res> {
-  _$EventCalendarWidgetEventCopyWithImpl(this._value, this._then);
+class _$EventFormEventCopyWithImpl<$Res>
+    implements $EventFormEventCopyWith<$Res> {
+  _$EventFormEventCopyWithImpl(this._value, this._then);
 
-  final EventCalendarWidgetEvent _value;
+  final EventFormEvent _value;
   // ignore: unused_field
-  final $Res Function(EventCalendarWidgetEvent) _then;
+  final $Res Function(EventFormEvent) _then;
 }
 
 /// @nodoc
@@ -544,8 +544,7 @@ abstract class _$$EvInitCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$EvInitCopyWithImpl<$Res>
-    extends _$EventCalendarWidgetEventCopyWithImpl<$Res>
+class __$$EvInitCopyWithImpl<$Res> extends _$EventFormEventCopyWithImpl<$Res>
     implements _$$EvInitCopyWith<$Res> {
   __$$EvInitCopyWithImpl(_$EvInit _value, $Res Function(_$EvInit) _then)
       : super(_value, (v) => _then(v as _$EvInit));
@@ -561,7 +560,7 @@ class _$EvInit implements EvInit {
 
   @override
   String toString() {
-    return 'EventCalendarWidgetEvent.init()';
+    return 'EventFormEvent.init()';
   }
 
   @override
@@ -579,7 +578,7 @@ class _$EvInit implements EvInit {
     required TResult Function() init,
     required TResult Function() reload,
     required TResult Function() refrech,
-    required TResult Function() onTap,
+    required TResult Function() exit,
   }) {
     return init();
   }
@@ -590,7 +589,7 @@ class _$EvInit implements EvInit {
     TResult Function()? init,
     TResult Function()? reload,
     TResult Function()? refrech,
-    TResult Function()? onTap,
+    TResult Function()? exit,
   }) {
     return init?.call();
   }
@@ -601,7 +600,7 @@ class _$EvInit implements EvInit {
     TResult Function()? init,
     TResult Function()? reload,
     TResult Function()? refrech,
-    TResult Function()? onTap,
+    TResult Function()? exit,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -616,7 +615,7 @@ class _$EvInit implements EvInit {
     required TResult Function(EvInit value) init,
     required TResult Function(EvReload value) reload,
     required TResult Function(EvRefresh value) refrech,
-    required TResult Function(EvOnTap value) onTap,
+    required TResult Function(EvExit value) exit,
   }) {
     return init(this);
   }
@@ -627,7 +626,7 @@ class _$EvInit implements EvInit {
     TResult Function(EvInit value)? init,
     TResult Function(EvReload value)? reload,
     TResult Function(EvRefresh value)? refrech,
-    TResult Function(EvOnTap value)? onTap,
+    TResult Function(EvExit value)? exit,
   }) {
     return init?.call(this);
   }
@@ -638,7 +637,7 @@ class _$EvInit implements EvInit {
     TResult Function(EvInit value)? init,
     TResult Function(EvReload value)? reload,
     TResult Function(EvRefresh value)? refrech,
-    TResult Function(EvOnTap value)? onTap,
+    TResult Function(EvExit value)? exit,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -648,7 +647,7 @@ class _$EvInit implements EvInit {
   }
 }
 
-abstract class EvInit implements EventCalendarWidgetEvent {
+abstract class EvInit implements EventFormEvent {
   const factory EvInit() = _$EvInit;
 }
 
@@ -660,8 +659,7 @@ abstract class _$$EvReloadCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$EvReloadCopyWithImpl<$Res>
-    extends _$EventCalendarWidgetEventCopyWithImpl<$Res>
+class __$$EvReloadCopyWithImpl<$Res> extends _$EventFormEventCopyWithImpl<$Res>
     implements _$$EvReloadCopyWith<$Res> {
   __$$EvReloadCopyWithImpl(_$EvReload _value, $Res Function(_$EvReload) _then)
       : super(_value, (v) => _then(v as _$EvReload));
@@ -677,7 +675,7 @@ class _$EvReload implements EvReload {
 
   @override
   String toString() {
-    return 'EventCalendarWidgetEvent.reload()';
+    return 'EventFormEvent.reload()';
   }
 
   @override
@@ -695,7 +693,7 @@ class _$EvReload implements EvReload {
     required TResult Function() init,
     required TResult Function() reload,
     required TResult Function() refrech,
-    required TResult Function() onTap,
+    required TResult Function() exit,
   }) {
     return reload();
   }
@@ -706,7 +704,7 @@ class _$EvReload implements EvReload {
     TResult Function()? init,
     TResult Function()? reload,
     TResult Function()? refrech,
-    TResult Function()? onTap,
+    TResult Function()? exit,
   }) {
     return reload?.call();
   }
@@ -717,7 +715,7 @@ class _$EvReload implements EvReload {
     TResult Function()? init,
     TResult Function()? reload,
     TResult Function()? refrech,
-    TResult Function()? onTap,
+    TResult Function()? exit,
     required TResult orElse(),
   }) {
     if (reload != null) {
@@ -732,7 +730,7 @@ class _$EvReload implements EvReload {
     required TResult Function(EvInit value) init,
     required TResult Function(EvReload value) reload,
     required TResult Function(EvRefresh value) refrech,
-    required TResult Function(EvOnTap value) onTap,
+    required TResult Function(EvExit value) exit,
   }) {
     return reload(this);
   }
@@ -743,7 +741,7 @@ class _$EvReload implements EvReload {
     TResult Function(EvInit value)? init,
     TResult Function(EvReload value)? reload,
     TResult Function(EvRefresh value)? refrech,
-    TResult Function(EvOnTap value)? onTap,
+    TResult Function(EvExit value)? exit,
   }) {
     return reload?.call(this);
   }
@@ -754,7 +752,7 @@ class _$EvReload implements EvReload {
     TResult Function(EvInit value)? init,
     TResult Function(EvReload value)? reload,
     TResult Function(EvRefresh value)? refrech,
-    TResult Function(EvOnTap value)? onTap,
+    TResult Function(EvExit value)? exit,
     required TResult orElse(),
   }) {
     if (reload != null) {
@@ -764,7 +762,7 @@ class _$EvReload implements EvReload {
   }
 }
 
-abstract class EvReload implements EventCalendarWidgetEvent {
+abstract class EvReload implements EventFormEvent {
   const factory EvReload() = _$EvReload;
 }
 
@@ -776,8 +774,7 @@ abstract class _$$EvRefreshCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$EvRefreshCopyWithImpl<$Res>
-    extends _$EventCalendarWidgetEventCopyWithImpl<$Res>
+class __$$EvRefreshCopyWithImpl<$Res> extends _$EventFormEventCopyWithImpl<$Res>
     implements _$$EvRefreshCopyWith<$Res> {
   __$$EvRefreshCopyWithImpl(
       _$EvRefresh _value, $Res Function(_$EvRefresh) _then)
@@ -794,7 +791,7 @@ class _$EvRefresh implements EvRefresh {
 
   @override
   String toString() {
-    return 'EventCalendarWidgetEvent.refrech()';
+    return 'EventFormEvent.refrech()';
   }
 
   @override
@@ -812,7 +809,7 @@ class _$EvRefresh implements EvRefresh {
     required TResult Function() init,
     required TResult Function() reload,
     required TResult Function() refrech,
-    required TResult Function() onTap,
+    required TResult Function() exit,
   }) {
     return refrech();
   }
@@ -823,7 +820,7 @@ class _$EvRefresh implements EvRefresh {
     TResult Function()? init,
     TResult Function()? reload,
     TResult Function()? refrech,
-    TResult Function()? onTap,
+    TResult Function()? exit,
   }) {
     return refrech?.call();
   }
@@ -834,7 +831,7 @@ class _$EvRefresh implements EvRefresh {
     TResult Function()? init,
     TResult Function()? reload,
     TResult Function()? refrech,
-    TResult Function()? onTap,
+    TResult Function()? exit,
     required TResult orElse(),
   }) {
     if (refrech != null) {
@@ -849,7 +846,7 @@ class _$EvRefresh implements EvRefresh {
     required TResult Function(EvInit value) init,
     required TResult Function(EvReload value) reload,
     required TResult Function(EvRefresh value) refrech,
-    required TResult Function(EvOnTap value) onTap,
+    required TResult Function(EvExit value) exit,
   }) {
     return refrech(this);
   }
@@ -860,7 +857,7 @@ class _$EvRefresh implements EvRefresh {
     TResult Function(EvInit value)? init,
     TResult Function(EvReload value)? reload,
     TResult Function(EvRefresh value)? refrech,
-    TResult Function(EvOnTap value)? onTap,
+    TResult Function(EvExit value)? exit,
   }) {
     return refrech?.call(this);
   }
@@ -871,7 +868,7 @@ class _$EvRefresh implements EvRefresh {
     TResult Function(EvInit value)? init,
     TResult Function(EvReload value)? reload,
     TResult Function(EvRefresh value)? refrech,
-    TResult Function(EvOnTap value)? onTap,
+    TResult Function(EvExit value)? exit,
     required TResult orElse(),
   }) {
     if (refrech != null) {
@@ -881,41 +878,40 @@ class _$EvRefresh implements EvRefresh {
   }
 }
 
-abstract class EvRefresh implements EventCalendarWidgetEvent {
+abstract class EvRefresh implements EventFormEvent {
   const factory EvRefresh() = _$EvRefresh;
 }
 
 /// @nodoc
-abstract class _$$EvOnTapCopyWith<$Res> {
-  factory _$$EvOnTapCopyWith(_$EvOnTap value, $Res Function(_$EvOnTap) then) =
-      __$$EvOnTapCopyWithImpl<$Res>;
+abstract class _$$EvExitCopyWith<$Res> {
+  factory _$$EvExitCopyWith(_$EvExit value, $Res Function(_$EvExit) then) =
+      __$$EvExitCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$EvOnTapCopyWithImpl<$Res>
-    extends _$EventCalendarWidgetEventCopyWithImpl<$Res>
-    implements _$$EvOnTapCopyWith<$Res> {
-  __$$EvOnTapCopyWithImpl(_$EvOnTap _value, $Res Function(_$EvOnTap) _then)
-      : super(_value, (v) => _then(v as _$EvOnTap));
+class __$$EvExitCopyWithImpl<$Res> extends _$EventFormEventCopyWithImpl<$Res>
+    implements _$$EvExitCopyWith<$Res> {
+  __$$EvExitCopyWithImpl(_$EvExit _value, $Res Function(_$EvExit) _then)
+      : super(_value, (v) => _then(v as _$EvExit));
 
   @override
-  _$EvOnTap get _value => super._value as _$EvOnTap;
+  _$EvExit get _value => super._value as _$EvExit;
 }
 
 /// @nodoc
 
-class _$EvOnTap implements EvOnTap {
-  const _$EvOnTap();
+class _$EvExit implements EvExit {
+  const _$EvExit();
 
   @override
   String toString() {
-    return 'EventCalendarWidgetEvent.onTap()';
+    return 'EventFormEvent.exit()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$EvOnTap);
+        (other.runtimeType == runtimeType && other is _$EvExit);
   }
 
   @override
@@ -927,9 +923,9 @@ class _$EvOnTap implements EvOnTap {
     required TResult Function() init,
     required TResult Function() reload,
     required TResult Function() refrech,
-    required TResult Function() onTap,
+    required TResult Function() exit,
   }) {
-    return onTap();
+    return exit();
   }
 
   @override
@@ -938,9 +934,9 @@ class _$EvOnTap implements EvOnTap {
     TResult Function()? init,
     TResult Function()? reload,
     TResult Function()? refrech,
-    TResult Function()? onTap,
+    TResult Function()? exit,
   }) {
-    return onTap?.call();
+    return exit?.call();
   }
 
   @override
@@ -949,11 +945,11 @@ class _$EvOnTap implements EvOnTap {
     TResult Function()? init,
     TResult Function()? reload,
     TResult Function()? refrech,
-    TResult Function()? onTap,
+    TResult Function()? exit,
     required TResult orElse(),
   }) {
-    if (onTap != null) {
-      return onTap();
+    if (exit != null) {
+      return exit();
     }
     return orElse();
   }
@@ -964,9 +960,9 @@ class _$EvOnTap implements EvOnTap {
     required TResult Function(EvInit value) init,
     required TResult Function(EvReload value) reload,
     required TResult Function(EvRefresh value) refrech,
-    required TResult Function(EvOnTap value) onTap,
+    required TResult Function(EvExit value) exit,
   }) {
-    return onTap(this);
+    return exit(this);
   }
 
   @override
@@ -975,9 +971,9 @@ class _$EvOnTap implements EvOnTap {
     TResult Function(EvInit value)? init,
     TResult Function(EvReload value)? reload,
     TResult Function(EvRefresh value)? refrech,
-    TResult Function(EvOnTap value)? onTap,
+    TResult Function(EvExit value)? exit,
   }) {
-    return onTap?.call(this);
+    return exit?.call(this);
   }
 
   @override
@@ -986,106 +982,108 @@ class _$EvOnTap implements EvOnTap {
     TResult Function(EvInit value)? init,
     TResult Function(EvReload value)? reload,
     TResult Function(EvRefresh value)? refrech,
-    TResult Function(EvOnTap value)? onTap,
+    TResult Function(EvExit value)? exit,
     required TResult orElse(),
   }) {
-    if (onTap != null) {
-      return onTap(this);
+    if (exit != null) {
+      return exit(this);
     }
     return orElse();
   }
 }
 
-abstract class EvOnTap implements EventCalendarWidgetEvent {
-  const factory EvOnTap() = _$EvOnTap;
+abstract class EvExit implements EventFormEvent {
+  const factory EvExit() = _$EvExit;
 }
 
 /// @nodoc
-mixin _$EventCalendarWidgetSR {
+mixin _$EventFormSR {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() openEventCalendar,
+    required TResult Function() exit,
+    required TResult Function(String message) showSnackBar,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? openEventCalendar,
+    TResult Function()? exit,
+    TResult Function(String message)? showSnackBar,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? openEventCalendar,
+    TResult Function()? exit,
+    TResult Function(String message)? showSnackBar,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_OpenEventCalendar value) openEventCalendar,
+    required TResult Function(_SrExit value) exit,
+    required TResult Function(_SrShowSnackBar value) showSnackBar,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_OpenEventCalendar value)? openEventCalendar,
+    TResult Function(_SrExit value)? exit,
+    TResult Function(_SrShowSnackBar value)? showSnackBar,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_OpenEventCalendar value)? openEventCalendar,
+    TResult Function(_SrExit value)? exit,
+    TResult Function(_SrShowSnackBar value)? showSnackBar,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EventCalendarWidgetSRCopyWith<$Res> {
-  factory $EventCalendarWidgetSRCopyWith(EventCalendarWidgetSR value,
-          $Res Function(EventCalendarWidgetSR) then) =
-      _$EventCalendarWidgetSRCopyWithImpl<$Res>;
+abstract class $EventFormSRCopyWith<$Res> {
+  factory $EventFormSRCopyWith(
+          EventFormSR value, $Res Function(EventFormSR) then) =
+      _$EventFormSRCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$EventCalendarWidgetSRCopyWithImpl<$Res>
-    implements $EventCalendarWidgetSRCopyWith<$Res> {
-  _$EventCalendarWidgetSRCopyWithImpl(this._value, this._then);
+class _$EventFormSRCopyWithImpl<$Res> implements $EventFormSRCopyWith<$Res> {
+  _$EventFormSRCopyWithImpl(this._value, this._then);
 
-  final EventCalendarWidgetSR _value;
+  final EventFormSR _value;
   // ignore: unused_field
-  final $Res Function(EventCalendarWidgetSR) _then;
+  final $Res Function(EventFormSR) _then;
 }
 
 /// @nodoc
-abstract class _$$_OpenEventCalendarCopyWith<$Res> {
-  factory _$$_OpenEventCalendarCopyWith(_$_OpenEventCalendar value,
-          $Res Function(_$_OpenEventCalendar) then) =
-      __$$_OpenEventCalendarCopyWithImpl<$Res>;
+abstract class _$$_SrExitCopyWith<$Res> {
+  factory _$$_SrExitCopyWith(_$_SrExit value, $Res Function(_$_SrExit) then) =
+      __$$_SrExitCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_OpenEventCalendarCopyWithImpl<$Res>
-    extends _$EventCalendarWidgetSRCopyWithImpl<$Res>
-    implements _$$_OpenEventCalendarCopyWith<$Res> {
-  __$$_OpenEventCalendarCopyWithImpl(
-      _$_OpenEventCalendar _value, $Res Function(_$_OpenEventCalendar) _then)
-      : super(_value, (v) => _then(v as _$_OpenEventCalendar));
+class __$$_SrExitCopyWithImpl<$Res> extends _$EventFormSRCopyWithImpl<$Res>
+    implements _$$_SrExitCopyWith<$Res> {
+  __$$_SrExitCopyWithImpl(_$_SrExit _value, $Res Function(_$_SrExit) _then)
+      : super(_value, (v) => _then(v as _$_SrExit));
 
   @override
-  _$_OpenEventCalendar get _value => super._value as _$_OpenEventCalendar;
+  _$_SrExit get _value => super._value as _$_SrExit;
 }
 
 /// @nodoc
 
-class _$_OpenEventCalendar implements _OpenEventCalendar {
-  const _$_OpenEventCalendar();
+class _$_SrExit implements _SrExit {
+  const _$_SrExit();
 
   @override
   String toString() {
-    return 'EventCalendarWidgetSR.openEventCalendar()';
+    return 'EventFormSR.exit()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_OpenEventCalendar);
+        (other.runtimeType == runtimeType && other is _$_SrExit);
   }
 
   @override
@@ -1094,27 +1092,30 @@ class _$_OpenEventCalendar implements _OpenEventCalendar {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() openEventCalendar,
+    required TResult Function() exit,
+    required TResult Function(String message) showSnackBar,
   }) {
-    return openEventCalendar();
+    return exit();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? openEventCalendar,
+    TResult Function()? exit,
+    TResult Function(String message)? showSnackBar,
   }) {
-    return openEventCalendar?.call();
+    return exit?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? openEventCalendar,
+    TResult Function()? exit,
+    TResult Function(String message)? showSnackBar,
     required TResult orElse(),
   }) {
-    if (openEventCalendar != null) {
-      return openEventCalendar();
+    if (exit != null) {
+      return exit();
     }
     return orElse();
   }
@@ -1122,32 +1123,169 @@ class _$_OpenEventCalendar implements _OpenEventCalendar {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_OpenEventCalendar value) openEventCalendar,
+    required TResult Function(_SrExit value) exit,
+    required TResult Function(_SrShowSnackBar value) showSnackBar,
   }) {
-    return openEventCalendar(this);
+    return exit(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_OpenEventCalendar value)? openEventCalendar,
+    TResult Function(_SrExit value)? exit,
+    TResult Function(_SrShowSnackBar value)? showSnackBar,
   }) {
-    return openEventCalendar?.call(this);
+    return exit?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_OpenEventCalendar value)? openEventCalendar,
+    TResult Function(_SrExit value)? exit,
+    TResult Function(_SrShowSnackBar value)? showSnackBar,
     required TResult orElse(),
   }) {
-    if (openEventCalendar != null) {
-      return openEventCalendar(this);
+    if (exit != null) {
+      return exit(this);
     }
     return orElse();
   }
 }
 
-abstract class _OpenEventCalendar implements EventCalendarWidgetSR {
-  const factory _OpenEventCalendar() = _$_OpenEventCalendar;
+abstract class _SrExit implements EventFormSR {
+  const factory _SrExit() = _$_SrExit;
+}
+
+/// @nodoc
+abstract class _$$_SrShowSnackBarCopyWith<$Res> {
+  factory _$$_SrShowSnackBarCopyWith(
+          _$_SrShowSnackBar value, $Res Function(_$_SrShowSnackBar) then) =
+      __$$_SrShowSnackBarCopyWithImpl<$Res>;
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$_SrShowSnackBarCopyWithImpl<$Res>
+    extends _$EventFormSRCopyWithImpl<$Res>
+    implements _$$_SrShowSnackBarCopyWith<$Res> {
+  __$$_SrShowSnackBarCopyWithImpl(
+      _$_SrShowSnackBar _value, $Res Function(_$_SrShowSnackBar) _then)
+      : super(_value, (v) => _then(v as _$_SrShowSnackBar));
+
+  @override
+  _$_SrShowSnackBar get _value => super._value as _$_SrShowSnackBar;
+
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_$_SrShowSnackBar(
+      message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_SrShowSnackBar implements _SrShowSnackBar {
+  const _$_SrShowSnackBar(this.message);
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'EventFormSR.showSnackBar(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SrShowSnackBar &&
+            const DeepCollectionEquality().equals(other.message, message));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_SrShowSnackBarCopyWith<_$_SrShowSnackBar> get copyWith =>
+      __$$_SrShowSnackBarCopyWithImpl<_$_SrShowSnackBar>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() exit,
+    required TResult Function(String message) showSnackBar,
+  }) {
+    return showSnackBar(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? exit,
+    TResult Function(String message)? showSnackBar,
+  }) {
+    return showSnackBar?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? exit,
+    TResult Function(String message)? showSnackBar,
+    required TResult orElse(),
+  }) {
+    if (showSnackBar != null) {
+      return showSnackBar(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SrExit value) exit,
+    required TResult Function(_SrShowSnackBar value) showSnackBar,
+  }) {
+    return showSnackBar(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_SrExit value)? exit,
+    TResult Function(_SrShowSnackBar value)? showSnackBar,
+  }) {
+    return showSnackBar?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SrExit value)? exit,
+    TResult Function(_SrShowSnackBar value)? showSnackBar,
+    required TResult orElse(),
+  }) {
+    if (showSnackBar != null) {
+      return showSnackBar(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SrShowSnackBar implements EventFormSR {
+  const factory _SrShowSnackBar(final String message) = _$_SrShowSnackBar;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$$_SrShowSnackBarCopyWith<_$_SrShowSnackBar> get copyWith =>
+      throw _privateConstructorUsedError;
 }

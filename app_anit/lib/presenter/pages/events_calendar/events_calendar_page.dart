@@ -1,5 +1,5 @@
-import 'package:app_anit/presenter/pages/event_calendar/event_calendar_bloc.dart';
-import 'package:app_anit/presenter/pages/event_calendar/event_calendar_models.dart';
+import 'package:app_anit/presenter/pages/events_calendar/events_calendar_bloc.dart';
+import 'package:app_anit/presenter/pages/events_calendar/events_calendar_models.dart';
 import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,17 +10,18 @@ import '../../disign_system/widgets_design/custom_empty_page.dart';
 import '../../disign_system/widgets_design/custom_error_page.dart';
 import '../../disign_system/widgets_design/custom_page_widget.dart';
 import '../../disign_system/widgets_design/custom_progres_widgets.dart';
+import '../event_form/event_form_page.dart';
 
-class EventCalendarPage extends StatelessWidget {
-  const EventCalendarPage({Key? key}) : super(key: key);
+class EventsCalendarPage extends StatelessWidget {
+  const EventsCalendarPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<EventCalendarBlok>(
-      create: (context) => EventCalendarBlok(appModel: sl(), repository: sl())
-        ..add(const EventCalendarEvent.init()),
-      child:
-          SrBlocBuilder<EventCalendarBlok, EventCalendarState, EventCalendarSR>(
+    return BlocProvider<EventsCalendarBlok>(
+      create: (context) => EventsCalendarBlok(appModel: sl(), repository: sl())
+        ..add(const EventsCalendarEvent.init()),
+      child: SrBlocBuilder<EventsCalendarBlok, EventsCalendarState,
+          EventsCalendarSR>(
         onSR: _onSingleResult,
         builder: (context, state) {
           return state.map(
@@ -33,8 +34,8 @@ class EventCalendarPage extends StatelessWidget {
             error: (value) => CustomErrorPage(
                 message: value.message,
                 onClick: () => context
-                    .read<EventCalendarBlok>()
-                    .add(const EventCalendarEvent.reload())),
+                    .read<EventsCalendarBlok>()
+                    .add(const EventsCalendarEvent.reload())),
           );
         },
       ),
@@ -43,11 +44,27 @@ class EventCalendarPage extends StatelessWidget {
 
   void _onSingleResult(
     BuildContext context,
-    EventCalendarSR sr,
+    EventsCalendarSR sr,
   ) {
     sr.when(
       exit: () {},
       showSnackBar: (message) {},
+      openNewTask: (DateTime startTime) {
+        Navigator.push<bool>(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const EventFormPage(),
+          ),
+        ).then((value) {
+          if (value != null) {
+            if (value) {
+              context
+                  .read<EventsCalendarBlok>()
+                  .add(const EventsCalendarEvent.reload());
+            }
+          }
+        });
+      },
     );
   }
 }
@@ -55,7 +72,7 @@ class EventCalendarPage extends StatelessWidget {
 class _PageContent extends StatelessWidget {
   final bool isLoading;
   final ViewCalendarType viewCalendarType;
-  final List<EventData> listEventCalendarData;
+  final List<EventsData> listEventCalendarData;
 
   const _PageContent({
     Key? key,
@@ -82,8 +99,8 @@ class _PageContent extends StatelessWidget {
                 //underline: SizedBox(),
                 onChanged: (value) {
                   context
-                      .read<EventCalendarBlok>()
-                      .add(EventCalendarEvent.onChangeViewType(value ?? 0));
+                      .read<EventsCalendarBlok>()
+                      .add(EventsCalendarEvent.onChangeViewType(value ?? 0));
                 },
               ),
             ],
@@ -112,7 +129,7 @@ List<DropdownMenuItem<int>> get dropdownItems {
 class _Calendar extends StatelessWidget {
   final bool isLoading;
   final ViewCalendarType viewCalendarType;
-  final List<EventData> listEventCalendarData;
+  final List<EventsData> listEventCalendarData;
 
   const _Calendar({
     Key? key,
@@ -123,7 +140,7 @@ class _Calendar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<CalendarEventData<EventData>> list = listEventCalendarData
+    final List<CalendarEventData<EventsData>> list = listEventCalendarData
         .map((e) => CalendarEventData(
               date: e.startTime,
               event: e,
@@ -138,8 +155,8 @@ class _Calendar extends StatelessWidget {
       return const Center(child: CustomCircularProgressIndicator());
     } else {
       return Center(
-        child: CalendarControllerProvider<EventData>(
-          controller: EventController<EventData>()..addAll(list),
+        child: CalendarControllerProvider<EventsData>(
+          controller: EventController<EventsData>()..addAll(list),
           child: viewCalendarType.map(
             month: (value) => MonthViewWidget(day: value.day),
             week: (value) => WeekViewWidget(
@@ -183,10 +200,13 @@ class WeekViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WeekView<EventData>(
+    return WeekView<EventsData>(
       key: state,
       width: width,
       initialDay: day,
+      onDateTap: (date) => context
+          .read<EventsCalendarBlok>()
+          .add(EventsCalendarEvent.onTapHour(date)),
     );
   }
 }
@@ -205,7 +225,7 @@ class DayViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DayView<EventData>(
+    return DayView<EventsData>(
       key: state,
       width: width,
       initialDay: day,
@@ -227,14 +247,14 @@ class MonthViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MonthView<EventData>(
+    return MonthView<EventsData>(
       key: state,
       width: width,
       initialMonth: day,
       onCellTap: (events, date) => {
         context
-            .read<EventCalendarBlok>()
-            .add(EventCalendarEvent.onTapDay(date)),
+            .read<EventsCalendarBlok>()
+            .add(EventsCalendarEvent.onTapDay(date)),
       },
     );
   }
