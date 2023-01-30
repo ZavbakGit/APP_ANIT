@@ -13,3 +13,15 @@ app_anit/macos/Flutter/GeneratedPluginRegistrant.swift
 app_anit/windows/flutter/generated_plugin_registrant.cc
 app_anit/windows/flutter/generated_plugin_registrant.h
 app_anit/windows/flutter/generated_plugins.cmake
+app_anit/windows/flutter/generated_plugins.cmake
+app_anit/windows/flutter/generated_plugin_registrant.h
+app_anit/windows/flutter/generated_plugin_registrant.cc
+app_anit/macos/Flutter/GeneratedPluginRegistrant.swift
+app_anit/linux/flutter/generated_plugins.cmake
+app_anit/linux/flutter/generated_plugin_registrant.h
+app_anit/linux/flutter/generated_plugin_registrant.cc
+app_anit/chopper_api_anit/.ios/Flutter/FlutterPluginRegistrant/Classes/GeneratedPluginRegistrant.m
+app_anit/chopper_api_anit/.ios/Flutter/FlutterPluginRegistrant/Classes/GeneratedPluginRegistrant.h
+app_anit/chopper_api_anit/.ios/Flutter/FlutterPluginRegistrant/FlutterPluginRegistrant.podspec
+app_anit/chopper_api_anit/.android/Flutter/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java
+app_anit/chopper_api_anit/.android/local.properties
