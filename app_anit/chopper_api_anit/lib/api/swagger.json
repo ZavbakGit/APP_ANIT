@@ -248,6 +248,106 @@
           }
         }
       }
+    },
+    "/events": {
+      "get": {
+        "description": "Возвращаем события в календаре",
+        "operationId": "getEvents",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "query",
+            "description": "События на дату",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Массив с событиями",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Event"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/event/{guid}": {
+      "get": {
+        "operationId": "getEvent",
+        "description": "Событие по guid",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "guid",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/event": {
+      "post": {
+        "operationId": "postEvent",
+        "description": "Записывает событие",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Записано"
+          }
+        }
+      }
+    },
+    "/event_new": {
+      "get": {
+        "operationId": "newEvent",
+        "description": "Данные для нового события",
+        "responses": {
+          "200": {
+            "description": "Новая задача",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -406,6 +506,46 @@
           "name": {
             "type": "string",
             "description": "Наименование справочника"
+          }
+        }
+      },
+      "Event": {
+        "description": "Событие",
+        "type": "object",
+        "properties": {
+          "guid": {
+            "type": "string",
+            "description": "Уникальный идентификатор"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Дата создания документа"
+          },
+          "number": {
+            "type": "string",
+            "description": "номер документа"
+          },
+          "datestart": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Дата начала"
+          },
+          "datefinish": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Дата окончания"
+          },
+          "title": {
+            "type": "string",
+            "description": "Тема встречи"
+          },
+          "description": {
+            "type": "string",
+            "description": "Описание встречи"
+          },
+          "produser": {
+            "$ref": "#/components/schemas/RefCatalog"
           }
         }
       }

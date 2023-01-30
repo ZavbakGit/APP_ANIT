@@ -1,0 +1,367 @@
+openapi: 3.0.1
+info:
+  title: Сервис для базы 1C АНИТ
+  description: |-
+    API для получения различных данных
+    версия от 2022-05-17
+  contact:
+    email: ag@79900.ru
+  version: 1.0.0
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: http://172.31.255.150/copy_erp/hs/oas_api
+security:
+  - basicAuth: []
+paths:
+  /task:
+    post:
+      operationId: postTask
+      description: Записывает задачу
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Task'
+      responses:
+        '201':
+          description: Записано
+  /task/{guid}:
+    get:
+      operationId: getTask
+      description: задача по guid
+      parameters:
+        - in: path
+          name: guid
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+  /task_new:
+    get:
+      operationId: newTask
+      description: Данные для новой задачи
+      responses:
+        '200':
+          description: Новая задача
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+  /tasks_user:
+    get:
+      operationId: getTasksUser
+      parameters:
+        - in: query
+          name: guidUser
+          schema:
+            type: string
+          required: true
+      description: задачи пользователя
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TaskItem'
+  /login:
+    get:
+      summary: Login
+      description: При подключении вернёт настройки
+      operationId: login
+      parameters:
+        - name: token
+          in: query
+          description: Строка поиска
+          schema:
+            type: string
+        - name: deviceId
+          in: query
+          description: Строка поиска
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RemoteConfig'
+  /catalogs/{type}/search:
+    get:
+      description: Ищет эементы справочника по подстроке
+      operationId: searchCatalog
+      parameters:
+        - name: search
+          in: query
+          description: Строка поиска
+          required: true
+          schema:
+            type: string
+        - name: count
+          in: query
+          description: Количество
+          required: true
+          schema:
+            type: number
+        - name: offset
+          in: query
+          description: Cмещение
+          required: true
+          schema:
+            type: number
+        - name: type
+          in: path
+          description: Тип справочника
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Время на сервере
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RefCatalog'
+  /enum/{name}:
+    get:
+      description: Возвращает массив с перечислениями
+      operationId: getEnumElemets
+      parameters:
+        - name: name
+          in: path
+          description: Имя перечисления
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Массив с перечислениями
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RefEnum'
+  /events:
+    get:
+      description: Возвращаем события в календаре
+      operationId: getEvents
+      parameters: 
+        - name: date
+          in: query
+          description: События на дату
+          required: true
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Массив с событиями
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Event'
+  /event/{guid}:
+    get:
+      operationId: getEvent
+      description: Событие по guid
+      parameters:
+        - in: path
+          name: guid
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+  /event:
+    post:
+      operationId: postEvent
+      description: Записывает событие
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Event'
+      responses:
+        '201':
+          description: Записано
+  /event_new:
+    get:
+      operationId: newEvent
+      description: Данные для нового события
+      responses:
+        '200':
+          description: Новая задача
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+components:
+  schemas:
+    Task:
+      type: object
+      properties:
+        guid:
+          description: guid документа
+          type: string
+        date:
+          type: string
+          description: Дата документа
+          format: date-time
+        date_control:
+          type: string
+          description: Дата контроля
+          format: date-time
+        number:
+          description: Номер документа
+          type: string
+        condition:
+          $ref: '#/components/schemas/RefEnum'
+        importance:
+          $ref: '#/components/schemas/RefEnum'
+        title:
+          description: ОписаниеСобытия
+          type: string
+        partner:
+          $ref: '#/components/schemas/RefCatalog'
+        author:
+          $ref: '#/components/schemas/RefCatalog'
+        responsible:
+          $ref: '#/components/schemas/RefCatalog'
+        producer:
+          $ref: '#/components/schemas/RefCatalog'
+        controllers:
+          type: array
+          items:
+            $ref: '#/components/schemas/RefCatalog'
+        assistants:
+          type: array
+          items:
+            $ref: '#/components/schemas/RefCatalog'
+      description: Задача
+    TaskItem:
+      type: object
+      properties:
+        guid:
+          description: guid документа
+          type: string
+        date:
+          type: string
+          description: Дата документа
+          format: date-time
+        number:
+          description: Номер документа
+          type: string
+        title:
+          description: ОписаниеСобытия
+          type: string
+        condition:
+          $ref: '#/components/schemas/RefEnum'
+        importance:
+          $ref: '#/components/schemas/RefEnum'
+        partner:
+          $ref: '#/components/schemas/RefCatalog'
+        author:
+          $ref: '#/components/schemas/RefCatalog'
+        responsible:
+          $ref: '#/components/schemas/RefCatalog'
+        producer:
+          $ref: '#/components/schemas/RefCatalog'
+        is_controllers:
+          type: boolean
+        is_assistants:
+          type: boolean
+        is_responsible:
+          type: boolean
+      description: Элемент журнала задач
+    RemoteConfig:
+      description: Настройки
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/RefCatalog'
+    RefEnum:
+      description: Ссылка на перечисление
+      type: object
+      properties:
+        type:
+          type: string
+          description: Имя перечисления
+        index:
+          type: integer
+          description: Индекс перечисления
+        name:
+          type: string
+          description: Наименование значения перечисления
+    RefCatalog:
+      description: Ссылка на справочник
+      type: object
+      properties:
+        guid:
+          type: string
+          description: Уникальный идентификатор
+        type:
+          type: string
+          description: Тип справочника
+        code:
+          type: string
+          description: Код справочника
+        name:
+          type: string
+          description: Наименование справочника
+    Event:
+      description: Событие
+      type: object
+      properties:
+        guid:
+          type: string
+          description: Уникальный идентификатор
+        date:
+          type: string
+          format: date-time
+          description: Дата создания документа
+        number:
+          type: string
+          description: номер документа
+        datestart:
+          type: string
+          format: date-time
+          description: Дата начала
+        datefinish:
+          type: string
+          format: date-time
+          description: Дата окончания
+        title:
+          type: string
+          description: Тема встречи
+        description:
+          type: string
+          description: Описание встречи
+        produser:
+          $ref: '#/components/schemas/RefCatalog'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
