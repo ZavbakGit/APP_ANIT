@@ -9,7 +9,8 @@ class ConnectedConfigModel {
   ConnectedConfigModel(
       {required this.login, required this.password, this.token, this.deviceId});
 
-  String get baseUrl => 'https://khv.799000.ru/erp/hs/oas_api';
+  //String get baseUrl => 'https://khv.799000.ru/erp/hs/oas_api';
+  String get baseUrl => 'https://khv.799000.ru/copy_erp/hs/oas_api';
 
   Map<String, dynamic> toMap() {
     return {

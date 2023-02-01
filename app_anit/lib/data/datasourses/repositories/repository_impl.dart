@@ -185,6 +185,22 @@ class RepositoryImpl extends Repository {
       return Left(_getCatchFailure(e));
     }
   }
+
+  @override
+  Future<Either<Failure, List<sw.Event>>> getEvents(DateTime startDate) async {
+    try {
+      final response =
+          await swagger!.eventsGet(date: startDate.toIso8601String());
+
+      if (response.errorStatusCode) {
+        return Left(response.getFailureResponse());
+      }
+
+      return Right(response.body ?? []);
+    } catch (e) {
+      return Left(_getCatchFailure(e));
+    }
+  }
 }
 
 Failure _getCatchFailure(Object e) {

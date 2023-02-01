@@ -42,4 +42,8 @@ abstract class Repository {
   Future<Either<Failure, None>> saveTask({
     required sw.Task task,
   });
+
+  /// Возвращает события после этой даты
+  ///
+  Future<Either<Failure, List<sw.Event>>> getEvents(DateTime startDate);
 }

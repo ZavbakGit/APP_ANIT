@@ -155,6 +155,57 @@ abstract class Swagger extends ChopperService {
   @Get(path: '/enum/{name}')
   Future<chopper.Response<List<RefEnum>>> _enumNameGet(
       {@Path('name') required String? name});
+
+  ///
+  ///@param date События на дату
+  Future<chopper.Response<List<Event>>> eventsGet({required String? date}) {
+    generatedMapping.putIfAbsent(Event, () => Event.fromJsonFactory);
+
+    return _eventsGet(date: date);
+  }
+
+  ///
+  ///@param date События на дату
+  @Get(path: '/events')
+  Future<chopper.Response<List<Event>>> _eventsGet(
+      {@Query('date') required String? date});
+
+  ///
+  ///@param guid
+  Future<chopper.Response<Event>> eventGuidGet({required String? guid}) {
+    generatedMapping.putIfAbsent(Event, () => Event.fromJsonFactory);
+
+    return _eventGuidGet(guid: guid);
+  }
+
+  ///
+  ///@param guid
+  @Get(path: '/event/{guid}')
+  Future<chopper.Response<Event>> _eventGuidGet(
+      {@Path('guid') required String? guid});
+
+  ///
+  Future<chopper.Response> eventPost({required Event? body}) {
+    return _eventPost(body: body);
+  }
+
+  ///
+  @Post(
+    path: '/event',
+    optionalBody: true,
+  )
+  Future<chopper.Response> _eventPost({@Body() required Event? body});
+
+  ///
+  Future<chopper.Response<Event>> eventNewGet() {
+    generatedMapping.putIfAbsent(Event, () => Event.fromJsonFactory);
+
+    return _eventNewGet();
+  }
+
+  ///
+  @Get(path: '/event_new')
+  Future<chopper.Response<Event>> _eventNewGet();
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -685,6 +736,126 @@ extension $RefCatalogExtension on RefCatalog {
         type: (type != null ? type.value : this.type),
         code: (code != null ? code.value : this.code),
         name: (name != null ? name.value : this.name));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class Event {
+  Event({
+    this.guid,
+    this.date,
+    this.number,
+    this.datestart,
+    this.datefinish,
+    this.title,
+    this.description,
+    this.produser,
+  });
+
+  factory Event.fromJson(Map<String, dynamic> json) => _$EventFromJson(json);
+
+  @JsonKey(name: 'guid', includeIfNull: false, defaultValue: '')
+  final String? guid;
+  @JsonKey(name: 'date', includeIfNull: false)
+  final DateTime? date;
+  @JsonKey(name: 'number', includeIfNull: false, defaultValue: '')
+  final String? number;
+  @JsonKey(name: 'datestart', includeIfNull: false)
+  final DateTime? datestart;
+  @JsonKey(name: 'datefinish', includeIfNull: false)
+  final DateTime? datefinish;
+  @JsonKey(name: 'title', includeIfNull: false, defaultValue: '')
+  final String? title;
+  @JsonKey(name: 'description', includeIfNull: false, defaultValue: '')
+  final String? description;
+  @JsonKey(name: 'produser', includeIfNull: false)
+  final RefCatalog? produser;
+  static const fromJsonFactory = _$EventFromJson;
+  static const toJsonFactory = _$EventToJson;
+  Map<String, dynamic> toJson() => _$EventToJson(this);
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is Event &&
+            (identical(other.guid, guid) ||
+                const DeepCollectionEquality().equals(other.guid, guid)) &&
+            (identical(other.date, date) ||
+                const DeepCollectionEquality().equals(other.date, date)) &&
+            (identical(other.number, number) ||
+                const DeepCollectionEquality().equals(other.number, number)) &&
+            (identical(other.datestart, datestart) ||
+                const DeepCollectionEquality()
+                    .equals(other.datestart, datestart)) &&
+            (identical(other.datefinish, datefinish) ||
+                const DeepCollectionEquality()
+                    .equals(other.datefinish, datefinish)) &&
+            (identical(other.title, title) ||
+                const DeepCollectionEquality().equals(other.title, title)) &&
+            (identical(other.description, description) ||
+                const DeepCollectionEquality()
+                    .equals(other.description, description)) &&
+            (identical(other.produser, produser) ||
+                const DeepCollectionEquality()
+                    .equals(other.produser, produser)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(guid) ^
+      const DeepCollectionEquality().hash(date) ^
+      const DeepCollectionEquality().hash(number) ^
+      const DeepCollectionEquality().hash(datestart) ^
+      const DeepCollectionEquality().hash(datefinish) ^
+      const DeepCollectionEquality().hash(title) ^
+      const DeepCollectionEquality().hash(description) ^
+      const DeepCollectionEquality().hash(produser) ^
+      runtimeType.hashCode;
+}
+
+extension $EventExtension on Event {
+  Event copyWith(
+      {String? guid,
+      DateTime? date,
+      String? number,
+      DateTime? datestart,
+      DateTime? datefinish,
+      String? title,
+      String? description,
+      RefCatalog? produser}) {
+    return Event(
+        guid: guid ?? this.guid,
+        date: date ?? this.date,
+        number: number ?? this.number,
+        datestart: datestart ?? this.datestart,
+        datefinish: datefinish ?? this.datefinish,
+        title: title ?? this.title,
+        description: description ?? this.description,
+        produser: produser ?? this.produser);
+  }
+
+  Event copyWithWrapped(
+      {Wrapped<String?>? guid,
+      Wrapped<DateTime?>? date,
+      Wrapped<String?>? number,
+      Wrapped<DateTime?>? datestart,
+      Wrapped<DateTime?>? datefinish,
+      Wrapped<String?>? title,
+      Wrapped<String?>? description,
+      Wrapped<RefCatalog?>? produser}) {
+    return Event(
+        guid: (guid != null ? guid.value : this.guid),
+        date: (date != null ? date.value : this.date),
+        number: (number != null ? number.value : this.number),
+        datestart: (datestart != null ? datestart.value : this.datestart),
+        datefinish: (datefinish != null ? datefinish.value : this.datefinish),
+        title: (title != null ? title.value : this.title),
+        description:
+            (description != null ? description.value : this.description),
+        produser: (produser != null ? produser.value : this.produser));
   }
 }
 

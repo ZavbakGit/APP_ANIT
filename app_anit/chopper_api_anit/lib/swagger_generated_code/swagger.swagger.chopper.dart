@@ -117,4 +117,52 @@ class _$Swagger extends Swagger {
     );
     return client.send<List<RefEnum>, RefEnum>($request);
   }
+
+  @override
+  Future<Response<List<Event>>> _eventsGet({required String? date}) {
+    final Uri $url = Uri.parse('/events');
+    final Map<String, dynamic> $params = <String, dynamic>{'date': date};
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+      parameters: $params,
+    );
+    return client.send<List<Event>, Event>($request);
+  }
+
+  @override
+  Future<Response<Event>> _eventGuidGet({required String? guid}) {
+    final Uri $url = Uri.parse('/event/${guid}');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
+    return client.send<Event, Event>($request);
+  }
+
+  @override
+  Future<Response<dynamic>> _eventPost({required Event? body}) {
+    final Uri $url = Uri.parse('/event');
+    final $body = body;
+    final Request $request = Request(
+      'POST',
+      $url,
+      client.baseUrl,
+      body: $body,
+    );
+    return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
+  Future<Response<Event>> _eventNewGet() {
+    final Uri $url = Uri.parse('/event_new');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
+    return client.send<Event, Event>($request);
+  }
 }

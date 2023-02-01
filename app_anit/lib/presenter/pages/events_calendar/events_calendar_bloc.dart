@@ -43,7 +43,22 @@ class EventsCalendarBlok
   ) async {
     isLoading = true;
     add(const EventsCalendarEvent.refrech());
-    await Future.delayed(const Duration(seconds: 1));
+
+    final either = await repository.getEvents(DateTime.now());
+    listEventsCalendarData.clear();
+
+    either.fold((fail) {
+      emit(EventsCalendarState.error(message: 'Ошибка: ${fail.error}'));
+    }, (list) {
+      listEventsCalendarData = list
+          .map((e) => EventsData(
+              startTime: e.datestart!,
+              endTime: e.datefinish!,
+              title: e.title ?? '',
+              description: e.description))
+          .toList();
+    });
+
     add(const EventsCalendarEvent.refrech());
     isLoading = false;
   }

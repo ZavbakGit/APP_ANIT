@@ -186,3 +186,41 @@ Map<String, dynamic> _$RefCatalogToJson(RefCatalog instance) {
   writeNotNull('name', instance.name);
   return val;
 }
+
+Event _$EventFromJson(Map<String, dynamic> json) => Event(
+      guid: json['guid'] as String? ?? '',
+      date:
+          json['date'] == null ? null : DateTime.parse(json['date'] as String),
+      number: json['number'] as String? ?? '',
+      datestart: json['datestart'] == null
+          ? null
+          : DateTime.parse(json['datestart'] as String),
+      datefinish: json['datefinish'] == null
+          ? null
+          : DateTime.parse(json['datefinish'] as String),
+      title: json['title'] as String? ?? '',
+      description: json['description'] as String? ?? '',
+      produser: json['produser'] == null
+          ? null
+          : RefCatalog.fromJson(json['produser'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$EventToJson(Event instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('guid', instance.guid);
+  writeNotNull('date', instance.date?.toIso8601String());
+  writeNotNull('number', instance.number);
+  writeNotNull('datestart', instance.datestart?.toIso8601String());
+  writeNotNull('datefinish', instance.datefinish?.toIso8601String());
+  writeNotNull('title', instance.title);
+  writeNotNull('description', instance.description);
+  writeNotNull('produser', instance.produser?.toJson());
+  return val;
+}
