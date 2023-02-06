@@ -18,21 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$EventFormState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool isLoading) data,
+    required TResult Function(bool isLoading, Event event, bool isModified)
+        data,
     required TResult Function() empty,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(bool isLoading)? data,
+    TResult Function(bool isLoading, Event event, bool isModified)? data,
     TResult Function()? empty,
     TResult Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isLoading)? data,
+    TResult Function(bool isLoading, Event event, bool isModified)? data,
     TResult Function()? empty,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -83,7 +84,7 @@ class _$EventFormStateCopyWithImpl<$Res>
 abstract class _$$_StDataCopyWith<$Res> {
   factory _$$_StDataCopyWith(_$_StData value, $Res Function(_$_StData) then) =
       __$$_StDataCopyWithImpl<$Res>;
-  $Res call({bool isLoading});
+  $Res call({bool isLoading, Event event, bool isModified});
 }
 
 /// @nodoc
@@ -98,11 +99,21 @@ class __$$_StDataCopyWithImpl<$Res> extends _$EventFormStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = freezed,
+    Object? event = freezed,
+    Object? isModified = freezed,
   }) {
     return _then(_$_StData(
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      event: event == freezed
+          ? _value.event
+          : event // ignore: cast_nullable_to_non_nullable
+              as Event,
+      isModified: isModified == freezed
+          ? _value.isModified
+          : isModified // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -111,14 +122,20 @@ class __$$_StDataCopyWithImpl<$Res> extends _$EventFormStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_StData extends _StData {
-  const _$_StData({required this.isLoading}) : super._();
+  const _$_StData(
+      {required this.isLoading, required this.event, required this.isModified})
+      : super._();
 
   @override
   final bool isLoading;
+  @override
+  final Event event;
+  @override
+  final bool isModified;
 
   @override
   String toString() {
-    return 'EventFormState.data(isLoading: $isLoading)';
+    return 'EventFormState.data(isLoading: $isLoading, event: $event, isModified: $isModified)';
   }
 
   @override
@@ -126,12 +143,18 @@ class _$_StData extends _StData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_StData &&
-            const DeepCollectionEquality().equals(other.isLoading, isLoading));
+            const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
+            const DeepCollectionEquality().equals(other.event, event) &&
+            const DeepCollectionEquality()
+                .equals(other.isModified, isModified));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(isLoading));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(isLoading),
+      const DeepCollectionEquality().hash(event),
+      const DeepCollectionEquality().hash(isModified));
 
   @JsonKey(ignore: true)
   @override
@@ -141,33 +164,34 @@ class _$_StData extends _StData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool isLoading) data,
+    required TResult Function(bool isLoading, Event event, bool isModified)
+        data,
     required TResult Function() empty,
     required TResult Function(String message) error,
   }) {
-    return data(isLoading);
+    return data(isLoading, event, isModified);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(bool isLoading)? data,
+    TResult Function(bool isLoading, Event event, bool isModified)? data,
     TResult Function()? empty,
     TResult Function(String message)? error,
   }) {
-    return data?.call(isLoading);
+    return data?.call(isLoading, event, isModified);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isLoading)? data,
+    TResult Function(bool isLoading, Event event, bool isModified)? data,
     TResult Function()? empty,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (data != null) {
-      return data(isLoading);
+      return data(isLoading, event, isModified);
     }
     return orElse();
   }
@@ -208,10 +232,15 @@ class _$_StData extends _StData {
 }
 
 abstract class _StData extends EventFormState {
-  const factory _StData({required final bool isLoading}) = _$_StData;
+  const factory _StData(
+      {required final bool isLoading,
+      required final Event event,
+      required final bool isModified}) = _$_StData;
   const _StData._() : super._();
 
   bool get isLoading;
+  Event get event;
+  bool get isModified;
   @JsonKey(ignore: true)
   _$$_StDataCopyWith<_$_StData> get copyWith =>
       throw _privateConstructorUsedError;
@@ -256,7 +285,8 @@ class _$_StEmpty extends _StEmpty {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool isLoading) data,
+    required TResult Function(bool isLoading, Event event, bool isModified)
+        data,
     required TResult Function() empty,
     required TResult Function(String message) error,
   }) {
@@ -266,7 +296,7 @@ class _$_StEmpty extends _StEmpty {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(bool isLoading)? data,
+    TResult Function(bool isLoading, Event event, bool isModified)? data,
     TResult Function()? empty,
     TResult Function(String message)? error,
   }) {
@@ -276,7 +306,7 @@ class _$_StEmpty extends _StEmpty {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isLoading)? data,
+    TResult Function(bool isLoading, Event event, bool isModified)? data,
     TResult Function()? empty,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -390,7 +420,8 @@ class _$_StError extends _StError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool isLoading) data,
+    required TResult Function(bool isLoading, Event event, bool isModified)
+        data,
     required TResult Function() empty,
     required TResult Function(String message) error,
   }) {
@@ -400,7 +431,7 @@ class _$_StError extends _StError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(bool isLoading)? data,
+    TResult Function(bool isLoading, Event event, bool isModified)? data,
     TResult Function()? empty,
     TResult Function(String message)? error,
   }) {
@@ -410,7 +441,7 @@ class _$_StError extends _StError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isLoading)? data,
+    TResult Function(bool isLoading, Event event, bool isModified)? data,
     TResult Function()? empty,
     TResult Function(String message)? error,
     required TResult orElse(),

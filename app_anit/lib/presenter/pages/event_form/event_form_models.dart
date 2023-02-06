@@ -1,3 +1,4 @@
+import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'event_form_models.freezed.dart';
 
@@ -7,6 +8,8 @@ class EventFormState with _$EventFormState {
 
   const factory EventFormState.data({
     required bool isLoading,
+    required Event event,
+    required bool isModified,
   }) = _StData;
 
   const factory EventFormState.empty() = _StEmpty;

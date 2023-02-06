@@ -46,4 +46,12 @@ abstract class Repository {
   /// Возвращает события после этой даты
   ///
   Future<Either<Failure, List<sw.Event>>> getEvents(DateTime startDate);
+
+  /// Событие по guid
+  ///
+  Future<Either<Failure, sw.Event>> getEventByGuid(String guid);
+
+  /// Новое событие
+  ///
+  Future<Either<Failure, sw.Event>> newEvent();
 }

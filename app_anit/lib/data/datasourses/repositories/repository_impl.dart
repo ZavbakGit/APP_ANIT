@@ -201,6 +201,36 @@ class RepositoryImpl extends Repository {
       return Left(_getCatchFailure(e));
     }
   }
+
+  @override
+  Future<Either<Failure, sw.Event>> getEventByGuid(String guid) async {
+    try {
+      final response = await swagger!.eventGuidGet(guid: guid);
+
+      if (response.errorStatusCode) {
+        return Left(response.getFailureResponse());
+      }
+
+      return Right(response.body!);
+    } catch (e) {
+      return Left(_getCatchFailure(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, sw.Event>> newEvent() async {
+    try {
+      final response = await swagger!.eventNewGet();
+
+      if (response.errorStatusCode) {
+        return Left(response.getFailureResponse());
+      }
+
+      return Right(response.body!);
+    } catch (e) {
+      return Left(_getCatchFailure(e));
+    }
+  }
 }
 
 Failure _getCatchFailure(Object e) {

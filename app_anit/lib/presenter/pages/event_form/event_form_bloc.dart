@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:app_anit/presenter/pages/event_form/event_form_models.dart';
+import 'package:chopper_api_anit/swagger_generated_code/swagger.swagger.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,11 +14,24 @@ class EventFormBlok
   final AppModel appModel;
   final Repository repository;
 
+  /// guid задачи. Если пустой то новая
+  ///
+  final String? guid;
+
+  bool get _isNew => guid == null;
   bool isLoading = false;
+
+  Event? _event;
+
+  bool isError = false;
+  String messageError = '';
+
+  bool isModified = false;
 
   EventFormBlok({
     required this.appModel,
     required this.repository,
+    this.guid,
   }) : super(const EventFormState.empty()) {
     on<EvInit>(_init);
     on<EvReload>(_reload);
@@ -36,22 +50,41 @@ class EventFormBlok
     EvReload events,
     Emitter<EventFormState> emit,
   ) async {
+    isError = false;
+    messageError = '';
+    _event = null;
     isLoading = true;
+
     add(const EventFormEvent.refrech());
-    await Future.delayed(const Duration(seconds: 1));
-    add(const EventFormEvent.refrech());
+
+    final either = (_isNew)
+        ? await repository.newEvent()
+        : await repository.getEventByGuid(guid!);
+
     isLoading = false;
+    either.fold((fail) {
+      isError = true;
+      messageError = fail.error ?? '';
+    }, (result) {
+      _event = result;
+    });
+
+    add(const EventFormEvent.refrech());
   }
 
   FutureOr<void> _refresh(
     EvRefresh events,
     Emitter<EventFormState> emit,
   ) async {
-    emit(
-      EventFormState.data(
+    if (isError) {
+      emit(EventFormState.error(message: messageError));
+    } else {
+      emit(EventFormState.data(
         isLoading: isLoading,
-      ),
-    );
+        isModified: isModified,
+        event: _event!,
+      ));
+    }
   }
 
   FutureOr<void> _exit(

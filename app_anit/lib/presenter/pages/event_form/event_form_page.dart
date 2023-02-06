@@ -4,18 +4,22 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../app/injection_container.dart';
 import '../../../../arch/sr_bloc/sr_bloc_builder.dart';
 import '../../disign_system/constants.dart';
+import '../../disign_system/widgets_design/custom _date_time_selector.dart';
 import '../../disign_system/widgets_design/custom_empty_page.dart';
 import '../../disign_system/widgets_design/custom_error_page.dart';
 import '../../disign_system/widgets_design/custom_page_widget.dart';
 import '../../disign_system/widgets_design/custom_progres_widgets.dart';
 import '../../disign_system/widgets_design/custom_text_fields.dart';
-import '../../widgets/catalogs/ref_catalog_field_widget.dart';
-import '../../widgets/dialog/date_time_selector.dart';
 import 'event_form_bloc.dart';
 import 'event_form_models.dart';
 
 class EventFormPage extends StatelessWidget {
-  const EventFormPage({Key? key}) : super(key: key);
+  final String? guid;
+
+  const EventFormPage({
+    Key? key,
+    this.guid,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -127,17 +131,11 @@ class _FormEventState extends State<FormEvent> {
       key: _formKey,
       child: ListView(
         children: [
-          RefCatalogFieldWidget(
-            refCatalog: null,
-            title: 'Ответственный',
-            errorTitle: '' == null ? 'Не заполнено' : null,
-            type: 'Пользователи',
-            onChoice: (val) {},
-          ),
-          DateTimeSelectorFormField(
+          CustomDateTimeSelectorFormField(
             controller: _startDateController,
-            decoration: AppConstants.inputDecoration.copyWith(
-              labelText: "Start Date",
+            decoration: const InputDecoration(
+              labelText: 'Дата',
+              border: OutlineInputBorder(),
             ),
             validator: (value) {
               if (value == null || value == "") return "Please select date.";
@@ -159,7 +157,7 @@ class _FormEventState extends State<FormEvent> {
           Row(
             children: [
               Expanded(
-                child: DateTimeSelectorFormField(
+                child: CustomDateTimeSelectorFormField(
                   controller: _startTimeController,
                   decoration: AppConstants.inputDecoration.copyWith(
                     labelText: "Начало",
@@ -178,7 +176,7 @@ class _FormEventState extends State<FormEvent> {
                 ),
               ),
               Expanded(
-                child: DateTimeSelectorFormField(
+                child: CustomDateTimeSelectorFormField(
                   controller: _finishTimeController,
                   decoration: AppConstants.inputDecoration.copyWith(
                     labelText: "Окончание",
