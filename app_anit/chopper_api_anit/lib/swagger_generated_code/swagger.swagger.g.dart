@@ -200,9 +200,9 @@ Event _$EventFromJson(Map<String, dynamic> json) => Event(
           : DateTime.parse(json['datefinish'] as String),
       title: json['title'] as String? ?? '',
       description: json['description'] as String? ?? '',
-      produser: json['produser'] == null
+      producer: json['producer'] == null
           ? null
-          : RefCatalog.fromJson(json['produser'] as Map<String, dynamic>),
+          : RefCatalog.fromJson(json['producer'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$EventToJson(Event instance) {
@@ -221,6 +221,6 @@ Map<String, dynamic> _$EventToJson(Event instance) {
   writeNotNull('datefinish', instance.datefinish?.toIso8601String());
   writeNotNull('title', instance.title);
   writeNotNull('description', instance.description);
-  writeNotNull('produser', instance.produser?.toJson());
+  writeNotNull('producer', instance.producer?.toJson());
   return val;
 }

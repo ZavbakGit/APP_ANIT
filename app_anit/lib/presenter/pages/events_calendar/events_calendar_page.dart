@@ -53,7 +53,7 @@ class EventsCalendarPage extends StatelessWidget {
         Navigator.push<bool>(
           context,
           MaterialPageRoute(
-            builder: (context) => const EventFormPage(),
+            builder: (context) => EventFormPage(date: startTime),
           ),
         ).then((value) {
           if (value != null) {

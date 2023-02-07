@@ -218,9 +218,9 @@ class RepositoryImpl extends Repository {
   }
 
   @override
-  Future<Either<Failure, sw.Event>> newEvent() async {
+  Future<Either<Failure, sw.Event>> newEvent(DateTime date) async {
     try {
-      final response = await swagger!.eventNewGet();
+      final response = await swagger!.eventNewGet(date: date.toIso8601String());
 
       if (response.errorStatusCode) {
         return Left(response.getFailureResponse());

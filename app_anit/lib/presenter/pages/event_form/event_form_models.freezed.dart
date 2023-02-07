@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$EventFormState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool isLoading, Event event, bool isModified)
+    required TResult Function(bool isLoading, Event? event, bool isModified)
         data,
     required TResult Function() empty,
     required TResult Function(String message) error,
@@ -26,14 +26,14 @@ mixin _$EventFormState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(bool isLoading, Event event, bool isModified)? data,
+    TResult Function(bool isLoading, Event? event, bool isModified)? data,
     TResult Function()? empty,
     TResult Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isLoading, Event event, bool isModified)? data,
+    TResult Function(bool isLoading, Event? event, bool isModified)? data,
     TResult Function()? empty,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -84,7 +84,7 @@ class _$EventFormStateCopyWithImpl<$Res>
 abstract class _$$_StDataCopyWith<$Res> {
   factory _$$_StDataCopyWith(_$_StData value, $Res Function(_$_StData) then) =
       __$$_StDataCopyWithImpl<$Res>;
-  $Res call({bool isLoading, Event event, bool isModified});
+  $Res call({bool isLoading, Event? event, bool isModified});
 }
 
 /// @nodoc
@@ -110,7 +110,7 @@ class __$$_StDataCopyWithImpl<$Res> extends _$EventFormStateCopyWithImpl<$Res>
       event: event == freezed
           ? _value.event
           : event // ignore: cast_nullable_to_non_nullable
-              as Event,
+              as Event?,
       isModified: isModified == freezed
           ? _value.isModified
           : isModified // ignore: cast_nullable_to_non_nullable
@@ -129,7 +129,7 @@ class _$_StData extends _StData {
   @override
   final bool isLoading;
   @override
-  final Event event;
+  final Event? event;
   @override
   final bool isModified;
 
@@ -164,7 +164,7 @@ class _$_StData extends _StData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool isLoading, Event event, bool isModified)
+    required TResult Function(bool isLoading, Event? event, bool isModified)
         data,
     required TResult Function() empty,
     required TResult Function(String message) error,
@@ -175,7 +175,7 @@ class _$_StData extends _StData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(bool isLoading, Event event, bool isModified)? data,
+    TResult Function(bool isLoading, Event? event, bool isModified)? data,
     TResult Function()? empty,
     TResult Function(String message)? error,
   }) {
@@ -185,7 +185,7 @@ class _$_StData extends _StData {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isLoading, Event event, bool isModified)? data,
+    TResult Function(bool isLoading, Event? event, bool isModified)? data,
     TResult Function()? empty,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -234,12 +234,12 @@ class _$_StData extends _StData {
 abstract class _StData extends EventFormState {
   const factory _StData(
       {required final bool isLoading,
-      required final Event event,
+      required final Event? event,
       required final bool isModified}) = _$_StData;
   const _StData._() : super._();
 
   bool get isLoading;
-  Event get event;
+  Event? get event;
   bool get isModified;
   @JsonKey(ignore: true)
   _$$_StDataCopyWith<_$_StData> get copyWith =>
@@ -285,7 +285,7 @@ class _$_StEmpty extends _StEmpty {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool isLoading, Event event, bool isModified)
+    required TResult Function(bool isLoading, Event? event, bool isModified)
         data,
     required TResult Function() empty,
     required TResult Function(String message) error,
@@ -296,7 +296,7 @@ class _$_StEmpty extends _StEmpty {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(bool isLoading, Event event, bool isModified)? data,
+    TResult Function(bool isLoading, Event? event, bool isModified)? data,
     TResult Function()? empty,
     TResult Function(String message)? error,
   }) {
@@ -306,7 +306,7 @@ class _$_StEmpty extends _StEmpty {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isLoading, Event event, bool isModified)? data,
+    TResult Function(bool isLoading, Event? event, bool isModified)? data,
     TResult Function()? empty,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -420,7 +420,7 @@ class _$_StError extends _StError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool isLoading, Event event, bool isModified)
+    required TResult Function(bool isLoading, Event? event, bool isModified)
         data,
     required TResult Function() empty,
     required TResult Function(String message) error,
@@ -431,7 +431,7 @@ class _$_StError extends _StError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(bool isLoading, Event event, bool isModified)? data,
+    TResult Function(bool isLoading, Event? event, bool isModified)? data,
     TResult Function()? empty,
     TResult Function(String message)? error,
   }) {
@@ -441,7 +441,7 @@ class _$_StError extends _StError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isLoading, Event event, bool isModified)? data,
+    TResult Function(bool isLoading, Event? event, bool isModified)? data,
     TResult Function()? empty,
     TResult Function(String message)? error,
     required TResult orElse(),

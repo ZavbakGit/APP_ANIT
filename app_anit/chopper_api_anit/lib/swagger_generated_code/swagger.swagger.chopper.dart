@@ -156,12 +156,14 @@ class _$Swagger extends Swagger {
   }
 
   @override
-  Future<Response<Event>> _eventNewGet() {
+  Future<Response<Event>> _eventNewGet({required String? date}) {
     final Uri $url = Uri.parse('/event_new');
+    final Map<String, dynamic> $params = <String, dynamic>{'date': date};
     final Request $request = Request(
       'GET',
       $url,
       client.baseUrl,
+      parameters: $params,
     );
     return client.send<Event, Event>($request);
   }

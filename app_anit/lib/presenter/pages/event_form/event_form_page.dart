@@ -15,16 +15,19 @@ import 'event_form_models.dart';
 
 class EventFormPage extends StatelessWidget {
   final String? guid;
+  final DateTime? date;
 
   const EventFormPage({
     Key? key,
     this.guid,
+    this.date,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<EventFormBlok>(
-      create: (context) => EventFormBlok(appModel: sl(), repository: sl())
+      create: (context) => EventFormBlok(
+          appModel: sl(), repository: sl(), guid: guid, date: date)
         ..add(const EventFormEvent.init()),
       child: SrBlocBuilder<EventFormBlok, EventFormState, EventFormSR>(
         onSR: _onSingleResult,

@@ -197,15 +197,18 @@ abstract class Swagger extends ChopperService {
   Future<chopper.Response> _eventPost({@Body() required Event? body});
 
   ///
-  Future<chopper.Response<Event>> eventNewGet() {
+  ///@param date Дата начала события
+  Future<chopper.Response<Event>> eventNewGet({required String? date}) {
     generatedMapping.putIfAbsent(Event, () => Event.fromJsonFactory);
 
-    return _eventNewGet();
+    return _eventNewGet(date: date);
   }
 
   ///
+  ///@param date Дата начала события
   @Get(path: '/event_new')
-  Future<chopper.Response<Event>> _eventNewGet();
+  Future<chopper.Response<Event>> _eventNewGet(
+      {@Query('date') required String? date});
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -749,7 +752,7 @@ class Event {
     this.datefinish,
     this.title,
     this.description,
-    this.produser,
+    this.producer,
   });
 
   factory Event.fromJson(Map<String, dynamic> json) => _$EventFromJson(json);
@@ -768,8 +771,8 @@ class Event {
   final String? title;
   @JsonKey(name: 'description', includeIfNull: false, defaultValue: '')
   final String? description;
-  @JsonKey(name: 'produser', includeIfNull: false)
-  final RefCatalog? produser;
+  @JsonKey(name: 'producer', includeIfNull: false)
+  final RefCatalog? producer;
   static const fromJsonFactory = _$EventFromJson;
   static const toJsonFactory = _$EventToJson;
   Map<String, dynamic> toJson() => _$EventToJson(this);
@@ -795,9 +798,9 @@ class Event {
             (identical(other.description, description) ||
                 const DeepCollectionEquality()
                     .equals(other.description, description)) &&
-            (identical(other.produser, produser) ||
+            (identical(other.producer, producer) ||
                 const DeepCollectionEquality()
-                    .equals(other.produser, produser)));
+                    .equals(other.producer, producer)));
   }
 
   @override
@@ -812,7 +815,7 @@ class Event {
       const DeepCollectionEquality().hash(datefinish) ^
       const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(description) ^
-      const DeepCollectionEquality().hash(produser) ^
+      const DeepCollectionEquality().hash(producer) ^
       runtimeType.hashCode;
 }
 
@@ -825,7 +828,7 @@ extension $EventExtension on Event {
       DateTime? datefinish,
       String? title,
       String? description,
-      RefCatalog? produser}) {
+      RefCatalog? producer}) {
     return Event(
         guid: guid ?? this.guid,
         date: date ?? this.date,
@@ -834,7 +837,7 @@ extension $EventExtension on Event {
         datefinish: datefinish ?? this.datefinish,
         title: title ?? this.title,
         description: description ?? this.description,
-        produser: produser ?? this.produser);
+        producer: producer ?? this.producer);
   }
 
   Event copyWithWrapped(
@@ -845,7 +848,7 @@ extension $EventExtension on Event {
       Wrapped<DateTime?>? datefinish,
       Wrapped<String?>? title,
       Wrapped<String?>? description,
-      Wrapped<RefCatalog?>? produser}) {
+      Wrapped<RefCatalog?>? producer}) {
     return Event(
         guid: (guid != null ? guid.value : this.guid),
         date: (date != null ? date.value : this.date),
@@ -855,7 +858,7 @@ extension $EventExtension on Event {
         title: (title != null ? title.value : this.title),
         description:
             (description != null ? description.value : this.description),
-        produser: (produser != null ? produser.value : this.produser));
+        producer: (producer != null ? producer.value : this.producer));
   }
 }
 

@@ -8,7 +8,7 @@ class EventFormState with _$EventFormState {
 
   const factory EventFormState.data({
     required bool isLoading,
-    required Event event,
+    required Event? event,
     required bool isModified,
   }) = _StData;
 

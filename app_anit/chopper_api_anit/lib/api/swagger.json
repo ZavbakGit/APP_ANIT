@@ -335,9 +335,21 @@
       "get": {
         "operationId": "newEvent",
         "description": "Данные для нового события",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "query",
+            "description": "Дата начала события",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          }
+        ],
         "responses": {
           "200": {
-            "description": "Новая задача",
+            "description": "Новое событие",
             "content": {
               "application/json": {
                 "schema": {
@@ -544,7 +556,7 @@
             "type": "string",
             "description": "Описание встречи"
           },
-          "produser": {
+          "producer": {
             "$ref": "#/components/schemas/RefCatalog"
           }
         }

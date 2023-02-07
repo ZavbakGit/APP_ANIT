@@ -18,6 +18,10 @@ class EventFormBlok
   ///
   final String? guid;
 
+  /// guid задачи. Если пустой то новая
+  ///
+  final DateTime? date;
+
   bool get _isNew => guid == null;
   bool isLoading = false;
 
@@ -32,6 +36,7 @@ class EventFormBlok
     required this.appModel,
     required this.repository,
     this.guid,
+    this.date,
   }) : super(const EventFormState.empty()) {
     on<EvInit>(_init);
     on<EvReload>(_reload);
@@ -58,7 +63,7 @@ class EventFormBlok
     add(const EventFormEvent.refrech());
 
     final either = (_isNew)
-        ? await repository.newEvent()
+        ? await repository.newEvent(date ?? DateTime.now())
         : await repository.getEventByGuid(guid!);
 
     isLoading = false;
@@ -82,7 +87,7 @@ class EventFormBlok
       emit(EventFormState.data(
         isLoading: isLoading,
         isModified: isModified,
-        event: _event!,
+        event: _event,
       ));
     }
   }

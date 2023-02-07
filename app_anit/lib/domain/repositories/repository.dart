@@ -53,5 +53,5 @@ abstract class Repository {
 
   /// Новое событие
   ///
-  Future<Either<Failure, sw.Event>> newEvent();
+  Future<Either<Failure, sw.Event>> newEvent(DateTime date);
 }
