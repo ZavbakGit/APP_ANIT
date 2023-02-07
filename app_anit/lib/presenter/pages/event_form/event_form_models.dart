@@ -13,9 +13,7 @@ class EventFormState with _$EventFormState {
   }) = _StData;
 
   const factory EventFormState.empty() = _StEmpty;
-  const factory EventFormState.error({
-    required String message,
-  }) = _StError;
+  const factory EventFormState.error({required String message}) = _StError;
 }
 
 @freezed
