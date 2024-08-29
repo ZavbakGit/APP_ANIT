@@ -1,10 +1,10 @@
 import 'package:app_anit/domain/models/conected_config_model.dart';
-import 'package:app_anit/domain/models/remote_config_model.dart';
+import 'package:app_anit/domain/models/remote_config.dart';
 import 'package:app_anit/domain/repositories/repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 
-import '../../core/error/failures.dart';
+import '../../core/failures.dart';
 
 class AppData {
   RemoteConfigModel? remoteConfig;
@@ -23,7 +23,6 @@ class AppData {
 
 class AppModel extends ChangeNotifier {
   final Repository repository;
-  
   AppModel({
     required this.repository,
   });
@@ -38,12 +37,9 @@ class AppModel extends ChangeNotifier {
   Future<Either<Failure, None>> saveConnectionConfig(
     ConnectedConfigModel? model,
   ) async {
-    
-
     final either = (model == null)
         ? await repository.removeConnectionConfig()
         : await repository.saveConnectionData(model);
-
     return either.map((right) {
       _appData.connectedConfig = model;
       notifyListeners();
